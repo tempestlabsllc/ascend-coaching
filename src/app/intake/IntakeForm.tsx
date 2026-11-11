@@ -5,7 +5,7 @@ const goals = ["Lose fat", "Build muscle", "Get stronger", "Improve fitness / en
 
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <fieldset className="rounded-2xl border border-white/10 bg-card p-6">
+    <fieldset className="rounded-2xl border border-black/10 bg-card p-6">
       <legend className="px-2 text-lg font-bold">{title}</legend>
       <div className="grid gap-4 sm:grid-cols-2">{children}</div>
     </fieldset>
@@ -66,7 +66,7 @@ export default function IntakeForm() {
     return (
       <div className="rounded-2xl bg-card p-10 text-center">
         <h2 className="text-2xl font-extrabold">Thanks, got it! 🙌</h2>
-        <p className="mt-2 text-white/60">I'll review your answers and be in touch within 48 hours.</p>
+        <p className="mt-2 text-black/60">I'll review your answers and be in touch within 48 hours.</p>
       </div>
     );
   }
@@ -91,7 +91,7 @@ export default function IntakeForm() {
           <span className="label">What are your main goals? <span className="text-brand">*</span></span>
           <div className="grid gap-2 sm:grid-cols-3">
             {goals.map((g) => (
-              <label key={g} className="flex items-center gap-2 rounded-lg border border-white/10 px-3 py-2 text-sm">
+              <label key={g} className="flex items-center gap-2 rounded-lg border border-black/10 px-3 py-2 text-sm">
                 <input type="checkbox" name="goals" value={g} className="accent-brand" /> {g}
               </label>
             ))}

@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen font-sans antialiased">
         <Header />
         <main>{children}</main>
-        <footer className="mt-24 border-t border-white/10 py-10 text-center text-sm text-white/60">
+        <footer className="mt-24 border-t border-black/10 py-10 text-center text-sm text-black/60">
           <p className="mb-4 text-lg font-extrabold text-brand">{site.name}</p>
           <p>© {new Date().getFullYear()} {site.name} · <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>
              · <a className="underline" href="/check-in">Client check-in</a>

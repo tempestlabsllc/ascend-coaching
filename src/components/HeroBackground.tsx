@@ -58,7 +58,7 @@ export default function HeroBackground() {
       <Cloud className="cloud-d" />
       <Cloud className="cloud-e" />
 
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,.55)_0%,rgba(10,10,10,.15)_55%,transparent_75%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,.7)_0%,rgba(255,255,255,.25)_55%,transparent_75%)]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-paper" />
     </div>
   );

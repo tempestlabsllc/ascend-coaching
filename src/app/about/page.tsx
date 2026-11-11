@@ -10,13 +10,13 @@ export default function AboutPage() {
         <div className="flex aspect-[4/5] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-brand/30 to-mist">
           {about.photo
             ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover" />
-            : <span className="text-sm text-white/50">Coach photo</span>}
+            : <span className="text-sm text-black/50">Coach photo</span>}
         </div>
         <div>
           <p className="font-semibold uppercase tracking-widest text-brand">About your coach</p>
           <h1 className="mt-2 text-4xl font-extrabold sm:text-5xl">{about.headline}</h1>
-          <p className="mt-6 text-lg text-white/80">{about.short}</p>
-          <div className="mt-6 space-y-4 text-white/70">
+          <p className="mt-6 text-lg text-black/80">{about.short}</p>
+          <div className="mt-6 space-y-4 text-black/70">
             {about.story.map((p, i) => <p key={i}>{p}</p>)}
           </div>
           <ul className="mt-8 flex flex-wrap gap-2">

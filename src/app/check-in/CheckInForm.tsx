@@ -33,14 +33,14 @@ export default function CheckInForm() {
     return (
       <div className="rounded-2xl bg-card p-10 text-center">
         <h2 className="text-2xl font-extrabold">Check-in received 💪</h2>
-        <p className="mt-2 text-white/60">I'll review it and reply with your adjustments soon.</p>
+        <p className="mt-2 text-black/60">I'll review it and reply with your adjustments soon.</p>
       </div>
     );
   }
 
   return (
     <form onSubmit={onSubmit} className="space-y-6">
-      <fieldset className="grid gap-4 rounded-2xl border border-white/10 bg-card p-6 sm:grid-cols-2">
+      <fieldset className="grid gap-4 rounded-2xl border border-black/10 bg-card p-6 sm:grid-cols-2">
         <Row label="Full name *"><input className="field" name="name" required /></Row>
         <Row label="Email *"><input className="field" name="email" type="email" required /></Row>
         <Row label="Current weight *"><input className="field" name="weight" type="number" step="any" required /></Row>
