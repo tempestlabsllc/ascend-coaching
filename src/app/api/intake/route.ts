@@ -12,6 +12,7 @@ export async function POST(req: Request) {
   if (!data || typeof data !== "object" || !data.email || !data.name) {
     return NextResponse.json({ ok: false, message: "Name and email are required." }, { status: 400 });
   }
+  const formName = data.form === "check-in" ? "Weekly check-in" : "New intake questionnaire";
   const submission: Record<string, unknown> = { ...data, submittedAt: new Date().toISOString() };
   for (const [k, v] of Object.entries(submission)) if (Array.isArray(v)) submission[k] = v.join(", ");
 
@@ -27,7 +28,7 @@ export async function POST(req: Request) {
       method: "POST",
       headers: { "Content-Type": "application/json", Accept: "application/json" },
       body: JSON.stringify({
-        _subject: `New intake questionnaire: ${submission.name}`,
+        _subject: `${formName}: ${submission.name}`,
         _replyto: submission.email,
         _template: "table",
         ...submission,
