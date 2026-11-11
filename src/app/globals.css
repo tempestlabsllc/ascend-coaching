@@ -43,3 +43,23 @@ body { background: var(--color-paper); color: #f2f4f4; color-scheme: dark; }
 }
 @keyframes gridrise { to { background-position: 0 -56px; } }
 @media (prefers-reduced-motion: reduce) { .hero-orb, .hero-grid { animation: none; } }
+
+/* Hero clouds + growth arrow */
+.cloud { position: absolute; color: #f3d6e0; filter: blur(14px); will-change: transform; }
+.cloud-a { width: 520px; top: 6%;  left: -10%; opacity: .07; animation: cloud-drift 70s linear infinite; }
+.cloud-b { width: 380px; top: 30%; left: 55%;  opacity: .06; animation: cloud-drift 90s linear infinite -30s; }
+.cloud-c { width: 640px; top: 58%; left: 10%;  opacity: .05; animation: cloud-drift 110s linear infinite -60s; }
+.cloud-d { width: 300px; top: 18%; left: 70%;  opacity: .09; filter: blur(10px); animation: cloud-drift 55s linear infinite -10s; }
+.cloud-e { width: 420px; top: 70%; left: 60%;  opacity: .08; filter: blur(12px); animation: cloud-drift 65s linear infinite -40s; }
+@keyframes cloud-drift { from { transform: translateX(-40vw); } to { transform: translateX(80vw); } }
+
+.growth-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: growth-draw 7s ease-in-out infinite; }
+.growth-area { opacity: 0; animation: growth-area 7s ease-in-out infinite; }
+.growth-head { opacity: 0; animation: growth-head 7s ease-in-out infinite; }
+@keyframes growth-draw { 0% { stroke-dashoffset: 1; opacity: 1; } 55% { stroke-dashoffset: 0; opacity: 1; } 85% { stroke-dashoffset: 0; opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes growth-area { 0%, 20% { opacity: 0; } 55%, 85% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes growth-head { 0%, 50% { opacity: 0; } 56%, 85% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .cloud { animation: none; }
+  .growth-line, .growth-area, .growth-head { animation: none; stroke-dashoffset: 0; opacity: 1; }
+}

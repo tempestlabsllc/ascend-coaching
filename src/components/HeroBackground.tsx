@@ -1,79 +1,64 @@
-"use client";
-import { useEffect, useRef } from "react";
+// Animated hero background: drifting clouds behind a growth-chart arrow
+// that draws itself upward, on a faint moving grid. Pure CSS/SVG, no JS.
 
-// Animated hero background: glowing turquoise particles that rise upward
-// (the "ascension"), with faint connecting lines between nearby particles.
+function Cloud({ className }: { className: string }) {
+  // A soft cloud built from overlapping circles, blurred slightly.
+  return (
+    <svg viewBox="0 0 320 140" className={`cloud ${className}`} aria-hidden>
+      <g fill="currentColor">
+        <ellipse cx="160" cy="100" rx="150" ry="38" />
+        <circle cx="105" cy="78" r="46" />
+        <circle cx="170" cy="58" r="60" />
+        <circle cx="235" cy="82" r="40" />
+      </g>
+    </svg>
+  );
+}
+
 export default function HeroBackground() {
-  const ref = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = ref.current!;
-    const ctx = canvas.getContext("2d")!;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let w = 0, h = 0, raf = 0;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-    type P = { x: number; y: number; r: number; vy: number; vx: number; a: number; tw: number };
-    let ps: P[] = [];
-    const make = (y?: number): P => ({
-      x: Math.random() * w,
-      y: y ?? Math.random() * h,
-      r: Math.random() * 2 + 0.6,
-      vy: Math.random() * 0.5 + 0.15,
-      vx: (Math.random() - 0.5) * 0.15,
-      a: Math.random() * 0.6 + 0.3,
-      tw: Math.random() * Math.PI * 2,
-    });
-
-    function resize() {
-      w = canvas.clientWidth; h = canvas.clientHeight;
-      canvas.width = w * dpr; canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.round(Math.min(110, (w * h) / 9000));
-      ps = Array.from({ length: count }, () => make());
-    }
-
-    function draw(t: number) {
-      ctx.clearRect(0, 0, w, h);
-      // links
-      for (let i = 0; i < ps.length; i++) {
-        for (let j = i + 1; j < ps.length; j++) {
-          const dx = ps[i].x - ps[j].x, dy = ps[i].y - ps[j].y;
-          const d = dx * dx + dy * dy;
-          if (d < 110 * 110) {
-            ctx.strokeStyle = `rgba(224,17,95,${0.12 * (1 - Math.sqrt(d) / 110)})`;
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(ps[i].x, ps[i].y); ctx.lineTo(ps[j].x, ps[j].y); ctx.stroke();
-          }
-        }
-      }
-      // particles
-      for (const p of ps) {
-        if (!reduce) {
-          p.y -= p.vy; p.x += p.vx + Math.sin(t / 2000 + p.tw) * 0.1;
-          if (p.y < -10) Object.assign(p, make(h + 10));
-        }
-        const flicker = 0.7 + 0.3 * Math.sin(t / 600 + p.tw);
-        ctx.fillStyle = `rgba(224,17,95,${p.a * flicker})`;
-        ctx.shadowColor = "rgba(224,17,95,0.9)"; ctx.shadowBlur = 8;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-      }
-      ctx.shadowBlur = 0;
-      if (!reduce) raf = requestAnimationFrame(draw);
-    }
-
-    resize();
-    raf = requestAnimationFrame(draw);
-    window.addEventListener("resize", resize);
-    return () => { cancelAnimationFrame(raf); window.removeEventListener("resize", resize); };
-  }, []);
-
+  // Rising zig-zag like a stock chart going up, ending in an arrowhead.
+  const path = "M -20 560 L 140 470 L 250 510 L 400 380 L 520 420 L 700 270 L 820 310 L 960 170 L 1080 200 L 1230 60";
   return (
     <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />
       <div className="hero-grid" />
-      <canvas ref={ref} className="absolute inset-0 h-full w-full" />
+
+      {/* back clouds */}
+      <Cloud className="cloud-a" />
+      <Cloud className="cloud-b" />
+      <Cloud className="cloud-c" />
+
+      {/* growth arrow */}
+      <svg viewBox="0 0 1280 600" preserveAspectRatio="xMaxYMid slice" className="absolute inset-0 h-full w-full">
+        <defs>
+          <linearGradient id="arrowGrad" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0" stopColor="#e0115f" stopOpacity="0.15" />
+            <stop offset="1" stopColor="#ff4d8d" stopOpacity="0.95" />
+          </linearGradient>
+          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#e0115f" stopOpacity="0.22" />
+            <stop offset="1" stopColor="#e0115f" stopOpacity="0" />
+          </linearGradient>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="6" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+        <g className="growth">
+          <path d={`${path} L 1230 620 L -20 620 Z`} fill="url(#areaGrad)" className="growth-area" />
+          <path d={path} pathLength={1} fill="none" stroke="url(#arrowGrad)" strokeWidth="5" strokeLinejoin="round" strokeLinecap="round" filter="url(#glow)" className="growth-line" />
+          <g className="growth-head">
+            <path d="M 1230 60 L 1188 74 L 1213 101 Z" fill="#ff4d8d" filter="url(#glow)" />
+          </g>
+        </g>
+      </svg>
+
+      {/* front clouds, drifting over the arrow */}
+      <Cloud className="cloud-d" />
+      <Cloud className="cloud-e" />
+
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(10,10,10,.55)_0%,rgba(10,10,10,.15)_55%,transparent_75%)]" />
       <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-paper" />
     </div>
   );
