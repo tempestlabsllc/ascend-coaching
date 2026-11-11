@@ -37,12 +37,12 @@ export const tiers: Tier[] = [
     name: "Starter",
     priceCents: 5000,
     interval: "month",
-    blurb: "A personalised plan and monthly check-ins.",
+    blurb: "Train exactly how Edwin trains.",
     features: [
-      "Custom training program",
+      "Edwin's personal training routine",
+      "Exact exercises, sets and reps",
+      "Updated whenever Edwin's routine changes",
       "Nutrition targets (calories + macros)",
-      "Monthly check-in call",
-      "Program updates every 4 weeks",
     ],
   },
   {
@@ -53,7 +53,7 @@ export const tiers: Tier[] = [
     interval: "month",
     blurb: "Weekly accountability for steady progress.",
     features: [
-      "Everything in Starter",
+      "Fully custom program built for you",
       "Weekly check-ins with form review",
       "Custom meal plan",
       "Messaging support (48h reply)",
