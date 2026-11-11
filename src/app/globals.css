@@ -27,3 +27,19 @@ body { background: var(--color-paper); color: #f2f4f4; color-scheme: dark; }
 .tier-gold { background-image: linear-gradient(90deg,#b8860b,#f5c518,#fff1a8,#f5c518,#b8860b,#f5c518,#fff1a8,#b8860b); }
 .text-gold { background-image: linear-gradient(90deg,#d4a017,#ffd84d,#fff4c2,#ffd84d,#d4a017); -webkit-background-clip: text; background-clip: text; color: transparent; }
 @media (prefers-reduced-motion: reduce) { .tier-rainbow, .text-rainbow, .tier-gold, .text-gold { animation: none; } }
+
+/* Hero live background */
+.hero-orb { position: absolute; border-radius: 9999px; filter: blur(110px); opacity: .45; }
+.hero-orb-1 { width: 620px; height: 620px; background: #1fd1c6; top: -220px; left: 10%; animation: drift1 16s ease-in-out infinite alternate; }
+.hero-orb-2 { width: 520px; height: 520px; background: #0e6f8f; bottom: -200px; right: 5%; animation: drift2 20s ease-in-out infinite alternate; }
+@keyframes drift1 { to { transform: translate(180px, 120px) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-200px, -100px) scale(0.9); } }
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(31,209,198,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(31,209,198,.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  animation: gridrise 6s linear infinite;
+}
+@keyframes gridrise { to { background-position: 0 -56px; } }
+@media (prefers-reduced-motion: reduce) { .hero-orb, .hero-grid { animation: none; } }

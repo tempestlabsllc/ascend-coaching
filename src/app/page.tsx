@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site, about, testimonials, faqs } from "@/config/site";
 import TierCards from "@/components/TierCards";
+import HeroBackground from "@/components/HeroBackground";
 
 const steps = [
   { n: "01", t: "Choose your plan", d: "Pick the level of support you want and check out in a minute." },
@@ -20,9 +21,9 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute -top-40 left-1/2 h-[600px] w-[900px] -translate-x-1/2 rounded-full bg-brand/20 blur-[120px]" />
-        <div className="relative mx-auto max-w-6xl px-4 pt-20 pb-24 text-center sm:pt-32 sm:pb-32">
+      <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+        <HeroBackground />
+        <div className="relative mx-auto w-full max-w-6xl px-4 py-20 text-center">
           <p className="font-semibold uppercase tracking-[0.3em] text-brand">{site.name}</p>
           <h1 className="mx-auto mt-6 max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
             Start your <span className="text-brand">ascension</span> today
