@@ -10,7 +10,7 @@ export default function BookPage() {
       <p className="mt-2 text-black/60">30 minutes to talk through your goals and see which plan fits. Want to save time on the call? <Link href="/intake" className="underline">Fill in the questionnaire</Link> first.</p>
       <div className="mt-8 overflow-hidden rounded-2xl border border-black/10 bg-card">
         {/* Works with Cal.com or Calendly links. Set NEXT_PUBLIC_BOOKING_URL. */}
-        <iframe src={`${site.bookingUrl}?hide_gdpr_banner=1&background_color=ffffff&text_color=16181d&primary_color=e0115f`} title="Booking calendar" className="h-[720px] w-full" />
+        <iframe src={`${site.bookingUrl}?hide_gdpr_banner=1&background_color=ffffff&text_color=16181d&primary_color=3a9ad9`} title="Booking calendar" className="h-[720px] w-full" />
       </div>
       <p className="mt-3 text-sm text-black/50">Calendar not loading? <a className="underline" href={site.bookingUrl} target="_blank" rel="noreferrer">Open it in a new tab</a>.</p>
     </div>

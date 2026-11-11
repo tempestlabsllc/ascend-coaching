@@ -69,13 +69,13 @@ export default function FeatureGrid() {
           {features.map((f, i) => (
             <div
               key={f.key}
-              className="group relative overflow-hidden rounded-3xl border border-black/10 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-brand/40 hover:shadow-[0_20px_50px_-20px_rgba(224,17,95,0.45)]"
+              className="group relative overflow-hidden rounded-3xl border border-black/10 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-2 hover:border-brand/40 hover:shadow-[0_20px_50px_-20px_rgba(58,154,217,0.45)]"
             >
-              <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-[#ff6b9d] transition-transform duration-500 group-hover:scale-x-100" />
+              <div className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-brand to-[#89cff0] transition-transform duration-500 group-hover:scale-x-100" />
               <span className="absolute right-6 top-5 text-5xl font-black text-black/[0.05] transition-colors duration-300 group-hover:text-brand/15">
                 0{i + 1}
               </span>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-[#ff4d8d] text-white shadow-[0_10px_25px_-8px_rgba(224,17,95,0.6)] transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-110">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-brand to-[#89cff0] text-white shadow-[0_10px_25px_-8px_rgba(58,154,217,0.6)] transition-transform duration-300 group-hover:rotate-[-6deg] group-hover:scale-110">
                 <svg viewBox="0 0 24 24" className="h-7 w-7" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                   {icons[f.key]}
                 </svg>

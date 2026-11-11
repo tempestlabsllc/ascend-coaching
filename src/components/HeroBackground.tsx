@@ -33,23 +33,29 @@ export default function HeroBackground() {
       <svg viewBox="0 0 1280 600" preserveAspectRatio="xMaxYMid slice" className="absolute inset-0 h-full w-full">
         <defs>
           <linearGradient id="arrowGrad" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0" stopColor="#e0115f" stopOpacity="0.15" />
-            <stop offset="1" stopColor="#ff4d8d" stopOpacity="0.95" />
+            <stop offset="0" stopColor="#3a9ad9" stopOpacity="0.15" />
+            <stop offset="1" stopColor="#89cff0" stopOpacity="0.95" />
           </linearGradient>
           <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#e0115f" stopOpacity="0.22" />
-            <stop offset="1" stopColor="#e0115f" stopOpacity="0" />
+            <stop offset="0" stopColor="#3a9ad9" stopOpacity="0.22" />
+            <stop offset="1" stopColor="#3a9ad9" stopOpacity="0" />
           </linearGradient>
+          <linearGradient id="areaFade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#fff" stopOpacity="1" />
+            <stop offset="0.8" stopColor="#fff" stopOpacity="1" />
+            <stop offset="0.96" stopColor="#fff" stopOpacity="0" />
+          </linearGradient>
+          <mask id="areaMask"><rect x="-20" y="0" width="1250" height="620" fill="url(#areaFade)" /></mask>
           <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
             <feGaussianBlur stdDeviation="6" result="b" />
             <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
         <g className="growth">
-          <path d={`${path} L 1230 620 L -20 620 Z`} fill="url(#areaGrad)" className="growth-area" />
+          <path d={`${path} L 1230 620 L -20 620 Z`} fill="url(#areaGrad)" mask="url(#areaMask)" className="growth-area" />
           <path d={path} pathLength={1} fill="none" stroke="url(#arrowGrad)" strokeWidth="5" strokeLinejoin="round" strokeLinecap="round" filter="url(#glow)" className="growth-line" />
           <g className="growth-head">
-            <path d="M 1230 60 L 1188 74 L 1213 101 Z" fill="#ff4d8d" filter="url(#glow)" />
+            <path d="M 1230 60 L 1188 74 L 1213 101 Z" fill="#89cff0" filter="url(#glow)" />
           </g>
         </g>
       </svg>

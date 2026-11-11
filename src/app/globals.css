@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #e0115f;
-  --color-brand-dark: #b30d4c;
+  --color-brand: #3a9ad9;
+  --color-brand-dark: #2378b5;
   --color-ink: #0a0a0a;
   --color-paper: #ffffff;
-  --color-card: #f7f5f6;
-  --color-mist: #fdecf2;
+  --color-card: #f4f9fc;
+  --color-mist: #e6f4fc;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -30,13 +30,13 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 
 /* Hero live background */
 .hero-orb { position: absolute; border-radius: 9999px; filter: blur(110px); opacity: .16; }
-.hero-orb-1 { width: 620px; height: 620px; background: #e0115f; top: -220px; left: 10%; animation: drift1 16s ease-in-out infinite alternate; }
-.hero-orb-2 { width: 520px; height: 520px; background: #ff8fb5; bottom: -200px; right: 5%; animation: drift2 20s ease-in-out infinite alternate; }
+.hero-orb-1 { width: 620px; height: 620px; background: #3a9ad9; top: -220px; left: 10%; animation: drift1 16s ease-in-out infinite alternate; }
+.hero-orb-2 { width: 520px; height: 520px; background: #a8dcf5; bottom: -200px; right: 5%; animation: drift2 20s ease-in-out infinite alternate; }
 @keyframes drift1 { to { transform: translate(180px, 120px) scale(1.15); } }
 @keyframes drift2 { to { transform: translate(-200px, -100px) scale(0.9); } }
 .hero-grid {
   position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(224,17,95,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(224,17,95,.06) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(58,154,217,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(58,154,217,.06) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   animation: gridrise 6s linear infinite;
@@ -45,7 +45,7 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 @media (prefers-reduced-motion: reduce) { .hero-orb, .hero-grid { animation: none; } }
 
 /* Hero clouds + growth arrow */
-.cloud { position: absolute; color: #c9b3bc; filter: blur(14px); will-change: transform; }
+.cloud { position: absolute; color: #b8d8ec; filter: blur(14px); will-change: transform; }
 .cloud-a { width: 520px; top: 6%;  left: -10%; opacity: .35; animation: cloud-drift 70s linear infinite; }
 .cloud-b { width: 380px; top: 30%; left: 55%;  opacity: .3; animation: cloud-drift 90s linear infinite -30s; }
 .cloud-c { width: 640px; top: 58%; left: 10%;  opacity: .25; animation: cloud-drift 110s linear infinite -60s; }
@@ -63,3 +63,16 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
   .cloud { animation: none; }
   .growth-line, .growth-area, .growth-head { animation: none; stroke-dashoffset: 0; opacity: 1; }
 }
+
+/* Hero upgrade: shimmering headline word, floating plan card, rising bars */
+.text-shimmer {
+  background-image: linear-gradient(90deg, #2378b5, #3a9ad9, #89cff0, #3a9ad9, #2378b5);
+  background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: flow 5s linear infinite;
+}
+.hero-float { animation: hero-float 7s ease-in-out infinite; }
+.hero-float-2 { animation: hero-float 6s ease-in-out infinite -2s; }
+@keyframes hero-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.hero-bar { transform-origin: bottom; animation: hero-bar 1.2s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes hero-bar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@media (prefers-reduced-motion: reduce) { .text-shimmer, .hero-float, .hero-float-2, .hero-bar { animation: none; } }

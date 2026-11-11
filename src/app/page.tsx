@@ -5,31 +5,81 @@ import HeroBackground from "@/components/HeroBackground";
 import FeatureGrid from "@/components/FeatureGrid";
 
 const steps = [
-  { n: "01", t: "Choose your plan", d: "Pick the level of support you want and check out in a minute." },
-  { n: "02", t: "Fill in the questionnaire", d: "Tell me your stats, goals, schedule, training and eating habits." },
+  { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute." },
+  { n: "02", t: "Book a call or fill out the questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },
   { n: "03", t: "Get your plan", d: "Training and nutrition built for you, delivered within days." },
-  { n: "04", t: "Check in and climb", d: "Regular check-ins keep you accountable while your plan evolves." },
+  { n: "04", t: "1:1 on WhatsApp", d: "Your coach works with you directly on WhatsApp while your plan evolves." },
 ];
 
 export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+      <section className="relative flex min-h-[92vh] items-center overflow-hidden">
         <HeroBackground />
-        <div className="relative mx-auto w-full max-w-6xl px-4 py-20 text-center">
-          <p className="font-semibold uppercase tracking-[0.3em] text-brand">{site.name}</p>
-          <h1 className="mx-auto mt-6 max-w-4xl text-5xl font-black uppercase leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
-            Start your <span className="text-brand">ascension</span> today
-          </h1>
-          <p className="mx-auto mt-8 max-w-2xl text-lg text-black/70">
-            1:1 online coaching with a real personal trainer with {site.yearsExperience} years of experience. Training, nutrition and accountability built around your life, wherever you train.
-          </p>
-          <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link href="/coaching" className="btn-primary">Choose your plan</Link>
-            <Link href="/shop" className="btn-outline">Free starter guide</Link>
+        <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-4 py-20 lg:grid-cols-[1.15fr_0.85fr]">
+          <div className="text-center lg:text-left">
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-white/70 px-4 py-1.5 text-sm font-semibold text-brand-dark shadow-sm backdrop-blur">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand" />
+              </span>
+              {site.name} · 1:1 online coaching
+            </span>
+            <h1 className="mt-7 text-5xl font-black uppercase leading-[0.92] tracking-tight sm:text-7xl lg:text-[5.5rem]">
+              Start your <span className="text-shimmer">ascension</span> today
+            </h1>
+            <p className="mx-auto mt-7 max-w-xl text-lg text-black/70 lg:mx-0">
+              1:1 online coaching with a real personal trainer with {site.yearsExperience} years of experience. Training, nutrition and accountability built around your life, wherever you train.
+            </p>
+            <div className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start">
+              <Link href="/coaching" className="btn-primary group shadow-[0_14px_34px_-10px_rgba(58,154,217,0.75)]">
+                Choose your plan
+                <span className="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
+              </Link>
+              <Link href="/shop" className="btn-outline bg-white/70 backdrop-blur">Free starter guide</Link>
+            </div>
+            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-black/65 lg:justify-start">
+              {["A real person, not an app", `${site.yearsExperience} years experience`, "Training + nutrition"].map((t) => (
+                <li key={t} className="flex items-center gap-2">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand/15 text-xs font-bold text-brand-dark">✓</span>
+                  {t}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-6 text-sm text-black/50">Have questions first? <Link href="/book" className="font-semibold text-brand-dark underline">Book a free call</Link></p>
           </div>
-          <p className="mt-6 text-sm text-black/50">Have questions first? <Link href="/book" className="text-brand underline">Book a free call</Link></p>
+
+          {/* Plan preview card (illustrative) */}
+          <div aria-hidden className="relative mx-auto hidden w-full max-w-sm lg:block">
+            <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#89cff0]/50 to-brand/10 blur-2xl" />
+            <div className="hero-float relative rounded-3xl border border-white/80 bg-white/80 p-6 shadow-[0_30px_80px_-30px_rgba(35,120,181,0.55)] backdrop-blur-xl">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-brand">Your plan</p>
+                  <p className="mt-1 text-lg font-extrabold">Week 4 · Building</p>
+                </div>
+                <span className="rounded-full bg-brand/10 px-3 py-1 text-xs font-bold text-brand-dark">On track</span>
+              </div>
+              <div className="mt-5 flex h-28 items-end gap-2">
+                {[38, 46, 42, 58, 64, 61, 78, 92].map((h, i) => (
+                  <div key={i} className="hero-bar flex-1 rounded-t-md bg-gradient-to-t from-brand to-[#89cff0]" style={{ height: `${h}%`, animationDelay: `${i * 0.08}s` }} />
+                ))}
+              </div>
+              <ul className="mt-5 space-y-2.5 text-sm">
+                {[["Training", "Upper body · 6 exercises"], ["Nutrition", "Protein target hit"], ["Check-in", "Sent to your coach"]].map(([k, v]) => (
+                  <li key={k} className="flex items-center justify-between rounded-xl bg-card px-3 py-2.5">
+                    <span><span className="font-bold">{k}</span> <span className="text-black/55">· {v}</span></span>
+                    <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-bold text-white">✓</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="hero-float-2 absolute -left-10 -bottom-6 rounded-2xl border border-white/80 bg-white/90 px-4 py-3 shadow-xl backdrop-blur">
+              <p className="text-xs text-black/50">Message from your coach</p>
+              <p className="text-sm font-bold">&ldquo;Great week. Adding weight Monday.&rdquo;</p>
+            </div>
+          </div>
         </div>
       </section>
 

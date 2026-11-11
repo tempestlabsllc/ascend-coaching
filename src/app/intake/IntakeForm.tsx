@@ -66,7 +66,7 @@ export default function IntakeForm() {
     return (
       <div className="rounded-2xl bg-card p-10 text-center">
         <h2 className="text-2xl font-extrabold">Thanks, got it! 🙌</h2>
-        <p className="mt-2 text-black/60">I'll review your answers and be in touch within 48 hours.</p>
+        <p className="mt-2 text-black/60">I'll review your answers and message you on WhatsApp within 48 hours.</p>
       </div>
     );
   }
@@ -75,8 +75,8 @@ export default function IntakeForm() {
     <form onSubmit={onSubmit} className="space-y-8">
       <Section title="About you">
         <Field label="Full name" name="name" required />
+        <Field label="WhatsApp number (with country code)" name="phone" type="tel" required placeholder="+1 555 123 4567" />
         <Field label="Email" name="email" type="email" required />
-        <Field label="Phone (optional)" name="phone" type="tel" />
         <Field label="Age" name="age" type="number" required />
         <Select label="Sex" name="sex" options={["Male", "Female", "Prefer not to say"]} />
         <Select label="Units" name="units" options={["lbs / ft-in", "kg / cm"]} required />
