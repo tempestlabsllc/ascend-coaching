@@ -8,7 +8,7 @@ export default function CoachingPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-4xl font-extrabold">Coaching plans</h1>
-      <p className="mt-2 mb-10 max-w-2xl text-white/60">Pick the level of support you want. After checkout you'll be sent to the intake questionnaire so I can build your plan.</p>
+      <p className="mt-2 mb-10 max-w-2xl text-white/60">Every plan is run by me personally, with 9 years of personal training experience behind it. No AI, no generic app. Pick the level of support you want; after checkout you'll fill in a short questionnaire so I can get started.</p>
       <TierCards />
       <div className="mt-20 grid gap-10 md:grid-cols-[1fr_2fr]">
         <div>

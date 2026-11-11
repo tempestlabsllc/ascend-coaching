@@ -29,13 +29,31 @@ export default function Home() {
             Start your <span className="text-brand">ascension</span> today
           </h1>
           <p className="mx-auto mt-8 max-w-2xl text-lg text-white/70">
-            Personalised online coaching from {site.coachName}. Training, nutrition and accountability built around your life, wherever you train.
+            1:1 online coaching with {site.coachName}, a personal trainer with {site.yearsExperience} years of experience. Training, nutrition and accountability built around your life, wherever you train.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link href="/coaching" className="btn-primary">Choose your plan</Link>
             <Link href="/shop" className="btn-outline">Free starter guide</Link>
           </div>
           <p className="mt-6 text-sm text-white/50">Have questions first? <Link href="/book" className="text-brand underline">Book a free call</Link></p>
+        </div>
+      </section>
+
+      {/* Real coach, not an app */}
+      <section className="mx-auto max-w-6xl px-4 py-20">
+        <div className="grid items-center gap-10 md:grid-cols-[1fr_1.2fr]">
+          <div>
+            <p className="font-semibold uppercase tracking-widest text-brand">Real coaching</p>
+            <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-5xl">Not an app.<br />Not AI.<br /><span className="text-brand">Edwin.</span></h2>
+          </div>
+          <div>
+            <p className="text-xl text-white/85">This isn&apos;t an AI program or an app that doesn&apos;t know who you are. It&apos;s {site.coachName} working with you directly, 1:1, with {site.yearsExperience} years of personal training experience behind every plan, check-in and adjustment.</p>
+            <ul className="mt-6 grid gap-3 sm:grid-cols-3">
+              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">{site.yearsExperience}</span><span className="text-sm text-white/60">years as a personal trainer</span></li>
+              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-white/60">you work with Edwin directly</span></li>
+              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">100%</span><span className="text-sm text-white/60">of check-ins answered by Edwin himself</span></li>
+            </ul>
+          </div>
         </div>
       </section>
 

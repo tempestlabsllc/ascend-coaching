@@ -9,6 +9,7 @@ export const site = {
   tagline: "Online fitness coaching built around your life.",
   heroTitle: "Start your ascension today",
   coachName: "Edwin",
+  yearsExperience: 9,
   email: "supportascendcoaching@gmail.com",
   instagram: "https://instagram.com/",
   currency: "usd",
@@ -140,11 +141,12 @@ export const about = {
   headline: "Hi, I'm Edwin.",
   short: "I help busy people build strength, lose fat and feel confident, with plans that fit real life instead of fighting it.",
   story: [
+    "I've spent 9 years as a personal trainer, working with people face to face. Ascend Coaching brings that same 1:1 coaching online: you work directly with me, not an algorithm.",
     "Placeholder: a few sentences about how you got into fitness and coaching.",
     "Placeholder: your qualifications, experience, and who you love working with.",
     "Placeholder: your coaching philosophy and what clients can expect from you.",
   ],
-  credentials: ["Certification (placeholder)", "X+ years coaching (placeholder)", "Specialty (placeholder)"],
+  credentials: ["9 years of personal training", "1:1 coaching, no bots", "Certification (placeholder)"],
 };
 
 // Real client testimonials. The section is hidden on the site until you add some.
