@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { tiers, guides, site } from "@/config/site";
-import { stripe, siteUrl } from "@/lib";
+import { stripe } from "@/lib";
 
 export async function POST(req: Request) {
   const { kind, id } = await req.json().catch(() => ({}));
@@ -10,6 +10,9 @@ export async function POST(req: Request) {
   if (!stripe) {
     return NextResponse.json({ message: "Demo mode: payments aren't connected yet (add STRIPE_SECRET_KEY)." });
   }
+
+  // Send buyers back to whatever domain they're on (vercel.app link or custom domain).
+  const siteUrl = new URL(req.url).origin;
 
   const isSub = kind === "tier" && "interval" in item && item.interval === "month";
   const name = "name" in item ? `${item.name} Coaching` : item.title;

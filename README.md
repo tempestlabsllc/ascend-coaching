@@ -28,7 +28,6 @@ Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
 - `STRIPE_SECRET_KEY` – from dashboard.stripe.com (use `sk_test_...` first)
 - `STRIPE_AUTOMATIC_TAX=true` – after turning on Stripe Tax (Settings → Tax) to add sales tax at checkout
 - Invoices: subscriptions invoice automatically; guide purchases get a paid invoice emailed. In Stripe → Settings → Customer emails, turn on "Successful payments" and "Finalized invoices".
-- `NEXT_PUBLIC_SITE_URL` – your live URL, https://ascendcoaching.shop
 - `NEXT_PUBLIC_BOOKING_URL` – your Cal.com / Calendly link
 - Questionnaire answers are emailed to supportascendcoaching@gmail.com on the live site (via FormSubmit, no account).
   The first submission sends an activation email to that inbox: click Activate once.
@@ -37,7 +36,6 @@ Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
 
 ## Deploy to Vercel + ascendcoaching.shop
 1. Put this folder in a GitHub repo, then on vercel.com → Add New → Project → import it (defaults are fine).
-2. Project → Settings → Environment Variables: add `STRIPE_SECRET_KEY`, `NEXT_PUBLIC_SITE_URL=https://ascendcoaching.shop`,
    `NEXT_PUBLIC_BOOKING_URL`, and later `NEXT_PUBLIC_STRIPE_PORTAL_URL`. Redeploy.
 3. Project → Settings → Domains → add `ascendcoaching.shop` (and `www.ascendcoaching.shop`).
    If you don't own it yet, buy it right there in Vercel (Domains → Buy) and DNS is set up automatically.
