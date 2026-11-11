@@ -23,14 +23,14 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
       )}
       {tier && (
         <>
-          <p className="mt-4 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan. Make sure to include your WhatsApp number.</p>
+          <p className="mt-4 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan. I'll personally reach out within 24 hours to review everything with you.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/intake" className="btn-primary">Fill out questionnaire</Link><Link href="/book" className="btn-outline">Book a call</Link></div>
           <ol className="mx-auto mt-12 max-w-md space-y-4 text-left">
             {[
               ["Today", "Book a call or fill in the questionnaire (about 5 minutes)."],
-              ["Within 24 hours", "I'll message you on WhatsApp to say hello."],
+              ["Within 24 hours", "I reach out to you personally to review everything: your goals, your plan and next steps."],
               ["Within 3 days", "You get an invite to the ABC Trainerize app with your training plan and nutrition targets."],
-              ["Ongoing", "We work 1:1 on WhatsApp, and I adjust your plan at every check-in."],
+              ["Ongoing", "We work 1:1 on Trainerize or WhatsApp, and I adjust your plan at every check-in."],
             ].map(([when, what], i) => (
               <li key={when} className="flex gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>

@@ -8,7 +8,7 @@ export default function CoachingPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-4xl font-extrabold">Coaching plans</h1>
-      <p className="mt-2 mb-10 max-w-2xl text-black/60">Every plan is run by me personally, with 9 years of personal training experience behind it. No AI, no generic app. Pick the level of support you want; after checkout you'll book a quick call or fill in a short questionnaire, and then we work 1:1 on WhatsApp.</p>
+      <p className="mt-2 mb-10 max-w-2xl text-black/60">Every plan is run by me personally, with 9 years of personal training experience behind it. No AI, no generic app. Pick the level of support you want; after checkout you'll book a quick call or fill in a short questionnaire, I'll reach out within 24 hours to review everything, and then we work 1:1 on Trainerize or WhatsApp.</p>
       <TierCards />
       <div className="mt-20 grid gap-10 md:grid-cols-[1fr_2fr]">
         <div>

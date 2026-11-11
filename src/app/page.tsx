@@ -5,10 +5,10 @@ import HeroBackground from "@/components/HeroBackground";
 import FeatureGrid from "@/components/FeatureGrid";
 
 const steps = [
-  { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute." },
+  { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
   { n: "02", t: "Book a call or fill out the questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },
   { n: "03", t: "Get your plan in Trainerize", d: "Your training and nutrition plan lands in the ABC Trainerize app within days, where you log every workout." },
-  { n: "04", t: "1:1 on WhatsApp", d: "Your coach works with you directly on WhatsApp while your plan evolves." },
+  { n: "04", t: "1:1 on Trainerize or WhatsApp", d: "Your coach works with you directly on Trainerize or WhatsApp, whichever you prefer, while your plan evolves." },
 ];
 
 export default function Home() {
