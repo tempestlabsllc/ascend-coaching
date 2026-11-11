@@ -161,7 +161,7 @@ export function formatPrice(cents: number) {
 export const about = {
   photo: "",
   headline: "I know where you're starting, because I started there too.",
-  short: "I know how overwhelming and stressful it can be to put in the work and not see the results you want. Let me help you avoid the mistakes I made, so you don't waste years chasing a goal without understanding what it actually takes to get there.",
+  short: "I know how overwhelming and stressful it can be to put in the work and not see the results you want. Let me help you avoid the mistakes I made, so you don't waste years chasing a goal without a proper plan to get there.",
   story: [
     "As a kid, I used to look at people who were big and strong with crazy abs and wonder how they ever got there. I wanted that so badly, but I had no idea where to even start.",
     "I started out skinny fat: not much muscle, a soft midsection, and clothes that never fit the way I wanted. I was always insecure about my body, so I know exactly how it can feel.",
