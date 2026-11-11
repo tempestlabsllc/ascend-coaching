@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #1fd1c6;
+  --color-brand-dark: #15a9a0;
+  --color-ink: #0a0a0a;
+  --color-paper: #0a0a0a;
+  --color-card: #141616;
+  --color-mist: #0c2423;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body { background: var(--color-paper); color: #f2f4f4; color-scheme: dark; }
+
+@utility btn { @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition disabled:opacity-50; }
+@utility btn-primary { @apply btn bg-brand text-black hover:bg-brand-dark; }
+@utility btn-outline { @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-black; }
+@utility field { @apply w-full rounded-lg border border-white/15 bg-card text-white px-3 py-2 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20; }
+@utility label { @apply mb-1 block text-sm font-medium; }
+
+/* Tier accents */
+.tier-rainbow { background: linear-gradient(90deg,#ff4d4d,#ff9f1c,#ffe14d,#3ddc84,#2bb3ff,#7a5cff,#e25cff); }
+.text-rainbow { background: linear-gradient(90deg,#ff4d4d,#ff9f1c,#e6c000,#2bb36a,#2b8cff,#7a5cff,#d43cf0); -webkit-background-clip: text; background-clip: text; color: transparent; }
