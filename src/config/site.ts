@@ -164,7 +164,7 @@ export const about = {
   short: "I love helping people who are motivated to become a better version of themselves, but don't know exactly how to get there, or need someone to keep them motivated and on track.",
   story: [
     "As a kid, I used to look at people who were big and strong with crazy abs and wonder how they ever got there. I wanted that so badly, but I had no idea where to even start.",
-    "I started out skinny fat: not much muscle, a soft midsection, and clothes that never fit the way I wanted. I was always insecure about my body, and I know exactly how that feels.",
+    "I started out skinny fat: not much muscle, a soft midsection, and clothes that never fit the way I wanted. I was always insecure about my body, so I know exactly how it can feel.",
     "My turning point came from years of personal research. I dug into everything I could find on how muscle is built and how nutrition affects your body, then tested it on myself. That knowledge built a physique I'm proud of, and taught me far more about the body than I ever expected to learn.",
     "Over the years I've run multiple bulks and cuts and mastered body recomposition: building muscle and losing fat at the same time. I'm not a certified trainer. Everything I teach comes from my own research and what I've proven on my own body.",
     "Sharing that journey grew an audience of 10k followers on Instagram (twice) and 30k on TikTok, all around growth and self-improvement. Ascend Coaching is how I now help people 1:1, giving you the roadmap I wish I'd had as that kid who didn't know where to start.",
