@@ -2,6 +2,7 @@ import Link from "next/link";
 import { site } from "@/config/site";
 
 const links = [
+  { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/coaching", label: "Coaching" },
   { href: "/shop", label: "Guides" },
@@ -20,7 +21,7 @@ export default function Header() {
           <Link href="/coaching" className="rounded-full bg-brand px-4 py-2 font-semibold text-white hover:bg-brand-dark">Get started</Link>
         </div>
       </nav>
-      <div className="flex justify-center gap-5 pb-3 text-sm sm:hidden">
+      <div className="flex justify-center gap-4 pb-3 text-sm sm:hidden">
         {links.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
       </div>
     </header>
