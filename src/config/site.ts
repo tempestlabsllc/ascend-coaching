@@ -8,7 +8,7 @@ export const site = {
   name: "Ascend Coaching",
   tagline: "Online fitness coaching built around your life.",
   heroTitle: "Start your ascension today",
-  coachName: "Edwin",
+  coachName: "your coach",
   yearsExperience: 9,
   email: "supportascendcoaching@gmail.com",
   instagram: "https://instagram.com/",
@@ -41,18 +41,18 @@ export const tiers: Tier[] = [
     name: "Starter",
     priceCents: 5000,
     interval: "month",
-    blurb: "Train exactly how Edwin trains.",
+    blurb: "Train exactly how your coach trains.",
     bestFor: "Self-starters who want a proven routine to follow, without needing a custom plan.",
     details: [
-      { label: "Your plan", value: "Edwin's exact training routine plus calorie and macro targets, delivered within 3 days" },
+      { label: "Your plan", value: "Your coach's exact training routine plus calorie and macro targets, delivered within 3 days" },
       { label: "Check-ins", value: "Monthly check-in form, reply within 72 hours" },
-      { label: "Updates", value: "You get every change Edwin makes to his own routine" },
+      { label: "Updates", value: "You get every change your coach makes to their own routine" },
       { label: "Support", value: "Questions answered at your monthly check-in" },
     ],
     features: [
-      "Edwin's personal training routine",
+      "Your coach's personal training routine",
       "Exact exercises, sets and reps",
-      "Updated whenever Edwin's routine changes",
+      "Updated whenever the routine changes",
       "Nutrition targets (calories + macros)",
     ],
   },
@@ -68,7 +68,7 @@ export const tiers: Tier[] = [
       { label: "Your plan", value: "Fully custom program and meal plan built from your questionnaire, delivered within 3 days" },
       { label: "Check-ins", value: "Weekly check-in form, reply within 48 hours with form feedback" },
       { label: "Updates", value: "Program and nutrition adjusted every 4 weeks based on your progress" },
-      { label: "Support", value: "Message Edwin anytime, replies within 48 hours" },
+      { label: "Support", value: "Message your coach anytime, replies within 48 hours" },
     ],
     features: [
       "Fully custom program built for you",
@@ -89,7 +89,7 @@ export const tiers: Tier[] = [
     details: [
       { label: "Your plan", value: "Custom program and meal plan, plus a 30-minute kickoff video call to walk through it" },
       { label: "Check-ins", value: "Weekly check-in with a personal video reply within 24 hours" },
-      { label: "Calls", value: "1:1 video call with Edwin every 2 weeks" },
+      { label: "Calls", value: "1:1 video call with your coach every 2 weeks" },
       { label: "Updates", value: "Program adjusted every 4 weeks, or sooner if needed" },
       { label: "Support", value: "Same-day messaging, plus sleep, stress and recovery coaching" },
     ],
@@ -134,11 +134,11 @@ export function formatPrice(cents: number) {
   }).format(cents / 100);
 }
 
-// About the coach. Placeholder text: replace with Edwin's real story.
+// About the coach. Placeholder text: replace with the coach's real story.
 // Drop a photo at /public/coach.jpg and set photo: "/coach.jpg".
 export const about = {
   photo: "",
-  headline: "Hi, I'm Edwin.",
+  headline: "A real coach in your corner.",
   short: "I help busy people build strength, lose fat and feel confident, with plans that fit real life instead of fighting it.",
   story: [
     "I've spent 9 years as a personal trainer, working with people face to face. Ascend Coaching brings that same 1:1 coaching online: you work directly with me, not an algorithm.",

@@ -29,7 +29,7 @@ export default function Home() {
             Start your <span className="text-brand">ascension</span> today
           </h1>
           <p className="mx-auto mt-8 max-w-2xl text-lg text-white/70">
-            1:1 online coaching with {site.coachName}, a personal trainer with {site.yearsExperience} years of experience. Training, nutrition and accountability built around your life, wherever you train.
+            1:1 online coaching with a real personal trainer with {site.yearsExperience} years of experience. Training, nutrition and accountability built around your life, wherever you train.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
             <Link href="/coaching" className="btn-primary">Choose your plan</Link>
@@ -47,11 +47,11 @@ export default function Home() {
             <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-5xl">Not an app.<br />Not AI.<br /><span className="text-brand">A real person.</span></h2>
           </div>
           <div>
-            <p className="text-xl text-white/85">This isn&apos;t an AI program or an app that doesn&apos;t know who you are. It&apos;s {site.coachName} working with you directly, 1:1, with {site.yearsExperience} years of personal training experience behind every plan, check-in and adjustment.</p>
+            <p className="text-xl text-white/85">This isn&apos;t an AI program or an app that doesn&apos;t know who you are. It&apos;s a real person working with you directly, 1:1, with {site.yearsExperience} years of personal training experience behind every plan, check-in and adjustment.</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-3">
               <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">{site.yearsExperience}</span><span className="text-sm text-white/60">years as a personal trainer</span></li>
-              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-white/60">you work with Edwin directly</span></li>
-              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">100%</span><span className="text-sm text-white/60">of check-ins answered by Edwin himself</span></li>
+              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-white/60">you work with your coach directly</span></li>
+              <li className="rounded-xl border border-white/10 bg-card p-4"><span className="block text-3xl font-black text-brand">100%</span><span className="text-sm text-white/60">of check-ins answered personally</span></li>
             </ul>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function Home() {
         <div className="grid items-center gap-10 rounded-3xl border border-white/10 bg-card p-8 md:grid-cols-[1fr_1.4fr] md:p-12">
           <div className="flex aspect-square items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand/30 to-mist">
             {about.photo
-              ? <img src={about.photo} alt={site.coachName} className="h-full w-full object-cover" />
+              ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover" />
               : <span className="text-sm text-white/50">Coach photo</span>}
           </div>
           <div>

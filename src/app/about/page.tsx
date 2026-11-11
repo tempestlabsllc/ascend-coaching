@@ -9,7 +9,7 @@ export default function AboutPage() {
       <div className="grid gap-12 md:grid-cols-[1fr_1.3fr]">
         <div className="flex aspect-[4/5] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-brand/30 to-mist">
           {about.photo
-            ? <img src={about.photo} alt={site.coachName} className="h-full w-full object-cover" />
+            ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover" />
             : <span className="text-sm text-white/50">Coach photo</span>}
         </div>
         <div>
