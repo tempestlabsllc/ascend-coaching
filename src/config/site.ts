@@ -17,7 +17,7 @@ export const site = {
   // Lets clients cancel, switch tiers, update cards and download invoices themselves.
   manageSubscriptionUrl: process.env.NEXT_PUBLIC_STRIPE_PORTAL_URL || "",
   bookingUrl:
-    process.env.NEXT_PUBLIC_BOOKING_URL || "https://cal.com/your-name/discovery-call",
+    process.env.NEXT_PUBLIC_BOOKING_URL || "https://calendly.com/supportascendcoaching/30min",
 };
 
 export type Tier = {
