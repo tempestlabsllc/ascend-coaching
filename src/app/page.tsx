@@ -3,7 +3,7 @@ import { site, about, testimonials, faqs } from "@/config/site";
 import TierCards from "@/components/TierCards";
 
 const steps = [
-  { n: "01", t: "Book a free call", d: "A quick chat about your goals to see if we're a good fit." },
+  { n: "01", t: "Choose your plan", d: "Pick the level of support you want and check out in a minute." },
   { n: "02", t: "Fill in the questionnaire", d: "Tell me your stats, goals, schedule, training and eating habits." },
   { n: "03", t: "Get your plan", d: "Training and nutrition built for you, delivered within days." },
   { n: "04", t: "Check in and climb", d: "Regular check-ins keep you accountable while your plan evolves." },
@@ -31,9 +31,10 @@ export default function Home() {
             Personalised online coaching from {site.coachName}. Training, nutrition and accountability built around your life, wherever you train.
           </p>
           <div className="mt-10 flex flex-wrap justify-center gap-3">
-            <Link href="/book" className="btn-primary">Book a free call</Link>
-            <Link href="/coaching" className="btn-outline">See coaching plans</Link>
+            <Link href="/coaching" className="btn-primary">Choose your plan</Link>
+            <Link href="/shop" className="btn-outline">Free starter guide</Link>
           </div>
+          <p className="mt-6 text-sm text-white/50">Have questions first? <Link href="/book" className="text-brand underline">Book a free call</Link></p>
         </div>
       </section>
 
@@ -87,7 +88,7 @@ export default function Home() {
       {/* Plans */}
       <section className="mx-auto max-w-6xl px-4 pt-20">
         <h2 className="text-3xl font-extrabold sm:text-4xl">Coaching plans</h2>
-        <p className="mt-2 mb-10 text-white/60">Cancel anytime. Not sure which fits? <Link href="/book" className="text-brand underline">Book a call</Link>.</p>
+        <p className="mt-2 mb-10 text-white/60">Cancel anytime. Questions? <Link href="/book" className="text-brand underline">Book a free call</Link>.</p>
         <TierCards />
       </section>
 
@@ -137,8 +138,8 @@ export default function Home() {
       <section className="mx-auto mt-24 max-w-6xl px-4">
         <div className="rounded-3xl bg-brand px-8 py-16 text-center text-black">
           <h2 className="text-4xl font-black uppercase sm:text-5xl">Ready to climb?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-black/70">Book a free call and let's map out your first steps together.</p>
-          <Link href="/book" className="btn mt-8 bg-black text-white hover:bg-black/80">Book a free call</Link>
+          <p className="mx-auto mt-4 max-w-xl text-black/70">Pick your plan today and get your custom program within days.</p>
+          <Link href="/coaching" className="btn mt-8 bg-black text-white hover:bg-black/80">Choose your plan</Link>
         </div>
       </section>
     </>

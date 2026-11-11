@@ -25,8 +25,8 @@ export default function AboutPage() {
             ))}
           </ul>
           <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/book" className="btn-primary">Book a free call</Link>
-            <Link href="/coaching" className="btn-outline">See plans</Link>
+            <Link href="/coaching" className="btn-primary">Choose your plan</Link>
+            <Link href="/book" className="btn-outline">Book a free call</Link>
           </div>
         </div>
       </div>
