@@ -8,7 +8,7 @@ import { stripe } from "@/lib";
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const guide = guides.find((g) => g.id === url.searchParams.get("guide"));
-  if (!guide) return new Response("Not found", { status: 404 });
+  if (!guide || guide.comingSoon) return new Response("Not found", { status: 404 });
 
   if (guide.priceCents > 0) {
     const sessionId = url.searchParams.get("session_id");

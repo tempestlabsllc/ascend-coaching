@@ -18,12 +18,14 @@ export default function ShopPage() {
               </div>
               <div className="flex flex-1 flex-col p-5">
                 <div className="flex items-center justify-between">
-                  <span className="text-2xl font-extrabold">{free ? "Free" : formatPrice(g.priceCents)}</span>
+                  <span className="text-2xl font-extrabold">{g.comingSoon ? "Coming soon" : free ? "Free" : formatPrice(g.priceCents)}</span>
                   {g.pages > 0 && <span className="text-xs text-black/50">{g.pages} pages · PDF</span>}
                 </div>
                 <p className="mt-2 flex-1 text-sm text-black/70">{g.description}</p>
                 <div className="mt-5">
-                  {free
+                  {g.comingSoon
+                    ? <span className="btn w-full cursor-default border-2 border-dashed border-brand/40 text-brand">Coming soon</span>
+                    : free
                     ? <a href={`/api/download?guide=${g.id}`} className="btn-outline w-full">Download free</a>
                     : <BuyButton kind="guide" id={g.id} label="Buy now" />}
                 </div>

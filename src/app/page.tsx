@@ -2,19 +2,13 @@ import Link from "next/link";
 import { site, about, testimonials, faqs } from "@/config/site";
 import TierCards from "@/components/TierCards";
 import HeroBackground from "@/components/HeroBackground";
+import FeatureGrid from "@/components/FeatureGrid";
 
 const steps = [
   { n: "01", t: "Choose your plan", d: "Pick the level of support you want and check out in a minute." },
   { n: "02", t: "Fill in the questionnaire", d: "Tell me your stats, goals, schedule, training and eating habits." },
   { n: "03", t: "Get your plan", d: "Training and nutrition built for you, delivered within days." },
   { n: "04", t: "Check in and climb", d: "Regular check-ins keep you accountable while your plan evolves." },
-];
-
-const features = [
-  { icon: "🏋️", t: "Custom training", d: "Programs built around your goals, equipment and schedule. Gym, home or bodyweight." },
-  { icon: "🥗", t: "Nutrition that fits", d: "Calorie and macro targets or full meal plans, built around foods you actually like." },
-  { icon: "📱", t: "Real accountability", d: "Check-ins, form reviews and direct messaging so you never feel on your own." },
-  { icon: "📈", t: "Progress tracking", d: "We track weight, measurements and lifts, then adjust your plan as you improve." },
 ];
 
 export default function Home() {
@@ -58,20 +52,7 @@ export default function Home() {
       </section>
 
       {/* What you get */}
-      <section className="border-y border-black/10 bg-card py-20">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-center text-3xl font-extrabold sm:text-4xl">Everything you need to <span className="text-brand">level up</span></h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((f) => (
-              <div key={f.t} className="rounded-2xl border border-black/10 bg-paper p-6">
-                <div className="text-3xl">{f.icon}</div>
-                <h3 className="mt-4 text-lg font-bold">{f.t}</h3>
-                <p className="mt-2 text-sm text-black/60">{f.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FeatureGrid />
 
       {/* How it works */}
       <section className="mx-auto max-w-6xl px-4 py-20">

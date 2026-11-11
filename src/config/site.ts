@@ -110,6 +110,8 @@ export type Guide = {
   pages: number;
   // File name inside /private-guides that buyers get after paying.
   file: string;
+  // true = listed with a "Coming soon" badge and no buy button yet.
+  comingSoon?: boolean;
 };
 
 export const guides: Guide[] = [
@@ -121,6 +123,26 @@ export const guides: Guide[] = [
     description: "A free beginner's overview. Full content coming soon.",
     pages: 0,
     file: "starting-peps.pdf",
+  },
+  {
+    // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
+    id: "personal-split",
+    title: "My Personal Training Split",
+    priceCents: 0,
+    description: "The exact weekly split I train with: every day, exercise, set and rep, plus how I progress it.",
+    pages: 0,
+    file: "personal-split.pdf",
+    comingSoon: true,
+  },
+  {
+    // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
+    id: "personal-protocol",
+    title: "My Personal Protocol",
+    priceCents: 0,
+    description: "The full protocol I follow day to day, laid out step by step so you can run it yourself.",
+    pages: 0,
+    file: "personal-protocol.pdf",
+    comingSoon: true,
   },
   // Add paid guides here later, e.g.
   // { id: "fat-loss-starter", title: "Fat Loss Starter Guide", priceCents: 2900, description: "...", pages: 40, file: "fat-loss-starter.pdf" },

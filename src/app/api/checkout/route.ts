@@ -6,6 +6,7 @@ export async function POST(req: Request) {
   const { kind, id } = await req.json().catch(() => ({}));
   const item = kind === "tier" ? tiers.find((t) => t.id === id) : guides.find((g) => g.id === id);
   if (!item) return NextResponse.json({ message: "Unknown item." }, { status: 400 });
+  if ("comingSoon" in item && item.comingSoon) return NextResponse.json({ message: "This guide is coming soon." }, { status: 400 });
 
   if (!stripe) {
     return NextResponse.json({ message: "Demo mode: payments aren't connected yet (add STRIPE_SECRET_KEY)." });
