@@ -68,7 +68,7 @@ export const tiers: Tier[] = [
       { label: "Your plan", value: "Fully custom program and meal plan built from your questionnaire, delivered in the ABC Trainerize app within 3 days" },
       { label: "Check-ins", value: "Weekly check-in form, reply within 48 hours with form feedback" },
       { label: "Updates", value: "Program and nutrition adjusted every 4 weeks based on your progress" },
-      { label: "Support", value: "Message your coach 1:1 on Trainerize or WhatsApp, your coach typically responds within 5 hours" },
+      { label: "Support", value: "Message your coach 1:1 on Trainerize or WhatsApp, with responses typically within 5 hours" },
     ],
     features: [
       "Fully custom program built for you",
