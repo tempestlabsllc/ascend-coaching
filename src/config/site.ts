@@ -116,12 +116,12 @@ export type Guide = {
 
 export const guides: Guide[] = [
   {
-    // FREE guide. Content still to come; drop the PDF into /private-guides when ready.
+    // FREE guide. Source: guides-src/starting-peps.html (re-render to PDF after edits).
     id: "starting-peps",
     title: "Everything You Need to Know About Starting Peps",
     priceCents: 0,
-    description: "A free beginner's overview. Full content coming soon.",
-    pages: 0,
+    description: "What peptides are, what they do in your body, what the science and 2026 regulations actually say, and a checklist before you start.",
+    pages: 9,
     file: "starting-peps.pdf",
   },
   {
