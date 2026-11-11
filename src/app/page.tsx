@@ -44,7 +44,7 @@ export default function Home() {
         <div className="grid items-center gap-10 md:grid-cols-[1fr_1.2fr]">
           <div>
             <p className="font-semibold uppercase tracking-widest text-brand">Real coaching</p>
-            <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-5xl">Not an app.<br />Not AI.<br /><span className="text-brand">Edwin.</span></h2>
+            <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-5xl">Not an app.<br />Not AI.<br /><span className="text-brand">A real person.</span></h2>
           </div>
           <div>
             <p className="text-xl text-white/85">This isn&apos;t an AI program or an app that doesn&apos;t know who you are. It&apos;s {site.coachName} working with you directly, 1:1, with {site.yearsExperience} years of personal training experience behind every plan, check-in and adjustment.</p>
