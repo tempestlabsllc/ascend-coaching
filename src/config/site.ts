@@ -121,7 +121,7 @@ export const guides: Guide[] = [
     title: "Everything You Need to Know About Starting Peps",
     priceCents: 0,
     description: "What peptides are, what they do in your body, what the science and 2026 regulations actually say, and a checklist before you start.",
-    pages: 9,
+    pages: 11,
     file: "starting-peps.pdf",
   },
   {
