@@ -44,7 +44,7 @@ export const tiers: Tier[] = [
     blurb: "Train exactly how your coach trains.",
     bestFor: "Self-starters who want a proven routine to follow, without needing a custom plan.",
     details: [
-      { label: "Your plan", value: "Your coach's exact training routine plus calorie and macro targets, delivered within 3 days" },
+      { label: "Your plan", value: "Your coach's exact training routine plus calorie and macro targets, delivered in the ABC Trainerize app within 3 days" },
       { label: "Check-ins", value: "Monthly check-in form, reply within 72 hours" },
       { label: "Updates", value: "You get every change your coach makes to their own routine" },
       { label: "Support", value: "Questions answered at your monthly check-in" },
@@ -65,7 +65,7 @@ export const tiers: Tier[] = [
     blurb: "Weekly accountability for steady progress.",
     bestFor: "Anyone who wants a plan built around their body, schedule and goals, with weekly accountability.",
     details: [
-      { label: "Your plan", value: "Fully custom program and meal plan built from your questionnaire, delivered within 3 days" },
+      { label: "Your plan", value: "Fully custom program and meal plan built from your questionnaire, delivered in the ABC Trainerize app within 3 days" },
       { label: "Check-ins", value: "Weekly check-in form, reply within 48 hours with form feedback" },
       { label: "Updates", value: "Program and nutrition adjusted every 4 weeks based on your progress" },
       { label: "Support", value: "Message your coach on WhatsApp, replies within 48 hours" },
@@ -87,7 +87,7 @@ export const tiers: Tier[] = [
     blurb: "Hands-on, high-touch coaching.",
     bestFor: "Clients who want the fastest results and the most hands-on support.",
     details: [
-      { label: "Your plan", value: "Custom program and meal plan, plus a 30-minute kickoff video call to walk through it" },
+      { label: "Your plan", value: "Custom program and meal plan in the ABC Trainerize app, plus a 30-minute kickoff video call to walk through it" },
       { label: "Check-ins", value: "Weekly check-in with a personal video reply within 24 hours" },
       { label: "Calls", value: "1:1 video call with your coach every 2 weeks" },
       { label: "Updates", value: "Program adjusted every 4 weeks, or sooner if needed" },
@@ -178,6 +178,7 @@ export const testimonials: { name: string; result: string; quote: string }[] = [
 
 export const faqs = [
   { q: "How does online coaching work?", a: "After you sign up you fill in the intake questionnaire. I build your training and nutrition plan, deliver it within a few days, and we check in on the schedule for your tier." },
+  { q: "What app do you use?", a: "Your workouts and tracking live in the ABC Trainerize app (free for clients on iPhone and Android). You follow each session there, log your weights and reps, and track your progress. Day-to-day 1:1 contact with your coach happens on WhatsApp." },
   { q: "Do I need a gym?", a: "No. Plans can be built for a full gym, a home setup, or bodyweight only." },
   { q: "I'm a complete beginner. Is this for me?", a: "Yes. Every plan starts from where you are now, with clear instructions and form guidance." },
   { q: "Can I switch tiers or cancel?", a: "Yes. Monthly plans can be upgraded, downgraded or cancelled anytime before your next billing date." },

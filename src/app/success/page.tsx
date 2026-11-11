@@ -29,7 +29,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
             {[
               ["Today", "Book a call or fill in the questionnaire (about 5 minutes)."],
               ["Within 24 hours", "I'll message you on WhatsApp to say hello."],
-              ["Within 3 days", "Your training plan and nutrition targets arrive."],
+              ["Within 3 days", "You get an invite to the ABC Trainerize app with your training plan and nutrition targets."],
               ["Ongoing", "We work 1:1 on WhatsApp, and I adjust your plan at every check-in."],
             ].map(([when, what], i) => (
               <li key={when} className="flex gap-4">

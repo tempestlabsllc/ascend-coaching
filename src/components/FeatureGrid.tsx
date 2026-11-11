@@ -46,8 +46,8 @@ const features: { key: keyof typeof icons; title: string; text: string; points: 
   {
     key: "progress",
     title: "Progress tracking",
-    text: "We track the numbers and adjust your plan as you improve.",
-    points: ["Weight, measurements, lifts", "Plan updates every 4 weeks"],
+    text: "Log workouts and progress in the ABC Trainerize app, and your plan is adjusted as you improve.",
+    points: ["Workouts, weight and lifts tracked", "Plan updates every 4 weeks"],
   },
 ];
 
