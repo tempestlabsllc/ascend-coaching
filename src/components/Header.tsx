@@ -17,7 +17,7 @@ export default function Header() {
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="hidden hover:text-brand sm:inline">{l.label}</Link>
           ))}
-          <Link href="/coaching" className="rounded-full bg-brand px-4 py-2 font-semibold text-black hover:bg-brand-dark">Get started</Link>
+          <Link href="/coaching" className="rounded-full bg-brand px-4 py-2 font-semibold text-white hover:bg-brand-dark">Get started</Link>
         </div>
       </nav>
       <div className="flex justify-center gap-5 pb-3 text-sm sm:hidden">

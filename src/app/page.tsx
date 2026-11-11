@@ -137,9 +137,9 @@ export default function Home() {
 
       {/* Final CTA */}
       <section className="mx-auto mt-24 max-w-6xl px-4">
-        <div className="rounded-3xl bg-brand px-8 py-16 text-center text-black">
+        <div className="rounded-3xl bg-brand px-8 py-16 text-center text-white">
           <h2 className="text-4xl font-black uppercase sm:text-5xl">Ready to climb?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-black/70">Pick your plan today and get your custom program within days.</p>
+          <p className="mx-auto mt-4 max-w-xl text-white/80">Pick your plan today and get your custom program within days.</p>
           <Link href="/coaching" className="btn mt-8 bg-black text-white hover:bg-black/80">Choose your plan</Link>
         </div>
       </section>

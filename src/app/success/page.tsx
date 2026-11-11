@@ -33,7 +33,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
               ["Every check-in", "Submit your check-in form and I'll reply with adjustments."],
             ].map(([when, what], i) => (
               <li key={when} className="flex gap-4">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-black">{i + 1}</span>
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
                 <span><strong className="block">{when}</strong><span className="text-white/60">{what}</span></span>
               </li>
             ))}

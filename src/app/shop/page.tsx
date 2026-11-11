@@ -13,7 +13,7 @@ export default function ShopPage() {
           const free = g.priceCents === 0;
           return (
             <div key={g.id} className="flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card shadow-sm">
-              <div className="flex aspect-[16/9] items-end bg-gradient-to-br from-brand to-brand-dark p-5 text-black">
+              <div className="flex aspect-[16/9] items-end bg-gradient-to-br from-brand to-brand-dark p-5 text-white">
                 <span className="text-xl font-extrabold leading-tight">{g.title}</span>
               </div>
               <div className="flex flex-1 flex-col p-5">

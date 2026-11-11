@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand: #1fd1c6;
-  --color-brand-dark: #15a9a0;
+  --color-brand: #e0115f;
+  --color-brand-dark: #b30d4c;
   --color-ink: #0a0a0a;
   --color-paper: #0a0a0a;
-  --color-card: #141616;
-  --color-mist: #0c2423;
+  --color-card: #151314;
+  --color-mist: #2a0a16;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
 body { background: var(--color-paper); color: #f2f4f4; color-scheme: dark; }
 
 @utility btn { @apply inline-flex items-center justify-center rounded-full px-6 py-3 font-semibold transition disabled:opacity-50; }
-@utility btn-primary { @apply btn bg-brand text-black hover:bg-brand-dark; }
+@utility btn-primary { @apply btn bg-brand text-white hover:bg-brand-dark; }
 @utility btn-outline { @apply btn border-2 border-white/80 text-white hover:bg-white hover:text-black; }
 @utility field { @apply w-full rounded-lg border border-white/15 bg-card text-white px-3 py-2 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20; }
 @utility label { @apply mb-1 block text-sm font-medium; }
@@ -30,13 +30,13 @@ body { background: var(--color-paper); color: #f2f4f4; color-scheme: dark; }
 
 /* Hero live background */
 .hero-orb { position: absolute; border-radius: 9999px; filter: blur(110px); opacity: .45; }
-.hero-orb-1 { width: 620px; height: 620px; background: #1fd1c6; top: -220px; left: 10%; animation: drift1 16s ease-in-out infinite alternate; }
-.hero-orb-2 { width: 520px; height: 520px; background: #0e6f8f; bottom: -200px; right: 5%; animation: drift2 20s ease-in-out infinite alternate; }
+.hero-orb-1 { width: 620px; height: 620px; background: #e0115f; top: -220px; left: 10%; animation: drift1 16s ease-in-out infinite alternate; }
+.hero-orb-2 { width: 520px; height: 520px; background: #7a0a3a; bottom: -200px; right: 5%; animation: drift2 20s ease-in-out infinite alternate; }
 @keyframes drift1 { to { transform: translate(180px, 120px) scale(1.15); } }
 @keyframes drift2 { to { transform: translate(-200px, -100px) scale(0.9); } }
 .hero-grid {
   position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(31,209,198,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(31,209,198,.07) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(224,17,95,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(224,17,95,.07) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
   animation: gridrise 6s linear infinite;

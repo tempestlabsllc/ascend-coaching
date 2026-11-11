@@ -28,6 +28,9 @@ export type Tier = {
   features: string[];
   highlighted?: boolean;
   color: "grey" | "gold" | "rainbow";
+  // Shown when someone hovers or taps "See full details" on the card.
+  bestFor: string;
+  details: { label: string; value: string }[];
 };
 
 export const tiers: Tier[] = [
@@ -38,6 +41,13 @@ export const tiers: Tier[] = [
     priceCents: 5000,
     interval: "month",
     blurb: "Train exactly how Edwin trains.",
+    bestFor: "Self-starters who want a proven routine to follow, without needing a custom plan.",
+    details: [
+      { label: "Your plan", value: "Edwin's exact training routine plus calorie and macro targets, delivered within 3 days" },
+      { label: "Check-ins", value: "Monthly check-in form, reply within 72 hours" },
+      { label: "Updates", value: "You get every change Edwin makes to his own routine" },
+      { label: "Support", value: "Questions answered at your monthly check-in" },
+    ],
     features: [
       "Edwin's personal training routine",
       "Exact exercises, sets and reps",
@@ -52,6 +62,13 @@ export const tiers: Tier[] = [
     priceCents: 10000,
     interval: "month",
     blurb: "Weekly accountability for steady progress.",
+    bestFor: "Anyone who wants a plan built around their body, schedule and goals, with weekly accountability.",
+    details: [
+      { label: "Your plan", value: "Fully custom program and meal plan built from your questionnaire, delivered within 3 days" },
+      { label: "Check-ins", value: "Weekly check-in form, reply within 48 hours with form feedback" },
+      { label: "Updates", value: "Program and nutrition adjusted every 4 weeks based on your progress" },
+      { label: "Support", value: "Message Edwin anytime, replies within 48 hours" },
+    ],
     features: [
       "Fully custom program built for you",
       "Weekly check-ins with form review",
@@ -67,6 +84,14 @@ export const tiers: Tier[] = [
     priceCents: 20000,
     interval: "month",
     blurb: "Hands-on, high-touch coaching.",
+    bestFor: "Clients who want the fastest results and the most hands-on support.",
+    details: [
+      { label: "Your plan", value: "Custom program and meal plan, plus a 30-minute kickoff video call to walk through it" },
+      { label: "Check-ins", value: "Weekly check-in with a personal video reply within 24 hours" },
+      { label: "Calls", value: "1:1 video call with Edwin every 2 weeks" },
+      { label: "Updates", value: "Program adjusted every 4 weeks, or sooner if needed" },
+      { label: "Support", value: "Same-day messaging, plus sleep, stress and recovery coaching" },
+    ],
     features: [
       "Everything in Pro",
       "Bi-weekly 1:1 video calls",

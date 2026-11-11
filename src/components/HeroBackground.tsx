@@ -41,7 +41,7 @@ export default function HeroBackground() {
           const dx = ps[i].x - ps[j].x, dy = ps[i].y - ps[j].y;
           const d = dx * dx + dy * dy;
           if (d < 110 * 110) {
-            ctx.strokeStyle = `rgba(31,209,198,${0.12 * (1 - Math.sqrt(d) / 110)})`;
+            ctx.strokeStyle = `rgba(224,17,95,${0.12 * (1 - Math.sqrt(d) / 110)})`;
             ctx.lineWidth = 1;
             ctx.beginPath(); ctx.moveTo(ps[i].x, ps[i].y); ctx.lineTo(ps[j].x, ps[j].y); ctx.stroke();
           }
@@ -54,8 +54,8 @@ export default function HeroBackground() {
           if (p.y < -10) Object.assign(p, make(h + 10));
         }
         const flicker = 0.7 + 0.3 * Math.sin(t / 600 + p.tw);
-        ctx.fillStyle = `rgba(31,209,198,${p.a * flicker})`;
-        ctx.shadowColor = "rgba(31,209,198,0.9)"; ctx.shadowBlur = 8;
+        ctx.fillStyle = `rgba(224,17,95,${p.a * flicker})`;
+        ctx.shadowColor = "rgba(224,17,95,0.9)"; ctx.shadowBlur = 8;
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
       }
       ctx.shadowBlur = 0;
