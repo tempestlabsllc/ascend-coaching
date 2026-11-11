@@ -44,7 +44,7 @@ export default function TierCards() {
               <ul className="mt-6 flex-1 space-y-2 text-sm">
                 {t.features.map((f) => <li key={f} className="flex gap-2"><span className={s.check}>✓</span>{f}</li>)}
               </ul>
-              <div className="mt-6"><BuyButton kind="tier" id={t.id} label={`Start ${t.name}`} className={s.button} /></div>
+              <div className="mt-6"><BuyButton kind="tier" id={t.id} label={`Choose ${t.name}`} className={s.button} /></div>
             </div>
           </div>
         );
