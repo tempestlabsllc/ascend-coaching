@@ -10,11 +10,11 @@ const styles: Record<Tier["color"], { band: string; name: string; check: string;
     ring: "border-gray-600",
   },
   gold: {
-    band: "bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-500",
-    name: "text-amber-400",
+    band: "tier-gold",
+    name: "text-gold",
     check: "text-amber-500",
-    button: "btn w-full bg-gradient-to-r from-amber-400 to-yellow-500 text-ink hover:from-amber-500 hover:to-yellow-600",
-    ring: "border-amber-400 ring-2 ring-amber-300",
+    button: "btn w-full tier-gold text-ink hover:opacity-90",
+    ring: "border-transparent",
   },
   rainbow: {
     band: "tier-rainbow",
@@ -31,10 +31,10 @@ export default function TierCards() {
       {tiers.map((t) => {
         const s = styles[t.color];
         const card = (
-          <div className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-sm ${t.color === "rainbow" ? "border-0" : s.ring}`}>
+          <div className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-sm ${t.color === "grey" ? s.ring : "border-0"}`}>
             <div className={`h-3 ${s.band}`} />
             <div className="flex flex-1 flex-col p-6">
-              {t.highlighted && <span className="mb-3 w-fit rounded-full bg-amber-400 px-3 py-1 text-xs font-bold text-ink">MOST POPULAR</span>}
+              {t.highlighted && <span className="mb-3 w-fit rounded-full tier-gold px-3 py-1 text-xs font-bold text-ink">MOST POPULAR</span>}
               <h3 className={`text-2xl font-extrabold ${s.name}`}>{t.name}</h3>
               <p className="mt-1 text-sm text-white/60">{t.blurb}</p>
               <p className="mt-4 text-4xl font-extrabold">
@@ -48,10 +48,10 @@ export default function TierCards() {
             </div>
           </div>
         );
-        // Rainbow tier gets a rainbow border by wrapping it in a gradient frame.
-        return t.color === "rainbow"
-          ? <div key={t.id} className="tier-rainbow rounded-2xl p-[3px]">{card}</div>
-          : <div key={t.id}>{card}</div>;
+        // Gold and rainbow tiers get a moving gradient border by wrapping them in an animated frame.
+        return t.color === "grey"
+          ? <div key={t.id}>{card}</div>
+          : <div key={t.id} className={`${t.color === "gold" ? "tier-gold" : "tier-rainbow"} rounded-2xl p-[3px]`}>{card}</div>;
       })}
     </div>
   );

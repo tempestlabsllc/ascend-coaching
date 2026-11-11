@@ -18,6 +18,12 @@ body { background: var(--color-paper); color: #f2f4f4; color-scheme: dark; }
 @utility field { @apply w-full rounded-lg border border-white/15 bg-card text-white px-3 py-2 outline-none focus:border-brand focus:ring-2 focus:ring-brand/20; }
 @utility label { @apply mb-1 block text-sm font-medium; }
 
-/* Tier accents */
-.tier-rainbow { background: linear-gradient(90deg,#ff4d4d,#ff9f1c,#ffe14d,#3ddc84,#2bb3ff,#7a5cff,#e25cff); }
-.text-rainbow { background: linear-gradient(90deg,#ff4d4d,#ff9f1c,#e6c000,#2bb36a,#2b8cff,#7a5cff,#d43cf0); -webkit-background-clip: text; background-clip: text; color: transparent; }
+/* Tier accents: animated, flowing gradients */
+@keyframes flow { from { background-position: 0% 50%; } to { background-position: 200% 50%; } }
+.tier-rainbow, .text-rainbow, .tier-gold, .text-gold { background-size: 200% 100%; animation: flow 4s linear infinite; }
+.tier-gold, .text-gold { animation-duration: 3s; }
+.tier-rainbow { background-image: linear-gradient(90deg,#ff4d4d,#ff9f1c,#ffe14d,#3ddc84,#2bb3ff,#7a5cff,#e25cff,#ff4d4d); }
+.text-rainbow { background-image: linear-gradient(90deg,#ff5e5e,#ffa63d,#ffe14d,#4ee38f,#3dbbff,#9277ff,#e86bff,#ff5e5e); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.tier-gold { background-image: linear-gradient(90deg,#b8860b,#f5c518,#fff1a8,#f5c518,#b8860b,#f5c518,#fff1a8,#b8860b); }
+.text-gold { background-image: linear-gradient(90deg,#d4a017,#ffd84d,#fff4c2,#ffd84d,#d4a017); -webkit-background-clip: text; background-clip: text; color: transparent; }
+@media (prefers-reduced-motion: reduce) { .tier-rainbow, .text-rainbow, .tier-gold, .text-gold { animation: none; } }
