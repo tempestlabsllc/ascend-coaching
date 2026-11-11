@@ -160,13 +160,13 @@ export function formatPrice(cents: number) {
 // Drop a photo at /public/coach.jpg and set photo: "/coach.jpg".
 export const about = {
   photo: "",
-  headline: "A real coach in your corner.",
+  headline: "I know where you're starting, because I started there too.",
   short: "I help busy people build strength, lose fat and feel confident, with plans that fit real life instead of fighting it.",
   story: [
-    "I've spent 9 years as a personal trainer, working with people face to face. Ascend Coaching brings that same 1:1 coaching online: you work directly with me, not an algorithm.",
-    "Placeholder: a few sentences about how you got into fitness and coaching.",
-    "Placeholder: your qualifications, experience, and who you love working with.",
-    "Placeholder: your coaching philosophy and what clients can expect from you.",
+    "As a kid, I used to look at people who were big and strong with crazy abs and wonder how they ever got there. I wanted that so badly, but I had no idea where to even start.",
+    "I started out skinny fat: not much muscle, a soft midsection, and clothes that never fit the way I wanted. I was always insecure about my body, and I know exactly how that feels.",
+    "Placeholder: what changed, how you figured it out, and the turning point in your own transformation.",
+    "Placeholder: how that led you to 9 years of personal training, and why you now coach people 1:1 online through Ascend Coaching.",
   ],
   credentials: ["9 years of personal training", "1:1 coaching, no bots", "Certification (placeholder)"],
 };
