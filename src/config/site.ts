@@ -161,7 +161,7 @@ export function formatPrice(cents: number) {
 export const about = {
   photo: "",
   headline: "I know where you're starting, because I started there too.",
-  short: "I love helping people who are motivated to become a better version of themselves, but don't know exactly how to get there, or need someone to keep them motivated and on track.",
+  short: "I know how overwhelming and stressful it can be to put in the work and not see the results you want. Let me help you get there faster.",
   story: [
     "As a kid, I used to look at people who were big and strong with crazy abs and wonder how they ever got there. I wanted that so badly, but I had no idea where to even start.",
     "I started out skinny fat: not much muscle, a soft midsection, and clothes that never fit the way I wanted. I was always insecure about my body, so I know exactly how it can feel.",
