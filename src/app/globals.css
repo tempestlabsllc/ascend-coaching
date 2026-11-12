@@ -134,3 +134,12 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 .grow-plus { position: absolute; bottom: -20px; font-weight: 900; color: #3a9ad9; opacity: 0; animation: grow-rise 9s linear infinite; }
 @keyframes grow-rise { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .5; } 80% { opacity: .25; } 100% { transform: translateY(-80vh); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .growth-area, .grow-plus { animation: none; opacity: 1; } .grow-plus { display: none; } }
+
+/* Subtle aesthetic hero */
+.aura { position: absolute; border-radius: 9999px; filter: blur(100px); }
+.aura-1 { width: 620px; height: 620px; right: -120px; top: -180px; background: #bfe6fa; opacity: .7; animation: drift1 22s ease-in-out infinite alternate; }
+.aura-2 { width: 520px; height: 520px; right: 22%; bottom: -260px; background: #d8effc; opacity: .8; animation: drift2 26s ease-in-out infinite alternate; }
+.aura-3 { width: 420px; height: 420px; left: -160px; top: 30%; background: #e9f6fd; opacity: .9; animation: drift1 30s ease-in-out infinite alternate-reverse; }
+.hero-lines { animation: lines-float 18s ease-in-out infinite alternate; }
+@keyframes lines-float { from { transform: translateY(0); } to { transform: translateY(-14px); } }
+@media (prefers-reduced-motion: reduce) { .aura, .hero-lines { animation: none; } }
