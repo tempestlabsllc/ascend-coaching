@@ -31,6 +31,10 @@ export async function POST(req: Request) {
       },
     }],
     metadata: { kind, id },
+    // Shown next to the pay button on Stripe's checkout page.
+    ...(kind === "tier"
+      ? { custom_text: { submit: { message: "After you subscribe, your coach will personally reach out within 24 hours on Trainerize or WhatsApp to review everything with you." } } }
+      : {}),
     allow_promotion_codes: true,
     billing_address_collection: "auto",
     // Stripe Tax: turn on once Tax is set up in the Stripe dashboard (Settings → Tax).

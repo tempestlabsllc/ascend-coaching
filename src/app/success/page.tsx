@@ -23,7 +23,11 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
       )}
       {tier && (
         <>
-          <p className="mt-4 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan. I'll personally reach out within 24 hours to review everything with you.</p>
+          <div className="mx-auto mt-6 flex max-w-lg items-start gap-3 rounded-2xl border border-brand/30 bg-mist p-5 text-left">
+            <span aria-hidden className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-white">✓</span>
+            <p className="text-black/80"><strong className="text-ink">I&apos;ll personally reach out within 24 hours</strong> on Trainerize or WhatsApp to review everything with you: your goals, your plan and how we&apos;ll work together.</p>
+          </div>
+          <p className="mt-6 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/intake" className="btn-primary">Fill out questionnaire</Link><Link href="/book" className="btn-outline">Book a call</Link></div>
           <ol className="mx-auto mt-12 max-w-md space-y-4 text-left">
             {[
