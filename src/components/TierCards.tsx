@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import { tiers, formatPrice, type Tier } from "@/config/site";
 import BuyButton from "./BuyButton";
 
@@ -31,12 +30,7 @@ const styles: Record<Tier["color"], { band: string; name: string; check: string;
 };
 
 function TierCard({ t }: { t: Tier }) {
-  const [open, setOpen] = useState(false);
   const s = styles[t.color];
-  // Hover opens the details on devices with a mouse; tapping the toggle works everywhere.
-  const hover = (v: boolean) => () => {
-    if (window.matchMedia("(hover: hover)").matches) setOpen(v);
-  };
 
   const card = (
     <div className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-sm ${t.color === "grey" ? s.ring : "border-0"}`}>
@@ -55,32 +49,6 @@ function TierCard({ t }: { t: Tier }) {
           ))}
         </ul>
 
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-expanded={open}
-          className={`mt-5 flex w-fit items-center gap-1 text-sm font-semibold ${s.label}`}
-        >
-          {open ? "Hide details" : "See full details"}
-          <span className={`transition-transform duration-300 ${open ? "rotate-180" : ""}`}>▾</span>
-        </button>
-
-        <div className={`grid transition-all duration-300 ease-out ${open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
-          <div className="overflow-hidden">
-            <div className="rounded-xl border border-black/10 bg-white p-4 text-sm">
-              <p className="text-black/80"><span className={`font-semibold ${s.label}`}>Best for: </span>{t.bestFor}</p>
-              <dl className="mt-3 space-y-2.5">
-                {t.details.map((d) => (
-                  <div key={d.label}>
-                    <dt className="text-xs font-bold uppercase tracking-wider text-black/50">{d.label}</dt>
-                    <dd className="text-black/85">{d.value}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          </div>
-        </div>
-
         <div className="flex-1" />
         <div className="mt-6"><BuyButton kind="tier" id={t.id} label={`Choose ${t.name}`} className={s.button} /></div>
       </div>
@@ -89,7 +57,7 @@ function TierCard({ t }: { t: Tier }) {
 
   const frame = t.color === "grey" ? "" : `${t.color === "gold" ? "tier-gold" : "tier-rainbow"} rounded-2xl p-[3px]`;
   return (
-    <div onMouseEnter={hover(true)} onMouseLeave={hover(false)} className={`transition-transform duration-300 ${open ? "md:-translate-y-1" : ""} ${frame}`}>
+    <div className={`h-full ${frame}`}>
       {card}
     </div>
   );
@@ -98,7 +66,7 @@ function TierCard({ t }: { t: Tier }) {
 export default function TierCards() {
   return (
     <div>
-      <div className="grid items-start gap-6 md:grid-cols-3">
+      <div className="grid items-stretch gap-6 md:grid-cols-3">
         {tiers.map((t) => <TierCard key={t.id} t={t} />)}
       </div>
       <div className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-brand/20 bg-mist px-6 py-5 text-center sm:flex-row sm:text-left">

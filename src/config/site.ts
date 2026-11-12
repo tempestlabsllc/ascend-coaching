@@ -29,7 +29,7 @@ export type Tier = {
   features: string[];
   highlighted?: boolean;
   color: "grey" | "gold" | "rainbow";
-  // Shown when someone hovers or taps "See full details" on the card.
+  // Extra plan info (not currently shown on the cards).
   bestFor: string;
   details: { label: string; value: string }[];
 };
@@ -87,15 +87,14 @@ export const tiers: Tier[] = [
     blurb: "Hands-on, high-touch coaching.",
     bestFor: "Clients who want the fastest results and the most hands-on support.",
     details: [
-      { label: "Your plan", value: "Custom program and meal plan in the ABC Trainerize app, plus a 30-minute kickoff video call to walk through it" },
+      { label: "Your plan", value: "Custom program and meal plan in the ABC Trainerize app, plus a personal video walkthrough of your plan" },
       { label: "Check-ins", value: "Weekly check-in with a personal video reply within 24 hours" },
-      { label: "Calls", value: "1:1 video call with your coach every 2 weeks" },
       { label: "Updates", value: "Program adjusted every 4 weeks, or sooner if needed" },
       { label: "Support", value: "Same-day 1:1 messaging on Trainerize or WhatsApp, plus sleep, stress and recovery coaching" },
     ],
     features: [
       "Everything in Pro",
-      "Bi-weekly 1:1 video calls",
+      "Weekly check-ins with personal video responses",
       "Same-day 1:1 messaging (Trainerize or WhatsApp)",
       "Lifestyle, sleep & recovery coaching",
     ],
