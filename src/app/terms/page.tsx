@@ -36,7 +36,7 @@ export default function Terms() {
       </section>
       <section>
         <h2>5. Subscriptions and billing</h2>
-        <p>Coaching plans are monthly subscriptions billed through Stripe and renew automatically each month until cancelled. You can cancel at any time and your plan stays active until the end of the period you have paid for. See our <a className="underline" href="/refunds">Refunds &amp; Cancellations</a> policy. We may change prices with notice; changes apply from your next billing period.</p>
+        <p>Coaching plans are subscriptions billed through Stripe, either monthly or every 3 months (at a discount), and renew automatically at the end of each billing period until cancelled. You can cancel at any time and your plan stays active until the end of the period you have paid for. See our <a className="underline" href="/refunds">Refunds &amp; Cancellations</a> policy. We may change prices with notice; changes apply from your next billing period.</p>
       </section>
       <section>
         <h2>6. Your responsibilities</h2>

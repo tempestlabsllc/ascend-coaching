@@ -1,5 +1,6 @@
 "use client";
-import { tiers, formatPrice, type Tier } from "@/config/site";
+import { useState } from "react";
+import { tiers, formatPrice, threeMonth, threeMonthTotalCents, type Tier } from "@/config/site";
 import BuyButton from "./BuyButton";
 
 const styles: Record<Tier["color"], { band: string; name: string; check: string; button: string; ring: string; label: string }> = {
@@ -29,7 +30,8 @@ const styles: Record<Tier["color"], { band: string; name: string; check: string;
   },
 };
 
-function TierCard({ t }: { t: Tier }) {
+function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
+  const is3 = term === "3month";
   const s = styles[t.color];
 
   const card = (
@@ -39,10 +41,23 @@ function TierCard({ t }: { t: Tier }) {
         {t.highlighted && <span className="tier-gold mb-3 w-fit rounded-full px-3 py-1 text-xs font-bold text-ink">MOST POPULAR</span>}
         <h3 className={`text-2xl font-extrabold ${s.name}`}>{t.name}</h3>
         <p className="mt-1 text-sm text-black/60">{t.blurb}</p>
-        <p className="mt-4 text-4xl font-extrabold">
-          {formatPrice(t.priceCents)}
-          {t.interval === "month" && <span className="text-base font-medium text-black/50">/month</span>}
-        </p>
+        {is3 ? (
+          <div className="mt-4">
+            <p className="text-4xl font-extrabold">
+              {formatPrice(threeMonthTotalCents(t.priceCents) / threeMonth.months)}
+              <span className="text-base font-medium text-black/50">/month</span>
+            </p>
+            <p className="mt-1 text-sm text-black/60">
+              <span className="line-through">{formatPrice(t.priceCents * threeMonth.months)}</span>{" "}
+              <strong className="text-ink">{formatPrice(threeMonthTotalCents(t.priceCents))}</strong> billed every {threeMonth.months} months
+            </p>
+          </div>
+        ) : (
+          <p className="mt-4 text-4xl font-extrabold">
+            {formatPrice(t.priceCents)}
+            {t.interval === "month" && <span className="text-base font-medium text-black/50">/month</span>}
+          </p>
+        )}
         <ul className="mt-6 space-y-2 text-sm">
           {t.features.map((f) => (
             <li key={f} className="flex gap-2"><span className={s.check}>✓</span>{f}</li>
@@ -50,7 +65,7 @@ function TierCard({ t }: { t: Tier }) {
         </ul>
 
         <div className="flex-1" />
-        <div className="mt-6"><BuyButton kind="tier" id={t.id} label={`Choose ${t.name}`} className={s.button} /></div>
+        <div className="mt-6"><BuyButton kind="tier" id={t.id} term={term} label={`Choose ${t.name}`} className={s.button} /></div>
       </div>
     </div>
   );
@@ -64,10 +79,27 @@ function TierCard({ t }: { t: Tier }) {
 }
 
 export default function TierCards() {
+  const [term, setTerm] = useState<"monthly" | "3month">("monthly");
+  const opt = (v: "monthly" | "3month", label: React.ReactNode) => (
+    <button
+      type="button"
+      onClick={() => setTerm(v)}
+      aria-pressed={term === v}
+      className={`rounded-full px-5 py-2 text-sm font-bold transition ${term === v ? "bg-brand text-white shadow" : "text-black/60 hover:text-ink"}`}
+    >
+      {label}
+    </button>
+  );
   return (
     <div>
+      <div className="mb-8 flex justify-center">
+        <div className="inline-flex items-center gap-1 rounded-full border border-black/10 bg-card p-1">
+          {opt("monthly", "Monthly")}
+          {opt("3month", <>3 months <span className={`ml-1 rounded-full px-2 py-0.5 text-xs ${term === "3month" ? "bg-white/25" : "bg-brand/15 text-brand-dark"}`}>Save {threeMonth.discountPercent}%</span></>)}
+        </div>
+      </div>
       <div className="grid items-stretch gap-6 md:grid-cols-3">
-        {tiers.map((t) => <TierCard key={t.id} t={t} />)}
+        {tiers.map((t) => <TierCard key={t.id} t={t} term={term} />)}
       </div>
       <div className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-brand/20 bg-mist px-6 py-5 text-center sm:flex-row sm:text-left">
         <span aria-hidden className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand text-white">

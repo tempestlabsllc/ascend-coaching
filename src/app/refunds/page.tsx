@@ -8,7 +8,7 @@ export default function Refunds() {
     <LegalPage title="Refunds & Cancellations" updated="November 11, 2026">
       <section>
         <h2>Cancelling your plan</h2>
-        <p>You can cancel your coaching subscription at any time{site.manageSubscriptionUrl ? <> from the <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a> page</> : null} or by emailing <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>. Cancellation stops future payments. Your coaching continues until the end of the month you have already paid for.</p>
+        <p>You can cancel your coaching subscription at any time{site.manageSubscriptionUrl ? <> from the <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a> page</> : null} or by emailing <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>. Cancellation stops future payments. Your coaching continues until the end of the period you have already paid for (one month, or three months on a 3-month plan).</p>
       </section>
       <section>
         <h2>Refunds on coaching</h2>
@@ -17,7 +17,7 @@ export default function Refunds() {
         <ul>
           <li><b>Before we start:</b> if you cancel before your coach has begun building your plan, you get a full refund.</li>
           <li><b>If we don&apos;t deliver:</b> if we fail to provide what your plan includes, such as your program or check-in feedback, we will refund that billing period.</li>
-          <li><b>Serious medical reasons:</b> if a serious injury or medical condition stops you from continuing, we will refund the unused part of your current month.</li>
+          <li><b>Serious medical reasons:</b> if a serious injury or medical condition stops you from continuing, we will refund the unused part of your current billing period (for 3-month plans, any full unused months).</li>
           <li><b>Billing mistakes:</b> if you were charged in error, such as a double charge or a charge after cancelling, we will refund it.</li>
         </ul>
         <p>Refunds are not given for not following the plan, missing check-ins, giving inaccurate information, or not getting the results you hoped for. Results depend on your consistency and are never guaranteed.</p>

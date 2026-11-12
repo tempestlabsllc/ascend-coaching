@@ -190,6 +190,12 @@ export const guides: Guide[] = [
   // { id: "fat-loss-starter", title: "Fat Loss Starter Guide", priceCents: 2900, description: "...", pages: 40, file: "fat-loss-starter.pdf" },
 ];
 
+// 3-month plans: billed every 3 months at a discount off the monthly price.
+export const threeMonth = { months: 3, discountPercent: 10 };
+export function threeMonthTotalCents(monthlyCents: number) {
+  return Math.round((monthlyCents * threeMonth.months * (100 - threeMonth.discountPercent)) / 100 / 100) * 100;
+}
+
 export function formatPrice(cents: number) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",

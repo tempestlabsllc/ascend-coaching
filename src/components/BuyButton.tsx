@@ -2,8 +2,8 @@
 import { useState } from "react";
 
 export default function BuyButton({
-  kind, id, label, className = "btn-primary w-full",
-}: { kind: "tier" | "guide"; id: string; label: string; className?: string }) {
+  kind, id, label, className = "btn-primary w-full", term,
+}: { kind: "tier" | "guide"; id: string; label: string; className?: string; term?: "monthly" | "3month" }) {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
 
@@ -13,7 +13,7 @@ export default function BuyButton({
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, id }),
+        body: JSON.stringify({ kind, id, term }),
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
