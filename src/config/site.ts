@@ -146,6 +146,46 @@ export const guides: Guide[] = [
     file: "personal-protocol.pdf",
     comingSoon: true,
   },
+  {
+    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    id: "skinny-fat-fix",
+    title: "The Skinny Fat Fix: Lose the Gut, Build the Muscle",
+    priceCents: 0,
+    description: "I started skinny fat too. This is the exact roadmap I used to drop the soft midsection and finally fill out my frame, without bulking up first.",
+    pages: 0,
+    file: "skinny-fat-fix.pdf",
+    comingSoon: true,
+  },
+  {
+    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    id: "recomp-blueprint",
+    title: "The Recomp Blueprint: Build Muscle and Burn Fat at the Same Time",
+    priceCents: 0,
+    description: "My most proven method. How to set your calories, macros and training to get leaner and stronger at the same time, step by step.",
+    pages: 0,
+    file: "recomp-blueprint.pdf",
+    comingSoon: true,
+  },
+  {
+    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    id: "abs-blueprint",
+    title: "Abs Unlocked: Your Blueprint to a Visible Six-Pack",
+    priceCents: 0,
+    description: "The body fat, training and diet strategy that actually reveals your abs. No gimmicks, no endless crunches, just what works.",
+    pages: 0,
+    file: "abs-blueprint.pdf",
+    comingSoon: true,
+  },
+  {
+    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    id: "first-90-days",
+    title: "Your First 90 Days: The Beginner's Roadmap From Zero to Results",
+    priceCents: 0,
+    description: "Don't know where to start? This is your day-one plan: what to lift, what to eat and how to stay consistent for your first three months.",
+    pages: 0,
+    file: "first-90-days.pdf",
+    comingSoon: true,
+  },
   // Add paid guides here later, e.g.
   // { id: "fat-loss-starter", title: "Fat Loss Starter Guide", priceCents: 2900, description: "...", pages: 40, file: "fat-loss-starter.pdf" },
 ];
