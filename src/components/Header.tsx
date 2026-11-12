@@ -5,6 +5,7 @@ const links = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
   { href: "/coaching", label: "Coaching" },
+  { href: "/results", label: "Results" },
   { href: "/shop", label: "Guides" },
   { href: "/intake", label: "Questionnaire" },
 ];
@@ -21,7 +22,7 @@ export default function Header() {
           <Link href="/coaching" className="rounded-full bg-brand px-4 py-2 font-semibold text-white hover:bg-brand-dark">Get started</Link>
         </div>
       </nav>
-      <div className="flex justify-center gap-4 pb-3 text-sm sm:hidden">
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-1 px-4 pb-3 text-sm sm:hidden">
         {links.map((l) => <Link key={l.href} href={l.href}>{l.label}</Link>)}
       </div>
     </header>

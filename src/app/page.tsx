@@ -136,7 +136,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Results />
+      <Results limit={2} />
 
       {/* Plans */}
       <section className="mx-auto max-w-6xl px-4 pt-20">
