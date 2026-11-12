@@ -79,7 +79,7 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 
 /* Hero upgrade: shimmering headline word, floating plan card, rising bars */
 .text-shimmer {
-  background-image: linear-gradient(90deg, #2378b5, #3a9ad9, #89cff0, #3a9ad9, #2378b5);
+  background-image: linear-gradient(90deg, #3a9ad9, #89cff0, #d6f1ff, #89cff0, #3a9ad9);
   background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: flow 5s linear infinite;
 }
@@ -89,3 +89,32 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 .hero-bar { transform-origin: bottom; animation: hero-bar 1.2s cubic-bezier(.2,.8,.2,1) both; }
 @keyframes hero-bar { from { transform: scaleY(0); } to { transform: scaleY(1); } }
 @media (prefers-reduced-motion: reduce) { .text-shimmer, .hero-float, .hero-float-2, .hero-bar { animation: none; } }
+
+/* ---- Gym-progress hero ---- */
+.hero-spot { position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mx, 70%) var(--my, 40%), rgba(137,207,240,.18), transparent 60%); transition: background .15s; }
+.hero-floor { position: absolute; left: -50%; right: -50%; bottom: -5%; height: 45%;
+  background-image: linear-gradient(rgba(137,207,240,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(137,207,240,.18) 1px, transparent 1px);
+  background-size: 64px 64px; transform: perspective(500px) rotateX(62deg); transform-origin: bottom;
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%); mask-image: linear-gradient(to top, #000 10%, transparent 90%);
+  animation: floor-run 3s linear infinite; }
+@keyframes floor-run { to { background-position: 0 64px; } }
+.plate { transform-box: fill-box; transform-origin: bottom; animation: plate-in .6s cubic-bezier(.2,.9,.3,1.3) both; }
+@keyframes plate-in { from { transform: translateY(-60px); opacity: 0; } to { transform: none; opacity: 1; } }
+.pr-line { stroke-dasharray: 1; stroke-dashoffset: 1; animation: pr-draw 1.8s 1.2s ease-out forwards; }
+@keyframes pr-draw { to { stroke-dashoffset: 0; } }
+.pr-dot { transform-box: fill-box; transform-origin: center; opacity: 0; animation: pr-pop .5s ease-out forwards; }
+@keyframes pr-pop { from { opacity: 0; transform: scale(.3); } to { opacity: 1; transform: none; } }
+.chip-float { animation: hero-float 6s ease-in-out infinite; }
+
+/* ---- Site-wide live effects ---- */
+[data-reveal] { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+[data-reveal].in { opacity: 1; transform: none; }
+.lift { transition: transform .25s ease, box-shadow .25s ease; }
+.lift:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -20px rgba(35,120,181,.45); }
+.marquee { display: flex; width: max-content; animation: marquee 28s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+.scroll-bar { position: fixed; top: 0; left: 0; height: 3px; z-index: 60; width: 100%; transform-origin: left; transform: scaleX(var(--sp, 0)); background: linear-gradient(90deg,#3a9ad9,#89cff0); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-floor, .plate, .pr-line, .pr-dot, .chip-float, .marquee { animation: none; opacity: 1; stroke-dashoffset: 0; }
+  [data-reveal] { opacity: 1; transform: none; transition: none; }
+}

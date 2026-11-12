@@ -35,7 +35,7 @@ function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
   const s = styles[t.color];
 
   const card = (
-    <div className={`relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-sm ${t.color === "grey" ? s.ring : "border-0"}`}>
+    <div className={`lift relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-sm ${t.color === "grey" ? s.ring : "border-0"}`}>
       <div className={`h-3 ${s.band}`} />
       <div className="flex flex-1 flex-col p-6">
         {t.highlighted && <span className="tier-gold mb-3 w-fit rounded-full px-3 py-1 text-xs font-bold text-ink">MOST POPULAR</span>}

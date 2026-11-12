@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { site } from "@/config/site";
 import Header from "@/components/Header";
+import LiveEffects from "@/components/LiveEffects";
 
 export const metadata: Metadata = {
   title: { default: site.name, template: `%s · ${site.name}` },
@@ -12,6 +13,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen font-sans antialiased">
+        <LiveEffects />
         <Header />
         <main>{children}</main>
         <footer className="mt-24 border-t border-black/10 py-10 text-center text-sm text-black/60">

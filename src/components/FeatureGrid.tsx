@@ -65,7 +65,7 @@ export default function FeatureGrid() {
           <p className="mt-4 text-lg text-black/60">Four things every client gets, whichever plan you choose.</p>
         </div>
 
-        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div data-reveal className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <div
               key={f.key}
