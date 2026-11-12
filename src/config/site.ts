@@ -179,7 +179,7 @@ export const results = [
   {
     who: "Kyle, client",
     headline: "200 lbs → 175 lbs",
-    story: "Kyle wanted a build like mine: less fat and more lean muscle. We got him there.",
+    story: "Kyle wanted a build like mine: less fat and more lean muscle. We got him there in less than a year.",
     before: { src: "/results/kyle-before.jpg", label: "Before · 200 lbs" },
     after: { src: "/results/kyle-after.jpg", label: "After · 175 lbs" },
   },
