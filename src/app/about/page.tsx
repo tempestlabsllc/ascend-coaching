@@ -9,7 +9,7 @@ export default function AboutPage() {
       <div className="grid gap-12 md:grid-cols-[1fr_1.3fr]">
         <div className="flex aspect-[4/5] items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-brand/30 to-mist">
           {about.photo
-            ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover" />
+            ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover object-[center_62%]" />
             : <span className="text-sm text-black/50">Coach photo</span>}
         </div>
         <div>
@@ -24,7 +24,11 @@ export default function AboutPage() {
               <li key={c} className="rounded-full border border-brand/40 bg-mist px-4 py-1.5 text-sm">{c}</li>
             ))}
           </ul>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <p className="mt-6 text-sm text-black/70">
+            Follow along: <a href={site.instagram} target="_blank" rel="noopener" className="font-semibold text-brand-dark underline">Instagram {site.instagramHandle}</a>
+            {" · "}<a href={site.tiktok} target="_blank" rel="noopener" className="font-semibold text-brand-dark underline">TikTok {site.tiktokHandle}</a>
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/coaching" className="btn-primary">Choose your plan</Link>
             <Link href="/book" className="btn-outline">Book a free call</Link>
           </div>

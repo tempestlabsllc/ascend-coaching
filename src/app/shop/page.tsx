@@ -1,5 +1,6 @@
 import { guides, formatPrice } from "@/config/site";
 import BuyButton from "@/components/BuyButton";
+import GuideUnlock from "@/components/GuideUnlock";
 
 export const metadata = { title: "Digital guides" };
 
@@ -26,7 +27,7 @@ export default function ShopPage() {
                   {g.comingSoon
                     ? <span className="btn w-full cursor-default border-2 border-dashed border-brand/40 text-brand">Coming soon</span>
                     : free
-                    ? <a href={`/api/download?guide=${g.id}`} className="btn-outline w-full">Download free</a>
+                    ? <GuideUnlock guideId={g.id} />
                     : <BuyButton kind="guide" id={g.id} label="Buy now" />}
                 </div>
               </div>

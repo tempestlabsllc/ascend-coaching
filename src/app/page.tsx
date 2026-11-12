@@ -3,6 +3,7 @@ import { site, about, testimonials, faqs } from "@/config/site";
 import TierCards from "@/components/TierCards";
 import HeroBackground from "@/components/HeroBackground";
 import FeatureGrid from "@/components/FeatureGrid";
+import Results from "@/components/Results";
 
 const steps = [
   { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
@@ -123,7 +124,7 @@ export default function Home() {
         <div className="grid items-center gap-10 rounded-3xl border border-black/10 bg-card p-8 md:grid-cols-[1fr_1.4fr] md:p-12">
           <div className="flex aspect-square items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand/30 to-mist">
             {about.photo
-              ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover" />
+              ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover object-[center_62%]" />
               : <span className="text-sm text-black/50">Coach photo</span>}
           </div>
           <div>
@@ -134,6 +135,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Results />
 
       {/* Plans */}
       <section className="mx-auto max-w-6xl px-4 pt-20">

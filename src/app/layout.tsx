@@ -19,6 +19,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <p>© {new Date().getFullYear()} {site.name} · <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>
              · <a className="underline" href="/check-in">Client check-in</a>
             {site.manageSubscriptionUrl && <> · <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a></>}</p>
+          <p className="mt-3">
+            <a className="underline" href={site.instagram} target="_blank" rel="noopener">Instagram</a>
+            {" · "}<a className="underline" href={site.tiktok} target="_blank" rel="noopener">TikTok</a>
+            {" · "}<a className="underline" href="/privacy">Privacy</a>
+            {" · "}<a className="underline" href="/terms">Terms &amp; health waiver</a>
+            {" · "}<a className="underline" href="/refunds">Refunds &amp; cancellations</a>
+          </p>
           <p className="mt-2 max-w-xl mx-auto px-4">Information on this site is for educational purposes and is not medical advice. Consult a qualified professional before starting any program.</p>
         </footer>
       </body>

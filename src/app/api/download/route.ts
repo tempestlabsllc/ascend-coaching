@@ -3,14 +3,18 @@ import path from "node:path";
 import { guides } from "@/config/site";
 import { stripe } from "@/lib";
 
-// Serves a guide PDF from /private-guides. Free guides download directly;
+// Serves a guide PDF from /private-guides. Free guides need an email signup first;
 // paid guides require a paid Stripe Checkout session for that guide.
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const guide = guides.find((g) => g.id === url.searchParams.get("guide"));
   if (!guide || guide.comingSoon) return new Response("Not found", { status: 404 });
 
-  if (guide.priceCents > 0) {
+  if (guide.priceCents === 0) {
+    // Free guides unlock after an email signup on the Guides page.
+    const unlocked = (req.headers.get("cookie") || "").includes("ac_guide_unlocked=1");
+    if (!unlocked) return Response.redirect(new URL("/shop#unlock", url), 302);
+  } else {
     const sessionId = url.searchParams.get("session_id");
     if (!stripe || !sessionId) return new Response("Purchase required", { status: 403 });
     const s = await stripe.checkout.sessions.retrieve(sessionId).catch(() => null);

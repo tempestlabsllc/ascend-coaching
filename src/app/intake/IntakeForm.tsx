@@ -123,10 +123,19 @@ export default function IntakeForm() {
       <Section title="Health">
         <Area label="Injuries, medical conditions, or medications I should know about" name="health" />
         <Field label="How did you hear about me?" name="referral" full />
-        <label className="flex items-start gap-2 text-sm sm:col-span-2">
-          <input type="checkbox" name="consent" value="yes" required className="mt-1 accent-brand" />
-          <span>I confirm the information above is accurate and I'm cleared to exercise. I understand coaching is not medical advice. <span className="text-brand">*</span></span>
-        </label>
+        <div className="rounded-xl border border-brand/30 bg-white p-4 text-sm sm:col-span-2">
+          <p className="font-bold text-ink">Health waiver</p>
+          <ul className="mt-2 list-disc space-y-1 pl-5 text-black/70">
+            <li>I am 18 or older and in good health, or I have been cleared by a doctor to exercise and change my diet.</li>
+            <li>I have shared any injuries, medical conditions or medications above, and I will tell my coach about any changes.</li>
+            <li>I understand coaching is not medical advice, and my coach is not a doctor or licensed healthcare provider.</li>
+            <li>I take part voluntarily, accept the risks of exercise and diet changes, and release Ascend Coaching from liability as described in the <a href="/terms#health" target="_blank" className="underline">Terms &amp; Health Waiver</a>.</li>
+          </ul>
+          <label className="mt-3 flex items-start gap-2">
+            <input type="checkbox" name="waiver" value="Agreed to health waiver and terms" required className="mt-1 accent-brand" />
+            <span className="font-semibold">I have read and agree to the health waiver and <a href="/terms" target="_blank" className="underline">Terms of Service</a>. <span className="text-brand">*</span></span>
+          </label>
+        </div>
       </Section>
 
       <button className="btn-primary w-full sm:w-auto" disabled={status === "sending"}>

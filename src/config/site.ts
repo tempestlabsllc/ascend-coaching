@@ -11,7 +11,10 @@ export const site = {
   coachName: "your coach",
   yearsExperience: 9,
   email: "supportascendcoaching@gmail.com",
-  instagram: "https://instagram.com/",
+  instagram: "https://www.instagram.com/eddyy.raw/",
+  instagramHandle: "@eddyy.raw",
+  tiktok: "https://www.tiktok.com/@.eddyy",
+  tiktokHandle: "@.eddyy",
   currency: "usd",
   // Stripe Customer Portal login link (Stripe Dashboard → Settings → Billing → Customer portal).
   // Lets clients cancel, switch tiers, update cards and download invoices themselves.
@@ -158,7 +161,7 @@ export function formatPrice(cents: number) {
 // About the coach. Placeholder text: replace with the coach's real story.
 // Drop a photo at /public/coach.jpg and set photo: "/coach.jpg".
 export const about = {
-  photo: "",
+  photo: "/results/coach-lean.jpg",
   headline: "I know where you're starting, because I started there too.",
   short: "I know how overwhelming and stressful it can be to put in the work and not see the results you want. Let me help you avoid the mistakes I made, so you don't waste years chasing a goal without a proper plan to get there.",
   story: [
@@ -170,6 +173,24 @@ export const about = {
   ],
   credentials: ["9 years of training experience", "Multiple bulks, cuts and recomps", "10k on Instagram (twice)", "30k on TikTok", "1:1 coaching, no bots"],
 };
+
+// Before/after results shown on the home page. Photos live in /public/results.
+export const results = [
+  {
+    who: "Kyle, client",
+    headline: "200 lbs → 175 lbs",
+    story: "Kyle wanted a build like mine: less fat and more lean muscle. We got him there.",
+    before: { src: "/results/kyle-before.jpg", label: "Before · 200 lbs" },
+    after: { src: "/results/kyle-after.jpg", label: "After · 175 lbs" },
+  },
+  {
+    who: "Your coach",
+    headline: "180 lbs → 147 lbs",
+    story: "From my heaviest bulk to my leanest. I've lived both ends, so I know how to get you where you want to be.",
+    before: { src: "/results/coach-heavy-2.jpg", label: "Heaviest · 170–180 lbs" },
+    after: { src: "/results/coach-lean.jpg", label: "Leanest · 147 lbs" },
+  },
+];
 
 // Real client testimonials. The section is hidden on the site until you add some.
 export const testimonials: { name: string; result: string; quote: string }[] = [
