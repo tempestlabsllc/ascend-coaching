@@ -11,7 +11,7 @@ export default function Results({ limit, heading = true }: { limit?: number; hea
       {heading && <div className="max-w-2xl">
         <p className="font-semibold uppercase tracking-widest text-brand">Real results</p>
         <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Proof it works</h2>
-        <p className="mt-2 text-black/60">Real people, real photos. No filters, no stock images. Drag the slider to compare.</p>
+        <p className="mt-2 text-black/60">Real people, real photos. No filters, no stock images.</p>
       </div>}
       <div className="mt-10 grid gap-8 md:grid-cols-2">
         {list.map((r) => (

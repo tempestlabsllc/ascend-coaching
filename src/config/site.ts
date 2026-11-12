@@ -226,15 +226,15 @@ export const results = [
     who: "Kyle, client",
     headline: "200 lbs → 175 lbs",
     story: "Kyle wanted a build like mine: less fat and more lean muscle. We got him there in less than a year.",
-    before: { src: "/results/kyle-before.jpg", label: "Before · 200 lbs" },
-    after: { src: "/results/kyle-after.jpg", label: "After · 175 lbs" },
+    before: { src: "/results/kyle-before-card.jpg", label: "Before · 200 lbs" },
+    after: { src: "/results/kyle-after-card.jpg", label: "After · 175 lbs" },
   },
   {
     who: "Your coach",
     headline: "180 lbs → 147 lbs",
     story: "From my heaviest bulk to my leanest. I've lived both ends, so I know how to get you where you want to be.",
-    before: { src: "/results/coach-heavy-2.jpg", label: "Heaviest · 170–180 lbs" },
-    after: { src: "/results/coach-lean.jpg", label: "Leanest · 147 lbs" },
+    before: { src: "/results/coach-heavy-2-card.jpg", label: "Heaviest · 170–180 lbs" },
+    after: { src: "/results/coach-lean-card.jpg", label: "Leanest · 147 lbs" },
   },
 ];
 
