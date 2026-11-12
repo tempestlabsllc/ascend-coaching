@@ -17,21 +17,21 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section data-spot className="relative flex min-h-[92vh] items-center overflow-hidden bg-[#061523]">
+      <section data-spot className="relative flex min-h-[92vh] items-center overflow-hidden bg-cream">
         <HeroBackground />
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-4 py-20 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="text-center lg:text-left">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-sm font-semibold text-[#bfe9ff] shadow-sm backdrop-blur">
+            <span className="inline-flex items-center gap-2 rounded-full border border-brand/25 bg-white/70 px-4 py-1.5 text-sm font-semibold text-brand-dark shadow-sm backdrop-blur">
               <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#89cff0] opacity-60" />
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#89cff0]" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-60" />
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-brand" />
               </span>
               {site.name} · 1:1 online coaching
             </span>
-            <h1 className="mt-7 text-5xl font-black uppercase leading-[0.92] tracking-tight text-white sm:text-7xl lg:text-[5.5rem]">
+            <h1 className="mt-7 text-5xl font-black uppercase leading-[0.92] tracking-tight text-ink sm:text-7xl lg:text-[5.5rem]">
               Start your <span className="text-shimmer">ascension</span> today
             </h1>
-            <p className="mx-auto mt-7 max-w-xl text-lg text-white/75 lg:mx-0">
+            <p className="mx-auto mt-7 max-w-xl text-lg text-black/70 lg:mx-0">
               1:1 online coaching from a real person with {site.yearsExperience} years of training experience. Training, nutrition and accountability built around your life, wherever you train.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start">
@@ -39,21 +39,21 @@ export default function Home() {
                 Choose your plan
                 <span className="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
               </Link>
-              <Link href="/shop" className="btn border-2 border-white/60 bg-white/5 text-white backdrop-blur hover:bg-white hover:text-ink">Free starter guide</Link>
+              <Link href="/shop" className="btn-outline bg-white/60 backdrop-blur">Free starter guide</Link>
             </div>
-            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-white/70 lg:justify-start">
+            <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-black/65 lg:justify-start">
               {["A real person, not an app", `${site.yearsExperience} years experience`, "Training + nutrition"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#89cff0]/20 text-xs font-bold text-[#bfe9ff]">✓</span>
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand/15 text-xs font-bold text-brand-dark">✓</span>
                   {t}
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-white/55">Have questions first? <Link href="/book" className="font-semibold text-[#89cff0] underline">Book a free call</Link></p>
+            <p className="mt-6 text-sm text-black/50">Have questions first? <Link href="/book" className="font-semibold text-brand-dark underline">Book a free call</Link></p>
           </div>
 
           {/* Plan preview card (illustrative) */}
-          <div aria-hidden className="relative mx-auto hidden w-full max-w-sm origin-bottom-right lg:block lg:translate-x-20 lg:translate-y-44 lg:scale-[.78]">
+          <div aria-hidden className="relative mx-auto hidden w-full max-w-sm lg:block">
             <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#89cff0]/40 to-brand/20 blur-2xl" />
             <div className="hero-float relative rounded-3xl border border-white/80 bg-white p-6 shadow-[0_30px_80px_-30px_rgba(35,120,181,0.55)] backdrop-blur-xl">
               <div className="flex items-center justify-between">
@@ -85,9 +85,9 @@ export default function Home() {
               <p className="text-[11px] font-bold uppercase tracking-wider text-ink/60">Squat</p>
               <p className="text-lg font-black leading-none">+40 lbs</p>
             </div>
-            <div className="chip-float absolute -right-10 bottom-16 rounded-2xl border border-white/20 bg-[#0a2238]/90 px-4 py-2.5 text-white shadow-xl backdrop-blur" style={{ animationDelay: "-3s" }}>
-              <p className="text-[11px] font-bold uppercase tracking-wider text-white/55">Body fat</p>
-              <p className="text-lg font-black leading-none text-[#89cff0]">−8%</p>
+            <div className="chip-float absolute -right-10 bottom-16 rounded-2xl border border-black/10 bg-cream px-4 py-2.5 text-ink shadow-xl" style={{ animationDelay: "-3s" }}>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-black/50">Body fat</p>
+              <p className="text-lg font-black leading-none text-brand-dark">−8%</p>
             </div>
           </div>
         </div>
@@ -228,12 +228,12 @@ export default function Home() {
 
       {/* Final CTA */}
       <section className="mx-auto mt-24 max-w-6xl px-4">
-        <div data-reveal data-spot className="relative overflow-hidden rounded-3xl bg-[#061523] px-8 py-16 text-center text-white">
+        <div data-reveal data-spot className="relative overflow-hidden rounded-3xl bg-cream px-8 py-16 text-center text-ink">
           <div aria-hidden className="hero-spot" />
           <div aria-hidden className="hero-floor opacity-60" />
           <div className="relative">
           <h2 className="text-4xl font-black uppercase sm:text-5xl">Ready to climb?</h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/85">Pick your plan today and get your custom program within days.</p>
+          <p className="mx-auto mt-4 max-w-xl text-black/65">Pick your plan today and get your custom program within days.</p>
           <Link href="/coaching" className="btn-primary mt-8 shadow-[0_14px_34px_-10px_rgba(58,154,217,0.9)]">Choose your plan</Link>
           </div>
         </div>

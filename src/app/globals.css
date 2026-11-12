@@ -7,6 +7,7 @@
   --color-paper: #ffffff;
   --color-card: #f4f9fc;
   --color-mist: #e6f4fc;
+  --color-cream: #f7f0e3;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -79,7 +80,7 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 
 /* Hero upgrade: shimmering headline word, floating plan card, rising bars */
 .text-shimmer {
-  background-image: linear-gradient(90deg, #3a9ad9, #89cff0, #d6f1ff, #89cff0, #3a9ad9);
+  background-image: linear-gradient(90deg, #2378b5, #3a9ad9, #89cff0, #3a9ad9, #2378b5);
   background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
   animation: flow 5s linear infinite;
 }
@@ -91,9 +92,9 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 @media (prefers-reduced-motion: reduce) { .text-shimmer, .hero-float, .hero-float-2, .hero-bar { animation: none; } }
 
 /* ---- Gym-progress hero ---- */
-.hero-spot { position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mx, 70%) var(--my, 40%), rgba(137,207,240,.18), transparent 60%); transition: background .15s; }
+.hero-spot { position: absolute; inset: 0; background: radial-gradient(600px circle at var(--mx, 70%) var(--my, 40%), rgba(58,154,217,.16), transparent 60%); transition: background .15s; }
 .hero-floor { position: absolute; left: -50%; right: -50%; bottom: -5%; height: 45%;
-  background-image: linear-gradient(rgba(137,207,240,.18) 1px, transparent 1px), linear-gradient(90deg, rgba(137,207,240,.18) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(35,120,181,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(35,120,181,.14) 1px, transparent 1px);
   background-size: 64px 64px; transform: perspective(500px) rotateX(62deg); transform-origin: bottom;
   -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 90%); mask-image: linear-gradient(to top, #000 10%, transparent 90%);
   animation: floor-run 3s linear infinite; }
@@ -119,13 +120,10 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
 
-.hero-physique { position: absolute; right: 0; top: 0; height: 100%; width: 62%; object-fit: cover; object-position: 50% 8%; opacity: .9;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(to top, transparent 0%, #000 30%); -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 40%), linear-gradient(to top, transparent 0%, #000 30%); mask-composite: intersect;
-  animation: physique-in 1.6s ease-out both, physique-breathe 14s ease-in-out 1.6s infinite alternate; }
-@keyframes physique-in { from { opacity: 0; transform: scale(1.08); } to { opacity: .9; transform: none; } }
-@keyframes physique-breathe { to { transform: scale(1.04); } }
-.hero-sweep { position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(137,207,240,.14) 50%, transparent 60%); background-size: 250% 100%; animation: sweep 7s ease-in-out infinite; mix-blend-mode: screen; }
-@keyframes sweep { from { background-position: 120% 0; } to { background-position: -120% 0; } }
-@media (max-width: 1023px) { .hero-physique { width: 100%; opacity: .35; object-position: 50% 0%; animation: none; } }
-@media (prefers-reduced-motion: reduce) { .hero-physique, .hero-sweep { animation: none; } }
+/* Cloud sky hero */
+.sky-cloud { position: absolute; left: 0; will-change: transform; animation-name: sky-drift; animation-timing-function: linear; animation-iteration-count: infinite; filter: drop-shadow(0 18px 30px rgba(35,120,181,.12)); }
+.sky-far { opacity: .55; filter: blur(2px); }
+.sky-mid { opacity: .8; filter: blur(1px) drop-shadow(0 18px 30px rgba(35,120,181,.12)); }
+.sky-near { opacity: .97; }
+@keyframes sky-drift { from { transform: translateX(-60vw); } to { transform: translateX(120vw); } }
+@media (prefers-reduced-motion: reduce) { .sky-cloud { animation: none; } }
