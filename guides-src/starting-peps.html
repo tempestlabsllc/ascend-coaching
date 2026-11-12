@@ -20,15 +20,15 @@
   .rule { height: 3px; width: 56px; background: var(--ruby); border-radius: 2px; margin: 8pt 0 14pt; }
 
   /* cover */
-  .cover { height: 11in; padding: 0.9in 0.85in; background: #0a0a0a; color: #fff; position: relative; overflow: hidden; }
-  .cover .glow { position: absolute; width: 7in; height: 7in; border-radius: 50%; background: radial-gradient(circle, rgba(58,154,217,.55), rgba(58,154,217,0) 65%); top: -2in; right: -2.2in; }
+  .cover { height: 11in; padding: 0.9in 0.85in; background: linear-gradient(160deg, #ffffff 0%, #f1f9fe 55%, #d8eefb 100%); color: #16181d; position: relative; overflow: hidden; }
+  .cover .glow { position: absolute; width: 7in; height: 7in; border-radius: 50%; background: radial-gradient(circle, rgba(137,207,240,.6), rgba(137,207,240,0) 65%); top: -2in; right: -2.2in; }
   .cover .glow2 { position: absolute; width: 6in; height: 6in; border-radius: 50%; background: radial-gradient(circle, rgba(58,154,217,.3), rgba(58,154,217,0) 65%); bottom: -2.5in; left: -2in; }
   .cover .brand { position: relative; font-weight: 800; color: var(--ruby); font-size: 14pt; letter-spacing: 0.02em; }
   .cover h1 { position: relative; margin-top: 2.3in; font-size: 44pt; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.98; }
   .cover h1 span { color: var(--ruby); }
-  .cover .sub { position: relative; margin-top: 18pt; font-size: 14pt; color: rgba(255,255,255,.75); max-width: 5in; }
-  .cover .tag { position: relative; display: inline-block; margin-top: 26pt; border: 1.5px solid var(--ruby); color: #fff; border-radius: 999px; padding: 5pt 14pt; font-size: 10pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-  .cover .foot { position: absolute; left: 0.85in; right: 0.85in; bottom: 0.7in; font-size: 8.5pt; color: rgba(255,255,255,.55); border-top: 1px solid rgba(255,255,255,.15); padding-top: 10pt; }
+  .cover .sub { position: relative; margin-top: 18pt; font-size: 14pt; color: #4b5563; max-width: 5in; }
+  .cover .tag { position: relative; display: inline-block; margin-top: 26pt; border: 1.5px solid var(--ruby); background: var(--ruby); color: #fff; border-radius: 999px; padding: 5pt 14pt; font-size: 10pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .cover .foot { position: absolute; left: 0.85in; right: 0.85in; bottom: 0.7in; font-size: 8.5pt; color: #6b7280; border-top: 1px solid rgba(22,24,29,.12); padding-top: 10pt; }
   .cover svg { position: absolute; right: 0.6in; top: 1.2in; width: 3.2in; opacity: .9; }
 
   /* blocks */
@@ -48,7 +48,7 @@
   ul.clean li { position: relative; padding-left: 16pt; margin-bottom: 5pt; }
   ul.clean li::before { content: ""; position: absolute; left: 2pt; top: 6.5pt; width: 6pt; height: 6pt; border-radius: 50%; background: var(--ruby); }
   table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 8pt 0; }
-  th { text-align: left; background: #0a0a0a; color: #fff; padding: 6pt 7pt; font-weight: 700; }
+  th { text-align: left; background: #2378b5; color: #fff; padding: 6pt 7pt; font-weight: 700; }
   td { padding: 4.5pt 6pt; border-bottom: 1px solid var(--line); vertical-align: top; }
   tr:nth-child(even) td { background: #faf8f9; }
   .pill { display: inline-block; border-radius: 999px; padding: 1pt 7pt; font-size: 8pt; font-weight: 700; white-space: nowrap; }
@@ -62,10 +62,10 @@
   .timeline b { display: block; font-size: 9.5pt; color: var(--ruby-dark); }
   .sources { font-size: 8.5pt; color: var(--muted); }
   .sources li { margin-bottom: 4pt; word-break: break-word; }
-  .end { margin-top: 18pt; background: #0a0a0a; color: #fff; border-radius: 12px; padding: 16pt 18pt; }
+  .end { margin-top: 18pt; background: linear-gradient(135deg, #3a9ad9, #2378b5); color: #fff; border-radius: 12px; padding: 16pt 18pt; }
   .end h3 { margin: 0 0 4pt; color: #fff; }
-  .end p { color: rgba(255,255,255,.75); margin: 0; }
-  .end b { color: #89cff0; }
+  .end p { color: rgba(255,255,255,.9); margin: 0; }
+  .end b { color: #fff; }
   .grid2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7pt; margin: 5pt 0 2pt; }
   .pep { border: 1px solid var(--line); border-radius: 10px; padding: 8pt 10pt; break-inside: avoid; }
   .pep h4 { margin: 0 0 3pt; font-size: 10pt; }

@@ -201,7 +201,7 @@ export function formatPrice(cents: number) {
 // About the coach. Placeholder text: replace with the coach's real story.
 // Drop a photo at /public/coach.jpg and set photo: "/coach.jpg".
 export const about = {
-  photo: "/results/coach-lean.jpg",
+  photo: "/coach-headshot.jpg",
   headline: "I know where you're starting, because I started there too.",
   short: "I know how overwhelming and stressful it can be to put in the work and not see the results you want. Let me help you avoid the mistakes I made, so you don't waste years chasing a goal without a proper plan to get there.",
   story: [

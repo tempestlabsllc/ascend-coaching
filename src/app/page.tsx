@@ -124,7 +124,7 @@ export default function Home() {
         <div className="grid items-center gap-10 rounded-3xl border border-black/10 bg-card p-8 md:grid-cols-[1fr_1.4fr] md:p-12">
           <div className="flex aspect-square items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-brand/30 to-mist">
             {about.photo
-              ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover object-[center_62%]" />
+              ? <img src={about.photo} alt="Your coach" className="h-full w-full object-cover object-[center_30%]" />
               : <span className="text-sm text-black/50">Coach photo</span>}
           </div>
           <div>
