@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section data-spot className="relative flex min-h-[92vh] items-center overflow-hidden bg-cream">
+      <section data-spot className="relative flex min-h-[92vh] items-center overflow-hidden bg-white">
         <HeroBackground />
         <div className="relative mx-auto grid w-full max-w-6xl items-center gap-14 px-4 py-20 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="text-center lg:text-left">

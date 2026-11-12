@@ -127,3 +127,10 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 .sky-near { opacity: .97; }
 @keyframes sky-drift { from { transform: translateX(-60vw); } to { transform: translateX(120vw); } }
 @media (prefers-reduced-motion: reduce) { .sky-cloud { animation: none; } }
+
+/* White growth hero */
+.growth-area { opacity: 0; animation: fade-in 1.2s 2s ease-out forwards; }
+@keyframes fade-in { to { opacity: 1; } }
+.grow-plus { position: absolute; bottom: -20px; font-weight: 900; color: #3a9ad9; opacity: 0; animation: grow-rise 9s linear infinite; }
+@keyframes grow-rise { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: .5; } 80% { opacity: .25; } 100% { transform: translateY(-80vh); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .growth-area, .grow-plus { animation: none; opacity: 1; } .grow-plus { display: none; } }
