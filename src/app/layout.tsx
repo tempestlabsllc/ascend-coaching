@@ -5,6 +5,8 @@ import Header from "@/components/Header";
 import LiveEffects from "@/components/LiveEffects";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  alternates: { canonical: "/" },
   title: { default: site.name, template: `%s · ${site.name}` },
   description: site.tagline,
 };

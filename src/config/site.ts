@@ -6,6 +6,7 @@
 
 export const site = {
   name: "Ascend Coaching",
+  url: "https://ascendcoaching.pro",
   tagline: "Online fitness coaching built around your life.",
   heroTitle: "Start your ascension today",
   coachName: "your coach",
