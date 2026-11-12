@@ -53,7 +53,7 @@ export default function Home() {
           </div>
 
           {/* Plan preview card (illustrative) */}
-          <div aria-hidden className="relative mx-auto hidden w-full max-w-sm lg:block">
+          <div aria-hidden className="relative mx-auto hidden w-full max-w-sm origin-bottom-right lg:block lg:translate-x-20 lg:translate-y-44 lg:scale-[.78]">
             <div className="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-[#89cff0]/40 to-brand/20 blur-2xl" />
             <div className="hero-float relative rounded-3xl border border-white/80 bg-white p-6 shadow-[0_30px_80px_-30px_rgba(35,120,181,0.55)] backdrop-blur-xl">
               <div className="flex items-center justify-between">
