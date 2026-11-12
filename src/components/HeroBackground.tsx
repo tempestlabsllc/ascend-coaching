@@ -1,71 +1,56 @@
-// Animated hero background: drifting clouds behind a growth-chart arrow
-// that draws itself upward, on a faint moving grid. Pure CSS/SVG, no JS.
-
-function Cloud({ className }: { className: string }) {
-  // A soft cloud built from overlapping circles, blurred slightly.
-  return (
-    <svg viewBox="0 0 320 140" className={`cloud ${className}`} aria-hidden>
-      <g fill="currentColor">
-        <ellipse cx="160" cy="100" rx="150" ry="38" />
-        <circle cx="105" cy="78" r="46" />
-        <circle cx="170" cy="58" r="60" />
-        <circle cx="235" cy="82" r="40" />
-      </g>
-    </svg>
-  );
-}
+// Hero background: a soft baby-blue sky with drifting light, a faint dot grid,
+// and layered mountain ridges rising toward a glowing peak (the "ascent").
+// Pure CSS/SVG, no JS.
 
 export default function HeroBackground() {
-  // Rising zig-zag like a stock chart going up, ending in an arrowhead.
-  const path = "M -20 560 L 140 470 L 250 510 L 400 380 L 520 420 L 700 270 L 820 310 L 960 170 L 1080 200 L 1230 60";
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden bg-[linear-gradient(180deg,#ffffff_0%,#f3faff_38%,#dcf0fc_100%)]">
+      {/* drifting colour light */}
       <div className="hero-orb hero-orb-1" />
       <div className="hero-orb hero-orb-2" />
-      <div className="hero-grid" />
+      <div className="hero-orb hero-orb-3" />
 
-      {/* back clouds */}
-      <Cloud className="cloud-a" />
-      <Cloud className="cloud-b" />
-      <Cloud className="cloud-c" />
+      {/* sun glow behind the peak / plan card */}
+      <div className="hero-sun" />
 
-      {/* growth arrow */}
-      <svg viewBox="0 0 1280 600" preserveAspectRatio="xMaxYMid slice" className="absolute inset-0 h-full w-full">
+      {/* faint dot grid, fading out toward the edges */}
+      <div className="hero-dots" />
+
+      {/* light rays from the peak */}
+      <div className="hero-rays" />
+
+      {/* layered ridges */}
+      <svg viewBox="0 0 1440 360" preserveAspectRatio="none" className="absolute inset-x-0 bottom-0 h-[50%] w-full">
         <defs>
-          <linearGradient id="arrowGrad" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0" stopColor="#3a9ad9" stopOpacity="0.15" />
-            <stop offset="1" stopColor="#89cff0" stopOpacity="0.95" />
+          <linearGradient id="ridge1" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#a8d9f5" />
+            <stop offset="1" stopColor="#e3f3fd" />
           </linearGradient>
-          <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stopColor="#3a9ad9" stopOpacity="0.22" />
-            <stop offset="1" stopColor="#3a9ad9" stopOpacity="0" />
+          <linearGradient id="ridge2" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#6fbde9" stopOpacity="0.8" />
+            <stop offset="1" stopColor="#d4ecfb" stopOpacity="0.9" />
           </linearGradient>
-          <linearGradient id="areaFade" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stopColor="#fff" stopOpacity="1" />
-            <stop offset="0.8" stopColor="#fff" stopOpacity="1" />
-            <stop offset="0.96" stopColor="#fff" stopOpacity="0" />
+          <linearGradient id="ridge3" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#3a9ad9" stopOpacity="0.6" />
+            <stop offset="1" stopColor="#cfe9fa" stopOpacity="0.9" />
           </linearGradient>
-          <mask id="areaMask"><rect x="-20" y="0" width="1250" height="620" fill="url(#areaFade)" /></mask>
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="6" result="b" />
-            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-          </filter>
+          <linearGradient id="snow" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#ffffff" stopOpacity="0.95" />
+            <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
+          </linearGradient>
         </defs>
-        <g className="growth">
-          <path d={`${path} L 1230 620 L -20 620 Z`} fill="url(#areaGrad)" mask="url(#areaMask)" className="growth-area" />
-          <path d={path} pathLength={1} fill="none" stroke="url(#arrowGrad)" strokeWidth="5" strokeLinejoin="round" strokeLinecap="round" filter="url(#glow)" className="growth-line" />
-          <g className="growth-head">
-            <path d="M 1230 60 L 1188 74 L 1213 101 Z" fill="#89cff0" filter="url(#glow)" />
-          </g>
-        </g>
+        {/* far range, highest peak on the right */}
+        <path className="ridge ridge-far" fill="url(#ridge1)" d="M0 260 L120 215 L210 240 L330 185 L430 220 L560 170 L660 205 L790 30 L880 120 L960 95 L1060 150 L1150 110 L1250 160 L1340 120 L1440 170 L1440 360 L0 360 Z" />
+        <path fill="url(#snow)" opacity="0.8" d="M790 30 L752 78 L772 70 L790 88 L808 68 L830 80 Z" />
+        {/* middle range */}
+        <path className="ridge ridge-mid" fill="url(#ridge2)" d="M0 290 L90 250 L200 275 L320 215 L450 260 L590 205 L720 250 L860 190 L980 240 L1100 175 L1220 230 L1340 195 L1440 225 L1440 360 L0 360 Z" />
+        {/* near range */}
+        <path className="ridge ridge-near" fill="url(#ridge3)" d="M0 330 L140 290 L260 315 L400 270 L540 310 L700 280 L840 320 L990 275 L1130 310 L1280 280 L1440 300 L1440 360 L0 360 Z" />
       </svg>
 
-      {/* front clouds, drifting over the arrow */}
-      <Cloud className="cloud-d" />
-      <Cloud className="cloud-e" />
-
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,.7)_0%,rgba(255,255,255,.25)_55%,transparent_75%)]" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-paper" />
+      {/* keep the text side crisp, then blend into the page below */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_28%_45%,rgba(255,255,255,.75)_0%,rgba(255,255,255,.35)_45%,transparent_75%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-paper" />
     </div>
   );
 }

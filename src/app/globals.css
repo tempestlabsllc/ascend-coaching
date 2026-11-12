@@ -29,9 +29,22 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 @media (prefers-reduced-motion: reduce) { .tier-rainbow, .text-rainbow, .tier-gold, .text-gold { animation: none; } }
 
 /* Hero live background */
-.hero-orb { position: absolute; border-radius: 9999px; filter: blur(110px); opacity: .16; }
-.hero-orb-1 { width: 620px; height: 620px; background: #3a9ad9; top: -220px; left: 10%; animation: drift1 16s ease-in-out infinite alternate; }
-.hero-orb-2 { width: 520px; height: 520px; background: #a8dcf5; bottom: -200px; right: 5%; animation: drift2 20s ease-in-out infinite alternate; }
+.hero-orb { position: absolute; border-radius: 9999px; filter: blur(90px); opacity: .35; }
+.hero-orb-1 { width: 640px; height: 640px; background: #89cff0; top: -260px; left: -120px; animation: drift1 18s ease-in-out infinite alternate; }
+.hero-orb-2 { width: 560px; height: 560px; background: #a9c8ff; top: -120px; right: -140px; opacity: .3; animation: drift2 22s ease-in-out infinite alternate; }
+.hero-orb-3 { width: 480px; height: 480px; background: #b8f0ee; bottom: 10%; left: 35%; opacity: .25; animation: drift1 26s ease-in-out infinite alternate-reverse; }
+.hero-sun { position: absolute; width: 760px; height: 760px; right: -60px; top: 50%; transform: translateY(-55%); border-radius: 9999px;
+  background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(214,238,252,.7) 30%, rgba(137,207,240,.25) 55%, transparent 70%); }
+.hero-dots { position: absolute; inset: 0; background-image: radial-gradient(rgba(35,120,181,.16) 1px, transparent 1.4px); background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, #000 20%, transparent 75%); }
+.hero-rays { position: absolute; left: 50%; top: 5%; width: 1100px; height: 1100px; margin-left: -550px; opacity: .6;
+  background: repeating-conic-gradient(from 0deg at 50% 50%, rgba(255,255,255,.8) 0deg 3deg, transparent 3deg 12deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 55%); mask-image: radial-gradient(circle at 50% 50%, #000 0%, transparent 55%);
+  animation: rays-spin 90s linear infinite; }
+@keyframes rays-spin { to { transform: rotate(360deg); } }
+.ridge { transform-origin: bottom; animation: ridge-rise 1.4s cubic-bezier(.2,.8,.2,1) both; }
+.ridge-mid { animation-delay: .12s; } .ridge-near { animation-delay: .24s; }
+@keyframes ridge-rise { from { transform: translateY(30%); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes drift1 { to { transform: translate(180px, 120px) scale(1.15); } }
 @keyframes drift2 { to { transform: translate(-200px, -100px) scale(0.9); } }
 .hero-grid {
@@ -42,7 +55,7 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
   animation: gridrise 6s linear infinite;
 }
 @keyframes gridrise { to { background-position: 0 -56px; } }
-@media (prefers-reduced-motion: reduce) { .hero-orb, .hero-grid { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-orb, .hero-grid, .hero-rays, .ridge { animation: none; } }
 
 /* Hero clouds + growth arrow */
 .cloud { position: absolute; color: #b8d8ec; filter: blur(14px); will-change: transform; }
