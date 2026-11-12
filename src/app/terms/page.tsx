@@ -51,11 +51,15 @@ export default function Terms() {
         <p>We use third-party services such as Stripe, Calendly, ABC Trainerize and WhatsApp, and our content may link to other websites. Their own terms and policies apply, and we are not responsible for them.</p>
       </section>
       <section>
-        <h2>9. Limitation of liability</h2>
+        <h2>9. Affiliate disclosure</h2>
+        <p>Your coach is an affiliate of Tempest Labs (tempestlabs.shop) and may earn a commission when you use the code &ldquo;eddy&rdquo;. {site.name} does not own Tempest Labs and is not responsible for its products. Mentioning a store is not a recommendation to use any product; talk to a licensed medical provider first.</p>
+      </section>
+      <section>
+        <h2>10. Limitation of liability</h2>
         <p>To the fullest extent permitted by law, {site.name} is not liable for any indirect, incidental or consequential damages, and our total liability for any claim is limited to the amount you paid us in the three months before the claim.</p>
       </section>
       <section>
-        <h2>10. Changes and contact</h2>
+        <h2>11. Changes and contact</h2>
         <p>We may update these terms and will change the date above when we do. Questions? Email <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>.</p>
       </section>
     </LegalPage>

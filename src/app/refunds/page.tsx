@@ -12,11 +12,15 @@ export default function Refunds() {
       </section>
       <section>
         <h2>Refunds on coaching</h2>
+        <p>Coaching is a personal service, and your coach starts working on your plan as soon as you sign up. Because of that, payments are non-refundable once coaching has started (your plan is being built or has been delivered), and we do not give refunds for partial months.</p>
+        <p>We will refund you in these cases:</p>
         <ul>
-          <li><b>First purchase:</b> if you change your mind within 48 hours of your first payment and your plan has not been delivered yet, email us for a full refund.</li>
-          <li><b>After that:</b> payments are non-refundable once your plan has been delivered or the billing month has started, and we do not give partial-month refunds.</li>
-          <li><b>Billing mistakes:</b> if you were charged in error, such as a double charge or a charge after cancelling, contact us and we will refund it.</li>
+          <li><b>Before we start:</b> if you cancel before your coach has begun building your plan, you get a full refund.</li>
+          <li><b>If we don&apos;t deliver:</b> if we fail to provide what your plan includes, such as your program or check-in feedback, we will refund that billing period.</li>
+          <li><b>Serious medical reasons:</b> if a serious injury or medical condition stops you from continuing, we will refund the unused part of your current month.</li>
+          <li><b>Billing mistakes:</b> if you were charged in error, such as a double charge or a charge after cancelling, we will refund it.</li>
         </ul>
+        <p>Refunds are not given for not following the plan, missing check-ins, giving inaccurate information, or not getting the results you hoped for. Results depend on your consistency and are never guaranteed.</p>
       </section>
       <section>
         <h2>Digital guides</h2>
