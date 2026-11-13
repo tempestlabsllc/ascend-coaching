@@ -1,34 +1,23 @@
-// Ascend Coaching logo: a faceted ruby "top rank" emblem plus a wordmark whose A
-// has a rising ruby slash instead of a flat crossbar.
+// Ascend Coaching logo: a black "rank up" badge with ruby chevrons, plus a
+// wordmark whose A is a crossbar-free peak crowned with a small ruby gem.
 export function LogoMark({ className = "h-10 w-10" }: { className?: string }) {
   return (
     <svg viewBox="0 0 48 48" className={className} aria-hidden>
       <defs>
-        <linearGradient id="rubyWing" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#ff5a6e" />
-          <stop offset="1" stopColor="#8e0b22" />
+        <linearGradient id="markBg" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#1a1a1a" />
+          <stop offset="1" stopColor="#000000" />
         </linearGradient>
-        <radialGradient id="rubyGlow" cx="0.5" cy="0.45" r="0.55">
-          <stop offset="0" stopColor="#ff3b55" stopOpacity=".55" />
-          <stop offset="1" stopColor="#ff3b55" stopOpacity="0" />
-        </radialGradient>
+        <linearGradient id="markTop" x1="0" y1="1" x2="0" y2="0">
+          <stop offset="0" stopColor="#d1132f" />
+          <stop offset="1" stopColor="#ff5a6e" />
+        </linearGradient>
       </defs>
-      {/* side wings: swept chevrons */}
-      <path d="M11 17 L3 13 L6 24 L3 33 L12 29 Z" fill="url(#rubyWing)" opacity=".85" />
-      <path d="M37 17 L45 13 L42 24 L45 33 L36 29 Z" fill="url(#rubyWing)" opacity=".85" />
-      {/* faceted gem */}
-      <g stroke="#5c0716" strokeWidth=".8" strokeLinejoin="round">
-        <path d="M24 4 L36 14 L24 18 Z" fill="#ff6b7d" />
-        <path d="M24 4 L12 14 L24 18 Z" fill="#e0213c" />
-        <path d="M12 14 L24 18 L24 44 Z" fill="#a80d27" />
-        <path d="M36 14 L24 18 L24 44 Z" fill="#d1132f" />
-        <path d="M12 14 L8 24 L24 44 Z" fill="#7a0618" />
-        <path d="M36 14 L40 24 L24 44 Z" fill="#b30e2a" />
-      </g>
-      {/* glints */}
-      <path d="M24 7 L30 12 L24 14 Z" fill="#fff" opacity=".55" />
-      <circle cx="33" cy="9" r="1.6" fill="#fff" />
-      <path d="M33 5.5 L33.6 8.4 L36.5 9 L33.6 9.6 L33 12.5 L32.4 9.6 L29.5 9 L32.4 8.4 Z" fill="#fff" opacity=".9" />
+      <rect width="48" height="48" rx="13" fill="url(#markBg)" />
+      {/* three stacked chevrons: rank up / level up */}
+      <path d="M13 37 L24 29 L35 37" fill="none" stroke="#7a0618" strokeWidth="4.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 28.5 L24 20.5 L35 28.5" fill="none" stroke="#b30e2a" strokeWidth="4.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 20 L24 11 L35 20" fill="none" stroke="url(#markTop)" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
@@ -47,7 +36,7 @@ function GemA() {
 export default function Logo() {
   return (
     <span className="group flex items-center gap-2.5">
-      <LogoMark className="h-11 w-11 drop-shadow-[0_4px_8px_rgba(168,13,39,.35)] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:scale-105" />
+      <LogoMark className="h-10 w-10 rounded-[13px] shadow-[0_6px_16px_-6px_rgba(0,0,0,.6)] transition-transform duration-300 group-hover:-translate-y-0.5" />
       <span className="flex flex-col leading-none">
         <span className="text-[1.35rem] font-black uppercase tracking-tight text-ink" aria-label="Ascend">
           <GemA />SCEND
