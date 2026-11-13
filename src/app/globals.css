@@ -143,3 +143,8 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 .hero-lines { animation: lines-float 18s ease-in-out infinite alternate; }
 @keyframes lines-float { from { transform: translateY(0); } to { transform: translateY(-14px); } }
 @media (prefers-reduced-motion: reduce) { .aura, .hero-lines { animation: none; } }
+
+/* Live logo: chevrons charge up bottom to top, hold, then reset */
+.chev-lit { opacity: 0; animation: chev-charge 3.2s ease-in-out infinite; }
+@keyframes chev-charge { 0% { opacity: 0; transform: translateY(3px); } 12% { opacity: 1; transform: none; } 70% { opacity: 1; } 88%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .chev-lit { animation: none; opacity: 1; } }
