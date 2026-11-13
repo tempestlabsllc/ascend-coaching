@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "@fontsource/russo-one/400.css";
 
 @theme {
   --color-brand: #3a9ad9;
@@ -8,6 +9,7 @@
   --color-card: #f4f9fc;
   --color-mist: #e6f4fc;
   --color-cream: #f7f0e3;
+  --font-logo: "Russo One", ui-sans-serif, system-ui, sans-serif;
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
