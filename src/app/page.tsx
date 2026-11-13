@@ -111,7 +111,7 @@ export default function Home() {
         <div data-reveal className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {[
             { to: site.yearsExperience, suffix: "", label: "years of training" },
-            { to: 33, suffix: " lbs", label: "my own cut (180 → 147)" },
+            { to: 33, suffix: " lbs", label: "lost in 3 months (180 → 147)" },
             { to: 10, suffix: "k", label: "followers on Instagram" },
             { to: 30, suffix: "k", label: "followers on TikTok" },
           ].map((s) => (
