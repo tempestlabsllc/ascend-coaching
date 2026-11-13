@@ -3,6 +3,7 @@ import "./globals.css";
 import { site } from "@/config/site";
 import Header from "@/components/Header";
 import LiveEffects from "@/components/LiveEffects";
+import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -19,7 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main>{children}</main>
         <footer className="mt-24 border-t border-black/10 py-10 text-center text-sm text-black/60">
-          <p className="mb-4 text-lg font-extrabold text-brand">{site.name}</p>
+          <div className="mb-4 flex justify-center"><Logo /></div>
           <p>© {new Date().getFullYear()} {site.name} · <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>
              · <a className="underline" href="/check-in">Client check-in</a>
             {site.manageSubscriptionUrl && <> · <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a></>}</p>
