@@ -98,7 +98,7 @@ export default function Home() {
         <div className="marquee">
           {[0, 1].map((k) => (
             <div key={k} className="flex shrink-0 items-center gap-10 pr-10 text-lg font-black uppercase tracking-widest">
-              {["Build muscle", "Lose fat", "Body recomposition", "Reach new goals", "Custom meal plans", "1:1 coaching", "Weekly check-ins", "Lose body fat"].map((t) => (
+              {["Build muscle", "Get stronger", "Body recomposition", "Reach new goals", "Custom meal plans", "1:1 coaching", "Weekly check-ins", "Lose body fat"].map((t) => (
                 <span key={t} className="flex items-center gap-10">{t}<span className="text-[#89cff0]">✦</span></span>
               ))}
             </div>
