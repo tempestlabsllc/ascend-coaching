@@ -81,7 +81,7 @@ export const tiers: Tier[] = [
       "Monthly video check-in with a personal video response",
       "Custom meal plan",
       "Life coaching & accountability (mindset, habits, routines)",
-      "24/7 1:1 messaging on Trainerize or WhatsApp, whenever you need it",
+      "24/7 messaging and accountability on Trainerize or WhatsApp, to answer any questions whenever you need it",
     ],
     highlighted: true,
   },
