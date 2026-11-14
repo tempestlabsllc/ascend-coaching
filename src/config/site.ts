@@ -183,7 +183,7 @@ export const guides: Guide[] = [
   {
     // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
     id: "first-90-days",
-    title: "Your First 90 Days: The Beginner's Roadmap From Zero to Results",
+    title: "Your First 90 Days: The Beginner's Roadmap from Zero to Results",
     priceCents: 0,
     description: "Don't know where to start? This is your day-one plan: what to lift, what to eat and how to stay consistent for your first three months.",
     pages: 0,
@@ -250,8 +250,8 @@ export const testimonials: { name: string; result: string; quote: string }[] = [
 ];
 
 export const faqs = [
-  { q: "How does online coaching work?", a: "After you sign up you fill in the intake questionnaire. I build your training and nutrition plan, deliver it within a few days, and we check in on the schedule for your tier." },
-  { q: "What happens after I buy?", a: "Within 24 hours of your purchase I reach out to you personally to review everything: your goals, your plan and how we'll work together." },
+  { q: "How does online coaching work?", a: "After you sign up, you fill in the intake questionnaire. I build your training and nutrition plan, deliver it within a few days, and we check in on the schedule for your tier." },
+  { q: "What happens after I buy?", a: "Within 24 hours of your purchase, I'll reach out to you personally to review everything: your goals, your plan and how we'll work together." },
   { q: "What app do you use?", a: "Your workouts and tracking live in the ABC Trainerize app (free for clients on iPhone and Android). You follow each session there, log your weights and reps, and track your progress. Day-to-day 1:1 contact with your coach happens on Trainerize or WhatsApp, whichever you prefer." },
   { q: "Do I need a gym?", a: "No. Plans can be built for a full gym, a home setup, or bodyweight only." },
   { q: "I'm a complete beginner. Is this for me?", a: "Yes. Every plan starts from where you are now, with clear instructions and form guidance." },

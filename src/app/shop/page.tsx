@@ -12,7 +12,7 @@ export default async function ShopPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-4xl font-extrabold">Digital starter guides</h1>
-      <p className="mt-2 mb-6 max-w-2xl text-black/60">Instant PDF downloads you can work through at your own pace, no coaching commitment needed.</p>
+      <p className="mt-2 mb-6 max-w-2xl text-black/60">Instant PDF downloads you can work through at your own pace. No coaching commitment needed.</p>
       <div className="mb-10"><EliteUnlock unlocked={elite} /></div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((g) => {

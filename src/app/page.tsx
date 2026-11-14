@@ -42,7 +42,7 @@ export default function Home() {
               <Link href="/shop" className="btn-outline bg-white/60 backdrop-blur">Free starter guide</Link>
             </div>
             <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-black/65 lg:justify-start">
-              {["A real person, not an app", `${site.yearsExperience} years experience`, "Training + nutrition"].map((t) => (
+              {["A real person, not an app", `${site.yearsExperience} years of experience`, "Training + nutrition"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand/15 text-xs font-bold text-brand-dark">✓</span>
                   {t}

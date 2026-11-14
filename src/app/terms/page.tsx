@@ -23,7 +23,7 @@ export default function Terms() {
         <p>Exercise and changes to your diet carry inherent risks, including injury, illness and, in rare cases, serious harm. By using our services you confirm and agree that:</p>
         <ul>
           <li>You are 18 or older and in good health, or you have been cleared by a doctor to exercise and change your diet.</li>
-          <li>You will consult a doctor before starting if you have, or think you may have, any medical condition, injury, or are pregnant, or take medication.</li>
+          <li>You will consult a doctor before starting if you have (or think you may have) a medical condition or injury, are pregnant, or take medication.</li>
           <li>You have told us about any injuries, conditions or medications that could affect your training, and you will tell us about any changes.</li>
           <li>You will stop exercising and seek medical help if you feel pain, dizziness, shortness of breath or any other warning sign.</li>
           <li>You are responsible for using proper form, appropriate weights and safe equipment, and for training within your own limits.</li>

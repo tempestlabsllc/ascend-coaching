@@ -49,7 +49,7 @@ export default function CheckInForm() {
         <Rate label="Nutrition: how well you hit your targets" name="nutrition" />
         <Rate label="Sleep quality" name="sleep" />
         <Rate label="Energy" name="energy" />
-        <Rate label="Stress (10 = very stressed)" name="stress" />
+        <Rate label="Stress, 10 = very stressed" name="stress" />
         <Row label="Biggest win this week" full><textarea className="field min-h-20" name="win" /></Row>
         <Row label="Biggest struggle" full><textarea className="field min-h-20" name="struggle" /></Row>
         <Row label="Questions for your coach" full><textarea className="field min-h-20" name="questions" /></Row>

@@ -3,83 +3,100 @@ import { useState } from "react";
 import { tiers, formatPrice, threeMonth, threeMonthTotalCents, type Tier } from "@/config/site";
 import BuyButton from "./BuyButton";
 
-const styles: Record<Tier["color"], { band: string; name: string; check: string; button: string; ring: string; label: string }> = {
+type Look = { head: string; name: string; sub: string; price: string; muted: string; badge: string; badgeText: string; check: string; button: string; frame: string; glow: string };
+const looks: Record<Tier["color"], Look> = {
   grey: {
-    band: "bg-gradient-to-r from-gray-400 to-gray-500",
-    name: "text-gray-600",
-    check: "text-gray-500",
-    button: "btn w-full bg-gray-500 text-white hover:bg-gray-600",
-    ring: "border-gray-300",
-    label: "text-gray-600",
+    head: "bg-gradient-to-br from-[#eef2f5] to-[#dfe5ea]",
+    name: "text-ink",
+    sub: "text-black/60",
+    price: "text-ink",
+    muted: "text-black/50",
+    badge: "bg-ink/10 text-ink/70",
+    badgeText: "Essentials",
+    check: "bg-gray-500",
+    button: "btn w-full bg-ink text-white hover:bg-black",
+    frame: "bg-gradient-to-b from-gray-300 to-gray-200",
+    glow: "",
   },
   gold: {
-    band: "tier-gold",
-    name: "text-gold",
-    check: "text-amber-600",
+    head: "tier-gold",
+    name: "text-ink",
+    sub: "text-ink/75",
+    price: "text-ink",
+    muted: "text-ink/60",
+    badge: "bg-ink text-white",
+    badgeText: "Most popular",
+    check: "bg-amber-500",
     button: "btn w-full tier-gold text-ink hover:opacity-90",
-    ring: "border-transparent",
-    label: "text-amber-700",
+    frame: "tier-gold",
+    glow: "shadow-[0_30px_60px_-25px_rgba(214,160,0,.65)]",
   },
   rainbow: {
-    band: "tier-rainbow",
+    head: "bg-ink",
     name: "text-rainbow",
-    check: "text-brand",
+    sub: "text-white/70",
+    price: "text-white",
+    muted: "text-white/55",
+    badge: "tier-rainbow text-white [text-shadow:0_1px_2px_rgba(0,0,0,.5)]",
+    badgeText: "All-in",
+    check: "bg-brand",
     button: "btn w-full tier-rainbow text-white [text-shadow:0_1px_3px_rgba(0,0,0,.6)] hover:opacity-90",
-    ring: "border-transparent",
-    label: "text-brand",
+    frame: "tier-rainbow",
+    glow: "shadow-[0_30px_60px_-25px_rgba(58,154,217,.6)]",
   },
 };
 
 function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
   const is3 = term === "3month";
-  const s = styles[t.color];
+  const s = looks[t.color];
+  const [first, ...rest] = t.features;
+  const inherits = /^Everything in /i.test(first);
+  const list = inherits ? rest : t.features;
+  const monthly = is3 ? threeMonthTotalCents(t.priceCents) / threeMonth.months : t.priceCents;
 
-  const card = (
-    <div className={`lift relative flex h-full flex-col overflow-hidden rounded-2xl border bg-card shadow-sm ${t.color === "grey" ? s.ring : "border-0"}`}>
-      <div className={`h-3 ${s.band}`} />
-      <div className="flex flex-1 flex-col p-6">
-        {t.highlighted && <span className="tier-gold mb-3 w-fit rounded-full px-3 py-1 text-xs font-bold text-ink">MOST POPULAR</span>}
-        {t.spotsRemaining != null && (
-          <span className="mb-3 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
-            <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff5a6e] opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-[#ff3b55]" /></span>
-            Only {t.spotsRemaining} spots remaining
-          </span>
-        )}
-        <h3 className={`text-2xl font-extrabold ${s.name}`}>{t.name}</h3>
-        <p className="mt-1 text-sm text-black/60">{t.blurb}</p>
-        {is3 ? (
-          <div className="mt-4">
-            <p className="text-4xl font-extrabold">
-              {formatPrice(threeMonthTotalCents(t.priceCents) / threeMonth.months)}
-              <span className="text-base font-medium text-black/50">/month</span>
-            </p>
-            <p className="mt-1 text-sm text-black/60">
-              <span className="line-through">{formatPrice(t.priceCents * threeMonth.months)}</span>{" "}
-              <strong className="text-ink">{formatPrice(threeMonthTotalCents(t.priceCents))}</strong> billed every {threeMonth.months} months
-            </p>
-          </div>
-        ) : (
-          <p className="mt-4 text-4xl font-extrabold">
-            {formatPrice(t.priceCents)}
-            {t.interval === "month" && <span className="text-base font-medium text-black/50">/month</span>}
-          </p>
-        )}
-        <ul className="mt-6 space-y-2 text-sm">
-          {t.features.map((f) => (
-            <li key={f} className="flex gap-2"><span className={s.check}>✓</span>{f}</li>
-          ))}
-        </ul>
-
-        <div className="flex-1" />
-        <div className="mt-6"><BuyButton kind="tier" id={t.id} term={term} label={`Choose ${t.name}`} className={s.button} /></div>
-      </div>
-    </div>
-  );
-
-  const frame = t.color === "grey" ? "" : `${t.color === "gold" ? "tier-gold" : "tier-rainbow"} rounded-2xl p-[3px]`;
   return (
-    <div className={`h-full ${frame}`}>
-      {card}
+    <div className={`lift h-full rounded-[1.4rem] p-[3px] ${s.frame} ${s.glow}`}>
+      <div className="flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-card">
+        <div className={`relative px-6 pb-6 pt-5 ${s.head}`}>
+          <div className="flex items-center justify-between gap-3">
+            <h3 className={`text-3xl font-extrabold tracking-tight ${s.name}`}>{t.name}</h3>
+            <span className={`rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] ${s.badge}`}>
+              {t.spotsRemaining != null ? `Only ${t.spotsRemaining} spots left` : s.badgeText}
+            </span>
+          </div>
+          <p className={`mt-1 min-h-[2.5rem] text-sm leading-5 ${s.sub}`}>{t.blurb}</p>
+          <p className={`mt-4 text-5xl font-extrabold tracking-tight ${s.price}`}>
+            {formatPrice(monthly)}
+            <span className={`ml-1 text-base font-medium ${s.muted}`}>/month</span>
+          </p>
+          <p className={`mt-1 min-h-5 text-sm ${s.muted}`}>
+            {is3 ? (
+              <><span className="line-through">{formatPrice(t.priceCents * threeMonth.months)}</span>{" "}
+              <strong className={s.price}>{formatPrice(threeMonthTotalCents(t.priceCents))}</strong> billed every {threeMonth.months} months</>
+            ) : (
+              "Billed monthly. Cancel anytime."
+            )}
+          </p>
+        </div>
+
+        <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
+          <p className="text-xs font-bold uppercase tracking-[0.14em] text-black/45">
+            {inherits ? `${first}, plus:` : "What's included"}
+          </p>
+          <ul className="mt-4 space-y-3 text-sm leading-5 text-black/80">
+            {list.map((f) => (
+              <li key={f} className="flex gap-3">
+                <span aria-hidden className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-white ${s.check}`}>
+                  <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
+                </span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="flex-1" />
+          <div className="mt-7"><BuyButton kind="tier" id={t.id} term={term} label={`Choose ${t.name}`} className={s.button} /></div>
+        </div>
+      </div>
     </div>
   );
 }
