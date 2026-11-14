@@ -43,7 +43,7 @@ export const tiers: Tier[] = [
     id: "starter",
     color: "grey",
     name: "Starter",
-    priceCents: 10000,
+    priceCents: 7500,
     interval: "month",
     blurb: "Train exactly how your coach trains.",
     bestFor: "Self-starters who want a proven routine to follow, without needing a custom plan.",
@@ -76,6 +76,7 @@ export const tiers: Tier[] = [
     ],
     features: [
       "Fully custom program built for you",
+      "Weekly check-ins with written feedback",
       "Custom meal plan",
       "Life coaching & accountability (mindset, habits, routines)",
       "1:1 messaging on Trainerize or WhatsApp (typically within 5 hours)",
@@ -194,7 +195,9 @@ export const guides: Guide[] = [
 // 3-month plans: billed every 3 months at a discount off the monthly price.
 export const threeMonth = { months: 3, discountPercent: 10 };
 export function threeMonthTotalCents(monthlyCents: number) {
-  return Math.round((monthlyCents * threeMonth.months * (100 - threeMonth.discountPercent)) / 100 / 100) * 100;
+  // Whole-dollar monthly equivalent (rounded down), times 3, so per-month shows cleanly.
+  const perMonth = Math.floor((monthlyCents * (100 - threeMonth.discountPercent)) / 100 / 100) * 100;
+  return perMonth * threeMonth.months;
 }
 
 export function formatPrice(cents: number) {
