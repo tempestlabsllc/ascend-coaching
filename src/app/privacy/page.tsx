@@ -32,7 +32,7 @@ export default function Privacy() {
         <h2>Who we share it with</h2>
         <p>We use trusted services to run the business. They only receive what they need to do their job:</p>
         <ul>
-          <li><b>Stripe</b> (payments and billing), <b>Calendly</b> (call booking), <b>ABC Trainerize</b> (your plan, tracking and messaging), <b>WhatsApp</b> (messaging, if you choose it), <b>FormSubmit</b> (delivering form submissions to our inbox) and <b>Vercel</b> (website hosting).</li>
+          <li><b>Stripe</b> (payments and billing), <b>Calendly</b> (call booking), <b>ABC Trainerize</b> (your plan, tracking and messaging), <b>WhatsApp</b> (messaging, if you choose it), <b>FormSubmit</b> (delivering form submissions to our inbox), <b>Upstash</b> (secure storage of form submissions and guide signups) and <b>Vercel</b> (website hosting).</li>
           <li><b>Tempest Labs (tempestlabs.shop):</b> when you unlock a free guide and tick the box agreeing to it, your email address is shared with Tempest Labs so they can send you emails. We do not share your questionnaire, health information or phone number with Tempest Labs.</li>
         </ul>
         <p>We do not sell your health information. We may disclose information if required by law.</p>

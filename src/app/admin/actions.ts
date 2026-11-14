@@ -6,7 +6,7 @@ import { stripe } from "@/lib";
 import { site } from "@/config/site";
 import { ADMIN_COOKIE, checkPassword, isAdmin, newSessionToken, sessionCookie } from "@/admin/auth";
 
-const back = (msg: string, err = false): never => redirect(`/admin?${err ? "err" : "msg"}=${encodeURIComponent(msg)}#discounts`);
+const back = (msg: string, err = false): never => redirect(`/admin?tab=discounts&${err ? "err" : "msg"}=${encodeURIComponent(msg)}`);
 
 async function guard() {
   if (!(await isAdmin())) redirect("/admin/login");
