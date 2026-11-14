@@ -93,13 +93,13 @@ export const tiers: Tier[] = [
     bestFor: "Clients who want the fastest results and the most hands-on support.",
     details: [
       { label: "Your plan", value: "Custom program and meal plan in the ABC Trainerize app, plus a personal video walkthrough of your plan" },
-      { label: "Check-ins", value: "Weekly check-in with a personal video reply within 24 hours" },
+      { label: "Check-ins", value: "Weekly review with specific feedback on your progress so far" },
       { label: "Updates", value: "Program adjusted every 4 weeks, or sooner if needed" },
       { label: "Support", value: "Everything in Pro, plus life coaching and accountability (mindset, habits, routines)" },
     ],
     features: [
       "Everything in Pro",
-      "Weekly check-ins with personal video responses",
+      "Weekly review with specific feedback on your progress so far",
       "Life coaching & accountability (mindset, habits, routines)",
       "All guides free, including every future guide",
     ],
