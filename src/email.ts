@@ -1,12 +1,12 @@
 import { site } from "@/config/site";
 
 // Sends an email through Resend's HTTP API. No-op (returns false) until
-// RESEND_API_KEY and EMAIL_FROM are set in Vercel.
+// RESEND_API_KEY is set in Vercel (EMAIL_FROM is optional).
 export async function sendEmail(to: string, subject: string, html: string) {
   const key = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM;
-  if (!key || !from) {
-    console.warn("Email not sent: RESEND_API_KEY / EMAIL_FROM not set");
+  const from = process.env.EMAIL_FROM || `Ascend Coaching <hello@${new URL(site.url).hostname}>`;
+  if (!key) {
+    console.warn("Email not sent: RESEND_API_KEY not set");
     return false;
   }
   const r = await fetch("https://api.resend.com/emails", {

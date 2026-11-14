@@ -16,7 +16,7 @@ export default function Privacy() {
           <li><b>Health and fitness information:</b> what you share in the questionnaire and check-ins, such as age, height, weight, goals, training history, diet, sleep, injuries, medical conditions and medications, plus any progress photos or measurements you send.</li>
           <li><b>Purchase information:</b> what you bought and when. Payments are processed by Stripe; we never see or store your full card number.</li>
           <li><b>Guide signups:</b> your email address when you unlock a free guide.</li>
-          <li><b>Basic technical data:</b> standard information your browser sends (such as IP address and device type) to our hosting provider, and one cookie that remembers you unlocked a free guide.</li>
+          <li><b>Basic technical data:</b> standard information your browser sends (such as IP address and device type) to our hosting provider, and cookies that remember you unlocked a free guide or signed in as an Elite member.</li>
         </ul>
       </section>
       <section>

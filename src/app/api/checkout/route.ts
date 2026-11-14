@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
+import { ensureWebhook } from "@/stripe-setup";
 import { tiers, guides, site, threeMonth, threeMonthTotalCents } from "@/config/site";
 import { stripe } from "@/lib";
 
@@ -11,6 +12,9 @@ export async function POST(req: Request) {
   if (!stripe) {
     return NextResponse.json({ message: "Demo mode: payments aren't connected yet (add STRIPE_SECRET_KEY)." });
   }
+
+  // Make sure Stripe will tell us about this purchase (sets up the webhook once).
+  after(() => ensureWebhook());
 
   // Send buyers back to whatever domain they're on (vercel.app link or custom domain).
   const siteUrl = new URL(req.url).origin;

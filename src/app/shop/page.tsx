@@ -3,17 +3,20 @@ import BuyButton from "@/components/BuyButton";
 import GuideUnlock from "@/components/GuideUnlock";
 import EliteUnlock from "@/components/EliteUnlock";
 import { cookies } from "next/headers";
-import { ELITE_COOKIE } from "@/elite";
+import { ELITE_COOKIE, hasElite } from "@/elite";
 
 export const metadata = { title: "Digital guides" };
 
-export default async function ShopPage() {
-  const elite = (await cookies()).get(ELITE_COOKIE)?.value === "1";
+export const dynamic = "force-dynamic";
+
+export default async function ShopPage({ searchParams }: { searchParams: Promise<{ elite?: string }> }) {
+  const { elite: eliteParam } = await searchParams;
+  const elite = await hasElite((await cookies()).get(ELITE_COOKIE)?.value, false);
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-4xl font-extrabold">Digital starter guides</h1>
       <p className="mt-2 mb-6 max-w-2xl text-black/60">Instant PDF downloads you can work through at your own pace. No coaching commitment needed.</p>
-      <div className="mb-10"><EliteUnlock unlocked={elite} /></div>
+      <div className="mb-10"><EliteUnlock unlocked={elite} notice={eliteParam === "expired" ? "expired" : undefined} /></div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((g) => {
           const free = g.priceCents === 0;
