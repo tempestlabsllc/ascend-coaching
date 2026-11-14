@@ -51,6 +51,7 @@ export const tiers: Tier[] = [
     bestFor: "Self-starters who want a workout built for their goals, without the extra check-ins and support.",
     details: [
       { label: "Your plan", value: "A custom workout built for your goals plus calorie and macro targets, delivered in the ABC Trainerize app within 3 days" },
+      { label: "Check-ins", value: "Monthly check-in on how it's going and how you're feeling, then your plan and macros are adjusted" },
       { label: "Updates", value: "Your workout is updated every month" },
       { label: "Support", value: "1:1 contact on Trainerize or WhatsApp" },
     ],
@@ -58,6 +59,7 @@ export const tiers: Tier[] = [
       "Custom workout built specifically for your goals (updated monthly)",
       "Exact exercises, sets and reps",
       "Nutrition targets (calories + macros)",
+      "Monthly check-in on how it's going and how you're feeling, with plan and macro adjustments",
     ],
   },
   {
