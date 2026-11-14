@@ -6,9 +6,9 @@ import {
   getClients, getChurn, getGuideSales,
 } from "@/admin/data";
 import { formatPrice, threeMonth, guides } from "@/config/site";
-import { readRecords, storeConfigured, type Stored } from "@/store";
+import { readRecords, storeConfigured, getResetAt, type Stored } from "@/store";
 import { cookies } from "next/headers";
-import { logout, saveDiscount, setDiscountActive } from "./actions";
+import { logout, saveDiscount, setDiscountActive, resetTestData } from "./actions";
 import MarkSeen from "./MarkSeen";
 
 export const metadata = { title: "Admin", robots: { index: false, follow: false } };
@@ -52,6 +52,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const tab: Tab = (TABS.find(([id]) => id === sp.tab)?.[0] ?? (sp.edit || sp.msg || sp.err ? "discounts" : "overview"));
 
   const seen = (await cookies()).get("ac_admin_seen")?.value ?? "";
+  const since = await getResetAt();
   const activity = storeConfigured() ? await readRecords("activity", 300).catch(() => [] as Stored[]) : [];
   const unseen = activity.filter((a) => a.savedAt > seen).length;
 
@@ -61,12 +62,12 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       body = <p className="text-black/70">Stripe isn't connected yet. Add STRIPE_SECRET_KEY in Vercel.</p>;
     } else {
       body = await {
-        overview: () => Overview(stripe!),
+        overview: () => Overview(stripe!, since, sp),
         activity: () => Activity(activity, seen),
-        clients: () => Clients(stripe!),
+        clients: () => Clients(stripe!, since),
         forms: () => Forms(sp),
-        guides: () => Guides(stripe!),
-        churn: () => Churn(stripe!),
+        guides: () => Guides(stripe!, since),
+        churn: () => Churn(stripe!, since),
         leads: () => Leads(),
         discounts: () => Discounts(stripe!, sp),
       }[tab]();
@@ -130,13 +131,13 @@ function ago(iso: string) {
   return isoDay(iso);
 }
 
-async function Overview(s: Stripe) {
-  const [rev, subs, recent] = await Promise.all([getRevenue(s), getSubscriptions(s), getRecentPurchases(s)]);
+async function Overview(s: Stripe, since: number, sp: Params) {
+  const [rev, subs, recent] = await Promise.all([getRevenue(s, since), getSubscriptions(s, since), getRecentPurchases(s, since)]);
   return (
     <>
       <H2>Revenue</H2>
       <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Stat label="Total revenue" value={money(rev.total)} note={rev.refunds ? `after ${money(rev.refunds)} in refunds` : "all time, after refunds"} />
+        <Stat label="Total revenue" value={money(rev.total)} note={`${since ? `since ${day(since)}` : "all time"}${rev.refunds ? `, after ${money(rev.refunds)} in refunds` : ", after refunds"}`} />
         <Stat label="This month" value={money(rev.month)} note={`last month ${money(rev.prev)}`} />
         <Stat label="Monthly recurring" value={money(subs.mrr)} note="from active plans, before discounts" />
         <Stat label="Active clients" value={String(subs.active)} note="active coaching plans" />
@@ -159,12 +160,24 @@ async function Overview(s: Stripe) {
           </Row>
         ))}</Rows>
       )}
+      <H2>Reset test data</H2>
+      {sp.msg && sp.tab === "overview" && <p className="mt-3 rounded-xl bg-green-50 p-3 text-sm text-green-800">{sp.msg}</p>}
+      {sp.err && sp.tab === "overview" && <p className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-700">{sp.err}</p>}
+      <p className="mt-1 text-sm text-black/60">
+        {since ? `Counting from ${day(since)}. ` : ""}Sets everything here back to 0: revenue, clients and purchases only count from now on, and saved
+        forms, leads and activity are deleted. Nothing in Stripe changes. Cancel any test subscriptions in Stripe so they don't renew.
+      </p>
+      <form action={resetTestData} className="mt-4 flex flex-wrap items-end gap-3">
+        <label><span className="label">Type RESET to confirm</span>
+          <input className="field" name="confirm" required pattern="RESET" autoComplete="off" /></label>
+        <button className="rounded-full border-2 border-red-600 px-5 py-2 font-semibold text-red-700 hover:bg-red-50">Reset to 0</button>
+      </form>
     </>
   );
 }
 
-async function Clients(s: Stripe) {
-  const [clients, forms] = await Promise.all([getClients(s), storeConfigured() ? readRecords("forms") : Promise.resolve([] as Stored[])]);
+async function Clients(s: Stripe, since: number) {
+  const [clients, forms] = await Promise.all([getClients(s, since), storeConfigured() ? readRecords("forms") : Promise.resolve([] as Stored[])]);
   const intakeBy = new Map<string, Stored>();
   for (const f of forms) if (f.form === "intake" && typeof f.email === "string") {
     const k = f.email.toLowerCase(); if (!intakeBy.has(k)) intakeBy.set(k, f);
@@ -250,9 +263,9 @@ async function Forms(sp: Params) {
   );
 }
 
-async function Guides(s: Stripe) {
+async function Guides(s: Stripe, since: number) {
   const leads = storeConfigured() ? await readRecords("leads") : [];
-  const rows = await getGuideSales(s, leads);
+  const rows = await getGuideSales(s, leads, since);
   const total = rows.reduce((t, r) => t + r.revenue, 0);
   return (
     <>
@@ -276,8 +289,8 @@ async function Guides(s: Stripe) {
   );
 }
 
-async function Churn(s: Stripe) {
-  const c = await getChurn(s);
+async function Churn(s: Stripe, since: number) {
+  const c = await getChurn(s, since);
   const who = (x: { name: string; email: string }) => x.name || x.email || "Unknown";
   return (
     <>
