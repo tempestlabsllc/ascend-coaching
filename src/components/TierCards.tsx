@@ -106,7 +106,7 @@ export default function TierCards() {
           <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z" /></svg>
         </span>
         <p className="text-black/75">
-          <strong className="text-ink">Every plan: 1:1 contact with your coach on Trainerize or WhatsApp</strong>, whichever you prefer.
+          <strong className="text-ink">Every plan: 1:1 contact with your coach on Trainerize or WhatsApp</strong>, whichever you prefer, with 24/7 questions and messaging whenever you need it.
           After you buy, I&apos;ll reach out within 24 hours to review everything with you.
         </p>
       </div>

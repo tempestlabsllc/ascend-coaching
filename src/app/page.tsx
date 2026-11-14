@@ -10,7 +10,7 @@ const steps = [
   { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
   { n: "02", t: "Book a call or fill out the questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },
   { n: "03", t: "Get your plan in Trainerize", d: "Your training and nutrition plan lands in the ABC Trainerize app within days, where you log every workout." },
-  { n: "04", t: "1:1 on Trainerize or WhatsApp", d: "Your coach works with you directly on Trainerize or WhatsApp, whichever you prefer, while your plan evolves." },
+  { n: "04", t: "1:1 on Trainerize or WhatsApp", d: "Your coach works with you directly on Trainerize or WhatsApp, whichever you prefer. 24/7 questions and messaging whenever you need it." },
 ];
 
 export default function Home() {
@@ -134,7 +134,7 @@ export default function Home() {
             <p className="text-xl text-black/85">This isn&apos;t an AI program or an app that doesn&apos;t know who you are. It&apos;s a real person working with you directly, 1:1, with {site.yearsExperience} years of training experience behind every plan, check-in and adjustment.</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-3">
               <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">{site.yearsExperience}</span><span className="text-sm text-black/60">years of training experience</span></li>
-              <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-black/60">you work with your coach directly</span></li>
+              <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-black/60">with your coach, 24/7 questions and messaging whenever you need it</span></li>
               <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">100%</span><span className="text-sm text-black/60">of check-ins answered personally</span></li>
             </ul>
           </div>
