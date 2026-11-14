@@ -2,7 +2,8 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { guides } from "@/config/site";
 import { stripe } from "@/lib";
-import { hasEliteCookie } from "@/elite";
+import { hasElite } from "@/elite";
+import { isPaid } from "@/paid";
 
 // Serves a guide PDF from /private-guides. Free guides need an email signup first;
 // paid guides require a paid Stripe Checkout session for that guide.
@@ -11,7 +12,7 @@ export async function GET(req: Request) {
   const guide = guides.find((g) => g.id === url.searchParams.get("guide"));
   if (!guide || guide.comingSoon) return new Response("Not found", { status: 404 });
 
-  const elite = hasEliteCookie(req.headers.get("cookie"));
+  const elite = guide.priceCents > 0 && (await hasElite(req.headers.get("cookie")));
   if (elite) {
     // Elite members get every guide free.
   } else if (guide.priceCents === 0) {
@@ -22,7 +23,7 @@ export async function GET(req: Request) {
     const sessionId = url.searchParams.get("session_id");
     if (!stripe || !sessionId) return new Response("Purchase required", { status: 403 });
     const s = await stripe.checkout.sessions.retrieve(sessionId).catch(() => null);
-    if (!s || s.payment_status !== "paid" || s.metadata?.id !== guide.id) {
+    if (!s || !isPaid(s) || s.metadata?.kind !== "guide" || s.metadata?.id !== guide.id) {
       return new Response("Purchase required", { status: 403 });
     }
   }
