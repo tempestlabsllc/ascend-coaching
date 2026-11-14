@@ -51,16 +51,14 @@ export const tiers: Tier[] = [
     bestFor: "Self-starters who want a proven routine to follow, without needing a custom plan.",
     details: [
       { label: "Your plan", value: "Your coach's exact training routine plus calorie and macro targets, delivered in the ABC Trainerize app within 3 days" },
-      { label: "Check-ins", value: "Quick weekly check-in by text to see how everything is going, plus advice" },
       { label: "Updates", value: "You get every change your coach makes to their own routine" },
-      { label: "Support", value: "1:1 contact on Trainerize or WhatsApp, questions answered at your weekly text check-in" },
+      { label: "Support", value: "1:1 contact on Trainerize or WhatsApp" },
     ],
     features: [
       "Your coach's personal training routine",
       "Exact exercises, sets and reps",
       "Updated whenever the routine changes",
       "Nutrition targets (calories + macros)",
-      "Weekly text check-in to see how it's going, plus advice",
     ],
   },
   {
