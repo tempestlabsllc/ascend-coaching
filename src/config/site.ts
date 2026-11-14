@@ -131,10 +131,10 @@ export const guides: Guide[] = [
     file: "starting-peps.pdf",
   },
   {
-    // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
+    // PLACEHOLDER: drop the PDF in /private-guides, then remove comingSoon.
     id: "personal-split",
     title: "My Personal Training Split",
-    priceCents: 0,
+    priceCents: 1500,
     description: "The exact weekly split I train with: every day, exercise, set and rep, plus how I progress it.",
     pages: 0,
     file: "personal-split.pdf",
@@ -161,14 +161,13 @@ export const guides: Guide[] = [
     comingSoon: true,
   },
   {
-    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    // Source: guides-src/recomp-blueprint.html (re-render to PDF after edits).
     id: "recomp-blueprint",
     title: "The Recomp Blueprint: Build Muscle and Burn Fat at the Same Time",
-    priceCents: 0,
+    priceCents: 2000,
     description: "My most proven method. How to set your calories, macros and training to get leaner and stronger at the same time, step by step.",
-    pages: 0,
+    pages: 16,
     file: "recomp-blueprint.pdf",
-    comingSoon: true,
   },
   {
     // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.

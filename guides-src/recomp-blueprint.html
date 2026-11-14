@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Recomp Blueprint · Ascend Coaching</title>
+<style>
+  @page { size: Letter; margin: 0.7in 0.75in 0.8in; }
+  @page :first { margin: 0; }
+  :root { --ruby: #3a9ad9; --ruby-dark: #2378b5; --ink: #16181d; --muted: #5b5f66; --line: #e7e2e4; --mist: #e6f4fc; }
+  * { box-sizing: border-box; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink); font-size: 11pt; line-height: 1.55; margin: 0; }
+  h1, h2, h3 { line-height: 1.15; margin: 0; }
+  h2 { font-size: 22pt; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4pt; }
+  h2 .num { color: var(--ruby); margin-right: 6pt; }
+  h3 { font-size: 13pt; font-weight: 700; margin: 16pt 0 4pt; }
+  p { margin: 0 0 9pt; }
+  .eyebrow { color: var(--ruby); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 9pt; }
+  .lead { font-size: 12.5pt; color: var(--muted); margin-bottom: 14pt; }
+  .section { page-break-before: always; }
+  .rule { height: 3px; width: 56px; background: var(--ruby); border-radius: 2px; margin: 8pt 0 14pt; }
+
+  /* cover */
+  .cover { height: 11in; padding: 0.9in 0.85in; background: linear-gradient(160deg, #ffffff 0%, #f1f9fe 55%, #d8eefb 100%); color: #16181d; position: relative; overflow: hidden; }
+  .cover .glow { position: absolute; width: 7in; height: 7in; border-radius: 50%; background: radial-gradient(circle, rgba(137,207,240,.6), rgba(137,207,240,0) 65%); top: -2in; right: -2.2in; }
+  .cover .glow2 { position: absolute; width: 6in; height: 6in; border-radius: 50%; background: radial-gradient(circle, rgba(58,154,217,.3), rgba(58,154,217,0) 65%); bottom: -2.5in; left: -2in; }
+  .cover .brand { position: relative; font-weight: 800; color: var(--ruby); font-size: 14pt; letter-spacing: 0.02em; }
+  .cover h1 { position: relative; margin-top: 2.3in; font-size: 44pt; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.98; }
+  .cover h1 span { color: var(--ruby); }
+  .cover .sub { position: relative; margin-top: 18pt; font-size: 14pt; color: #4b5563; max-width: 5in; }
+  .cover .tag { position: relative; display: inline-block; margin-top: 26pt; border: 1.5px solid var(--ruby); background: var(--ruby); color: #fff; border-radius: 999px; padding: 5pt 14pt; font-size: 10pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .cover .foot { position: absolute; left: 0.85in; right: 0.85in; bottom: 0.7in; font-size: 8.5pt; color: #6b7280; border-top: 1px solid rgba(22,24,29,.12); padding-top: 10pt; }
+  .cover svg { position: absolute; right: 0.6in; top: 1.2in; width: 3.2in; opacity: .9; }
+
+  /* blocks */
+  .callout { background: var(--mist); border-left: 4px solid var(--ruby); border-radius: 6px; padding: 10pt 14pt; margin: 12pt 0; }
+  .callout b { color: var(--ruby-dark); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10pt; margin: 12pt 0; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 11pt 12pt; }
+  .card .k { font-size: 8.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ruby); }
+  .card h4 { margin: 4pt 0 4pt; font-size: 12pt; }
+  .card p { font-size: 9.5pt; color: var(--muted); margin: 0; }
+  .chain { display: flex; align-items: center; gap: 5pt; margin: 10pt 0 4pt; flex-wrap: wrap; }
+  .aa { width: 22pt; height: 22pt; border-radius: 50%; background: var(--ruby); color: #fff; font-size: 7.5pt; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .aa.alt { background: #89cff0; }
+  .bond { width: 8pt; height: 2px; background: var(--ink); }
+  .caption { font-size: 9pt; color: var(--muted); }
+  ul.clean { padding-left: 0; list-style: none; margin: 6pt 0 10pt; }
+  ul.clean li { position: relative; padding-left: 16pt; margin-bottom: 5pt; }
+  ul.clean li::before { content: ""; position: absolute; left: 2pt; top: 6.5pt; width: 6pt; height: 6pt; border-radius: 50%; background: var(--ruby); }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 8pt 0; }
+  th { text-align: left; background: #2378b5; color: #fff; padding: 6pt 7pt; font-weight: 700; }
+  td { padding: 4.5pt 6pt; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf8f9; }
+  .pill { display: inline-block; border-radius: 999px; padding: 1pt 7pt; font-size: 8pt; font-weight: 700; white-space: nowrap; }
+  .strong { background: #e3f5ea; color: #1e7a45; }
+  .mod { background: #fff4d6; color: #8a6300; }
+  .weak { background: #fde3ea; color: #b3261e; }
+  .check li::before { content: "✓"; background: none; color: var(--ruby); font-weight: 800; top: 0; left: 0; width: auto; height: auto; }
+  .timeline { border-left: 2px solid var(--ruby); margin: 10pt 0 10pt 6pt; padding-left: 14pt; }
+  .timeline div { position: relative; margin-bottom: 9pt; }
+  .timeline div::before { content: ""; position: absolute; left: -19.5pt; top: 4pt; width: 9pt; height: 9pt; border-radius: 50%; background: #fff; border: 2px solid var(--ruby); }
+  .timeline b { display: block; font-size: 9.5pt; color: var(--ruby-dark); }
+  .sources { font-size: 8.5pt; color: var(--muted); }
+  .sources li { margin-bottom: 4pt; word-break: break-word; }
+  .end { margin-top: 18pt; background: linear-gradient(135deg, #3a9ad9, #2378b5); color: #fff; border-radius: 12px; padding: 16pt 18pt; }
+  .end h3 { margin: 0 0 4pt; color: #fff; }
+  .end p { color: rgba(255,255,255,.9); margin: 0; }
+  .end b { color: #fff; }
+  .grid2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7pt; margin: 5pt 0 2pt; }
+  .pep { border: 1px solid var(--line); border-radius: 10px; padding: 8pt 10pt; break-inside: avoid; }
+  .pep h4 { margin: 0 0 3pt; font-size: 10pt; }
+  .pep h4 .pill { display: table; margin-top: 2pt; }
+  .pep p { margin: 0; font-size: 8.8pt; color: var(--muted); line-height: 1.45; }
+  .goal { font-size: 11.5pt; font-weight: 800; margin: 10pt 0 2pt; color: var(--ink); break-after: avoid; }
+  .goal span { color: var(--ruby); }
+  .tl { display: flex; align-items: center; gap: 12pt; border: 1.5px solid var(--ruby); border-radius: 12px; padding: 10pt 14pt; margin: 12pt 0; background: #fff; }
+  .tl .code { flex-shrink: 0; background: var(--ruby); color: #fff; border-radius: 8px; padding: 6pt 10pt; text-align: center; font-weight: 900; font-size: 15pt; letter-spacing: .12em; }
+  .tl .code small { display: block; font-size: 6.5pt; font-weight: 700; letter-spacing: .14em; opacity: .85; }
+  .tl p { margin: 0; font-size: 9.5pt; }
+  .ch1 h3 { margin: 9pt 0 3pt; } .ch1 .grid3 { margin: 6pt 0; } .ch1 .callout { margin: 8pt 0; padding: 8pt 12pt; } .ch1 p { margin-bottom: 6pt; } .ch1 .lead { margin-bottom: 8pt; }
+
+  .tip { border: 1.5px solid var(--ruby); border-radius: 12px; padding: 10pt 14pt; margin: 12pt 0; background: #fff; break-inside: avoid; }
+  .tip .lbl { font-size: 8pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--ruby); margin-bottom: 3pt; }
+  .tip p { margin: 0; font-size: 10.5pt; }
+  .tip.todo { border-style: dashed; border-color: #d9a400; background: #fffbea; }
+  .tip.todo .lbl { color: #8a6300; }
+  .tip.todo p { color: #8a6300; font-style: italic; }
+  .steps { counter-reset: s; margin: 8pt 0; }
+  .steps > div { position: relative; padding-left: 30pt; margin-bottom: 9pt; break-inside: avoid; }
+  .steps > div::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 20pt; height: 20pt; border-radius: 50%; background: var(--ruby); color: #fff; font-weight: 800; font-size: 10pt; display: flex; align-items: center; justify-content: center; }
+  .steps > div > b:first-child { display: block; }
+  .formula { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 9.5pt; background: #f4f8fb; border-radius: 6px; padding: 6pt 9pt; margin: 4pt 0; }
+  td.n, th.n { text-align: right; white-space: nowrap; }
+  td.hi { font-weight: 800; color: var(--ruby-dark); }
+  .week7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5pt; margin: 10pt 0; }
+  .week7 div { border-radius: 8px; background: var(--ruby); color: #fff; padding: 7pt 4pt; text-align: center; font-size: 8.5pt; line-height: 1.3; }
+  .week7 div:nth-child(odd) { background: var(--ruby-dark); }
+  .week7 div.rest { background: #eef3f6; color: #8a99a5; }
+  .week7 small { display: block; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .85; font-size: 7.5pt; }
+  .week7 b { display: block; font-size: 11pt; margin: 2pt 0; }
+  .meal { display: grid; grid-template-columns: 0.85in 1fr 1.75in; gap: 8pt; padding: 5pt 0; border-bottom: 1px solid var(--line); font-size: 9.5pt; break-inside: avoid; }
+  .meal .when { font-weight: 800; color: var(--ruby-dark); }
+  .meal .mac { text-align: right; color: var(--muted); font-size: 8.5pt; }
+  .total { display: flex; gap: 8pt; margin: 6pt 0 12pt; flex-wrap: wrap; }
+  .total span { background: var(--mist); color: var(--ruby-dark); border-radius: 999px; padding: 3pt 10pt; font-weight: 800; font-size: 9pt; }
+  .box { display: inline-block; width: 10pt; height: 10pt; border: 1.5px solid var(--ruby); border-radius: 3px; margin-right: 7pt; vertical-align: -1pt; }
+  .checklist li { list-style: none; margin-bottom: 7pt; }
+  .checklist { padding-left: 0; }
+  h2 { break-after: avoid; } h3 { break-after: avoid; }
+  table { break-inside: auto; } tr { break-inside: avoid; }
+</style>
+
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="glow"></div><div class="glow2"></div>
+  <svg viewBox="0 0 400 300" fill="none" aria-hidden="true">
+    <path d="M30 70 C130 80 230 190 380 240" stroke="#c8d3da" stroke-width="12" stroke-linecap="round"/>
+    <path d="M30 240 C130 230 230 110 380 60" stroke="#3a9ad9" stroke-width="12" stroke-linecap="round"/>
+    <circle cx="205" cy="152" r="14" fill="#16181d"/><circle cx="205" cy="152" r="6" fill="#fff"/>
+  </svg>
+  <div class="brand">Ascend Coaching</div>
+  <h1>The Recomp <span>Blueprint</span></h1>
+  <p class="sub">How to build muscle and burn fat at the same time: your calories, macros, training, cardio and food, set up step by step.</p>
+  <div class="tag">Ascend Coaching guide &middot; 2026 edition</div>
+  <div class="foot">General fitness and nutrition education, not medical advice. Talk to your doctor before changing your diet or training if you have a medical condition. Information current as of November 2026.</div>
+</div>
+
+<!-- 1 -->
+<div class="section">
+  <div class="eyebrow">Chapter 1</div>
+  <h2><span class="num">01</span>My recomp story</h2>
+  <div class="rule"></div>
+  <p class="lead">Out of every method I&rsquo;ve tried, body recomposition gave me the best results. It was slower, but it was worth it.</p>
+
+  <p>I was able to lose fat and put on muscle while staying at my maintenance calories. No crash diet, no miserable bulk. Just eating right, training hard and being patient.</p>
+
+  <h3>My biggest mistake</h3>
+  <p>I was eating at maintenance, but I wasn&rsquo;t eating as well as I could. My calories were &ldquo;right&rdquo;, but my protein and food quality were all over the place. It wasn&rsquo;t until I started actually prioritizing my macros, consistently, that I started to see results that made it worth it.</p>
+
+  <h3>Why recomp is my favorite method</h3>
+  <ul class="clean">
+    <li><b>You still feel good.</b> Grinding down to stage-lean through long, aggressive diets can tank your energy, your mood and your testosterone. On a recomp you keep your energy up the whole time.</li>
+    <li><b>You don&rsquo;t have to shrink to get lean.</b> Recomp let me stay at a heavier bodyweight while getting leaner, so I looked better without looking smaller.</li>
+    <li><b>It&rsquo;s sustainable.</b> Eating at maintenance means you can actually live your life while you make progress.</li>
+  </ul>
+
+  <h3>It didn&rsquo;t click overnight</h3>
+  <p>There wasn&rsquo;t one specific moment where it all clicked for me. It was seeing progress over time: from the first month to the third, then the fifth. Every check-in, my photos looked a little better than the last. That is what recomp looks like, and that is why this guide is built around tracking.</p>
+
+  <div class="callout"><b>How to use this guide:</b> read it once start to finish, then set yourself up using Chapters 3 to 7. Use Chapter 8 every week to track, and Chapter 9 to adjust. Follow it for at least 12 weeks before you judge it.</div>
+</div>
+
+<!-- 2 -->
+<div class="section">
+  <div class="eyebrow">Chapter 2</div>
+  <h2><span class="num">02</span>What a recomp actually is</h2>
+  <div class="rule"></div>
+  <p class="lead">Body recomposition means losing fat and building muscle at the same time, so your body changes even if the scale barely moves.</p>
+
+  <p>The old advice was that you have to pick one: bulk to build muscle, then cut to lose fat. Research now shows that a lot of people can do both at once, as long as protein is high, training is hard and progressive, and calories are close to maintenance.</p>
+
+  <h3>Who it works best for</h3>
+  <div class="grid3">
+    <div class="card"><div class="k">Great fit</div><h4>Beginners</h4><p>New lifters respond fastest. Your first year of real training is the best recomp window you will ever have.</p></div>
+    <div class="card"><div class="k">Great fit</div><h4>Returning lifters</h4><p>If you trained before and took time off, muscle comes back quickly (&ldquo;muscle memory&rdquo;).</p></div>
+    <div class="card"><div class="k">Great fit</div><h4>Skinny fat or a bit soft</h4><p>Some extra fat to use as fuel plus room to add muscle is the perfect setup.</p></div>
+    <div class="card"><div class="k">Works, but slower</div><h4>Experienced and lean</h4><p>The leaner and more trained you are, the slower recomp gets. It still works, just expect smaller monthly changes.</p></div>
+    <div class="card"><div class="k">Consider a cut first</div><h4>A lot of fat to lose</h4><p>If fat loss is your main goal, a small deficit (Chapter 3) gets you there faster while you still build muscle.</p></div>
+    <div class="card"><div class="k">Consider a bulk</div><h4>Very lean, want size</h4><p>If you&rsquo;re already lean and want to get bigger fast, a slow lean bulk will build more muscle.</p></div>
+  </div>
+
+  <h3>The four things that make it work</h3>
+  <ul class="clean check">
+    <li><b>Calories at maintenance</b> (or a small deficit), so you&rsquo;re not storing extra fat.</li>
+    <li><b>High protein, every day,</b> so your body has the material to build muscle.</li>
+    <li><b>Hard, progressive lifting,</b> so your body has a reason to build muscle.</li>
+    <li><b>Sleep, steps and patience,</b> so you recover and give it time to show.</li>
+  </ul>
+  <div class="callout"><b>Reality check:</b> recomp is slower than a bulk or a cut. Your scale might move less than a pound a month. Judge it by your waist, your photos and your lifts, not your bodyweight.</div>
+</div>
+
+<!-- 3 -->
+<div class="section">
+  <div class="eyebrow">Chapter 3</div>
+  <h2><span class="num">03</span>Find your maintenance calories</h2>
+  <div class="rule"></div>
+  <p class="lead">Maintenance is the number of calories that keeps your weight steady. Everything in this guide is built on it, so it&rsquo;s worth getting right.</p>
+
+  <div class="steps">
+    <div><b>Work out your BMR (calories burned at rest)</b>
+      Use the Mifflin-St Jeor equation, the most accurate everyday formula for most people:
+      <div class="formula">Men: (10 &times; weight in kg) + (6.25 &times; height in cm) &minus; (5 &times; age) + 5<br>Women: (10 &times; weight in kg) + (6.25 &times; height in cm) &minus; (5 &times; age) &minus; 161</div>
+      <span class="caption">lb &divide; 2.2 = kg &nbsp;&middot;&nbsp; inches &times; 2.54 = cm</span></div>
+    <div><b>Multiply by your activity level</b>
+      <span class="caption"><b>Light &times;1.375:</b> desk job, lifting 3 to 4 days a week, under about 7,000 steps. &nbsp;<b>Moderate &times;1.55:</b> lifting 4 to 6 days, 8,000 to 10,000 steps (most people running this plan). &nbsp;<b>Very active &times;1.725:</b> on your feet all day, or training 6 days plus cardio and 10,000+ steps.</span></div>
+    <div><b>Run it for 2 to 3 weeks and adjust</b>
+      Weigh yourself every morning and compare weekly averages. If your average is going up, drop 100 to 200 calories. If it&rsquo;s dropping, add 100 to 200. When the average holds steady, that is your real maintenance.</div>
+  </div>
+
+  <div class="callout"><b>Example:</b> a 25-year-old man, 5&prime;10&Prime;, 180 lb (81.6 kg, 177.8 cm), lifting 5 days with 8,000+ steps.<br>BMR = 816 + 1,111 &minus; 125 + 5 = <b>1,807</b> &nbsp;&rarr;&nbsp; 1,807 &times; 1.55 = <b>about 2,800 calories a day</b> to start.</div>
+
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>My own maintenance sits around 3,000 calories, because I&rsquo;m very active and carry a good amount of muscle. Yours could be a lot higher or lower. Don&rsquo;t copy my number, find yours.</p></div>
+</div>
+
+<div class="section">
+  <div class="eyebrow">Chapter 3 &middot; Chart</div>
+  <h2>Maintenance calorie chart</h2>
+  <div class="rule"></div>
+  <p class="lead">Find the row closest to your height and weight to get a starting number. All examples are worked out with Mifflin-St Jeor at age 25 and rounded to the nearest 50.</p>
+  <h3>Men</h3>
+  <table><tr><th>Height</th><th class='n'>Weight</th><th class='n'>BMR</th><th class='n'>Light &times;1.375</th><th class='n'>Moderate &times;1.55</th><th class='n'>Very active &times;1.725</th></tr><tr><td>5&prime;6&Prime;</td><td class='n'>150 lb</td><td class='n'>1,600</td><td class='n'>2,200</td><td class='n hi'>2,500</td><td class='n'>2,750</td></tr>
+<tr><td>5&prime;7&Prime;</td><td class='n'>165 lb</td><td class='n'>1,700</td><td class='n'>2,350</td><td class='n hi'>2,600</td><td class='n'>2,900</td></tr>
+<tr><td>5&prime;8&Prime;</td><td class='n'>170 lb</td><td class='n'>1,750</td><td class='n'>2,400</td><td class='n hi'>2,700</td><td class='n'>3,000</td></tr>
+<tr><td>5&prime;10&Prime;</td><td class='n'>180 lb</td><td class='n'>1,800</td><td class='n'>2,500</td><td class='n hi'>2,800</td><td class='n'>3,100</td></tr>
+<tr><td>5&prime;10&Prime;</td><td class='n'>200 lb</td><td class='n'>1,900</td><td class='n'>2,600</td><td class='n hi'>2,950</td><td class='n'>3,250</td></tr>
+<tr><td>6&prime;0&Prime;</td><td class='n'>190 lb</td><td class='n'>1,900</td><td class='n'>2,600</td><td class='n hi'>2,900</td><td class='n'>3,250</td></tr>
+<tr><td>6&prime;0&Prime;</td><td class='n'>210 lb</td><td class='n'>2,000</td><td class='n'>2,700</td><td class='n hi'>3,050</td><td class='n'>3,400</td></tr>
+<tr><td>6&prime;2&Prime;</td><td class='n'>220 lb</td><td class='n'>2,050</td><td class='n'>2,800</td><td class='n hi'>3,200</td><td class='n'>3,550</td></tr></table>
+  <h3>Women</h3>
+  <table><tr><th>Height</th><th class='n'>Weight</th><th class='n'>BMR</th><th class='n'>Light &times;1.375</th><th class='n'>Moderate &times;1.55</th><th class='n'>Very active &times;1.725</th></tr><tr><td>5&prime;2&Prime;</td><td class='n'>120 lb</td><td class='n'>1,250</td><td class='n'>1,700</td><td class='n hi'>1,950</td><td class='n'>2,150</td></tr>
+<tr><td>5&prime;4&Prime;</td><td class='n'>135 lb</td><td class='n'>1,350</td><td class='n'>1,850</td><td class='n hi'>2,100</td><td class='n'>2,300</td></tr>
+<tr><td>5&prime;5&Prime;</td><td class='n'>150 lb</td><td class='n'>1,450</td><td class='n'>1,950</td><td class='n hi'>2,200</td><td class='n'>2,450</td></tr>
+<tr><td>5&prime;7&Prime;</td><td class='n'>160 lb</td><td class='n'>1,500</td><td class='n'>2,050</td><td class='n hi'>2,350</td><td class='n'>2,600</td></tr>
+<tr><td>5&prime;8&Prime;</td><td class='n'>175 lb</td><td class='n'>1,600</td><td class='n'>2,200</td><td class='n hi'>2,450</td><td class='n'>2,750</td></tr></table>
+  <p class="caption"><b>Older or younger than 25?</b> Take off about 75 calories for every 10 years older, or add about 75 for every 10 years younger. These are estimates: formulas can be off by 10% or more for any one person, especially if you carry a lot of muscle. Your 2 to 3 weeks of weigh-ins always beat the chart.</p>
+
+  <h3>Option: a small deficit</h3>
+  <p>If you have a fair amount of fat to lose and want it to come off a bit faster, set calories <b>200 to 300 below</b> maintenance. Don&rsquo;t go further than that. A bigger deficit makes building muscle much harder and starts costing you energy and strength.</p>
+</div>
+
+<!-- 4 -->
+<div class="section">
+  <div class="eyebrow">Chapter 4</div>
+  <h2><span class="num">04</span>Set your macros</h2>
+  <div class="rule"></div>
+  <p class="lead">Calories decide whether you gain or lose weight. Macros decide whether that weight is muscle or fat. This is the part I got wrong at first.</p>
+
+  <div class="grid3">
+    <div class="card"><div class="k">Priority 1</div><h4 style="font-size:16pt;color:var(--ruby)">Protein</h4><p><b>0.8 to 1 g per lb</b> of bodyweight, every day. If you have a lot of fat to lose, use your goal weight instead.</p></div>
+    <div class="card"><div class="k">Priority 2</div><h4 style="font-size:16pt;color:var(--ruby)">Fat</h4><p><b>0.3 to 0.4 g per lb.</b> Enough to keep hormones and energy healthy. Don&rsquo;t drop much below this.</p></div>
+    <div class="card"><div class="k">The rest</div><h4 style="font-size:16pt;color:var(--ruby)">Carbs</h4><p>Whatever calories are left. Carbs fuel your training, so don&rsquo;t fear them.</p></div>
+  </div>
+
+  <h3>Worked example: 180 lb at 2,800 calories</h3>
+  <table>
+    <tr><th>Macro</th><th>How</th><th class="n">Grams</th><th class="n">Calories</th></tr>
+    <tr><td><b>Protein</b></td><td>1 g &times; 180 lb</td><td class="n">180 g</td><td class="n">720</td></tr>
+    <tr><td><b>Fat</b></td><td>0.36 g &times; 180 lb</td><td class="n">65 g</td><td class="n">585</td></tr>
+    <tr><td><b>Carbs</b></td><td>(2,800 &minus; 720 &minus; 585) &divide; 4</td><td class="n">375 g</td><td class="n">1,495</td></tr>
+  </table>
+  <p class="caption">Protein and carbs have 4 calories per gram. Fat has 9.</p>
+
+  <h3>Hit protein first, every single day</h3>
+  <p>Research puts the benefit of protein for building muscle at around 0.7 to 1 g per lb, which is exactly where this range sits. Spread it over 3 to 5 meals with 30 to 50 g each. Protein is also the most filling macro, which makes maintenance calories a lot easier to stick to.</p>
+
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>Eating maintenance isn&rsquo;t enough on its own. I was at the right calories for a while and barely changed. Once I started hitting my macros consistently, not just some days, that&rsquo;s when the results came.</p></div>
+</div>
+
+<!-- 5 -->
+<div class="section">
+  <div class="eyebrow">Chapter 5</div>
+  <h2><span class="num">05</span>The training plan</h2>
+  <div class="rule"></div>
+  <p class="lead">Five days a week: Push, Pull, Legs, then Upper and Lower. Every muscle gets trained twice a week, with abs and a 20-minute incline walk three times a week.</p>
+
+  <div class="week7">
+    <div><small>Mon</small><b>Push</b>+ abs<br>+ walk</div>
+    <div><small>Tue</small><b>Pull</b></div>
+    <div><small>Wed</small><b>Legs</b>+ abs<br>+ walk</div>
+    <div class="rest"><small>Thu</small><b>Rest</b></div>
+    <div><small>Fri</small><b>Upper</b>+ abs<br>+ walk</div>
+    <div><small>Sat</small><b>Lower</b></div>
+    <div class="rest"><small>Sun</small><b>Rest</b></div>
+  </div>
+  <p class="caption"><b>Brand new to lifting?</b> Run Push, Pull, Legs once a week (Mon, Wed, Fri) for your first 1 to 2 months, then move to the full 5 days.</p>
+
+  <h3>How to train each set</h3>
+  <ul class="clean">
+    <li><b>Effort:</b> finish each set with 1 to 2 good reps left in the tank. The last set of each exercise can go to failure on machines and cables.</li>
+    <li><b>Rest:</b> 2 to 3 minutes on big lifts (bench, squat, rows), 60 to 90 seconds on smaller ones.</li>
+    <li><b>Form first:</b> control the weight down, full range of motion, no ego lifting.</li>
+  </ul>
+
+  <h3>How to progress: double progression</h3>
+  <p>Every exercise has a rep range, like 8 to 10. Pick a weight you can do for 8. Each week, try to add a rep. Once you hit the top of the range on every set, add weight (about 5 lb on upper body, 10 lb on lower body) and work back up from the bottom. Write every session down. If your lifts are going up, you are building muscle.</p>
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>Working out more doesn&rsquo;t necessarily mean it&rsquo;s better. Muscle grows while you recover, not while you train. If you keep hitting the same muscle groups while they&rsquo;re still sore and beat up, they never get the time to repair and replenish. That&rsquo;s why this plan has 2 rest days and gives every muscle at least 3 days before you train it again. A little soreness is fine to train through. Really sore and weaker than last time means give it another day.</p></div>
+</div>
+
+<div class="section">
+  <div class="eyebrow">Chapter 5 &middot; Workouts</div>
+  <h2>Every day, every exercise</h2>
+  <div class="rule"></div>
+  <h3>Push day (chest, shoulders, triceps)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Barbell bench press</b></td><td class='n'>3 &times; 6&ndash;8</td><td>Incline barbell press</td></tr><tr><td><b>Incline dumbbell press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Machine chest press</td></tr><tr><td><b>Seated dumbbell shoulder press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Machine shoulder press</td></tr><tr><td><b>Cable lateral raise</b></td><td class='n'>3 &times; 12&ndash;15</td><td>Dumbbell lateral raise</td></tr><tr><td><b>Rope triceps pushdown</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Dips</td></tr><tr><td><b>Overhead cable triceps extension</b></td><td class='n'>2 &times; 12&ndash;15</td><td>EZ-bar skull crusher</td></tr></table>
+  <h3>Pull day (back, rear delts, biceps)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Pull-up or lat pulldown</b></td><td class='n'>3 &times; 6&ndash;10</td><td>Neutral-grip pulldown</td></tr><tr><td><b>Chest-supported row</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Barbell row</td></tr><tr><td><b>Seated cable row</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Single-arm dumbbell row</td></tr><tr><td><b>Face pull</b></td><td class='n'>3 &times; 12&ndash;15</td><td>Reverse pec deck</td></tr><tr><td><b>EZ-bar curl</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Incline dumbbell curl</td></tr><tr><td><b>Hammer curl</b></td><td class='n'>2 &times; 10&ndash;12</td><td>Cable curl</td></tr></table>
+  <h3>Leg day (quads, hamstrings, glutes, calves)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Back squat</b></td><td class='n'>3 &times; 6&ndash;8</td><td>Hack squat</td></tr><tr><td><b>Romanian deadlift</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Hip thrust</td></tr><tr><td><b>Leg press</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Bulgarian split squat</td></tr><tr><td><b>Lying leg curl</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Seated leg curl</td></tr><tr><td><b>Leg extension</b></td><td class='n'>2 &times; 12&ndash;15</td><td>Same</td></tr><tr><td><b>Standing calf raise</b></td><td class='n'>4 &times; 10&ndash;15</td><td>Seated calf raise</td></tr></table>
+</div>
+
+<div class="section">
+  <div class="eyebrow">Chapter 5 &middot; Workouts</div>
+  <h2>Upper, lower and abs</h2>
+  <div class="rule"></div>
+  <h3>Upper day (chest, back, shoulders, arms)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Incline dumbbell press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Machine chest press</td></tr><tr><td><b>Chest-supported row</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Seated cable row</td></tr><tr><td><b>Seated dumbbell shoulder press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Machine shoulder press</td></tr><tr><td><b>Lat pulldown</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Pull-up</td></tr><tr><td><b>Cable lateral raise</b></td><td class='n'>3 &times; 12&ndash;15</td><td>Dumbbell lateral raise</td></tr><tr><td><b>EZ-bar curl + rope pushdown (superset)</b></td><td class='n'>2 &times; 10&ndash;12 each</td><td>Dumbbell curl + dips</td></tr></table>
+  <h3>Lower day (quads, hamstrings, glutes, calves)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Hack squat or leg press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Back squat</td></tr><tr><td><b>Romanian deadlift</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Hip thrust</td></tr><tr><td><b>Bulgarian split squat</b></td><td class='n'>3 &times; 10&ndash;12 each leg</td><td>Walking lunge</td></tr><tr><td><b>Seated leg curl</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Lying leg curl</td></tr><tr><td><b>Leg extension</b></td><td class='n'>2 &times; 12&ndash;15</td><td>Sissy squat</td></tr><tr><td><b>Seated calf raise</b></td><td class='n'>4 &times; 10&ndash;15</td><td>Standing calf raise</td></tr></table>
+  <h3>Abs (Mon, Wed, Fri, at the end of your lift)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Hanging knee or leg raise</b></td><td class='n'>3 &times; 10&ndash;15</td><td>Captain&rsquo;s chair raise</td></tr><tr><td><b>Cable crunch</b></td><td class='n'>3 &times; 12&ndash;15</td><td>Weighted decline crunch</td></tr><tr><td><b>Plank</b></td><td class='n'>3 &times; 30&ndash;60 sec</td><td>Ab wheel rollout, 3 &times; 8&ndash;12</td></tr></table>
+  <p class="caption">No access to a machine? Swap in the closest free-weight or cable version that hits the same muscle.</p>
+</div>
+
+<!-- 6 -->
+<div class="section">
+  <div class="eyebrow">Chapter 6</div>
+  <h2><span class="num">06</span>Cardio, steps and sleep</h2>
+  <div class="rule"></div>
+  <p class="lead">On a recomp, cardio is there to support fat loss and health, not to replace your diet. Keep it simple and keep it easy to recover from.</p>
+
+  <div class="grid3">
+    <div class="card"><div class="k">3 times a week</div><h4 style="font-size:16pt;color:var(--ruby)">20 min</h4><p>Incline treadmill walk after your Mon, Wed and Fri lift.</p></div>
+    <div class="card"><div class="k">The settings</div><h4 style="font-size:16pt;color:var(--ruby)">10&ndash;12%</h4><p>Incline at 3.0 to 3.5 mph. Breathing harder, but you could still talk.</p></div>
+    <div class="card"><div class="k">Every day</div><h4 style="font-size:16pt;color:var(--ruby)">8&ndash;10k</h4><p>Steps. The easiest way to burn more without hurting recovery.</p></div>
+  </div>
+
+  <h3>Why incline walking</h3>
+  <ul class="clean">
+    <li>It burns a good number of calories without beating up your joints or your legs for the next leg day.</li>
+    <li>It&rsquo;s easy to recover from, so it doesn&rsquo;t eat into your strength gains.</li>
+    <li>It&rsquo;s simple to stay consistent with. Put on a podcast and go.</li>
+  </ul>
+  <p><b>Don&rsquo;t hold the rails.</b> Holding on takes a lot of the work away. If you need to hold on, lower the incline until you don&rsquo;t.</p>
+
+  <h3>Why steps matter</h3>
+  <p>Your daily steps can change how many calories you burn by hundreds per day, and large studies link 8,000 to 10,000 steps a day with better long-term health. Walk after meals, take calls on foot, park further away. Keep your steps about the same every day so your maintenance stays stable.</p>
+  <h3>Don&rsquo;t skip sleep</h3>
+  <p>In one well-known study, dieters sleeping 5.5 hours lost far more muscle and less fat than the same people sleeping 8.5 hours, on the same diet. Aim for 7 to 9 hours. It&rsquo;s the cheapest recomp tool there is.</p>
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>Keep your cardio boring and consistent. I do the same 20-minute incline walk every time, right after I lift. It&rsquo;s short enough that I never skip it and easy enough that it never takes away from my next session. Throw on a podcast and the 20 minutes flies by.</p></div>
+</div>
+
+<!-- 7 -->
+<div class="section">
+  <div class="eyebrow">Chapter 7</div>
+  <h2><span class="num">07</span>What to eat</h2>
+  <div class="rule"></div>
+  <p class="lead">No strict meal plan. Hit your calories and macros with foods you actually like, and build most meals around a protein source.</p>
+
+  <h3>Build every meal the same way</h3>
+  <ul class="clean check">
+    <li><b>A palm-to-hand-sized protein:</b> chicken, lean beef, fish, eggs and egg whites, Greek yogurt, protein shakes.</li>
+    <li><b>A carb for energy:</b> rice, potatoes, oats, pasta, bread, fruit.</li>
+    <li><b>Veggies or fruit:</b> for fiber, fullness and micronutrients.</li>
+    <li><b>A bit of fat:</b> olive oil, avocado, nuts, cheese. Easy to overdo, so measure it.</li>
+  </ul>
+  <p>Aim for about 80% whole, simple foods and leave 20% for foods you enjoy. As long as your calories and protein are on point, that 20% won&rsquo;t hold you back.</p>
+
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>My go-tos: Diet Coke, since it&rsquo;s 0 calories and kills a sweet craving. Drinking water religiously. And protein-based snacks like Barebells protein bars and Fairlife protein shakes. Those did wonders for my cravings.</p></div>
+
+  <h3>My go-to snacks</h3>
+  <table>
+    <tr><th>Snack</th><th class="n">About</th><th>Why it helps</th></tr>
+    <tr><td><b>Barebells protein bar</b></td><td class="n">200 kcal &middot; 20 g protein</td><td>Tastes like a candy bar, and fits your macros.</td></tr>
+    <tr><td><b>Fairlife protein shake</b></td><td class="n">150 kcal &middot; 30 g protein</td><td>Grab-and-go, ready to drink, very filling.</td></tr>
+    <tr><td><b>Diet Coke / zero-sugar soda</b></td><td class="n">0 kcal</td><td>Handles a sweet craving for free. Fine in moderation.</td></tr>
+    <tr><td><b>Water</b></td><td class="n">0 kcal</td><td>Aim for a big glass with every meal and keep a bottle on you all day.</td></tr>
+  </table>
+  <p class="caption">Numbers are approximate and vary by flavor. Always check the label.</p>
+</div>
+
+<div class="section">
+  <div class="eyebrow">Chapter 7 &middot; Sample days</div>
+  <h2>Two sample days</h2>
+  <div class="rule"></div>
+  <p class="lead">Use these as templates, not rules. Scale the carb and fat portions up or down to hit your own calorie number from Chapter 3.</p>
+
+  <h3>Day 1: around 2,400 calories</h3>
+  <div class="meal"><div class="when">Breakfast</div><div>3 whole eggs + 1 cup egg whites, 2 slices toast, 1 cup berries</div><div class="mac">565 kcal &middot; 51P / 48C / 17F</div></div><div class="meal"><div class="when">Lunch</div><div>6 oz chicken breast, 1.5 cups cooked white rice, 1 cup veggies, 1 tbsp olive oil</div><div class="mac">760 kcal &middot; 60P / 78C / 20F</div></div><div class="meal"><div class="when">Snack</div><div>Barebells protein bar + an apple + Diet Coke</div><div class="mac">295 kcal &middot; 20P / 43C / 8F</div></div><div class="meal"><div class="when">Dinner</div><div>6 oz cooked 93% lean ground beef, 8 oz potato, side salad with light dressing</div><div class="mac">620 kcal &middot; 50P / 51C / 23F</div></div><div class="meal"><div class="when">Evening</div><div>Fairlife protein shake</div><div class="mac">150 kcal &middot; 30P / 4C / 3F</div></div>
+  <div class="total"><span>&asymp; 2,390 kcal</span><span>211 g protein</span><span>224 g carbs</span><span>71 g fat</span></div>
+
+  <h3>Day 2: around 2,850 calories</h3>
+  <div class="meal"><div class="when">Breakfast</div><div>Overnight oats: 1 cup oats, 1 scoop whey, 1 cup Fairlife 2% milk, 1 tbsp peanut butter, 1 banana</div><div class="mac">740 kcal &middot; 52P / 93C / 19F</div></div><div class="meal"><div class="when">Lunch</div><div>Burrito bowl: 6 oz chicken, 1.5 cups rice, &frac12; cup black beans, salsa, &frac14; avocado, 1 oz cheese</div><div class="mac">890 kcal &middot; 73P / 95C / 20F</div></div><div class="meal"><div class="when">Snack</div><div>1 cup nonfat Greek yogurt + &#8531; cup granola + Diet Coke</div><div class="mac">280 kcal &middot; 27P / 31C / 6F</div></div><div class="meal"><div class="when">Dinner</div><div>6 oz salmon, 1.5 cups cooked pasta, 1.5 cups broccoli</div><div class="mac">730 kcal &middot; 54P / 75C / 23F</div></div><div class="meal"><div class="when">Snack</div><div>Barebells protein bar</div><div class="mac">200 kcal &middot; 20P / 18C / 8F</div></div>
+  <div class="total"><span>&asymp; 2,840 kcal</span><span>226 g protein</span><span>312 g carbs</span><span>76 g fat</span></div>
+
+  <div class="callout"><b>Track it:</b> for at least the first 8 weeks, log everything in an app like MyFitnessPal, MacroFactor or Cronometer, and weigh your food. Oils, sauces, drinks and weekend meals are where most hidden calories come from.</div>
+</div>
+
+<!-- 8 -->
+<div class="section">
+  <div class="eyebrow">Chapter 8</div>
+  <h2><span class="num">08</span>Track your progress</h2>
+  <div class="rule"></div>
+  <p class="lead">On a recomp the scale lies to you. Muscle going up and fat going down can cancel out on the scale, so you need better ways to measure.</p>
+
+  <div class="grid3">
+    <div class="card"><div class="k">Every morning</div><h4>Bodyweight</h4><p>After the bathroom, before food. Only look at the weekly average.</p></div>
+    <div class="card"><div class="k">Once a week</div><h4>Waist</h4><p>Tape around your belly button, relaxed, same day each week.</p></div>
+    <div class="card"><div class="k">Every 4 weeks</div><h4>Photos</h4><p>Front, side, back. Same lighting, same spot, same time of day.</p></div>
+    <div class="card"><div class="k">Every session</div><h4>Your lifts</h4><p>Weights and reps going up is your proof that you&rsquo;re building muscle.</p></div>
+    <div class="card"><div class="k">Daily</div><h4>Protein and calories</h4><p>Were you on target? Count how many days out of 7.</p></div>
+    <div class="card"><div class="k">Daily</div><h4>Sleep and steps</h4><p>7 to 9 hours of sleep and 8,000 to 10,000 steps.</p></div>
+  </div>
+
+  <h3>What to expect</h3>
+  <div class="timeline">
+    <div><b>Weeks 1 to 4</b>Strength goes up quickly. The scale may jump around from water and food in your gut. Don&rsquo;t panic.</div>
+    <div><b>Months 2 to 3</b>Clothes start fitting differently and your waist starts coming down while your lifts keep climbing.</div>
+    <div><b>Months 4 to 6</b>The changes become obvious in side-by-side photos. This is where recomp really pays off.</div>
+  </div>
+
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>Take the photos even when you don&rsquo;t feel like it. For me there was no single moment where it all clicked. It was comparing month one to month three, then month five, that showed me how far I&rsquo;d come.</p></div>
+
+</div>
+
+<!-- 9 -->
+<div class="section">
+  <div class="eyebrow">Chapter 9</div>
+  <h2><span class="num">09</span>When and how to adjust</h2>
+  <div class="rule"></div>
+  <p class="lead">Check your numbers every 2 weeks, not every day. Then use this table. Only change one thing at a time.</p>
+  <table>
+    <tr><th style="width:30%">What you see (over 2+ weeks)</th><th style="width:30%">What it means</th><th>What to do</th></tr>
+    <tr><td>Weight steady, waist down, lifts up</td><td>Textbook recomp</td><td><b>Change nothing.</b> Keep going.</td></tr>
+    <tr><td>Weight up, waist up</td><td>You&rsquo;re above maintenance</td><td>Drop 150 to 200 calories, mostly from carbs or fat.</td></tr>
+    <tr><td>Weight dropping fast (over 0.5% a week), lifts stalling or dropping</td><td>You&rsquo;re in too big a deficit</td><td>Add 150 to 200 calories, mostly from carbs.</td></tr>
+    <tr><td>Weight, waist and lifts all flat for 4+ weeks</td><td>Something isn&rsquo;t on point</td><td>Check protein, tracking, sleep and progression first. If all are good, drop 150 calories or add 2,000 daily steps.</td></tr>
+    <tr><td>Always hungry and low energy</td><td>Calories or protein too low, or poor food choices</td><td>Check you&rsquo;re hitting protein, eat more high-volume foods, and recheck your maintenance.</td></tr>
+  </table>
+
+  <h3>Common recomp mistakes</h3>
+  <ul class="clean">
+    <li><b>Eating &ldquo;maintenance&rdquo; but ignoring macros.</b> The right calories with low protein won&rsquo;t build much muscle. (This was my mistake.)</li>
+    <li><b>Guessing instead of tracking.</b> Eyeballed portions, cooking oils, drinks and weekends add up fast.</li>
+    <li><b>Living on the scale.</b> A flat scale on a recomp can mean everything is working.</li>
+    <li><b>Lifting the same weights for months.</b> No progression means no reason for your body to build muscle.</li>
+    <li><b>Changing the plan every week.</b> Give each change at least 2 weeks before you judge it.</li>
+    <li><b>Too much cardio or cutting calories too hard.</b> That turns a recomp into a regular diet and costs you muscle.</li>
+    <li><b>Skimping on sleep.</b> Under 7 hours makes everything harder.</li>
+  </ul>
+</div>
+
+<!-- 10 -->
+<div class="section">
+  <div class="eyebrow">Chapter 10</div>
+  <h2><span class="num">10</span>Your weekly checklist</h2>
+  <div class="rule"></div>
+  <p class="lead">Hit these every week and the results take care of themselves.</p>
+  <ul class="checklist">
+    <li><span class="box"></span>Calories within 100 of my target at least 6 days out of 7</li>
+    <li><span class="box"></span>Protein at 0.8 to 1 g per lb every day</li>
+    <li><span class="box"></span>All 5 lifting sessions done and logged</li>
+    <li><span class="box"></span>Beat last week on at least one exercise per workout (a rep or more weight)</li>
+    <li><span class="box"></span>Abs and a 20-minute incline walk, 3 times</li>
+    <li><span class="box"></span>8,000 to 10,000 steps a day</li>
+    <li><span class="box"></span>7 to 9 hours of sleep most nights</li>
+    <li><span class="box"></span>Weighed in every morning and worked out my weekly average</li>
+    <li><span class="box"></span>Measured my waist</li>
+    <li><span class="box"></span>Progress photos (every 4th week)</li>
+  </ul>
+  <div class="callout"><b>Remember:</b> recomp is a slow burn. Run this plan for at least 12 weeks, judge it by your photos, waist and lifts, and adjust with the table in Chapter 9.</div>
+
+  <div class="end">
+    <h3>Want me to build it for you?</h3>
+    <p>At <b>Ascend Coaching</b>, a real coach with 9 years of training experience builds your training and nutrition plan 1:1, and adjusts it as you progress. Start your ascension today at Ascend Coaching.</p>
+  </div>
+</div>
+
+<!-- sources -->
+<div class="section">
+  <div class="eyebrow">References</div>
+  <h2>Sources</h2>
+  <div class="rule"></div>
+  <ol class="sources">
+    <li>Mifflin MD, St Jeor ST, et al. &ldquo;A new predictive equation for resting energy expenditure in healthy individuals.&rdquo; <i>Am J Clin Nutr.</i> 1990;51(2):241&ndash;247.</li>
+    <li>Frankenfield D, Roth-Yousey L, Compher C. &ldquo;Comparison of predictive equations for resting metabolic rate in healthy nonobese and obese adults: a systematic review.&rdquo; <i>J Am Diet Assoc.</i> 2005;105(5):775&ndash;789.</li>
+    <li>Barakat C, Pearson J, Escalante G, Campbell B, De Souza EO. &ldquo;Body Recomposition: Can Trained Individuals Build Muscle and Lose Fat at the Same Time?&rdquo; <i>Strength Cond J.</i> 2020;42(5):7&ndash;21.</li>
+    <li>Morton RW, et al. &ldquo;A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults.&rdquo; <i>Br J Sports Med.</i> 2018;52(6):376&ndash;384.</li>
+    <li>J&auml;ger R, et al. &ldquo;International Society of Sports Nutrition Position Stand: protein and exercise.&rdquo; <i>J Int Soc Sports Nutr.</i> 2017;14:20.</li>
+    <li>Helms ER, Aragon AA, Fitschen PJ. &ldquo;Evidence-based recommendations for natural bodybuilding contest preparation: nutrition and supplementation.&rdquo; <i>J Int Soc Sports Nutr.</i> 2014;11:20.</li>
+    <li>Leidy HJ, et al. &ldquo;The role of protein in weight loss and maintenance.&rdquo; <i>Am J Clin Nutr.</i> 2015;101(6):1320S&ndash;1329S.</li>
+    <li>Schoenfeld BJ, Ogborn D, Krieger JW. &ldquo;Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis.&rdquo; <i>Sports Med.</i> 2016;46(11):1689&ndash;1697.</li>
+    <li>Schoenfeld BJ, Ogborn D, Krieger JW. &ldquo;Dose-response relationship between weekly resistance training volume and increases in muscle mass.&rdquo; <i>J Sports Sci.</i> 2017;35(11):1073&ndash;1082.</li>
+    <li>Rossow LM, et al. &ldquo;Natural bodybuilding competition preparation and recovery: a 12-month case study.&rdquo; <i>Int J Sports Physiol Perform.</i> 2013;8(5):582&ndash;592.</li>
+    <li>Nedeltcheva AV, et al. &ldquo;Insufficient sleep undermines dietary efforts to reduce adiposity.&rdquo; <i>Ann Intern Med.</i> 2010;153(7):435&ndash;441.</li>
+    <li>Paluch AE, et al. &ldquo;Daily steps and all-cause mortality: a meta-analysis of 15 international cohorts.&rdquo; <i>Lancet Public Health.</i> 2022;7(3):e219&ndash;e228.</li>
+    <li>U.S. Food and Drug Administration. &ldquo;Aspartame and Other Sweeteners in Food.&rdquo; Updated 2023.</li>
+  </ol>
+  <p class="caption" style="margin-top:18pt">This guide is for general education only and is not medical or dietary advice. Results vary from person to person. If you have a medical condition, are pregnant, or have a history of disordered eating, talk to a doctor or registered dietitian before changing how you eat or train.</p>
+</div>
+
+</body>
+</html>
