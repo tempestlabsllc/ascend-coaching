@@ -177,14 +177,12 @@ export const guides: Guide[] = [
     file: "abs-blueprint.pdf",
   },
   {
-    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
     id: "first-90-days",
     title: "Your First 90 Days: The Beginner's Roadmap from Zero to Results",
-    priceCents: 0,
+    priceCents: 2000,
     description: "Don't know where to start? This is your day-one plan: what to lift, what to eat and how to stay consistent for your first three months.",
-    pages: 0,
+    pages: 12,
     file: "first-90-days.pdf",
-    comingSoon: true,
   },
   // Add paid guides here later, e.g.
   // { id: "fat-loss-starter", title: "Fat Loss Starter Guide", priceCents: 2900, description: "...", pages: 40, file: "fat-loss-starter.pdf" },
