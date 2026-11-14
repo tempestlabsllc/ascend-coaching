@@ -9,7 +9,7 @@ Next.js 16 + Tailwind + Stripe Checkout. Pages:
 | `/book` | Embedded booking calendar (Cal.com or Calendly link) |
 | `/intake` | Intake questionnaire: stats, goals, training, nutrition, health |
 | `/shop` | Digital guides: free ones download directly, paid ones go through Stripe |
-| `/admin` | Private: revenue, active plans, recent purchases, discount codes (needs `ADMIN_PASSWORD`) |
+| `/admin` | Private (needs `ADMIN_PASSWORD`): revenue, clients, intake & check-in answers, guide sales, cancellations & failed payments, leads (CSV), discount codes |
 | `/success` | After payment: download link for guides, or "start questionnaire" for coaching |
 
 ## Edit content
@@ -27,6 +27,9 @@ Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
 
 ## Settings (`.env.local`, or your host's environment variables)
 - `ADMIN_PASSWORD` – password for `/admin` (12+ characters). Without it the admin page stays locked.
+- `KV_REST_API_URL` + `KV_REST_API_TOKEN` – Upstash Redis (Vercel → Storage → Upstash). Saves intake/check-in answers and guide-signup leads so they show in `/admin`. Optional: forms still email without it.
+- Instant alerts (bookings, intakes, cancellations, failed payments, plus the sale email) go to `COACH_EMAIL` or the site email, through Resend. The auto-created Stripe webhook subscribes to the events they need.
+- `CALENDLY_TOKEN` – optional; booking alerts then include name, email and time, and get emailed.
 - `STRIPE_SECRET_KEY` – from dashboard.stripe.com (use `sk_test_...` first)
 - `STRIPE_AUTOMATIC_TAX=true` – after turning on Stripe Tax (Settings → Tax) to add sales tax at checkout
 - Invoices: subscriptions invoice automatically; guide purchases get a paid invoice emailed. In Stripe → Settings → Customer emails, turn on "Successful payments" and "Finalized invoices".

@@ -91,3 +91,82 @@ export function describeCoupon(c: Stripe.Coupon | null, fmt: (cents: number) => 
 }
 
 export { stripe };
+
+const tierName = (id?: string) => tiers.find((t) => t.id === id)?.name ?? "Other";
+const custOf = (c: string | Stripe.Customer | Stripe.DeletedCustomer | null) =>
+  c && typeof c === "object" && !("deleted" in c && c.deleted) ? (c as Stripe.Customer) : null;
+const renewalOf = (sub: Stripe.Subscription) =>
+  sub.items.data.reduce((min, it) => Math.min(min, it.current_period_end), Infinity);
+
+// Everyone on a plan right now (active, trial, or behind on payment).
+export async function getClients(s: Stripe) {
+  const out = [];
+  for await (const sub of s.subscriptions.list({ limit: 100, expand: ["data.customer"] })) {
+    if (out.length >= 2000) break;
+    if (!["active", "trialing", "past_due", "unpaid"].includes(sub.status)) continue;
+    const c = custOf(sub.customer);
+    out.push({
+      id: sub.id,
+      customerId: typeof sub.customer === "string" ? sub.customer : sub.customer.id,
+      name: c?.name ?? "",
+      email: c?.email ?? "",
+      phone: c?.phone ?? "",
+      plan: tierName(sub.metadata?.tier),
+      term: sub.metadata?.term === "3month" ? "3-month" : "Monthly",
+      start: sub.start_date,
+      renews: Number.isFinite(renewalOf(sub)) ? renewalOf(sub) : null,
+      status: sub.status,
+      cancelling: sub.cancel_at_period_end || !!sub.cancel_at,
+    });
+  }
+  return out.sort((a, b) => b.start - a.start);
+}
+
+// Cancellations, plans ending soon, and payment problems.
+export async function getChurn(s: Stripe) {
+  const [canceled, open, charges] = await Promise.all([
+    s.subscriptions.list({ status: "canceled", limit: 50, expand: ["data.customer"] }),
+    s.subscriptions.list({ limit: 100, expand: ["data.customer"] }),
+    s.charges.list({ limit: 100, created: { gte: Math.floor(Date.now() / 1000) - 60 * 60 * 24 * 60 } }),
+  ]);
+  const who = (sub: Stripe.Subscription) => {
+    const c = custOf(sub.customer);
+    return { name: c?.name ?? "", email: c?.email ?? "", plan: tierName(sub.metadata?.tier) };
+  };
+  return {
+    canceled: canceled.data.map((sub) => ({
+      id: sub.id, ...who(sub),
+      date: sub.ended_at ?? sub.canceled_at ?? sub.created,
+      reason: [sub.cancellation_details?.feedback, sub.cancellation_details?.comment].filter(Boolean).join(": ").replace(/_/g, " "),
+    })),
+    ending: open.data.filter((sub) => sub.cancel_at_period_end || sub.cancel_at).map((sub) => ({
+      id: sub.id, ...who(sub), date: sub.cancel_at ?? renewalOf(sub),
+    })),
+    pastDue: open.data.filter((sub) => ["past_due", "unpaid", "incomplete"].includes(sub.status)).map((sub) => ({
+      id: sub.id, ...who(sub), status: sub.status.replace("_", " "),
+    })),
+    failed: charges.data.filter((c) => c.status === "failed").map((c) => ({
+      id: c.id, email: c.billing_details?.email ?? c.receipt_email ?? "", amount: c.amount, date: c.created,
+      reason: c.outcome?.seller_message ?? c.failure_message ?? "Declined",
+    })),
+  };
+}
+
+// Paid guide sales from Stripe, plus free downloads from stored signups.
+export async function getGuideSales(s: Stripe, leads: Record<string, unknown>[]) {
+  const sales = new Map<string, { count: number; revenue: number }>();
+  let n = 0;
+  for await (const cs of s.checkout.sessions.list({ status: "complete", limit: 100 })) {
+    if (++n > CAP) break;
+    if (cs.metadata?.kind !== "guide" || !cs.metadata.id) continue;
+    const row = sales.get(cs.metadata.id) ?? { count: 0, revenue: 0 };
+    row.count++;
+    row.revenue += cs.amount_total ?? 0;
+    sales.set(cs.metadata.id, row);
+  }
+  const free = new Map<string, number>();
+  for (const l of leads) if (typeof l.guide === "string") free.set(l.guide, (free.get(l.guide) ?? 0) + 1);
+  return guides
+    .map((g) => ({ id: g.id, title: g.title, price: g.priceCents, comingSoon: !!g.comingSoon, sold: sales.get(g.id)?.count ?? 0, revenue: sales.get(g.id)?.revenue ?? 0, free: free.get(g.id) ?? 0 }))
+    .sort((a, b) => b.revenue - a.revenue || b.free + b.sold - (a.free + a.sold));
+}

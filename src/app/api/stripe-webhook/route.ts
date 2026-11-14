@@ -4,6 +4,8 @@ import { site, tiers, guides } from "@/config/site";
 import { sendEmail, emailLayout, esc } from "@/email";
 import { isPaid } from "@/paid";
 import { eliteLoginToken } from "@/elite";
+import { logActivity } from "@/activity";
+import { formatPrice } from "@/config/site";
 
 // Stripe calls this after a successful checkout. We send the buyer a confirmation
 // email (Elite buyers also get a link that unlocks every guide) and the coach a sale alert.
@@ -31,6 +33,14 @@ export async function POST(req: Request) {
   if (event.type === "checkout.session.completed") {
     const s = event.data.object as Stripe.Checkout.Session;
     const to = s.customer_details?.email;
+    if (isPaid(s)) {
+      const m = s.metadata ?? {};
+      const item = m.kind === "tier"
+        ? `${tiers.find((t) => t.id === m.id)?.name ?? "Coaching"} coaching${m.term === "3month" ? " (3-month)" : ""}`
+        : (guides.find((g) => g.id === m.id)?.title ?? "Guide");
+      const who = s.customer_details?.name || to || "Someone";
+      await logActivity("purchase", `New purchase: ${item} (${formatPrice(s.amount_total ?? 0)})`, `${who}${to && who !== to ? ` · ${to}` : ""} just bought ${item}.`, { key: event.id, alert: false }); // the sale email below is the alert
+    }
     if (to && isPaid(s)) {
       const name = s.customer_details?.name?.split(" ")[0];
       const hi = `<p style="margin:0 0 14px">Hey${name ? ` ${esc(name)}` : ""},</p>`;
@@ -86,5 +96,20 @@ ${s.metadata?.kind === "tier" ? `<p style="margin:14px 0 0"><strong>Reach out wi
       );
     }
   }
+
+  if (event.type === "customer.subscription.deleted") {
+    const sub = event.data.object as Stripe.Subscription;
+    const c = typeof sub.customer === "string" ? await stripe.customers.retrieve(sub.customer).catch(() => null) : sub.customer;
+    const email = c && !("deleted" in c && c.deleted) ? (c as Stripe.Customer).email : "";
+    const plan = tiers.find((t) => t.id === sub.metadata?.tier)?.name ?? "Coaching";
+    await logActivity("cancel", `Plan ended: ${plan}`, `${email || "A client"}'s ${plan} plan has ended.`, { link: "/admin?tab=churn", key: event.id });
+  }
+
+  if (event.type === "invoice.payment_failed") {
+    const inv = event.data.object as Stripe.Invoice;
+    await logActivity("payment-failed", `Payment failed: ${formatPrice(inv.amount_due)}`,
+      `${inv.customer_email || "A client"}'s payment didn't go through. Stripe will retry it.`, { link: "/admin?tab=churn", key: event.id });
+  }
+
   return new Response("ok");
 }
