@@ -1,21 +1,29 @@
 import { site } from "@/config/site";
 
-// Sends an email through Resend's HTTP API. No-op (returns false) until
-// RESEND_API_KEY is set in Vercel (EMAIL_FROM is optional).
-export async function sendEmail(to: string, subject: string, html: string) {
+// Sends an email through Resend's HTTP API. Does nothing until RESEND_API_KEY is set
+// in Vercel (EMAIL_FROM is optional). sendEmailDetailed also returns Resend's error.
+export async function sendEmailDetailed(to: string, subject: string, html: string): Promise<{ ok: boolean; error?: string }> {
   const key = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM || `Ascend Coaching <hello@${new URL(site.url).hostname}>`;
   if (!key) {
     console.warn("Email not sent: RESEND_API_KEY not set");
-    return false;
+    return { ok: false, error: "RESEND_API_KEY is not set in Vercel (or the site wasn't redeployed after adding it)." };
   }
   const r = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
     body: JSON.stringify({ from, to, subject, html, reply_to: site.email }),
-  });
-  if (!r.ok) console.error("Resend error", r.status, await r.text().catch(() => ""));
-  return r.ok;
+  }).catch((e) => ({ ok: false, status: 0, text: async () => String(e) }) as const);
+  if (r.ok) return { ok: true };
+  const text = await r.text().catch(() => "");
+  console.error("Resend error", r.status, text);
+  let msg = text;
+  try { msg = JSON.parse(text).message || text; } catch {}
+  return { ok: false, error: `Resend said (${r.status}): ${msg}` };
+}
+
+export async function sendEmail(to: string, subject: string, html: string) {
+  return (await sendEmailDetailed(to, subject, html)).ok;
 }
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
