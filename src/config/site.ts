@@ -131,14 +131,13 @@ export const guides: Guide[] = [
     file: "starting-peps.pdf",
   },
   {
-    // PLACEHOLDER: drop the PDF in /private-guides, then remove comingSoon.
+    // Source: guides-src/personal-split.html (re-render to PDF after edits).
     id: "personal-split",
     title: "My Personal Training Split",
     priceCents: 1500,
-    description: "The exact weekly split I train with: every day, exercise, set and rep, plus how I progress it.",
-    pages: 0,
+    description: "The exact weekly split I train with: every day, exercise, set and rep, plus how I warm up, progress, use drop sets and deload.",
+    pages: 14,
     file: "personal-split.pdf",
-    comingSoon: true,
   },
   {
     // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
