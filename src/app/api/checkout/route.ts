@@ -24,6 +24,14 @@ export async function POST(req: Request) {
   const name = "name" in item ? `${item.name} Coaching${is3 ? ` (${threeMonth.months}-month plan)` : ""}` : item.title;
   const amount = is3 ? threeMonthTotalCents(item.priceCents) : item.priceCents;
 
+  // Embedded payment form (Stripe Checkout Studio, ui_mode "form") whenever a publishable key for the
+  // same mode (test/live) as the secret key is set. Otherwise fall back to Stripe's hosted checkout page,
+  // so buying never breaks while keys are being switched.
+  const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY ?? "";
+  const live = (k: string) => k.includes("_live_");
+  const embedded = publishableKey.startsWith("pk_") && live(publishableKey) === live(process.env.STRIPE_SECRET_KEY ?? "");
+  const returnUrl = `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`;
+
   const session = await stripe.checkout.sessions.create({
     mode: isSub ? "subscription" : "payment",
     line_items: [{
@@ -37,24 +45,36 @@ export async function POST(req: Request) {
       },
     }],
     metadata: { kind, id, term: is3 ? "3month" : "monthly" },
-    // Shown next to the pay button on Stripe's checkout page.
-    ...(kind === "tier"
-      ? { custom_text: { submit: { message: "After you subscribe, your coach will personally reach out within 24 hours on Trainerize or WhatsApp to review everything with you." } } }
-      : {}),
     allow_promotion_codes: true,
+    // Configured in Stripe Checkout Studio.
     billing_address_collection: "auto",
-    // Stripe Tax: turn on once Tax is set up in the Stripe dashboard (Settings → Tax).
+    phone_number_collection: { enabled: false },
+    submit_type: "auto",
+    ...(isSub ? { payment_method_collection: "always" as const } : {}),
+    // Stripe Tax: off (as set in Checkout Studio) until Tax is set up in the Stripe dashboard (Settings → Tax)
+    // and STRIPE_AUTOMATIC_TAX=true.
     ...(process.env.STRIPE_AUTOMATIC_TAX === "true"
       ? { automatic_tax: { enabled: true }, ...(isSub ? {} : { customer_creation: "always" as const }) }
-      : {}),
+      : { automatic_tax: { enabled: false } }),
     // Invoicing: subscriptions create invoices automatically; one-time purchases
     // (guides) get a paid invoice PDF emailed to the buyer too.
     ...(isSub
       ? { subscription_data: { billing_mode: { type: "flexible" as const }, metadata: { tier: id, term: is3 ? "3month" : "monthly" } } }
       : { invoice_creation: { enabled: true } }),
-    success_url: `${siteUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${siteUrl}/${kind === "tier" ? "coaching" : "shop"}`,
+    ...(embedded
+      ? { ui_mode: "form" as const, integration_identifier: "custom_embedded_web_0001", return_url: returnUrl }
+      : {
+          // Hosted page fallback. The coaching note is shown on our /checkout page for the embedded form
+          // (the form doesn't support custom_text).
+          ...(kind === "tier"
+            ? { custom_text: { submit: { message: "After you subscribe, your coach will personally reach out within 24 hours on Trainerize or WhatsApp to review everything with you." } } }
+            : {}),
+          success_url: returnUrl,
+          cancel_url: `${siteUrl}/${kind === "tier" ? "coaching" : "shop"}`,
+        }),
   });
 
-  return NextResponse.json({ url: session.url });
+  return embedded
+    ? NextResponse.json({ client_secret: session.client_secret, publishable_key: publishableKey })
+    : NextResponse.json({ url: session.url });
 }

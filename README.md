@@ -31,6 +31,7 @@ Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
 - Instant alerts (bookings, intakes, cancellations, failed payments, plus the sale email) go to `COACH_EMAIL` or the site email, through Resend. The auto-created Stripe webhook subscribes to the events they need.
 - `CALENDLY_TOKEN` – optional; booking alerts then include name, email and time, and get emailed.
 - `STRIPE_SECRET_KEY` – from dashboard.stripe.com (use `sk_test_...` first)
+- `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` – the matching `pk_test_...` / `pk_live_...` key; turns on the embedded payment form
 - `STRIPE_AUTOMATIC_TAX=true` – after turning on Stripe Tax (Settings → Tax) to add sales tax at checkout
 - Invoices: subscriptions invoice automatically; guide purchases get a paid invoice emailed. In Stripe → Settings → Customer emails, turn on "Successful payments" and "Finalized invoices".
 - `NEXT_PUBLIC_BOOKING_URL` – your Cal.com / Calendly link
@@ -47,7 +48,7 @@ Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
    If you bought it elsewhere, Vercel shows the DNS records to add at your registrar.
 
 ## Stripe setup checklist (from Stripe's integration planner)
-1. **Checkout**: Stripe-hosted Checkout (already built). Subscriptions use flexible billing mode.
+1. **Checkout**: Stripe's embedded payment form on `/checkout` (Checkout Studio, `ui_mode: "form"`). Needs `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`; without it buyers use Stripe's hosted page. See `STRIPE_INTEGRATION_TODO.md`. Subscriptions use flexible billing mode.
 2. **Customer Portal**: Dashboard → Settings → Billing → Customer portal → activate, allow cancel + switch plans,
    copy the login link into `NEXT_PUBLIC_STRIPE_PORTAL_URL`. A "Manage subscription" link then shows in the footer.
 3. **Failed payments**: Dashboard → Settings → Billing → Revenue recovery → turn on Smart Retries and failed-payment emails.
