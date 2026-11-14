@@ -160,7 +160,7 @@ async function Overview(s: Stripe, since: number, sp: Params) {
           </Row>
         ))}</Rows>
       )}
-      <H2>Reset test data</H2>
+      <H2>Reset Test Data</H2>
       {sp.msg && sp.tab === "overview" && <p className="mt-3 rounded-xl bg-green-50 p-3 text-sm text-green-800">{sp.msg}</p>}
       {sp.err && sp.tab === "overview" && <p className="mt-3 rounded-xl bg-red-50 p-3 text-sm text-red-700">{sp.err}</p>}
       <p className="mt-1 text-sm text-black/60">

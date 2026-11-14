@@ -39,7 +39,8 @@ export default function Home() {
                 Choose Your Plan
                 <span className="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
               </Link>
-              <Link href="/shop" className="btn-outline bg-white/60 backdrop-blur">Free Starter Guide</Link>
+              <Link href="/book" className="btn-outline bg-white/60 backdrop-blur">Book a Free Call</Link>
+              <Link href="/shop" className="btn-outline bg-white/60 backdrop-blur">Browse Guides</Link>
             </div>
             <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-black/65 lg:justify-start">
               {["A real person, not an app", `${site.yearsExperience} years of experience`, "Training + nutrition"].map((t) => (
@@ -49,7 +50,7 @@ export default function Home() {
                 </li>
               ))}
             </ul>
-            <p className="mt-6 text-sm text-black/50">Have questions first? <Link href="/book" className="font-semibold text-brand-dark underline">Book a free call</Link></p>
+            <p className="mt-6 text-sm text-black/50">Not sure where to start? <Link href="/book" className="font-semibold text-brand-dark underline">Book a free 30-minute call</Link> and we&apos;ll find the right fit together.</p>
           </div>
 
           {/* Plan preview card (illustrative) */}
