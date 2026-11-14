@@ -100,6 +100,8 @@ export const tiers: Tier[] = [
     features: [
       "Everything in Pro",
       "Weekly review with specific feedback on your progress so far",
+      "Monthly 1:1 video call to review your progress and plan",
+      "Form review on your lift videos with personal technique feedback",
       "Life coaching & accountability (mindset, habits, routines)",
       "All guides free, including every future guide",
     ],
