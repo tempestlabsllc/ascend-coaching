@@ -29,7 +29,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
           <p className="mt-4 text-sm text-black/60">A copy has also been sent to {s?.customer_details?.email ? <strong>{s.customer_details.email}</strong> : "your email"}, so you can download it again any time.</p>
           <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-ink p-5 text-left text-white">
             <p className="text-xs font-bold uppercase tracking-widest text-[#89cff0]">Want every guide?</p>
-            <p className="mt-1 text-white/80">Elite members get <strong className="text-white">all guides free</strong>, including every new one, plus weekly 1:1 coaching.</p>
+            <p className="mt-1 text-white/80">Elite members get <strong className="text-white">all guides free</strong>, including every new one, plus weekly progress reviews.</p>
             <Link href="/coaching" className="mt-3 inline-block text-sm font-bold text-[#89cff0] underline">See the Elite plan</Link>
           </div>
         </>

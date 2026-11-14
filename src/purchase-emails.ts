@@ -63,7 +63,7 @@ ${receipt}`),
         emailLayout("Your guide is ready", `${hi}
 <p style="margin:0 0 14px">Thanks for grabbing <strong>${esc(g?.title ?? "your guide")}</strong>. You can download it any time here:</p>
 <p>${btn(`${site.url}/api/download?guide=${encodeURIComponent(s.metadata?.id ?? "")}&session_id=${s.id}`, "Download PDF")}</p>
-<p style="margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#f4f9fc;font-size:14px">💡 <strong>Want every guide?</strong> Elite members get all guides free, including every new one, plus weekly 1:1 coaching. <a href="${site.url}/coaching" style="color:#2378b5;font-weight:700">See the Elite plan</a></p>
+<p style="margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#f4f9fc;font-size:14px">💡 <strong>Want every guide?</strong> Elite members get all guides free, including every new one, plus weekly progress reviews. <a href="${site.url}/coaching" style="color:#2378b5;font-weight:700">See the Elite plan</a></p>
 ${receipt}`),
       );
     }
