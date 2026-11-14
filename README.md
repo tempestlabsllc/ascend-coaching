@@ -28,7 +28,7 @@ Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
 ## Settings (`.env.local`, or your host's environment variables)
 - `ADMIN_PASSWORD` – password for `/admin` (12+ characters). Without it the admin page stays locked.
 - `KV_REST_API_URL` + `KV_REST_API_TOKEN` – Upstash Redis (Vercel → Storage → Upstash). Saves intake/check-in answers and guide-signup leads so they show in `/admin`. Optional: forms still email without it.
-- `ADMIN_ALERT_EMAIL` – where instant alerts go (defaults to the site email). Needs the Resend vars. For cancellation and failed-payment alerts, add `customer.subscription.deleted` and `invoice.payment_failed` to the Stripe webhook's events.
+- Instant alerts (bookings, intakes, cancellations, failed payments, plus the sale email) go to `COACH_EMAIL` or the site email, through Resend. The auto-created Stripe webhook subscribes to the events they need.
 - `CALENDLY_TOKEN` – optional; booking alerts then include name, email and time, and get emailed.
 - `STRIPE_SECRET_KEY` – from dashboard.stripe.com (use `sk_test_...` first)
 - `STRIPE_AUTOMATIC_TAX=true` – after turning on Stripe Tax (Settings → Tax) to add sales tax at checkout

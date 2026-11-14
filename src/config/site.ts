@@ -127,18 +127,17 @@ export const guides: Guide[] = [
     title: "Everything You Need to Know About Starting Peps",
     priceCents: 0,
     description: "What peptides are and what they do, my personal experience with them, what each popular peptide is studied for, and what the science and 2026 rules actually say.",
-    pages: 11,
+    pages: 12,
     file: "starting-peps.pdf",
   },
   {
-    // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
+    // Source: guides-src/personal-split.html (re-render to PDF after edits).
     id: "personal-split",
     title: "My Personal Training Split",
-    priceCents: 0,
-    description: "The exact weekly split I train with: every day, exercise, set and rep, plus how I progress it.",
-    pages: 0,
+    priceCents: 1500,
+    description: "The exact weekly split I train with: every day, exercise, set and rep, plus how I warm up, progress, use drop sets and deload.",
+    pages: 14,
     file: "personal-split.pdf",
-    comingSoon: true,
   },
   {
     // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
@@ -161,14 +160,13 @@ export const guides: Guide[] = [
     comingSoon: true,
   },
   {
-    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    // Source: guides-src/recomp-blueprint.html (re-render to PDF after edits).
     id: "recomp-blueprint",
     title: "The Recomp Blueprint: Build Muscle and Burn Fat at the Same Time",
-    priceCents: 0,
+    priceCents: 2000,
     description: "My most proven method. How to set your calories, macros and training to get leaner and stronger at the same time, step by step.",
-    pages: 0,
+    pages: 16,
     file: "recomp-blueprint.pdf",
-    comingSoon: true,
   },
   {
     // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
