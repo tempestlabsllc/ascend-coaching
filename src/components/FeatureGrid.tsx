@@ -39,9 +39,9 @@ const features: { key: keyof typeof icons; title: string; text: string; points: 
   },
   {
     key: "accountability",
-    title: "Real accountability",
-    text: "A real coach checking in, so you never feel on your own.",
-    points: ["Regular check-ins", "Form reviews and messaging"],
+    title: "Real check-ins",
+    text: "A real coach reviewing your progress, so you never feel on your own.",
+    points: ["Monthly to weekly, depending on your plan", "Plan and macro adjustments"],
   },
   {
     key: "progress",

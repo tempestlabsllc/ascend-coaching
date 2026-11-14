@@ -10,7 +10,7 @@ const steps = [
   { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
   { n: "02", t: "Book a call or fill out the questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },
   { n: "03", t: "Get your plan in Trainerize", d: "Your training and nutrition plan lands in the ABC Trainerize app within days, where you log every workout." },
-  { n: "04", t: "1:1 on Trainerize or WhatsApp", d: "Your coach works with you directly on Trainerize or WhatsApp, whichever you prefer. 24/7 questions and messaging whenever you need it." },
+  { n: "04", t: "1:1 on Trainerize or WhatsApp", d: "Your coach works with you directly on Trainerize or WhatsApp, whichever you prefer. Pro and Elite include 24/7 messaging whenever you need it." },
 ];
 
 export default function Home() {
@@ -32,7 +32,7 @@ export default function Home() {
               Start your <span className="text-shimmer">ascension</span> today
             </h1>
             <p className="mx-auto mt-7 max-w-xl text-lg text-black/70 lg:mx-0">
-              1:1 online coaching from a real person with {site.yearsExperience} years of training experience. Training, nutrition and accountability built around your life, wherever you train.
+              1:1 online coaching from a real person with {site.yearsExperience} years of training experience. Training and nutrition built around your life, wherever you train.
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Link href="/coaching" className="btn-primary group shadow-[0_14px_34px_-10px_rgba(58,154,217,0.75)]">
@@ -98,7 +98,7 @@ export default function Home() {
         <div className="marquee">
           {[0, 1].map((k) => (
             <div key={k} className="flex shrink-0 items-center gap-10 pr-10 text-lg font-black uppercase tracking-widest">
-              {["Build muscle", "Get stronger", "Body recomposition", "Reach new goals", "Custom meal plans", "1:1 coaching", "Weekly check-ins", "Lose body fat"].map((t) => (
+              {["Build muscle", "Get stronger", "Body recomposition", "Reach new goals", "Custom meal plans", "1:1 coaching", "Progress check-ins", "Lose body fat"].map((t) => (
                 <span key={t} className="flex items-center gap-10">{t}<span className="text-[#89cff0]">✦</span></span>
               ))}
             </div>
@@ -134,7 +134,7 @@ export default function Home() {
             <p className="text-xl text-black/85">This isn&apos;t an AI program or an app that doesn&apos;t know who you are. It&apos;s a real person working with you directly, 1:1, with {site.yearsExperience} years of training experience behind every plan, check-in and adjustment.</p>
             <ul className="mt-6 grid gap-3 sm:grid-cols-3">
               <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">{site.yearsExperience}</span><span className="text-sm text-black/60">years of training experience</span></li>
-              <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-black/60">with your coach, 24/7 questions and messaging whenever you need it</span></li>
+              <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">1:1</span><span className="text-sm text-black/60">with your coach on Trainerize or WhatsApp, never an app or AI</span></li>
               <li className="lift rounded-xl border border-black/10 bg-card p-4"><span className="block text-3xl font-black text-brand">100%</span><span className="text-sm text-black/60">of check-ins answered personally</span></li>
             </ul>
           </div>
