@@ -14,9 +14,18 @@ export default function LiveEffects() {
     els.forEach((el) => io.observe(el));
 
     const bar = document.getElementById("scroll-bar");
+    const root = document.documentElement;
+    let raf = 0;
     const onScroll = () => {
-      const h = document.documentElement.scrollHeight - innerHeight;
-      bar?.style.setProperty("--sp", String(h > 0 ? scrollY / h : 0));
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const h = root.scrollHeight - innerHeight;
+        const p = h > 0 ? scrollY / h : 0;
+        bar?.style.setProperty("--sp", String(p));
+        root.style.setProperty("--sy", String(Math.round(scrollY))); // live background parallax
+        root.style.setProperty("--sp", p.toFixed(4));
+      });
     };
     const onMove = (e: PointerEvent) => {
       document.querySelectorAll<HTMLElement>("[data-spot]").forEach((el) => {
@@ -28,7 +37,7 @@ export default function LiveEffects() {
     onScroll();
     addEventListener("scroll", onScroll, { passive: true });
     addEventListener("pointermove", onMove, { passive: true });
-    return () => { io.disconnect(); removeEventListener("scroll", onScroll); removeEventListener("pointermove", onMove); };
+    return () => { cancelAnimationFrame(raf); io.disconnect(); removeEventListener("scroll", onScroll); removeEventListener("pointermove", onMove); };
   }, [path]);
   return <div id="scroll-bar" className="scroll-bar" aria-hidden />;
 }

@@ -254,5 +254,6 @@ export const faqs = [
   { q: "Do I need a gym?", a: "No. Plans can be built for a full gym, a home setup, or bodyweight only." },
   { q: "I'm a complete beginner. Is this for me?", a: "Yes. Every plan starts from where you are now, with clear instructions and form guidance." },
   { q: "Can I switch tiers or cancel?", a: "Yes. Monthly plans can be upgraded, downgraded or cancelled anytime before your next billing date." },
+  { q: "Can I stop a 3-month plan early?", a: "The 3-month plan is paid up front at a discount, so it isn't refunded if you stop partway. You keep full coaching until your 3 months are up, and cancelling just stops it from renewing. If a serious injury or medical condition stops you, we refund any full unused months. Want more flexibility? Choose monthly." },
   { q: "What if I have an injury or medical condition?", a: "Tell me in the questionnaire and I'll work around it. For medical conditions, please get clearance from your doctor first." },
 ];

@@ -150,3 +150,26 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 .chev-lit { opacity: 0; animation: chev-charge 3.2s ease-in-out infinite; }
 @keyframes chev-charge { 0% { opacity: 0; transform: translateY(3px); } 12% { opacity: 1; transform: none; } 70% { opacity: 1; } 88%, 100% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .chev-lit { animation: none; opacity: 1; } }
+
+/* Site-wide live background (PageBackground). Moves with scroll via --sy / --sp. */
+.page-bg { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+  background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, #e6f4fc calc(var(--sp, 0) * 100%), #ffffff) 100%); }
+.page-glow { position: absolute; border-radius: 9999px; will-change: transform; }
+.page-glow-1 { width: 70vmax; height: 70vmax; left: -25vmax; top: -20vmax;
+  background: radial-gradient(circle, rgba(137,207,240,.42), rgba(137,207,240,0) 62%);
+  transform: translate3d(calc(var(--sp, 0) * 18vw), calc(var(--sy, 0) * -0.06px), 0); animation: glowA 22s ease-in-out infinite alternate; }
+.page-glow-2 { width: 60vmax; height: 60vmax; right: -22vmax; top: 35vh;
+  background: radial-gradient(circle, rgba(58,154,217,.24), rgba(58,154,217,0) 62%);
+  transform: translate3d(calc(var(--sp, 0) * -22vw), calc(var(--sy, 0) * -0.12px), 0); animation: glowB 28s ease-in-out infinite alternate; }
+.page-glow-3 { width: 55vmax; height: 55vmax; left: 20vw; top: 90vh;
+  background: radial-gradient(circle, rgba(247,240,227,.85), rgba(247,240,227,0) 60%);
+  transform: translate3d(0, calc(var(--sy, 0) * -0.2px), 0); animation: glowA 34s ease-in-out infinite alternate-reverse; }
+@keyframes glowA { from { margin-left: 0; margin-top: 0; } to { margin-left: 6vw; margin-top: 4vh; } }
+@keyframes glowB { from { margin-right: 0; margin-top: 0; } to { margin-right: 5vw; margin-top: -5vh; } }
+.page-chev-wrap { position: absolute; bottom: -40px; transform: translate3d(0, calc(var(--sy, 0) * var(--k, .08) * -1px), 0); }
+.page-chev { display: block; opacity: 0; animation: chevRise 28s linear infinite; }
+@keyframes chevRise { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: .55; } 85% { opacity: .3; } 100% { transform: translateY(-115vh); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .page-glow, .page-chev-wrap { transform: none !important; animation: none !important; }
+  .page-chev { animation: none; opacity: 0; }
+}

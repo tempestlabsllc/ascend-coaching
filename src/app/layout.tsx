@@ -3,6 +3,7 @@ import "./globals.css";
 import { site } from "@/config/site";
 import Header from "@/components/Header";
 import LiveEffects from "@/components/LiveEffects";
+import PageBackground from "@/components/PageBackground";
 import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="min-h-screen font-sans antialiased">
+        <PageBackground />
         <LiveEffects />
         <Header />
         <main>{children}</main>
