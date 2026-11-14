@@ -1,36 +1,9 @@
-"use client";
-import { useState } from "react";
+import Link from "next/link";
 
+// Opens our checkout page with Stripe's embedded payment form (src/app/checkout).
 export default function BuyButton({
   kind, id, label, className = "btn-primary w-full", term,
 }: { kind: "tier" | "guide"; id: string; label: string; className?: string; term?: "monthly" | "3month" }) {
-  const [loading, setLoading] = useState(false);
-  const [msg, setMsg] = useState<string | null>(null);
-
-  async function go() {
-    setLoading(true); setMsg(null);
-    try {
-      const res = await fetch("/api/checkout", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ kind, id, term }),
-      });
-      const data = await res.json();
-      if (data.url) window.location.href = data.url;
-      else setMsg(data.message || "Something went wrong.");
-    } catch {
-      setMsg("Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  return (
-    <div>
-      <button onClick={go} disabled={loading} className={className}>
-        {loading ? "Loading…" : label}
-      </button>
-      {msg && <p className="mt-2 text-sm text-brand">{msg}</p>}
-    </div>
-  );
+  const q = new URLSearchParams({ kind, id, ...(term ? { term } : {}) });
+  return <Link href={`/checkout?${q}`} className={className}>{label}</Link>;
 }
