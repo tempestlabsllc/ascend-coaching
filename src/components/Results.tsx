@@ -9,8 +9,8 @@ export default function Results({ limit, heading = true }: { limit?: number; hea
   return (
     <section className={`mx-auto max-w-6xl px-4 ${heading ? "pt-24" : ""}`}>
       {heading && <div className="max-w-2xl">
-        <p className="font-semibold uppercase tracking-widest text-brand">Real results</p>
-        <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Proof it works</h2>
+        <p className="font-semibold uppercase tracking-widest text-brand">Real Results</p>
+        <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">Proof It Works</h2>
         <p className="mt-2 text-black/60">Real people, real photos. No filters, no stock images.</p>
       </div>}
       <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -26,7 +26,7 @@ export default function Results({ limit, heading = true }: { limit?: number; hea
         ))}
       </div>
       <p className="mt-4 text-xs text-black/45">Individual results vary and depend on consistency, starting point and genetics.</p>
-      {limit && <Link href="/results" className="btn-outline mt-6">See all results</Link>}
+      {limit && <Link href="/results" className="btn-outline mt-6">See All Results</Link>}
     </section>
   );
 }

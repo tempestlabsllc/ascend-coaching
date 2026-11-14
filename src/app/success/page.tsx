@@ -21,16 +21,16 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-24 text-center">
-      <h1 className="text-4xl font-extrabold">Thank you! 🎉</h1>
+      <h1 className="text-4xl font-extrabold">Thank You! 🎉</h1>
       {guide && (
         <>
           <p className="mt-4 text-black/70">Your copy of <strong>{guide.title}</strong> is ready.</p>
           <a href={`/api/download?guide=${guide.id}&session_id=${session_id}`} className="btn-primary mt-8">Download PDF</a>
           <p className="mt-4 text-sm text-black/60">A copy has also been sent to {s?.customer_details?.email ? <strong>{s.customer_details.email}</strong> : "your email"}, so you can download it again any time.</p>
           <div className="mx-auto mt-8 max-w-lg rounded-2xl bg-ink p-5 text-left text-white">
-            <p className="text-xs font-bold uppercase tracking-widest text-[#89cff0]">Want every guide?</p>
+            <p className="text-xs font-bold uppercase tracking-widest text-[#89cff0]">Want Every Guide?</p>
             <p className="mt-1 text-white/80">Elite members get <strong className="text-white">all guides free</strong>, including every new one, plus weekly progress reviews.</p>
-            <Link href="/coaching" className="mt-3 inline-block text-sm font-bold text-[#89cff0] underline">See the Elite plan</Link>
+            <Link href="/coaching" className="mt-3 inline-block text-sm font-bold text-[#89cff0] underline">See the Elite Plan</Link>
           </div>
         </>
       )}
@@ -42,7 +42,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
           </div>
           {tier.id === "elite" && paid && session_id && <EliteAutoUnlock sessionId={session_id} />}
           <p className="mt-6 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/intake" className="btn-primary">Fill out questionnaire</Link><Link href="/book" className="btn-outline">Book a call</Link></div>
+          <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/intake" className="btn-primary">Fill Out Questionnaire</Link><Link href="/book" className="btn-outline">Book a Call</Link></div>
           <ol className="mx-auto mt-12 max-w-md space-y-4 text-left">
             {[
               ["Today", "Book a call or fill in the questionnaire (about 5 minutes)."],

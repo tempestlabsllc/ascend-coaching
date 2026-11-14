@@ -7,9 +7,9 @@ import Results from "@/components/Results";
 import CountUp from "@/components/CountUp";
 
 const steps = [
-  { n: "01", t: "Pick your offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
-  { n: "02", t: "Book a call or fill out the questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },
-  { n: "03", t: "Get your plan in Trainerize", d: "Your training and nutrition plan lands in the ABC Trainerize app within days, where you log every workout." },
+  { n: "01", t: "Pick Your Offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
+  { n: "02", t: "Book a Call or Fill Out the Questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },
+  { n: "03", t: "Get Your Plan in Trainerize", d: "Your training and nutrition plan lands in the ABC Trainerize app within days, where you log every workout." },
   { n: "04", t: "1:1 on Trainerize or WhatsApp", d: "Your coach works with you directly on Trainerize or WhatsApp, whichever you prefer. Pro and Elite include 24/7 messaging whenever you need it." },
 ];
 
@@ -36,10 +36,10 @@ export default function Home() {
             </p>
             <div className="mt-9 flex flex-wrap justify-center gap-3 lg:justify-start">
               <Link href="/coaching" className="btn-primary group shadow-[0_14px_34px_-10px_rgba(58,154,217,0.75)]">
-                Choose your plan
+                Choose Your Plan
                 <span className="ml-2 transition-transform group-hover:translate-x-1">&rarr;</span>
               </Link>
-              <Link href="/shop" className="btn-outline bg-white/60 backdrop-blur">Free starter guide</Link>
+              <Link href="/shop" className="btn-outline bg-white/60 backdrop-blur">Free Starter Guide</Link>
             </div>
             <ul className="mt-8 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-black/65 lg:justify-start">
               {["A real person, not an app", `${site.yearsExperience} years of experience`, "Training + nutrition"].map((t) => (
@@ -127,7 +127,7 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-4 py-20">
         <div data-reveal className="grid items-center gap-10 md:grid-cols-[1fr_1.2fr]">
           <div>
-            <p className="font-semibold uppercase tracking-widest text-brand">Real coaching</p>
+            <p className="font-semibold uppercase tracking-widest text-brand">Real Coaching</p>
             <h2 className="mt-3 text-4xl font-black uppercase leading-none sm:text-5xl">Not an app.<br />Not AI.<br /><span className="text-brand">A real person.</span></h2>
           </div>
           <div>
@@ -146,7 +146,7 @@ export default function Home() {
 
       {/* How it works */}
       <section className="mx-auto max-w-6xl px-4 py-20">
-        <h2 className="text-3xl font-extrabold sm:text-4xl">How it works</h2>
+        <h2 className="text-3xl font-extrabold sm:text-4xl">How It Works</h2>
         <div className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((s, i) => (
             <div key={s.n} data-reveal style={{ transitionDelay: `${i * 0.1}s` }} className="group border-t-2 border-brand pt-4">
@@ -167,10 +167,10 @@ export default function Home() {
               : <span className="text-sm text-black/50">Coach photo</span>}
           </div>
           <div>
-            <p className="font-semibold uppercase tracking-widest text-brand">Your coach</p>
+            <p className="font-semibold uppercase tracking-widest text-brand">Your Coach</p>
             <h2 className="mt-2 text-3xl font-extrabold sm:text-4xl">{about.headline}</h2>
             <p className="mt-4 text-lg text-black/70">{about.short}</p>
-            <Link href="/about" className="btn-outline mt-8">More about me</Link>
+            <Link href="/about" className="btn-outline mt-8">More About Me</Link>
           </div>
         </div>
       </section>
@@ -179,7 +179,7 @@ export default function Home() {
 
       {/* Plans */}
       <section className="mx-auto max-w-6xl px-4 pt-20">
-        <h2 data-reveal className="text-3xl font-extrabold sm:text-4xl">Coaching plans</h2>
+        <h2 data-reveal className="text-3xl font-extrabold sm:text-4xl">Coaching Plans</h2>
         <p className="mt-2 mb-10 text-black/60">Cancel anytime. Questions? <Link href="/book" className="text-brand underline">Book a free call</Link>.</p>
         <TierCards />
       </section>
@@ -187,7 +187,7 @@ export default function Home() {
       {/* Testimonials (only shown once real ones are added) */}
       {testimonials.length > 0 && (
         <section className="mx-auto max-w-6xl px-4 pt-24">
-          <h2 className="text-3xl font-extrabold sm:text-4xl">Client results</h2>
+          <h2 className="text-3xl font-extrabold sm:text-4xl">Client Results</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {testimonials.map((t) => (
               <figure key={t.name} className="rounded-2xl border border-black/10 bg-card p-6">
@@ -204,10 +204,10 @@ export default function Home() {
       <section className="mx-auto mt-24 max-w-6xl px-4">
         <div data-reveal className="flex flex-col items-start justify-between gap-6 rounded-3xl bg-mist p-8 sm:flex-row sm:items-center sm:p-12">
           <div>
-            <h2 className="text-2xl font-extrabold sm:text-3xl">Not ready for coaching yet?</h2>
+            <h2 className="text-2xl font-extrabold sm:text-3xl">Not Ready for Coaching Yet?</h2>
             <p className="mt-2 text-black/70">Start on your own with a digital starter guide, including a free one.</p>
           </div>
-          <Link href="/shop" className="btn-primary">Browse guides</Link>
+          <Link href="/shop" className="btn-primary">Browse Guides</Link>
         </div>
       </section>
 
@@ -232,9 +232,9 @@ export default function Home() {
           <div aria-hidden className="hero-spot" />
           <div aria-hidden className="hero-floor opacity-60" />
           <div className="relative">
-          <h2 className="text-4xl font-black uppercase sm:text-5xl">Ready to climb?</h2>
+          <h2 className="text-4xl font-black uppercase sm:text-5xl">Ready to Climb?</h2>
           <p className="mx-auto mt-4 max-w-xl text-black/65">Pick your plan today and get your custom program within days.</p>
-          <Link href="/coaching" className="btn-primary mt-8 shadow-[0_14px_34px_-10px_rgba(58,154,217,0.9)]">Choose your plan</Link>
+          <Link href="/coaching" className="btn-primary mt-8 shadow-[0_14px_34px_-10px_rgba(58,154,217,0.9)]">Choose Your Plan</Link>
           </div>
         </div>
       </section>

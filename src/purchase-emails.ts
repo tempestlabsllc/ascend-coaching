@@ -41,16 +41,16 @@ export async function handleCompletedCheckout(sessionOrId: string | Stripe.Check
           ? `<div style="margin:20px 0;padding:18px;border-radius:12px;background:#0a0a0a;color:#fff">
 <p style="margin:0 0 6px;font-size:13px;letter-spacing:.12em;color:#89cff0;font-weight:700">ELITE PERK: ALL GUIDES FREE</p>
 <p style="margin:0 0 12px;font-size:14px;color:#d1d5db">Every guide is unlocked for you while your membership is active, including new ones. Tap below on any phone or computer to unlock them there.</p>
-<a href="${site.url}/api/elite-claim?token=${eliteLoginToken(subId, 30)}" style="display:inline-block;background:#3a9ad9;color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:999px">Unlock my guides</a>
+<a href="${site.url}/api/elite-claim?token=${eliteLoginToken(subId, 30)}" style="display:inline-block;background:#3a9ad9;color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:999px">Unlock My Guides</a>
 <p style="margin:12px 0 0;font-size:12px;color:#9ca3af">Link expired? Enter your email on the <a href="${site.url}/shop#elite" style="color:#89cff0">Guides page</a> for a new one.</p></div>`
           : "";
       await sendEmail(
         to,
         `Welcome to ${tier?.name ?? "Ascend"} coaching${term} (receipt inside)`,
-        emailLayout(`Welcome to ${tier?.name ?? ""} coaching${term} 🎉`, `${hi}
+        emailLayout(`Welcome to ${tier?.name ?? ""} Coaching${term} 🎉`, `${hi}
 <p style="margin:0 0 14px">Your payment went through and you're officially in. <strong>I'll personally reach out within 24 hours</strong> on Trainerize or WhatsApp to review everything with you.</p>
 <p style="margin:0 0 8px"><strong>Your next step:</strong> book a quick call or fill out the questionnaire, whichever you prefer, so I can build your plan.</p>
-<p style="margin:0 0 6px">${btn(`${site.url}/intake`, "Fill out questionnaire")}${btn(`${site.url}/book`, "Book a call")}</p>
+<p style="margin:0 0 6px">${btn(`${site.url}/intake`, "Fill Out Questionnaire")}${btn(`${site.url}/book`, "Book a Call")}</p>
 ${eliteBlock}
 <p style="margin:14px 0 0">Within 3 days you'll get an invite to the ABC Trainerize app with your plan.</p>
 ${receipt}`),
@@ -60,10 +60,10 @@ ${receipt}`),
       await sendEmail(
         to,
         `Your guide and receipt: ${g?.title ?? "download"}`,
-        emailLayout("Your guide is ready", `${hi}
+        emailLayout("Your Guide Is Ready", `${hi}
 <p style="margin:0 0 14px">Thanks for grabbing <strong>${esc(g?.title ?? "your guide")}</strong>. You can download it any time here:</p>
 <p>${btn(`${site.url}/api/download?guide=${encodeURIComponent(s.metadata?.id ?? "")}&session_id=${s.id}`, "Download PDF")}</p>
-<p style="margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#f4f9fc;font-size:14px">💡 <strong>Want every guide?</strong> Elite members get all guides free, including every new one, plus weekly progress reviews. <a href="${site.url}/coaching" style="color:#2378b5;font-weight:700">See the Elite plan</a></p>
+<p style="margin:16px 0 0;padding:14px 16px;border-radius:12px;background:#f4f9fc;font-size:14px">💡 <strong>Want Every Guide?</strong> Elite members get all guides free, including every new one, plus weekly progress reviews. <a href="${site.url}/coaching" style="color:#2378b5;font-weight:700">See the Elite Plan</a></p>
 ${receipt}`),
       );
     }
@@ -77,7 +77,7 @@ ${receipt}`),
     await sendEmail(
       process.env.COACH_EMAIL || site.email,
       `New sale: ${item}${paid ? ` (${paid})` : ""}`,
-      emailLayout("New sale 🎉", `<p style="margin:0 0 10px"><strong>${esc(item)}</strong>${paid ? ` for ${paid}` : ""}</p>
+      emailLayout("New Sale 🎉", `<p style="margin:0 0 10px"><strong>${esc(item)}</strong>${paid ? ` for ${paid}` : ""}</p>
 <p style="margin:0 0 6px">Name: ${esc(s.customer_details?.name ?? "not given")}</p>
 <p style="margin:0 0 6px">Email: ${esc(to)}</p>
 ${s.metadata?.kind === "tier" ? `<p style="margin:14px 0 0"><strong>Reach out within 24 hours.</strong></p>` : ""}`),
@@ -165,14 +165,14 @@ export async function handleInvoicePaid(inv: Stripe.Invoice) {
       ["Period", `${day(inv.period_start)} to ${day(inv.period_end)}`],
       ["Total paid", money(inv.amount_paid, cur)],
     ];
-    await sendEmail(to, `Receipt: your ${plan} renewed`, emailLayout("Thanks, your plan renewed", `<p style="margin:0 0 14px">Your ${esc(plan)} payment went through, so we keep going. Nothing you need to do.</p>
+    await sendEmail(to, `Receipt: your ${plan} renewed`, emailLayout("Thanks, Your Plan Renewed", `<p style="margin:0 0 14px">Your ${esc(plan)} payment went through, so we keep going. Nothing you need to do.</p>
 <p style="margin:0 0 6px;font-size:14px;color:#6b7280">Want to change or cancel your plan? Just message me or reply to this email.</p>
 ${receiptTable(rows, inv.hosted_invoice_url)}`));
   }
   await sendEmail(
     process.env.COACH_EMAIL || site.email,
     `Renewal: ${plan} (${money(inv.amount_paid, cur)})`,
-    emailLayout("Plan renewed 🔁", `<p style="margin:0 0 10px"><strong>${esc(plan)}</strong> renewed for ${money(inv.amount_paid, cur)}.</p>
+    emailLayout("Plan Renewed 🔁", `<p style="margin:0 0 10px"><strong>${esc(plan)}</strong> renewed for ${money(inv.amount_paid, cur)}.</p>
 <p style="margin:0 0 6px">Client: ${esc(inv.customer_name ?? "")} ${esc(to ?? "")}</p>`),
   );
 }

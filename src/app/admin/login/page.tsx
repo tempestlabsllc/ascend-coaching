@@ -21,7 +21,7 @@ export default async function AdminLogin({ searchParams }: { searchParams: Promi
             <input className="field" type="password" name="password" autoComplete="current-password" required autoFocus />
           </label>
           {err && <p className="text-sm text-red-600">Wrong password.</p>}
-          <button className="btn-primary w-full">Log in</button>
+          <button className="btn-primary w-full">Log In</button>
         </form>
       )}
     </div>

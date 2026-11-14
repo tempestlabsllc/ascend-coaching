@@ -25,7 +25,7 @@ const looks: Record<Tier["color"], Look> = {
     price: "text-ink",
     muted: "text-ink/60",
     badge: "bg-ink text-white",
-    badgeText: "Most popular",
+    badgeText: "Most Popular",
     check: "bg-amber-500",
     button: "btn w-full tier-gold text-ink hover:opacity-90",
     frame: "tier-gold",
@@ -81,7 +81,7 @@ function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
 
         <div className="flex flex-1 flex-col px-6 pb-6 pt-5">
           <p className="text-xs font-bold uppercase tracking-[0.14em] text-black/45">
-            {inherits ? `${first}, plus:` : "What's included"}
+            {inherits ? `${first}, plus:` : "What's Included"}
           </p>
           <ul className="mt-4 space-y-3 text-sm leading-5 text-black/80">
             {list.map((f) => (
@@ -118,7 +118,7 @@ export default function TierCards() {
       <div className="mb-8 flex justify-center">
         <div className="inline-flex items-center gap-1 rounded-full border border-black/10 bg-card p-1">
           {opt("monthly", "Monthly")}
-          {opt("3month", <>3 months <span className={`ml-1 rounded-full px-2 py-0.5 text-xs ${term === "3month" ? "bg-white/25" : "bg-brand/15 text-brand-dark"}`}>Save {threeMonth.discountPercent}%</span></>)}
+          {opt("3month", <>3 Months <span className={`ml-1 rounded-full px-2 py-0.5 text-xs ${term === "3month" ? "bg-white/25" : "bg-brand/15 text-brand-dark"}`}>Save {threeMonth.discountPercent}%</span></>)}
         </div>
       </div>
       <div className="grid items-stretch gap-6 md:grid-cols-3">

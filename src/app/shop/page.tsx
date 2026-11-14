@@ -5,7 +5,7 @@ import EliteUnlock from "@/components/EliteUnlock";
 import { cookies } from "next/headers";
 import { ELITE_COOKIE, hasElite } from "@/elite";
 
-export const metadata = { title: "Digital guides" };
+export const metadata = { title: "Digital Guides" };
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +14,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
   const elite = await hasElite((await cookies()).get(ELITE_COOKIE)?.value, false);
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold">Digital starter guides</h1>
+      <h1 className="text-4xl font-extrabold">Digital Starter Guides</h1>
       <p className="mt-2 mb-6 max-w-2xl text-black/60">Instant PDF downloads you can work through at your own pace. No coaching commitment needed.</p>
       <div className="mb-10"><EliteUnlock unlocked={elite} notice={eliteParam === "expired" ? "expired" : undefined} /></div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -36,10 +36,10 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
                   {g.comingSoon
                     ? <span className="btn w-full cursor-default border-2 border-dashed border-brand/40 text-brand">Coming soon</span>
                     : elite
-                    ? <a href={`/api/download?guide=${g.id}`} className="btn-primary w-full">Download free (Elite)</a>
+                    ? <a href={`/api/download?guide=${g.id}`} className="btn-primary w-full">Download Free (Elite)</a>
                     : free
                     ? <GuideUnlock guideId={g.id} />
-                    : <><BuyButton kind="guide" id={g.id} label="Buy now" /><p className="mt-2 text-center text-xs text-black/50">Elite members get every guide free. <a href="/coaching" className="font-semibold text-brand underline">See Elite</a></p></>}
+                    : <><BuyButton kind="guide" id={g.id} label="Buy Now" /><p className="mt-2 text-center text-xs text-black/50">Elite members get every guide free. <a href="/coaching" className="font-semibold text-brand underline">See Elite</a></p></>}
                 </div>
               </div>
             </div>
@@ -47,7 +47,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
         })}
         <div className="flex min-h-64 flex-col items-center justify-center rounded-2xl border-2 border-dashed border-brand/40 bg-mist p-8 text-center">
           <span className="text-4xl">📘</span>
-          <h3 className="mt-3 text-lg font-bold">More guides coming soon</h3>
+          <h3 className="mt-3 text-lg font-bold">More Guides Coming Soon</h3>
           <p className="mt-1 text-sm text-black/60">New starter guides are on the way. Check back soon.</p>
         </div>
       </div>

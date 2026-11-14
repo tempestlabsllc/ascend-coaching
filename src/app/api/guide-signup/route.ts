@@ -28,7 +28,7 @@ export async function POST(req: Request) {
   await logActivity("lead", `New lead: ${email}`, `Unlocked ${guide.title}`);
   // Email the buyer their copy, so they can download it again from any device.
   const link = `${site.url}/api/download?guide=${guide.id}&k=${freeGuideKey(guide.id)}`;
-  await sendEmail(email, `Your free guide: ${guide.title}`, emailLayout("Your free guide is ready", `<p style="margin:0 0 14px">Thanks for grabbing <strong>${esc(guide.title)}</strong>. You can download it any time here:</p>
+  await sendEmail(email, `Your free guide: ${guide.title}`, emailLayout("Your Free Guide Is Ready", `<p style="margin:0 0 14px">Thanks for grabbing <strong>${esc(guide.title)}</strong>. You can download it any time here:</p>
 <p><a href="${link}" style="display:inline-block;background:#3a9ad9;color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px">Download PDF</a></p>
 <p style="margin:14px 0 0">Want a plan built around you? <a href="${site.url}/coaching" style="color:#2378b5;font-weight:700">See coaching plans</a>.</p>`)).catch(() => false);
 

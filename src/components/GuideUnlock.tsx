@@ -45,7 +45,7 @@ export default function GuideUnlock({ guideId }: { guideId: string }) {
         <input type="checkbox" required checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 accent-brand" />
         <span>Send me the guide and emails from Ascend Coaching and Tempest Labs (tempestlabs.shop). Unsubscribe anytime. See our <a href="/privacy" className="underline">Privacy Policy</a>.</span>
       </label>
-      <button className="btn-primary w-full" disabled={status === "sending"}>{status === "sending" ? "Unlocking…" : "Unlock free guide"}</button>
+      <button className="btn-primary w-full" disabled={status === "sending"}>{status === "sending" ? "Unlocking…" : "Unlock Free Guide"}</button>
       {status === "error" && <p className="text-sm text-red-600">{msg}</p>}
     </form>
   );

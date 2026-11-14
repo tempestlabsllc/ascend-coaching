@@ -5,7 +5,7 @@ export const metadata = { title: "Check-in" };
 export default function CheckInPage() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-16">
-      <h1 className="text-4xl font-extrabold">Client check-in</h1>
+      <h1 className="text-4xl font-extrabold">Client Check-In</h1>
       <p className="mt-2 mb-10 text-black/60">For current clients. Submit this on your check-in day. You can send progress photos every 4 weeks by replying to my email.</p>
       <CheckInForm />
     </div>

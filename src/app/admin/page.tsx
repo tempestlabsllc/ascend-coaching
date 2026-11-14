@@ -40,7 +40,7 @@ const NeedsStore = () => (
 );
 
 const TABS = [
-  ["overview", "Overview"], ["activity", "Activity"], ["clients", "Clients"], ["forms", "Intake & check-ins"], ["guides", "Guides"],
+  ["overview", "Overview"], ["activity", "Activity"], ["clients", "Clients"], ["forms", "Intake & Check-Ins"], ["guides", "Guides"],
   ["churn", "Cancellations"], ["leads", "Leads"], ["discounts", "Discounts"],
 ] as const;
 type Tab = (typeof TABS)[number][0];
@@ -80,7 +80,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     <div className="mx-auto max-w-5xl px-4 py-10">
       <div className="flex items-center justify-between gap-4">
         <h1 className="text-3xl font-extrabold">Admin</h1>
-        <form action={logout}><button className="text-sm font-medium underline">Log out</button></form>
+        <form action={logout}><button className="text-sm font-medium underline">Log Out</button></form>
       </div>
       <nav className="-mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-2">
         {TABS.map(([id, label]) => (
@@ -151,7 +151,7 @@ async function Overview(s: Stripe, since: number, sp: Params) {
           </Row>
         ))}</Rows>
       )}
-      <H2>Recent purchases</H2>
+      <H2>Recent Purchases</H2>
       {recent.length === 0 ? <Empty>No purchases yet.</Empty> : (
         <Rows>{recent.map((r) => (
           <Row key={r.id}>
@@ -205,7 +205,7 @@ async function Clients(s: Stripe, since: number) {
                   {c.email && <a className="rounded-full border border-black/20 px-3 py-1" href={`mailto:${c.email}`}>Email</a>}
                   {phone && <a className="rounded-full border border-black/20 px-3 py-1" href={`tel:${phone}`}>Call</a>}
                   {phone && <a className="rounded-full border border-black/20 px-3 py-1" href={waLink(phone)} target="_blank" rel="noopener">WhatsApp</a>}
-                  {c.email && <a className="rounded-full border border-black/20 px-3 py-1" href={`/admin?tab=forms&q=${encodeURIComponent(c.email)}`}>{intake ? "Intake & check-ins" : "Forms"}</a>}
+                  {c.email && <a className="rounded-full border border-black/20 px-3 py-1" href={`/admin?tab=forms&q=${encodeURIComponent(c.email)}`}>{intake ? "Intake & Check-Ins" : "Forms"}</a>}
                 </div>
                 {c.email && <p className="mt-2 truncate text-xs text-black/50">{c.email}{phone ? ` · ${phone}` : ""}</p>}
               </div>
@@ -221,7 +221,7 @@ const HIDE = new Set(["form", "savedAt", "submittedAt", "waiver"]);
 const label = (k: string) => k.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
 
 async function Forms(sp: Params) {
-  if (!storeConfigured()) return <><H2>Intake & check-ins</H2><NeedsStore /></>;
+  if (!storeConfigured()) return <><H2>Intake & Check-Ins</H2><NeedsStore /></>;
   const all = await readRecords("forms");
   const q = (sp.q ?? "").trim().toLowerCase();
   const type = sp.type === "intake" || sp.type === "check-in" ? sp.type : "";
@@ -232,7 +232,7 @@ async function Forms(sp: Params) {
   );
   return (
     <>
-      <H2>Intake & check-ins</H2>
+      <H2>Intake & Check-Ins</H2>
       <form className="mt-4 flex gap-2" action="/admin">
         <input type="hidden" name="tab" value="forms" />{type && <input type="hidden" name="type" value={type} />}
         <input className="field" name="q" defaultValue={sp.q} placeholder="Search name or email" />
@@ -294,7 +294,7 @@ async function Churn(s: Stripe, since: number) {
   const who = (x: { name: string; email: string }) => x.name || x.email || "Unknown";
   return (
     <>
-      <H2>Payment problems ({c.pastDue.length})</H2>
+      <H2>Payment Problems ({c.pastDue.length})</H2>
       <p className="mt-1 text-sm text-black/60">Card failed and Stripe is retrying. Reach out before they drop off.</p>
       {c.pastDue.length === 0 ? <Empty>None right now.</Empty> : (
         <Rows>{c.pastDue.map((x) => (
@@ -302,7 +302,7 @@ async function Churn(s: Stripe, since: number) {
             <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-semibold capitalize text-red-800">{x.status}</span></Row>
         ))}</Rows>
       )}
-      <H2>Ending soon ({c.ending.length})</H2>
+      <H2>Ending Soon ({c.ending.length})</H2>
       <p className="mt-1 text-sm text-black/60">Cancelled, but still active until the end of what they paid for.</p>
       {c.ending.length === 0 ? <Empty>None right now.</Empty> : (
         <Rows>{c.ending.map((x) => (
@@ -310,7 +310,7 @@ async function Churn(s: Stripe, since: number) {
             <p className="shrink-0 text-sm">ends {day(x.date)}</p></Row>
         ))}</Rows>
       )}
-      <H2>Failed payments, last 60 days ({c.failed.length})</H2>
+      <H2>Failed Payments, Last 60 Days ({c.failed.length})</H2>
       {c.failed.length === 0 ? <Empty>None.</Empty> : (
         <Rows>{c.failed.map((x) => (
           <Row key={x.id}><div className="min-w-0"><p className="truncate font-semibold">{x.email || "Unknown"}</p><p className="text-sm text-black/60">{x.reason} · {day(x.date)}</p></div>
@@ -366,7 +366,7 @@ async function Discounts(s: Stripe, { msg, err, edit }: Params) {
     <>
       {/* Discounts */}
       <section id="discounts">
-        <H2>Discount codes</H2>
+        <H2>Discount Codes</H2>
         <p className="mt-1 text-sm text-black/60">Customers type these at checkout. They work on every plan and guide.</p>
         {msg && <p className="mt-4 rounded-xl bg-green-50 p-3 text-sm text-green-800">{msg}</p>}
         {err && <p className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-700">{err}</p>}
@@ -377,7 +377,7 @@ async function Discounts(s: Stripe, { msg, err, edit }: Params) {
         )}
 
         <form action={saveDiscount} className="mt-8 grid gap-4 rounded-2xl border border-black/10 bg-card p-6 sm:grid-cols-2">
-          <h3 className="font-semibold sm:col-span-2">{editing ? (editing.active ? `Change ${editing.code}` : `New code from ${editing.code}`) : "New discount code"}</h3>
+          <h3 className="font-semibold sm:col-span-2">{editing ? (editing.active ? `Change ${editing.code}` : `New Code from ${editing.code}`) : "New Discount Code"}</h3>
           {editing && (
             <p className="text-sm text-black/60 sm:col-span-2">
               {editing.active
@@ -423,7 +423,7 @@ async function Discounts(s: Stripe, { msg, err, edit }: Params) {
 
         {inactive.length > 0 && (
           <details className="mt-8">
-            <summary className="cursor-pointer font-semibold">Turned off or expired ({inactive.length})</summary>
+            <summary className="cursor-pointer font-semibold">Turned Off or Expired ({inactive.length})</summary>
             <div className="mt-3 grid gap-3 sm:grid-cols-2">{inactive.map((p) => <PromoCard key={p.id} p={p} />)}</div>
           </details>
         )}

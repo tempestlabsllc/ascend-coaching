@@ -16,8 +16,8 @@ export async function POST(req: Request) {
     await sendEmail(
       email.trim(),
       "Your Elite guides sign-in link",
-      emailLayout("Unlock your Elite guides", `<p style="margin:0 0 14px">Tap the button below to unlock every guide on this device. The link works for 7 days.</p>
-<p><a href="${link}" style="display:inline-block;background:#3a9ad9;color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px">Unlock my guides</a></p>
+      emailLayout("Unlock Your Elite Guides", `<p style="margin:0 0 14px">Tap the button below to unlock every guide on this device. The link works for 7 days.</p>
+<p><a href="${link}" style="display:inline-block;background:#3a9ad9;color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:999px">Unlock My Guides</a></p>
 <p style="margin:14px 0 0;color:#6b7280;font-size:13px">Didn't ask for this? You can ignore this email. Questions? Reply or email ${site.email}.</p>`),
     );
   }

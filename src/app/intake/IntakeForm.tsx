@@ -73,7 +73,7 @@ export default function IntakeForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-8">
-      <Section title="About you">
+      <Section title="About You">
         <Field label="Full name" name="name" required />
         <Field label="Phone / WhatsApp number (with country code)" name="phone" type="tel" required placeholder="+1 555 123 4567" />
         <Field label="Email" name="email" type="email" required />
@@ -86,7 +86,7 @@ export default function IntakeForm() {
         <Field label="Estimated body fat % (optional)" name="bodyFat" type="number" />
       </Section>
 
-      <Section title="Your goals">
+      <Section title="Your Goals">
         <div className="sm:col-span-2">
           <span className="label">What are your main goals? <span className="text-brand">*</span></span>
           <div className="grid gap-2 sm:grid-cols-3">
@@ -111,7 +111,7 @@ export default function IntakeForm() {
         <Area label="What does your current training look like?" name="currentTraining" />
       </Section>
 
-      <Section title="Nutrition & lifestyle">
+      <Section title="Nutrition & Lifestyle">
         <Select label="Daily activity (outside training)" name="activity" options={["Mostly sitting", "Lightly active", "On my feet a lot", "Physical job"]} />
         <Select label="Average sleep" name="sleep" options={["Under 5 hrs", "5–6 hrs", "7–8 hrs", "8+ hrs"]} />
         <Select label="Stress level" name="stress" options={["Low", "Moderate", "High"]} />
@@ -139,7 +139,7 @@ export default function IntakeForm() {
       </Section>
 
       <button className="btn-primary w-full sm:w-auto" disabled={status === "sending"}>
-        {status === "sending" ? "Sending…" : "Submit questionnaire"}
+        {status === "sending" ? "Sending…" : "Submit Questionnaire"}
       </button>
       {status === "error" && <p className="text-brand">Something went wrong. Please try again or email me directly.</p>}
     </form>

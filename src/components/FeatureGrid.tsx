@@ -27,25 +27,25 @@ const icons = {
 const features: { key: keyof typeof icons; title: string; text: string; points: string[] }[] = [
   {
     key: "training",
-    title: "Custom training",
+    title: "Custom Training",
     text: "Programs built around your goals, equipment and schedule.",
     points: ["Gym, home or bodyweight", "Clear sets, reps and progressions"],
   },
   {
     key: "nutrition",
-    title: "Nutrition that fits",
+    title: "Nutrition That Fits",
     text: "Targets or full meal plans built around foods you actually like.",
     points: ["Calorie and macro targets", "No foods you hate"],
   },
   {
     key: "accountability",
-    title: "Real check-ins",
+    title: "Real Check-Ins",
     text: "A real coach reviewing your progress, so you never feel on your own.",
     points: ["Monthly to weekly, depending on your plan", "Plan and macro adjustments"],
   },
   {
     key: "progress",
-    title: "Progress tracking",
+    title: "Progress Tracking",
     text: "Log workouts and progress in the ABC Trainerize app, and your plan is adjusted as you improve.",
     points: ["Workouts, weight and lifts tracked", "Plan updates every 4 weeks"],
   },
@@ -58,9 +58,9 @@ export default function FeatureGrid() {
       <div aria-hidden className="pointer-events-none absolute -right-32 top-10 h-80 w-80 rounded-full bg-brand/10 blur-3xl" />
       <div className="relative mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <p className="font-semibold uppercase tracking-widest text-brand">What you get</p>
+          <p className="font-semibold uppercase tracking-widest text-brand">What You Get</p>
           <h2 className="mt-3 text-4xl font-black tracking-tight sm:text-5xl">
-            Everything you need to <span className="text-brand">level up</span>
+            Everything You Need to <span className="text-brand">Level Up</span>
           </h2>
           <p className="mt-4 text-lg text-black/60">Four things every client gets, whichever plan you choose.</p>
         </div>

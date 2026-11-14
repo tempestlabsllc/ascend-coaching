@@ -234,7 +234,7 @@ export const results = [
     after: { src: "/results/kyle-after-card.jpg", label: "After · 175 lbs" },
   },
   {
-    who: "Your coach",
+    who: "Your Coach",
     headline: "180 lbs → 147 lbs",
     story: "From my heaviest bulk to my leanest. I've lived both ends, so I know how to get you where you want to be.",
     before: { src: "/results/coach-heavy-2-card.jpg", label: "Heaviest · 170–180 lbs" },

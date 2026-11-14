@@ -29,8 +29,8 @@ export default function AboutPage() {
             {" · "}<a href={site.tiktok} target="_blank" rel="noopener" className="font-semibold text-brand-dark underline">TikTok {site.tiktokHandle}</a>
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/coaching" className="btn-primary">Choose your plan</Link>
-            <Link href="/book" className="btn-outline">Book a free call</Link>
+            <Link href="/coaching" className="btn-primary">Choose Your Plan</Link>
+            <Link href="/book" className="btn-outline">Book a Free Call</Link>
           </div>
         </div>
       </div>

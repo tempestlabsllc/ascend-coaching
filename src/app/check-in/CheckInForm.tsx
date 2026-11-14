@@ -54,7 +54,7 @@ export default function CheckInForm() {
         <Row label="Biggest struggle" full><textarea className="field min-h-20" name="struggle" /></Row>
         <Row label="Questions for your coach" full><textarea className="field min-h-20" name="questions" /></Row>
       </fieldset>
-      <button className="btn-primary w-full sm:w-auto" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Submit check-in"}</button>
+      <button className="btn-primary w-full sm:w-auto" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Submit Check-In"}</button>
       {status === "error" && <p className="text-brand">Something went wrong. Please try again or email me directly.</p>}
     </form>
   );
