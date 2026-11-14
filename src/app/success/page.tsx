@@ -26,7 +26,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
         <>
           <p className="mt-4 text-black/70">Your copy of <strong>{guide.title}</strong> is ready.</p>
           <a href={`/api/download?guide=${guide.id}&session_id=${session_id}`} className="btn-primary mt-8">Download PDF</a>
-          <p className="mt-4 text-sm text-black/50">Bookmark this page to download it again later.</p>
+          <p className="mt-4 text-sm text-black/60">A copy has also been sent to {s?.customer_details?.email ? <strong>{s.customer_details.email}</strong> : "your email"}, so you can download it again any time.</p>
         </>
       )}
       {tier && (
