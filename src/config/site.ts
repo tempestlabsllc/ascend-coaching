@@ -70,7 +70,7 @@ export const tiers: Tier[] = [
     priceCents: 20000,
     interval: "month",
     blurb: "A fully custom plan with real support for steady progress.",
-    bestFor: "Anyone who wants a plan built around their body, schedule and goals, with weekly check-ins.",
+    bestFor: "Anyone who wants a plan built around their body, schedule and goals, with bi-weekly check-ins.",
     details: [
       { label: "Your plan", value: "Fully custom program and meal plan built from your questionnaire, delivered in the ABC Trainerize app within 3 days" },
       { label: "Updates", value: "Program and nutrition adjusted every 4 weeks based on your progress" },
@@ -79,7 +79,7 @@ export const tiers: Tier[] = [
     features: [
       "1:1 kickoff call to map your struggles and goals",
       "Fully custom program built for you",
-      "Weekly check-ins with written feedback",
+      "Bi-weekly check-ins with detailed written feedback",
       "Custom meal plan",
       "24/7 messaging on Trainerize or WhatsApp, to answer any questions whenever you need it",
     ],
