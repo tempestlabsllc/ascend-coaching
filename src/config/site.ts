@@ -151,14 +151,13 @@ export const guides: Guide[] = [
     comingSoon: true,
   },
   {
-    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
+    // Source: guides-src/skinny-fat-fix.html (re-render to PDF after edits).
     id: "skinny-fat-fix",
     title: "The Skinny Fat Fix: Lose the Gut, Build the Muscle",
-    priceCents: 0,
-    description: "I started skinny fat too. This is the exact roadmap I used to drop the soft midsection and finally fill out my frame, without bulking up first.",
-    pages: 0,
+    priceCents: 2000,
+    description: "I started skinny fat too. This is the roadmap I wish I'd followed: build the frame first, then reveal it.",
+    pages: 12,
     file: "skinny-fat-fix.pdf",
-    comingSoon: true,
   },
   {
     // Source: guides-src/recomp-blueprint.html (re-render to PDF after edits).

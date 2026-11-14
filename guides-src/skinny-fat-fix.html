@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Skinny Fat Fix · Ascend Coaching</title>
+<style>
+  @page { size: Letter; margin: 0.7in 0.75in 0.8in; }
+  @page :first { margin: 0; }
+  :root { --ruby: #3a9ad9; --ruby-dark: #2378b5; --ink: #16181d; --muted: #5b5f66; --line: #e7e2e4; --mist: #e6f4fc; }
+  * { box-sizing: border-box; }
+  body { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; color: var(--ink); font-size: 11pt; line-height: 1.55; margin: 0; }
+  h1, h2, h3 { line-height: 1.15; margin: 0; }
+  h2 { font-size: 22pt; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 4pt; }
+  h2 .num { color: var(--ruby); margin-right: 6pt; }
+  h3 { font-size: 13pt; font-weight: 700; margin: 16pt 0 4pt; }
+  p { margin: 0 0 9pt; }
+  .eyebrow { color: var(--ruby); font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; font-size: 9pt; }
+  .lead { font-size: 12.5pt; color: var(--muted); margin-bottom: 14pt; }
+  .section { page-break-before: always; }
+  .rule { height: 3px; width: 56px; background: var(--ruby); border-radius: 2px; margin: 8pt 0 14pt; }
+
+  /* cover */
+  .cover { height: 11in; padding: 0.9in 0.85in; background: linear-gradient(160deg, #ffffff 0%, #f1f9fe 55%, #d8eefb 100%); color: #16181d; position: relative; overflow: hidden; }
+  .cover .glow { position: absolute; width: 7in; height: 7in; border-radius: 50%; background: radial-gradient(circle, rgba(137,207,240,.6), rgba(137,207,240,0) 65%); top: -2in; right: -2.2in; }
+  .cover .glow2 { position: absolute; width: 6in; height: 6in; border-radius: 50%; background: radial-gradient(circle, rgba(58,154,217,.3), rgba(58,154,217,0) 65%); bottom: -2.5in; left: -2in; }
+  .cover .brand { position: relative; font-weight: 800; color: var(--ruby); font-size: 14pt; letter-spacing: 0.02em; }
+  .cover h1 { position: relative; margin-top: 2.3in; font-size: 44pt; font-weight: 900; text-transform: uppercase; letter-spacing: -0.02em; line-height: 0.98; }
+  .cover h1 span { color: var(--ruby); }
+  .cover .sub { position: relative; margin-top: 18pt; font-size: 14pt; color: #4b5563; max-width: 5in; }
+  .cover .tag { position: relative; display: inline-block; margin-top: 26pt; border: 1.5px solid var(--ruby); background: var(--ruby); color: #fff; border-radius: 999px; padding: 5pt 14pt; font-size: 10pt; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+  .cover .foot { position: absolute; left: 0.85in; right: 0.85in; bottom: 0.7in; font-size: 8.5pt; color: #6b7280; border-top: 1px solid rgba(22,24,29,.12); padding-top: 10pt; }
+  .cover svg { position: absolute; right: 0.6in; top: 1.2in; width: 3.2in; opacity: .9; }
+
+  /* blocks */
+  .callout { background: var(--mist); border-left: 4px solid var(--ruby); border-radius: 6px; padding: 10pt 14pt; margin: 12pt 0; }
+  .callout b { color: var(--ruby-dark); }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10pt; margin: 12pt 0; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 11pt 12pt; }
+  .card .k { font-size: 8.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ruby); }
+  .card h4 { margin: 4pt 0 4pt; font-size: 12pt; }
+  .card p { font-size: 9.5pt; color: var(--muted); margin: 0; }
+  .chain { display: flex; align-items: center; gap: 5pt; margin: 10pt 0 4pt; flex-wrap: wrap; }
+  .aa { width: 22pt; height: 22pt; border-radius: 50%; background: var(--ruby); color: #fff; font-size: 7.5pt; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .aa.alt { background: #89cff0; }
+  .bond { width: 8pt; height: 2px; background: var(--ink); }
+  .caption { font-size: 9pt; color: var(--muted); }
+  ul.clean { padding-left: 0; list-style: none; margin: 6pt 0 10pt; }
+  ul.clean li { position: relative; padding-left: 16pt; margin-bottom: 5pt; }
+  ul.clean li::before { content: ""; position: absolute; left: 2pt; top: 6.5pt; width: 6pt; height: 6pt; border-radius: 50%; background: var(--ruby); }
+  table { width: 100%; border-collapse: collapse; font-size: 8.5pt; margin: 8pt 0; }
+  th { text-align: left; background: #2378b5; color: #fff; padding: 6pt 7pt; font-weight: 700; }
+  td { padding: 4.5pt 6pt; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #faf8f9; }
+  .pill { display: inline-block; border-radius: 999px; padding: 1pt 7pt; font-size: 8pt; font-weight: 700; white-space: nowrap; }
+  .strong { background: #e3f5ea; color: #1e7a45; }
+  .mod { background: #fff4d6; color: #8a6300; }
+  .weak { background: #fde3ea; color: #b3261e; }
+  .check li::before { content: "✓"; background: none; color: var(--ruby); font-weight: 800; top: 0; left: 0; width: auto; height: auto; }
+  .timeline { border-left: 2px solid var(--ruby); margin: 10pt 0 10pt 6pt; padding-left: 14pt; }
+  .timeline div { position: relative; margin-bottom: 9pt; }
+  .timeline div::before { content: ""; position: absolute; left: -19.5pt; top: 4pt; width: 9pt; height: 9pt; border-radius: 50%; background: #fff; border: 2px solid var(--ruby); }
+  .timeline b { display: block; font-size: 9.5pt; color: var(--ruby-dark); }
+  .sources { font-size: 8.5pt; color: var(--muted); }
+  .sources li { margin-bottom: 4pt; word-break: break-word; }
+  .end { margin-top: 18pt; background: linear-gradient(135deg, #3a9ad9, #2378b5); color: #fff; border-radius: 12px; padding: 16pt 18pt; }
+  .end h3 { margin: 0 0 4pt; color: #fff; }
+  .end p { color: rgba(255,255,255,.9); margin: 0; }
+  .end b { color: #fff; }
+  .grid2 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7pt; margin: 5pt 0 2pt; }
+  .pep { border: 1px solid var(--line); border-radius: 10px; padding: 8pt 10pt; break-inside: avoid; }
+  .pep h4 { margin: 0 0 3pt; font-size: 10pt; }
+  .pep h4 .pill { display: table; margin-top: 2pt; }
+  .pep p { margin: 0; font-size: 8.8pt; color: var(--muted); line-height: 1.45; }
+  .goal { font-size: 11.5pt; font-weight: 800; margin: 10pt 0 2pt; color: var(--ink); break-after: avoid; }
+  .goal span { color: var(--ruby); }
+  .tl { display: flex; align-items: center; gap: 12pt; border: 1.5px solid var(--ruby); border-radius: 12px; padding: 10pt 14pt; margin: 12pt 0; background: #fff; }
+  .tl .code { flex-shrink: 0; background: var(--ruby); color: #fff; border-radius: 8px; padding: 6pt 10pt; text-align: center; font-weight: 900; font-size: 15pt; letter-spacing: .12em; }
+  .tl .code small { display: block; font-size: 6.5pt; font-weight: 700; letter-spacing: .14em; opacity: .85; }
+  .tl p { margin: 0; font-size: 9.5pt; }
+  .ch1 h3 { margin: 9pt 0 3pt; } .ch1 .grid3 { margin: 6pt 0; } .ch1 .callout { margin: 8pt 0; padding: 8pt 12pt; } .ch1 p { margin-bottom: 6pt; } .ch1 .lead { margin-bottom: 8pt; }
+
+  .tip { border: 1.5px solid var(--ruby); border-radius: 12px; padding: 10pt 14pt; margin: 12pt 0; background: #fff; break-inside: avoid; }
+  .tip .lbl { font-size: 8pt; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--ruby); margin-bottom: 3pt; }
+  .tip p { margin: 0; font-size: 10.5pt; }
+  .tip.todo { border-style: dashed; border-color: #d9a400; background: #fffbea; }
+  .tip.todo .lbl { color: #8a6300; }
+  .tip.todo p { color: #8a6300; font-style: italic; }
+  .steps { counter-reset: s; margin: 8pt 0; }
+  .steps > div { position: relative; padding-left: 30pt; margin-bottom: 9pt; break-inside: avoid; }
+  .steps > div::before { counter-increment: s; content: counter(s); position: absolute; left: 0; top: 0; width: 20pt; height: 20pt; border-radius: 50%; background: var(--ruby); color: #fff; font-weight: 800; font-size: 10pt; display: flex; align-items: center; justify-content: center; }
+  .steps > div > b:first-child { display: block; }
+  .formula { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 9.5pt; background: #f4f8fb; border-radius: 6px; padding: 6pt 9pt; margin: 4pt 0; }
+  td.n, th.n { text-align: right; white-space: nowrap; }
+  td.hi { font-weight: 800; color: var(--ruby-dark); }
+  .week7 { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5pt; margin: 10pt 0; }
+  .week7 div { border-radius: 8px; background: var(--ruby); color: #fff; padding: 7pt 4pt; text-align: center; font-size: 8.5pt; line-height: 1.3; }
+  .week7 div:nth-child(odd) { background: var(--ruby-dark); }
+  .week7 div.rest { background: #eef3f6; color: #8a99a5; }
+  .week7 small { display: block; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; opacity: .85; font-size: 7.5pt; }
+  .week7 b { display: block; font-size: 11pt; margin: 2pt 0; }
+  .meal { display: grid; grid-template-columns: 0.85in 1fr 1.75in; gap: 8pt; padding: 5pt 0; border-bottom: 1px solid var(--line); font-size: 9.5pt; break-inside: avoid; }
+  .meal .when { font-weight: 800; color: var(--ruby-dark); }
+  .meal .mac { text-align: right; color: var(--muted); font-size: 8.5pt; }
+  .total { display: flex; gap: 8pt; margin: 6pt 0 12pt; flex-wrap: wrap; }
+  .total span { background: var(--mist); color: var(--ruby-dark); border-radius: 999px; padding: 3pt 10pt; font-weight: 800; font-size: 9pt; }
+  .box { display: inline-block; width: 10pt; height: 10pt; border: 1.5px solid var(--ruby); border-radius: 3px; margin-right: 7pt; vertical-align: -1pt; }
+  .checklist li { list-style: none; margin-bottom: 7pt; }
+  .checklist { padding-left: 0; }
+  h2 { break-after: avoid; } h3 { break-after: avoid; }
+  table { break-inside: auto; } tr { break-inside: avoid; }
+</style>
+
+</head>
+<body>
+
+<div class="cover">
+  <div class="glow"></div><div class="glow2"></div>
+  <svg viewBox="0 0 300 200" fill="none" aria-hidden="true">
+    <rect x="30" y="40" width="50" height="150" rx="10" fill="#c8d3da"/>
+    <rect x="90" y="110" width="50" height="80" rx="10" fill="#c8d3da"/>
+    <rect x="170" y="100" width="50" height="90" rx="10" fill="#89cff0"/>
+    <rect x="230" y="20" width="50" height="170" rx="10" fill="#3a9ad9"/>
+  </svg>
+  <div class="brand">Ascend Coaching</div>
+  <h1>The skinny fat <span>fix</span></h1>
+  <p class="sub">Lose the soft midsection and build the frame you actually want. The roadmap I wish I had followed from day one.</p>
+  <div class="tag">Ascend Coaching guide &middot; 2026 edition</div>
+  <div class="foot">General fitness and nutrition education, not medical advice. Talk to your doctor before changing your diet or training if you have a medical condition. Information current as of November 2026.</div>
+</div>
+
+<!-- 1 -->
+<div class="section">
+  <div class="eyebrow">Chapter 1</div>
+  <h2><span class="num">01</span>Where I started</h2>
+  <div class="rule"></div>
+  <p class="lead">When I started lifting I was 5&prime;5&Prime; and 132 pounds, and I was skinny fat. I didn&rsquo;t know where to start or how to work out, but I had the goal in mind: to look aesthetic and be proud of how I look.</p>
+
+  <div class="grid3">
+    <div class="card"><div class="k">Where I started</div><h4 style="font-size:18pt;color:var(--ruby);margin:2pt 0">132 lbs</h4><p>At 5&prime;5&Prime;. Skinny arms, soft midsection.</p></div>
+    <div class="card"><div class="k">My training</div><h4 style="font-size:18pt;color:var(--ruby);margin:2pt 0">PPL</h4><p>Push, Pull, Legs for the majority of my journey.</p></div>
+    <div class="card"><div class="k">The goal</div><h4 style="font-size:18pt;color:var(--ruby);margin:2pt 0">Aesthetic</h4><p>To look good and be proud of how I look.</p></div>
+  </div>
+
+  <h3>How it actually went</h3>
+  <div class="timeline">
+    <div><b>1. I cut first</b>It seemed like the obvious move. I ended up just skinny and lean.</div>
+    <div><b>2. Then I bulked</b>It was hard to gain weight, but I refused to get stuck, so I ate as much as I possibly could, usually a surplus of about 600 calories a day.</div>
+    <div><b>3. Strength and muscle</b>While I was heavy, I focused on building strength and muscle.</div>
+    <div><b>4. Body recomposition</b>Lastly, I recomped to remove the fat and keep as much muscle as possible.</div>
+  </div>
+
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>My biggest mistake was leaning out first. Even though I got lean and had visible abs, I didn&rsquo;t have the muscle or the frame. If I had to do it all over again, I would&rsquo;ve bulked first.</p></div>
+  <p>This guide is the version I wish I had followed: <b>build the frame first, then reveal it.</b></p>
+</div>
+
+<!-- 2 -->
+<div class="section">
+  <div class="eyebrow">Chapter 2</div>
+  <h2><span class="num">02</span>What skinny fat really is</h2>
+  <div class="rule"></div>
+  <p class="lead">Skinny fat means you look slim in clothes but soft without them: not much muscle, and a bit of fat sitting around your stomach and chest.</p>
+
+  <h3>The problem isn&rsquo;t too much fat. It&rsquo;s too little muscle.</h3>
+  <p>Most skinny fat people don&rsquo;t actually carry much fat. They just don&rsquo;t have enough muscle to give their body shape. That&rsquo;s why the instinct to diet usually backfires.</p>
+
+  <div class="grid3">
+    <div class="card"><div class="k">If you cut first</div><h4>You get smaller</h4><p>You lose the little fat you have and some muscle with it. You end up thin, flat and still not happy. This is what happened to me.</p></div>
+    <div class="card"><div class="k">If you build first</div><h4>You get a frame</h4><p>Muscle fills out your shoulders, chest, back and arms. Then when you lean out, there&rsquo;s something to show.</p></div>
+    <div class="card"><div class="k">The fix</div><h4>Build, then reveal</h4><p>Gain muscle with a controlled bulk, then recomp to strip the fat while keeping the muscle.</p></div>
+  </div>
+
+  <h3>Signs you&rsquo;re skinny fat</h3>
+  <ul class="clean">
+    <li>Normal or low bodyweight for your height, but a soft stomach and little muscle definition.</li>
+    <li>Thin arms, narrow shoulders and a flat chest, with fat around the belly, lower back or chest.</li>
+    <li>You&rsquo;ve tried dieting and ended up looking smaller, not better.</li>
+    <li>Little or no consistent strength training so far.</li>
+  </ul>
+  <div class="callout"><b>Good news:</b> skinny fat people are usually new to lifting, which means you&rsquo;re in the best position you&rsquo;ll ever be in to build muscle fast.</div>
+</div>
+
+<!-- 3 -->
+<div class="section">
+  <div class="eyebrow">Chapter 3</div>
+  <h2><span class="num">03</span>The roadmap</h2>
+  <div class="rule"></div>
+  <p class="lead">Three phases. Same direction I went, minus the mistake of cutting first.</p>
+
+  <div class="timeline">
+    <div><b>Phase 1: Build the frame (lean bulk, about 4 to 8 months)</b>Eat in a small surplus, train hard on a Push, Pull, Legs split, and gain weight slowly.</div>
+    <div><b>Phase 2: Get strong while you&rsquo;re heavy</b>This runs inside Phase 1. Your focus is adding weight to the bar every week while the food is there to fuel it.</div>
+    <div><b>Phase 3: Reveal it (body recomposition)</b>Drop to maintenance calories, keep protein high, and keep training heavy. The fat comes off and the muscle stays.</div>
+  </div>
+
+  <h3>Where should you start?</h3>
+  <table>
+    <tr><th style="width:52%">What you see in the mirror</th><th>Start with</th></tr>
+    <tr><td>Thin arms and chest, a little softness around the belly, and you can see a faint outline of your abs in good lighting</td><td><b>Phase 1:</b> lean bulk</td></tr>
+    <tr><td>Soft all over, belly over your belt, no ab outline at all</td><td><b>8 to 12 weeks of recomp at maintenance first</b>, then Phase 1</td></tr>
+    <tr><td>You already have some muscle, but you&rsquo;re not lean</td><td><b>Cut:</b> eat about 300 to 500 below maintenance and keep lifting heavy, losing 0.5 to 1% of your bodyweight a week. Once you&rsquo;re lean, go to Phase 1 to keep building</td></tr>
+  </table>
+  <div class="callout"><b>The one thing to avoid:</b> cutting first when you don&rsquo;t have much muscle yet. You&rsquo;ll just end up skinny, like I did. Cutting only makes sense once you&rsquo;ve built a frame worth revealing.</div>
+</div>
+
+<!-- 4 -->
+<div class="section">
+  <div class="eyebrow">Chapter 4</div>
+  <h2><span class="num">04</span>Phase 1: Set up your bulk</h2>
+  <div class="rule"></div>
+  <p class="lead">A lean bulk means eating a little more than you burn, so most of the weight you gain is muscle, not fat.</p>
+
+  <div class="steps">
+    <div><b>Find your maintenance</b>Use the chart below (Mifflin-St Jeor formula, age 25, moderate activity). It&rsquo;s a starting estimate, so adjust after 2 to 3 weeks of weigh-ins.</div>
+    <div><b>Add 250 to 500 calories</b>Start at +300. If you&rsquo;re a true hard gainer and the scale won&rsquo;t move after 2 weeks, add another 150 to 200.</div>
+    <div><b>Aim to gain 0.25 to 0.5% of your bodyweight a week</b>For a 140 lb guy that&rsquo;s about 0.35 to 0.7 lb a week, or 1.5 to 3 lb a month.</div>
+  </div>
+
+  <table><tr><th>Height</th><th class='n'>Weight</th><th class='n'>BMR</th><th class='n'>Light &times;1.375</th><th class='n'>Moderate &times;1.55</th><th class='n'>Very active &times;1.725</th></tr><tr><td>5&prime;6&Prime;</td><td class='n'>150 lb</td><td class='n'>1,600</td><td class='n'>2,200</td><td class='n hi'>2,500</td><td class='n'>2,750</td></tr>
+<tr><td>5&prime;7&Prime;</td><td class='n'>165 lb</td><td class='n'>1,700</td><td class='n'>2,350</td><td class='n hi'>2,600</td><td class='n'>2,900</td></tr>
+<tr><td>5&prime;8&Prime;</td><td class='n'>170 lb</td><td class='n'>1,750</td><td class='n'>2,400</td><td class='n hi'>2,700</td><td class='n'>3,000</td></tr>
+<tr><td>5&prime;10&Prime;</td><td class='n'>180 lb</td><td class='n'>1,800</td><td class='n'>2,500</td><td class='n hi'>2,800</td><td class='n'>3,100</td></tr>
+<tr><td>5&prime;10&Prime;</td><td class='n'>200 lb</td><td class='n'>1,900</td><td class='n'>2,600</td><td class='n hi'>2,950</td><td class='n'>3,250</td></tr>
+<tr><td>6&prime;0&Prime;</td><td class='n'>190 lb</td><td class='n'>1,900</td><td class='n'>2,600</td><td class='n hi'>2,900</td><td class='n'>3,250</td></tr>
+<tr><td>6&prime;0&Prime;</td><td class='n'>210 lb</td><td class='n'>2,000</td><td class='n'>2,700</td><td class='n hi'>3,050</td><td class='n'>3,400</td></tr>
+<tr><td>6&prime;2&Prime;</td><td class='n'>220 lb</td><td class='n'>2,050</td><td class='n'>2,800</td><td class='n hi'>3,200</td><td class='n'>3,550</td></tr></table>
+  <p class="caption">Use the &ldquo;Moderate&rdquo; column if you lift 4 to 6 days a week and hit 8,000 to 10,000 steps. Then add your surplus on top.</p>
+
+  <h3>Your macros</h3>
+  <ul class="clean">
+    <li><b>Protein:</b> 0.8 to 1 g per lb of bodyweight, every day.</li>
+    <li><b>Fat:</b> 0.3 to 0.4 g per lb.</li>
+    <li><b>Carbs:</b> everything else. They fuel your training and make hitting your calories much easier.</li>
+  </ul>
+</div>
+
+<!-- 5 -->
+<div class="section">
+  <div class="eyebrow">Chapter 5</div>
+  <h2><span class="num">05</span>Eating enough when you&rsquo;re a hard gainer</h2>
+  <div class="rule"></div>
+  <p class="lead">Gaining weight was hard for me too. I refused to get stuck, and I ate as much as I could. Here&rsquo;s how to do the same thing, smarter.</p>
+
+  <div class="callout"><b>Smarter than &ldquo;eat everything&rdquo;:</b> research on lean versus big surpluses shows a bigger surplus mostly adds more fat, not more muscle. Stick to the calorie target from Chapter 4 and you&rsquo;ll look a lot better at the end of your bulk.</div>
+
+  <h3>Tricks that make it easier</h3>
+  <ul class="clean">
+    <li><b>Drink some calories.</b> A shake with Fairlife milk, oats, a banana and peanut butter is 700+ calories and goes down easy.</li>
+    <li><b>Go calorie-dense.</b> Rice, oats, bagels, pasta, granola, peanut butter, nuts, whole eggs and olive oil pack a lot of calories into a small amount of food.</li>
+    <li><b>Eat more often.</b> 4 to 5 meals is easier than 3 huge ones. Add a meal before bed.</li>
+    <li><b>Don&rsquo;t fill up on salad and water before meals.</b> Eat your veggies, but not first.</li>
+    <li><b>Track it.</b> Most hard gainers eat less than they think. Log your food for the first few weeks.</li>
+  </ul>
+
+  <h3>Sample bulking day: around 2,850 calories</h3>
+  <div class="meal"><div class="when">Breakfast</div><div>Overnight oats: 1 cup oats, 1 scoop whey, 1 cup Fairlife 2% milk, 1 tbsp peanut butter, 1 banana</div><div class="mac">740 kcal &middot; 52P / 93C / 19F</div></div><div class="meal"><div class="when">Lunch</div><div>Burrito bowl: 6 oz chicken, 1.5 cups rice, &frac12; cup black beans, salsa, &frac14; avocado, 1 oz cheese</div><div class="mac">890 kcal &middot; 73P / 95C / 20F</div></div><div class="meal"><div class="when">Snack</div><div>1 cup nonfat Greek yogurt + &#8531; cup granola + Diet Coke</div><div class="mac">280 kcal &middot; 27P / 31C / 6F</div></div><div class="meal"><div class="when">Dinner</div><div>6 oz top sirloin steak, 1.5 cups cooked pasta, 1.5 cups broccoli</div><div class="mac">710 kcal &middot; 68P / 75C / 15F</div></div><div class="meal"><div class="when">Snack</div><div>Barebells protein bar</div><div class="mac">200 kcal &middot; 20P / 18C / 8F</div></div>
+  <div class="total"><span>&asymp; 2,820 kcal</span><span>240 g protein</span><span>312 g carbs</span><span>68 g fat</span></div>
+  <p class="caption">Scale portions up or down to hit your own number. Approximate macros; check your labels.</p>
+</div>
+
+<!-- 6 -->
+<div class="section">
+  <div class="eyebrow">Chapter 6</div>
+  <h2><span class="num">06</span>The training: Push, Pull, Legs</h2>
+  <div class="rule"></div>
+  <p class="lead">PPL is what I trained on for the majority of my journey. It&rsquo;s simple, it hits everything, and it&rsquo;s perfect for building your frame.</p>
+
+  <div class="week7">
+    <div><small>Mon</small><b>Push</b></div>
+    <div><small>Tue</small><b>Pull</b></div>
+    <div><small>Wed</small><b>Legs</b></div>
+    <div><small>Thu</small><b>Push</b></div>
+    <div><small>Fri</small><b>Pull</b></div>
+    <div><small>Sat</small><b>Legs</b></div>
+    <div class="rest"><small>Sun</small><b>Rest</b></div>
+  </div>
+  <p class="caption"><b>Brand new to lifting?</b> Start with Push, Pull, Legs once a week (Mon, Wed, Fri) for your first 1 to 2 months, then move to 6 days.</p>
+
+  <h3>Focus on getting stronger</h3>
+  <p>While I was heavy, my focus was building strength and muscle, and that&rsquo;s your job in Phase 1. Every exercise has a rep range. When you hit the top of the range on all 3 sets, add weight (about 5 lb upper body, 10 lb lower body). Write every session down and try to beat it next time.</p>
+  <ul class="clean">
+    <li><b>Effort:</b> finish each set with 1 to 2 good reps left in the tank.</li>
+    <li><b>Rest:</b> 2 to 3 minutes on heavy lifts, 60 to 90 seconds on smaller ones.</li>
+    <li><b>Form first:</b> controlled reps, full range of motion. Strength built with good form sticks.</li>
+  </ul>
+</div>
+
+<div class="section">
+  <div class="eyebrow">Chapter 6 &middot; Workouts</div>
+  <h2>Push, pull and legs</h2>
+  <div class="rule"></div>
+  <h3>Push (chest, shoulders, triceps)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Barbell bench press</b></td><td class='n'>3 &times; 6&ndash;8</td><td>Dumbbell bench press</td></tr><tr><td><b>Incline dumbbell press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Incline machine press</td></tr><tr><td><b>Seated dumbbell shoulder press</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Machine shoulder press</td></tr><tr><td><b>Dumbbell lateral raise</b></td><td class='n'>3 &times; 10&ndash;15</td><td>Cable lateral raise</td></tr><tr><td><b>Rope triceps pushdown</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Dips</td></tr></table>
+  <h3>Pull (back, rear delts, biceps)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Lat pulldown or pull-up</b></td><td class='n'>3 &times; 6&ndash;10</td><td>Neutral-grip pulldown</td></tr><tr><td><b>Chest-supported row</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Barbell row</td></tr><tr><td><b>Seated cable row</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Single-arm dumbbell row</td></tr><tr><td><b>Face pull</b></td><td class='n'>3 &times; 12&ndash;15</td><td>Reverse pec deck</td></tr><tr><td><b>EZ-bar curl</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Dumbbell curl</td></tr></table>
+  <h3>Legs (quads, hamstrings, glutes, calves)</h3><table><tr><th style='width:38%'>Exercise</th><th class='n'>Sets &times; reps</th><th>Or swap for</th></tr><tr><td><b>Hack squat or back squat</b></td><td class='n'>3 &times; 6&ndash;8</td><td>Leg press</td></tr><tr><td><b>Romanian deadlift</b></td><td class='n'>3 &times; 8&ndash;10</td><td>Hip thrust</td></tr><tr><td><b>Leg press</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Walking lunge</td></tr><tr><td><b>Lying leg curl</b></td><td class='n'>3 &times; 10&ndash;12</td><td>Seated leg curl</td></tr><tr><td><b>Standing calf raise</b></td><td class='n'>3 &times; 10&ndash;15</td><td>Seated calf raise</td></tr></table>
+  <p class="caption">Run the same three workouts twice a week. Want more variety and detail? My Training Split guide covers warm-ups, drop sets and deloads.</p>
+</div>
+
+<!-- 7 -->
+<div class="section">
+  <div class="eyebrow">Chapter 7</div>
+  <h2><span class="num">07</span>The ugly middle of a bulk</h2>
+  <div class="rule"></div>
+  <p class="lead">Nobody talks about this part, so I will.</p>
+
+  <div class="tip"><div class="lbl">Edwin&rsquo;s tip</div><p>Reminder: bulking makes you look worse. Your face gets fat and you look watery almost always. But looking back, I don&rsquo;t regret it, because it allowed me to get to where I am now.</p></div>
+
+  <h3>Why you look watery</h3>
+  <ul class="clean">
+    <li><b>Carbs hold water.</b> Every gram of stored carbohydrate (glycogen) holds about 3 grams of water, so eating more carbs makes you look fuller and softer.</li>
+    <li><b>More food means more salt,</b> which also holds water under your skin.</li>
+    <li><b>Some fat gain is part of the deal,</b> and a lot of people notice it first in their face.</li>
+  </ul>
+  <p>Most of the watery look disappears within a couple of weeks once you drop back to maintenance in Phase 3.</p>
+
+  <h3>How to keep it under control</h3>
+  <ul class="clean check">
+    <li>Stick to your surplus. Gaining faster than 0.5% a week mostly adds fat.</li>
+    <li>Drink plenty of water and keep salt fairly consistent day to day.</li>
+    <li>Keep your steps at 8,000 to 10,000 a day.</li>
+    <li>Judge progress by your lifts and your photos every 4 weeks, not by your face in the bathroom mirror.</li>
+  </ul>
+  <div class="callout"><b>Mindset:</b> you&rsquo;re building the frame. It&rsquo;s supposed to look a little rough before it looks great.</div>
+</div>
+
+<!-- 8 -->
+<div class="section">
+  <div class="eyebrow">Chapter 8</div>
+  <h2><span class="num">08</span>Phase 3: Reveal it with a recomp</h2>
+  <div class="rule"></div>
+  <p class="lead">Lastly, I went into body recomposition to remove the fat and keep as much muscle as possible. This is where all the work from your bulk starts to show.</p>
+
+  <h3>When to end your bulk</h3>
+  <ul class="clean">
+    <li>Your waist has gone up about 2 to 3 inches since you started.</li>
+    <li>You can no longer see any outline of your abs and you&rsquo;re starting to feel too soft.</li>
+    <li>You&rsquo;ve been bulking 4 to 8 months and your lifts have gone up a lot.</li>
+  </ul>
+
+  <h3>How to recomp</h3>
+  <div class="steps">
+    <div><b>Drop to maintenance</b>Take away your surplus and eat at maintenance. If you have more fat to lose, go 200 to 300 below.</div>
+    <div><b>Keep protein high and keep training heavy</b>Same split, same effort. Heavy training is the signal that tells your body to hold on to the muscle you built.</div>
+    <div><b>Give it 12+ weeks</b>Judge it by your waist, your photos and your lifts. The scale may barely move.</div>
+  </div>
+  <p>My <b>Recomp Blueprint</b> guide covers this phase step by step, with calorie charts, sample days and an adjustment table.</p>
+
+  <div class="callout"><b>Then repeat.</b> Most people need one or two rounds of build, then reveal, to go from skinny fat to an aesthetic physique. Each round, you start from a better place.</div>
+</div>
+
+<!-- 9 -->
+<div class="section">
+  <div class="eyebrow">Chapter 9</div>
+  <h2><span class="num">09</span>Mistakes and your checklist</h2>
+  <div class="rule"></div>
+
+  <h3>Common skinny fat mistakes</h3>
+  <ul class="clean">
+    <li><b>Cutting first.</b> You end up skinny instead of fit. (My biggest mistake.)</li>
+    <li><b>Dirty bulking.</b> Eating everything in sight adds a lot more fat than muscle.</li>
+    <li><b>Doing endless cardio to fix the belly.</b> Cardio burns calories, but it won&rsquo;t build the muscle you&rsquo;re missing.</li>
+    <li><b>Random workouts.</b> No plan means no progressive overload. Follow the split and log it.</li>
+    <li><b>Low protein.</b> Without 0.8 to 1 g per lb, your surplus turns into more fat.</li>
+    <li><b>Quitting in the ugly middle.</b> Looking soft halfway through a bulk is normal. Stay the course.</li>
+  </ul>
+
+  <h3>Your weekly checklist</h3>
+  <ul class="checklist">
+    <li><span class="box"></span>Hit my calorie target (maintenance + surplus) at least 6 days</li>
+    <li><span class="box"></span>Protein at 0.8 to 1 g per lb every day</li>
+    <li><span class="box"></span>All PPL sessions done and logged</li>
+    <li><span class="box"></span>Beat last week on at least one lift per workout</li>
+    <li><span class="box"></span>Weighed in daily and checked my weekly average (gaining 0.25 to 0.5% a week)</li>
+    <li><span class="box"></span>8,000 to 10,000 steps a day and 7 to 9 hours of sleep</li>
+    <li><span class="box"></span>Progress photos and waist measurement every 4 weeks</li>
+  </ul>
+
+  <div class="end">
+    <h3>Want help building your frame?</h3>
+    <p>At <b>Ascend Coaching</b>, a real coach with 9 years of training experience builds your training and nutrition plan 1:1, and adjusts it as you progress. Start your ascension today at Ascend Coaching.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="eyebrow">References</div>
+  <h2>Sources</h2>
+  <div class="rule"></div>
+  <ol class="sources">
+    <li>Iraki J, Fitschen P, Espinar S, Helms E. &ldquo;Nutrition Recommendations for Bodybuilders in the Off-Season: A Narrative Review.&rdquo; <i>Sports.</i> 2019;7(7):154.</li>
+    <li>Garthe I, et al. &ldquo;Effect of nutritional intervention on body composition and performance in elite athletes.&rdquo; <i>Eur J Sport Sci.</i> 2013;13(3):295&ndash;303.</li>
+    <li>Barakat C, et al. &ldquo;Body Recomposition: Can Trained Individuals Build Muscle and Lose Fat at the Same Time?&rdquo; <i>Strength Cond J.</i> 2020;42(5):7&ndash;21.</li>
+    <li>Morton RW, et al. &ldquo;A systematic review, meta-analysis and meta-regression of the effect of protein supplementation on resistance training-induced gains in muscle mass and strength in healthy adults.&rdquo; <i>Br J Sports Med.</i> 2018;52(6):376&ndash;384.</li>
+    <li>Mifflin MD, St Jeor ST, et al. &ldquo;A new predictive equation for resting energy expenditure in healthy individuals.&rdquo; <i>Am J Clin Nutr.</i> 1990;51(2):241&ndash;247.</li>
+    <li>Schoenfeld BJ, Ogborn D, Krieger JW. &ldquo;Effects of Resistance Training Frequency on Measures of Muscle Hypertrophy: A Systematic Review and Meta-Analysis.&rdquo; <i>Sports Med.</i> 2016;46(11):1689&ndash;1697.</li>
+    <li>Helms ER, Aragon AA, Fitschen PJ. &ldquo;Evidence-based recommendations for natural bodybuilding contest preparation: nutrition and supplementation.&rdquo; <i>J Int Soc Sports Nutr.</i> 2014;11:20.</li>
+  </ol>
+  <p class="caption" style="margin-top:18pt">This guide is for general education only and is not medical or dietary advice. Results vary from person to person. If you have a medical condition or a history of disordered eating, talk to a doctor or registered dietitian before changing how you eat or train.</p>
+</div>
+
+</body>
+</html>
