@@ -6,18 +6,26 @@ import { isPaid } from "@/paid";
 import { eliteLoginToken } from "@/elite";
 
 // Stripe calls this after a successful checkout. We send the buyer a confirmation
-// email (Elite buyers also get their code to unlock every guide for free).
-// Needs STRIPE_WEBHOOK_SECRET (from the Stripe webhook endpoint) and the Resend env vars.
+// email (Elite buyers also get a link that unlocks every guide) and the coach a sale alert.
+// The endpoint is registered in Stripe automatically (src/stripe-setup.ts).
+// Verification: with STRIPE_WEBHOOK_SECRET set, the Stripe signature is checked. Without
+// it, the event is fetched back from Stripe by id, so only real events are ever used.
 export async function POST(req: Request) {
+  if (!stripe) return new Response("Stripe not configured", { status: 400 });
+  const body = await req.text();
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
-  const sig = req.headers.get("stripe-signature");
-  if (!stripe || !secret || !sig) return new Response("Webhook not configured", { status: 400 });
 
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(await req.text(), sig, secret);
+    if (secret) {
+      event = stripe.webhooks.constructEvent(body, req.headers.get("stripe-signature") ?? "", secret);
+    } else {
+      const id = JSON.parse(body)?.id;
+      if (typeof id !== "string" || !id.startsWith("evt_")) throw new Error("bad id");
+      event = await stripe.events.retrieve(id);
+    }
   } catch {
-    return new Response("Bad signature", { status: 400 });
+    return new Response("Invalid event", { status: 400 });
   }
 
   if (event.type === "checkout.session.completed") {
