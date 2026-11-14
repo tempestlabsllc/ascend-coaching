@@ -39,6 +39,12 @@ function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
       <div className={`h-3 ${s.band}`} />
       <div className="flex flex-1 flex-col p-6">
         {t.highlighted && <span className="tier-gold mb-3 w-fit rounded-full px-3 py-1 text-xs font-bold text-ink">MOST POPULAR</span>}
+        {t.spotsRemaining != null && (
+          <span className="mb-3 inline-flex w-fit items-center gap-2 rounded-full bg-ink px-3 py-1 text-xs font-bold uppercase tracking-wide text-white">
+            <span className="relative flex h-2 w-2"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#ff5a6e] opacity-75" /><span className="relative inline-flex h-2 w-2 rounded-full bg-[#ff3b55]" /></span>
+            Only {t.spotsRemaining} spots remaining
+          </span>
+        )}
         <h3 className={`text-2xl font-extrabold ${s.name}`}>{t.name}</h3>
         <p className="mt-1 text-sm text-black/60">{t.blurb}</p>
         {is3 ? (

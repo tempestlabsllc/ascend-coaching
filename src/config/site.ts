@@ -32,6 +32,8 @@ export type Tier = {
   blurb: string;
   features: string[];
   highlighted?: boolean;
+  /** Optional scarcity label, e.g. 20 → "Only 20 spots remaining". Update by hand. */
+  spotsRemaining?: number;
   color: "grey" | "gold" | "rainbow";
   // Extra plan info (not currently shown on the cards).
   bestFor: string;
@@ -87,6 +89,7 @@ export const tiers: Tier[] = [
     id: "elite",
     color: "rainbow",
     name: "Elite",
+    spotsRemaining: 20,
     priceCents: 45000,
     interval: "month",
     blurb: "Hands-on, high-touch coaching.",
@@ -101,6 +104,7 @@ export const tiers: Tier[] = [
       "Everything in Pro",
       "Weekly check-ins with personal video responses",
       "Life coaching & accountability (mindset, habits, routines)",
+      "All guides free, including every future guide",
     ],
   },
 ];
