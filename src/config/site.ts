@@ -77,7 +77,7 @@ export const tiers: Tier[] = [
       "1:1 kickoff call to map your struggles and goals",
       "Fully custom program built for you",
       "Weekly check-ins with written feedback",
-      "Monthly video check-in with a personal video response",
+      "Monthly video check-in with a progress summary and next steps",
       "Custom meal plan",
       "24/7 messaging on Trainerize or WhatsApp, to answer any questions whenever you need it",
     ],
