@@ -179,7 +179,7 @@ export const guides: Guide[] = [
   {
     id: "first-90-days",
     title: "Your First 90 Days: The Beginner's Roadmap from Zero to Results",
-    priceCents: 2000,
+    priceCents: 1000,
     description: "Don't know where to start? This is your day-one plan: what to lift, what to eat and how to stay consistent for your first three months.",
     pages: 12,
     file: "first-90-days.pdf",
