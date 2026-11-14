@@ -49,7 +49,7 @@ export const tiers: Tier[] = [
     bestFor: "Self-starters who want a proven routine to follow, without needing a custom plan.",
     details: [
       { label: "Your plan", value: "Your coach's exact training routine plus calorie and macro targets, delivered in the ABC Trainerize app within 3 days" },
-      { label: "Check-ins", value: "Monthly check-in form, reply within 72 hours" },
+      { label: "Check-ins", value: "Monthly check-in form, with a progress summary and next steps within 72 hours" },
       { label: "Updates", value: "You get every change your coach makes to their own routine" },
       { label: "Support", value: "1:1 contact on Trainerize or WhatsApp, questions answered at your monthly check-in" },
     ],
@@ -58,6 +58,7 @@ export const tiers: Tier[] = [
       "Exact exercises, sets and reps",
       "Updated whenever the routine changes",
       "Nutrition targets (calories + macros)",
+      "Monthly check-in with a progress summary and next steps",
     ],
   },
   {
@@ -77,7 +78,7 @@ export const tiers: Tier[] = [
       "1:1 kickoff call to map your struggles and goals",
       "Fully custom program built for you",
       "Weekly check-ins with written feedback",
-      "Monthly video check-in with a progress summary and next steps",
+      "Monthly video check-in with a personal video response",
       "Custom meal plan",
       "24/7 messaging on Trainerize or WhatsApp, to answer any questions whenever you need it",
     ],
