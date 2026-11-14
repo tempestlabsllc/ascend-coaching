@@ -95,13 +95,12 @@ export const tiers: Tier[] = [
       { label: "Your plan", value: "Custom program and meal plan in the ABC Trainerize app, plus a personal video walkthrough of your plan" },
       { label: "Check-ins", value: "Weekly check-in with a personal video reply within 24 hours" },
       { label: "Updates", value: "Program adjusted every 4 weeks, or sooner if needed" },
-      { label: "Support", value: "Everything in Pro, plus life coaching and accountability (mindset, habits, routines) and sleep, stress and recovery coaching" },
+      { label: "Support", value: "Everything in Pro, plus life coaching and accountability (mindset, habits, routines)" },
     ],
     features: [
       "Everything in Pro",
       "Weekly check-ins with personal video responses",
       "Life coaching & accountability (mindset, habits, routines)",
-      "Lifestyle, sleep & recovery coaching",
     ],
   },
 ];
