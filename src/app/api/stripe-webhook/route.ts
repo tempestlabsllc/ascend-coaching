@@ -1,7 +1,7 @@
 import type Stripe from "stripe";
 import { stripe } from "@/lib";
 import { site, tiers, guides } from "@/config/site";
-import { handleCompletedCheckout } from "@/purchase-emails";
+import { handleCompletedCheckout, handleInvoicePaid } from "@/purchase-emails";
 import { logActivity } from "@/activity";
 import { formatPrice } from "@/config/site";
 
@@ -42,6 +42,10 @@ export async function POST(req: Request) {
     const email = c && !("deleted" in c && c.deleted) ? (c as Stripe.Customer).email : "";
     const plan = tiers.find((t) => t.id === sub.metadata?.tier)?.name ?? "Coaching";
     await logActivity("cancel", `Plan ended: ${plan}`, `${email || "A client"}'s ${plan} plan has ended.`, { link: "/admin?tab=churn", key: event.id });
+  }
+
+  if (event.type === "invoice.paid") {
+    await handleInvoicePaid(event.data.object as Stripe.Invoice);
   }
 
   if (event.type === "invoice.payment_failed") {

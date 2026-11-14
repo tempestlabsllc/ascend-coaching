@@ -4,6 +4,7 @@ import { guides } from "@/config/site";
 import { stripe } from "@/lib";
 import { hasElite } from "@/elite";
 import { isPaid } from "@/paid";
+import { validFreeKey } from "@/free-link";
 
 // Serves a guide PDF from /private-guides. Free guides need an email signup first;
 // paid guides require a paid Stripe Checkout session for that guide.
@@ -17,7 +18,7 @@ export async function GET(req: Request) {
     // Elite members get every guide free.
   } else if (guide.priceCents === 0) {
     // Free guides unlock after an email signup on the Guides page.
-    const unlocked = (req.headers.get("cookie") || "").includes("ac_guide_unlocked=1");
+    const unlocked = (req.headers.get("cookie") || "").includes("ac_guide_unlocked=1") || validFreeKey(guide.id, url.searchParams.get("k"));
     if (!unlocked) return Response.redirect(new URL("/shop#unlock", url), 302);
   } else {
     const sessionId = url.searchParams.get("session_id");

@@ -7,7 +7,7 @@ import { site } from "@/config/site";
 // the endpoint when it's missing. Events are verified by fetching them back from
 // Stripe (see /api/stripe-webhook), so no signing secret needs copying anywhere.
 export const WEBHOOK_URL = `${site.url}/api/stripe-webhook`;
-const EVENTS = ["checkout.session.completed", "customer.subscription.deleted", "invoice.payment_failed"] as const;
+const EVENTS = ["checkout.session.completed", "customer.subscription.deleted", "invoice.payment_failed", "invoice.paid"] as const;
 
 let done: Promise<void> | null = null;
 
