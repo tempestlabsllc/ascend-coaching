@@ -39,7 +39,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
                     ? <a href={`/api/download?guide=${g.id}`} className="btn-primary w-full">Download free (Elite)</a>
                     : free
                     ? <GuideUnlock guideId={g.id} />
-                    : <BuyButton kind="guide" id={g.id} label="Buy now" />}
+                    : <><BuyButton kind="guide" id={g.id} label="Buy now" /><p className="mt-2 text-center text-xs text-black/50">Elite members get every guide free. <a href="/coaching" className="font-semibold text-brand underline">See Elite</a></p></>}
                 </div>
               </div>
             </div>
