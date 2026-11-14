@@ -169,14 +169,12 @@ export const guides: Guide[] = [
     file: "recomp-blueprint.pdf",
   },
   {
-    // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
     id: "abs-blueprint",
     title: "Abs Unlocked: Your Blueprint to a Visible Six-Pack",
-    priceCents: 0,
+    priceCents: 2000,
     description: "The body fat, training and diet strategy that actually reveals your abs. No gimmicks, no endless crunches, just what works.",
-    pages: 0,
+    pages: 9,
     file: "abs-blueprint.pdf",
-    comingSoon: true,
   },
   {
     // PLACEHOLDER: set the price, drop the PDF in /private-guides, then remove comingSoon.
