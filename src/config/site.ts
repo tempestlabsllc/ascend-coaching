@@ -88,7 +88,7 @@ export const tiers: Tier[] = [
     id: "elite",
     color: "rainbow",
     name: "Elite",
-    priceCents: 30000,
+    priceCents: 45000,
     interval: "month",
     blurb: "Hands-on, high-touch coaching.",
     bestFor: "Clients who want the fastest results and the most hands-on support.",
