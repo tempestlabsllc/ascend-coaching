@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { after } from "next/server";
+import { handleCompletedCheckout } from "@/purchase-emails";
+import { ensureWebhook } from "@/stripe-setup";
 import { guides, tiers } from "@/config/site";
 import { stripe } from "@/lib";
 import { isPaid } from "@/paid";
@@ -11,6 +14,8 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
   const s = stripe && session_id ? await stripe.checkout.sessions.retrieve(session_id).catch(() => null) : null;
   const kind = s?.metadata?.kind;
   const paid = !!s && isPaid(s);
+  // Backup for the Stripe webhook: send the purchase emails from here too (only once per checkout).
+  if (s && paid) after(async () => { await ensureWebhook(); await handleCompletedCheckout(s); });
   const guide = kind === "guide" && paid ? guides.find((g) => g.id === s?.metadata?.id) : undefined;
   const tier = kind === "tier" ? tiers.find((t) => t.id === s?.metadata?.id) : undefined;
 
