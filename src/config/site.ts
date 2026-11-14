@@ -77,6 +77,7 @@ export const tiers: Tier[] = [
     features: [
       "Fully custom program built for you",
       "Weekly check-ins with written feedback",
+      "Monthly video check-in with a personal video response",
       "Custom meal plan",
       "Life coaching & accountability (mindset, habits, routines)",
       "1:1 messaging on Trainerize or WhatsApp (typically within 5 hours)",
