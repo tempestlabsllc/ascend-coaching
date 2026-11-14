@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { guides } from "@/config/site";
 import { forwardSubmission } from "@/forward";
 import { saveRecord } from "@/store";
+import { logActivity } from "@/activity";
 
 // Free guides unlock with an email. The email is sent to the coach like other
 // forms, then a cookie lets this browser download free guides.
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
   }, email).catch(() => false)) || saved;
   if (!ok) return NextResponse.json({ ok: false, message: "Something went wrong. Please try again." }, { status: 502 });
 
+  await logActivity("lead", `New lead: ${email}`, `Unlocked ${guide.title}`);
   const res = NextResponse.json({ ok: true, url: `/api/download?guide=${guide.id}` });
   res.cookies.set("ac_guide_unlocked", "1", { httpOnly: true, sameSite: "lax", secure: true, path: "/", maxAge: 60 * 60 * 24 * 365 });
   return res;

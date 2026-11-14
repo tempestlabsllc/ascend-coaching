@@ -7,7 +7,9 @@ import {
 } from "@/admin/data";
 import { formatPrice, threeMonth, guides } from "@/config/site";
 import { readRecords, storeConfigured, type Stored } from "@/store";
+import { cookies } from "next/headers";
 import { logout, saveDiscount, setDiscountActive } from "./actions";
+import MarkSeen from "./MarkSeen";
 
 export const metadata = { title: "Admin", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
@@ -38,7 +40,7 @@ const NeedsStore = () => (
 );
 
 const TABS = [
-  ["overview", "Overview"], ["clients", "Clients"], ["forms", "Intake & check-ins"], ["guides", "Guides"],
+  ["overview", "Overview"], ["activity", "Activity"], ["clients", "Clients"], ["forms", "Intake & check-ins"], ["guides", "Guides"],
   ["churn", "Cancellations"], ["leads", "Leads"], ["discounts", "Discounts"],
 ] as const;
 type Tab = (typeof TABS)[number][0];
@@ -49,6 +51,10 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const sp = await searchParams;
   const tab: Tab = (TABS.find(([id]) => id === sp.tab)?.[0] ?? (sp.edit || sp.msg || sp.err ? "discounts" : "overview"));
 
+  const seen = (await cookies()).get("ac_admin_seen")?.value ?? "";
+  const activity = storeConfigured() ? await readRecords("activity", 300).catch(() => [] as Stored[]) : [];
+  const unseen = activity.filter((a) => a.savedAt > seen).length;
+
   let body: React.ReactNode;
   try {
     if (!stripe && ["overview", "clients", "guides", "churn", "discounts"].includes(tab)) {
@@ -56,6 +62,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
     } else {
       body = await {
         overview: () => Overview(stripe!),
+        activity: () => Activity(activity, seen),
         clients: () => Clients(stripe!),
         forms: () => Forms(sp),
         guides: () => Guides(stripe!),
@@ -77,12 +84,50 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
       <nav className="-mx-4 mt-5 flex gap-2 overflow-x-auto px-4 pb-2">
         {TABS.map(([id, label]) => (
           <a key={id} href={`/admin?tab=${id}`}
-            className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold ${id === tab ? "bg-ink text-white" : "border border-black/15 hover:bg-black/5"}`}>{label}</a>
+            className={`shrink-0 rounded-full px-4 py-2 text-sm font-semibold ${id === tab ? "bg-ink text-white" : "border border-black/15 hover:bg-black/5"}`}>
+            {label}{id === "activity" && unseen > 0 && <span className="ml-1.5 rounded-full bg-red-600 px-1.5 py-0.5 text-xs text-white">{unseen > 99 ? "99+" : unseen}</span>}
+          </a>
         ))}
       </nav>
       <div className="mt-6">{body}</div>
     </div>
   );
+}
+
+const ICON: Record<string, string> = { purchase: "💰", booking: "📅", intake: "📝", "check-in": "✅", lead: "📩", cancel: "⚠️", "payment-failed": "❌" };
+
+function Activity(items: Stored[], seen: string) {
+  if (!storeConfigured()) return <><H2>Activity</H2><NeedsStore /></>;
+  return (
+    <>
+      <MarkSeen />
+      <H2>Activity</H2>
+      <p className="mt-1 text-sm text-black/60">New purchases, bookings, forms, signups and cancellations. Purchases, bookings, intakes and cancellations are also emailed to you.</p>
+      {items.length === 0 ? <Empty>Nothing yet. New activity shows up here.</Empty> : (
+        <Rows>{items.map((a, i) => {
+          const isNew = a.savedAt > seen;
+          return (
+            <div key={i} className={`flex items-start gap-3 border-b border-black/10 px-5 py-3 last:border-0 ${isNew ? "bg-mist" : ""}`}>
+              <span className="text-xl leading-6">{ICON[String(a.type)] ?? "•"}</span>
+              <div className="min-w-0 flex-1">
+                <p className="font-semibold">{String(a.title)}{isNew && <span className="ml-2 rounded-full bg-red-600 px-1.5 py-0.5 align-middle text-[10px] font-bold uppercase text-white">New</span>}</p>
+                <p className="break-words text-sm text-black/60">{String(a.detail ?? "")}</p>
+              </div>
+              <p className="shrink-0 text-xs text-black/50">{ago(a.savedAt)}</p>
+            </div>
+          );
+        })}</Rows>
+      )}
+    </>
+  );
+}
+
+function ago(iso: string) {
+  const m = Math.round((Date.now() - Date.parse(iso)) / 60000);
+  if (m < 1) return "just now";
+  if (m < 60) return `${m}m ago`;
+  if (m < 60 * 24) return `${Math.round(m / 60)}h ago`;
+  return isoDay(iso);
 }
 
 async function Overview(s: Stripe) {

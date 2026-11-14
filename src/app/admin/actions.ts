@@ -104,3 +104,4 @@ export async function saveDiscount(form: FormData) {
 function isRedirect(e: unknown) {
   return !!e && typeof e === "object" && "digest" in e && String((e as { digest: unknown }).digest).startsWith("NEXT_REDIRECT");
 }
+

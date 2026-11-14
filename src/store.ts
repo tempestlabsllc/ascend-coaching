@@ -20,7 +20,7 @@ async function redis(commands: (string | number)[][]) {
 }
 
 export type Stored = Record<string, unknown> & { savedAt: string };
-export type ListName = "forms" | "leads";
+export type ListName = "forms" | "leads" | "activity";
 
 export async function saveRecord(list: ListName, data: Record<string, unknown>) {
   if (!storeConfigured()) return false;
@@ -42,4 +42,15 @@ export async function readRecords(list: ListName, limit = KEEP): Promise<Stored[
   return ((res?.result as string[]) ?? []).flatMap((s) => {
     try { return [JSON.parse(s) as Stored]; } catch { return []; }
   });
+}
+
+// True the first time a key is seen (kept 30 days), so retries and replays don't double-log.
+export async function firstTime(key: string) {
+  if (!storeConfigured()) return true;
+  try {
+    const [res] = await redis([["SET", `ac:seen:${key}`, "1", "NX", "EX", 60 * 60 * 24 * 30]]);
+    return res?.result === "OK";
+  } catch {
+    return true;
+  }
 }
