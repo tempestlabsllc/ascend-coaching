@@ -77,7 +77,6 @@ export const tiers: Tier[] = [
       { label: "Support", value: "24/7 1:1 messaging on Trainerize or WhatsApp, whenever you need it" },
     ],
     features: [
-      "1:1 kickoff call to map your struggles and goals",
       "Fully custom program built for you",
       "Bi-weekly check-ins with detailed written feedback",
       "Custom meal plan",
