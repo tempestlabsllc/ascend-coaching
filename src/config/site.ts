@@ -193,7 +193,7 @@ export const guides: Guide[] = [
 ];
 
 // 3-month plans: billed every 3 months at a discount off the monthly price.
-export const threeMonth = { months: 3, discountPercent: 10 };
+export const threeMonth = { months: 3, discountPercent: 15 };
 export function threeMonthTotalCents(monthlyCents: number) {
   // Whole-dollar monthly equivalent (rounded down), times 3, so per-month shows cleanly.
   const perMonth = Math.floor((monthlyCents * (100 - threeMonth.discountPercent)) / 100 / 100) * 100;
