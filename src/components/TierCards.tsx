@@ -6,7 +6,7 @@ import BuyButton from "./BuyButton";
 type Look = { head: string; name: string; sub: string; price: string; muted: string; badge: string; badgeText: string; check: string; button: string; frame: string; glow: string };
 const looks: Record<Tier["color"], Look> = {
   grey: {
-    head: "bg-gradient-to-br from-[#eef2f5] to-[#dfe5ea]",
+    head: "facet facet-silver",
     name: "text-ink",
     sub: "text-black/60",
     price: "text-ink",
@@ -19,7 +19,7 @@ const looks: Record<Tier["color"], Look> = {
     glow: "",
   },
   gold: {
-    head: "tier-gold",
+    head: "facet facet-gold",
     name: "text-ink",
     sub: "text-ink/75",
     price: "text-ink",
@@ -32,17 +32,17 @@ const looks: Record<Tier["color"], Look> = {
     glow: "shadow-[0_30px_60px_-25px_rgba(214,160,0,.65)]",
   },
   rainbow: {
-    head: "bg-ink",
-    name: "text-rainbow",
-    sub: "text-white/70",
+    head: "facet facet-emerald",
+    name: "text-emerald-shine",
+    sub: "text-white/80",
     price: "text-white",
-    muted: "text-white/55",
-    badge: "tier-rainbow text-white [text-shadow:0_1px_2px_rgba(0,0,0,.5)]",
+    muted: "text-white/65",
+    badge: "bg-white/90 text-emerald-800",
     badgeText: "All-in",
-    check: "bg-brand",
-    button: "btn w-full tier-rainbow text-white [text-shadow:0_1px_3px_rgba(0,0,0,.6)] hover:opacity-90",
-    frame: "tier-rainbow",
-    glow: "shadow-[0_30px_60px_-25px_rgba(58,154,217,.6)]",
+    check: "bg-emerald-600",
+    button: "btn w-full tier-emerald text-white [text-shadow:0_1px_3px_rgba(0,0,0,.45)] hover:opacity-90",
+    frame: "tier-emerald",
+    glow: "shadow-[0_30px_60px_-25px_rgba(16,185,129,.6)]",
   },
 };
 

@@ -173,3 +173,24 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
   .page-glow, .page-chev-wrap { transform: none !important; animation: none !important; }
   .page-chev { animation: none; opacity: 0; }
 }
+
+/* Plan cards: faceted "diamond cut" headers with a slow light sweep */
+.facet { position: relative; isolation: isolate; }
+.facet::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 160' preserveAspectRatio='none'><polygon points='0,0 80,0 40,60' fill='%23fff' fill-opacity='.20'/><polygon points='80,0 40,60 120,70' fill='%23000' fill-opacity='.07'/><polygon points='80,0 160,0 120,70' fill='%23fff' fill-opacity='.30'/><polygon points='160,0 240,0 200,55' fill='%23000' fill-opacity='.09'/><polygon points='160,0 120,70 200,55' fill='%23fff' fill-opacity='.12'/><polygon points='240,0 200,55 240,90' fill='%23fff' fill-opacity='.24'/><polygon points='0,0 40,60 0,100' fill='%23000' fill-opacity='.06'/><polygon points='0,100 40,60 70,130' fill='%23fff' fill-opacity='.26'/><polygon points='40,60 120,70 70,130' fill='%23fff' fill-opacity='.09'/><polygon points='120,70 70,130 150,160' fill='%23000' fill-opacity='.08'/><polygon points='120,70 200,55 150,160' fill='%23fff' fill-opacity='.22'/><polygon points='200,55 240,90 150,160' fill='%23000' fill-opacity='.06'/><polygon points='240,90 240,160 150,160' fill='%23fff' fill-opacity='.16'/><polygon points='0,100 70,130 0,160' fill='%23000' fill-opacity='.08'/><polygon points='70,130 150,160 0,160' fill='%23fff' fill-opacity='.13'/></svg>"); background-size: 100% 100%; mix-blend-mode: soft-light; opacity: .9; }
+.facet::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.45) 45%, transparent 60%);
+  background-size: 250% 100%; animation: facetSweep 6s ease-in-out infinite; }
+@keyframes facetSweep { 0%, 35% { background-position: 150% 0; } 75%, 100% { background-position: -100% 0; } }
+.facet-silver { background: linear-gradient(135deg, #f4f6f8 0%, #d9dfe5 40%, #f7f9fb 60%, #cfd6dd 100%); }
+.facet-gold { background: linear-gradient(135deg, #a87400 0%, #e8b923 25%, #fff0a6 45%, #f2c230 62%, #b8860b 100%); }
+.facet-emerald { background: linear-gradient(135deg, #022c22 0%, #065f46 30%, #10b981 52%, #047857 72%, #022c22 100%); background-size: 200% 200%; animation: flow 8s ease-in-out infinite alternate; }
+.tier-emerald { background-image: linear-gradient(90deg, #064e3b, #10b981, #6ee7b7, #10b981, #047857, #34d399, #064e3b); background-size: 200% 100%; animation: flow 4s linear infinite; }
+.text-emerald-shine { background-image: linear-gradient(90deg, #a7f3d0, #ffffff, #6ee7b7, #d1fae5); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: flow 5s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .facet::after, .facet-emerald, .tier-emerald, .text-emerald-shine { animation: none; } }
+
+.page-particle { display: block; border-radius: 9999px; opacity: 0;
+  background: radial-gradient(circle, rgba(255,255,255,.95) 0%, rgba(137,207,240,.9) 45%, rgba(58,154,217,0) 100%);
+  box-shadow: 0 0 10px 2px rgba(137,207,240,.45); animation: particleRise 30s linear infinite; }
+@keyframes particleRise { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: .75; } 50% { transform: translate(var(--dx, 0px), -55vh); } 85% { opacity: .45; } 100% { transform: translate(0, -115vh); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .page-particle { animation: none; opacity: 0; } }
