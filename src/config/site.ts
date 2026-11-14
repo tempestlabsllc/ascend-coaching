@@ -51,7 +51,7 @@ export const tiers: Tier[] = [
       { label: "Your plan", value: "Your coach's exact training routine plus calorie and macro targets, delivered in the ABC Trainerize app within 3 days" },
       { label: "Check-ins", value: "Quick weekly check-in by text to see how everything is going, plus advice" },
       { label: "Updates", value: "You get every change your coach makes to their own routine" },
-      { label: "Support", value: "1:1 contact on Trainerize or WhatsApp, questions answered at your monthly check-in" },
+      { label: "Support", value: "1:1 contact on Trainerize or WhatsApp, questions answered at your weekly text check-in" },
     ],
     features: [
       "Your coach's personal training routine",
