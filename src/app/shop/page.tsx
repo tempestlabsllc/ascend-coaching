@@ -1,14 +1,19 @@
 import { guides, formatPrice } from "@/config/site";
 import BuyButton from "@/components/BuyButton";
 import GuideUnlock from "@/components/GuideUnlock";
+import EliteUnlock from "@/components/EliteUnlock";
+import { cookies } from "next/headers";
+import { ELITE_COOKIE } from "@/elite";
 
 export const metadata = { title: "Digital guides" };
 
-export default function ShopPage() {
+export default async function ShopPage() {
+  const elite = (await cookies()).get(ELITE_COOKIE)?.value === "1";
   return (
     <div className="mx-auto max-w-6xl px-4 py-16">
       <h1 className="text-4xl font-extrabold">Digital starter guides</h1>
-      <p className="mt-2 mb-10 max-w-2xl text-black/60">Instant PDF downloads you can work through at your own pace, no coaching commitment needed.</p>
+      <p className="mt-2 mb-6 max-w-2xl text-black/60">Instant PDF downloads you can work through at your own pace, no coaching commitment needed.</p>
+      <div className="mb-10"><EliteUnlock unlocked={elite} /></div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {guides.map((g) => {
           const free = g.priceCents === 0;
@@ -27,6 +32,8 @@ export default function ShopPage() {
                 <div className="mt-5">
                   {g.comingSoon
                     ? <span className="btn w-full cursor-default border-2 border-dashed border-brand/40 text-brand">Coming soon</span>
+                    : elite
+                    ? <a href={`/api/download?guide=${g.id}`} className="btn-primary w-full">Download free (Elite)</a>
                     : free
                     ? <GuideUnlock guideId={g.id} />
                     : <BuyButton kind="guide" id={g.id} label="Buy now" />}

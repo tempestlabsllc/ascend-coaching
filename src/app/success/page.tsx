@@ -27,6 +27,13 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
             <span aria-hidden className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-white">✓</span>
             <p className="text-black/80"><strong className="text-ink">I&apos;ll personally reach out within 24 hours</strong> on Trainerize or WhatsApp to review everything with you: your goals, your plan and how we&apos;ll work together.</p>
           </div>
+          {tier.id === "elite" && s?.payment_status === "paid" && process.env.ELITE_GUIDE_CODE && (
+            <div className="mx-auto mt-4 max-w-lg rounded-2xl bg-ink p-5 text-left text-white">
+              <p className="text-xs font-bold uppercase tracking-widest text-[#89cff0]">Your Elite guide code</p>
+              <p className="mt-1 text-2xl font-black tracking-wider">{process.env.ELITE_GUIDE_CODE}</p>
+              <p className="mt-1 text-sm text-white/70">Use this code on the <Link href="/shop#elite" className="underline">Guides page</Link> to unlock all guides for free. It&apos;s also in your confirmation email.</p>
+            </div>
+          )}
           <p className="mt-6 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/intake" className="btn-primary">Fill out questionnaire</Link><Link href="/book" className="btn-outline">Book a call</Link></div>
           <ol className="mx-auto mt-12 max-w-md space-y-4 text-left">

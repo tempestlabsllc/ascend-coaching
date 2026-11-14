@@ -2,6 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { guides } from "@/config/site";
 import { stripe } from "@/lib";
+import { hasEliteCookie } from "@/elite";
 
 // Serves a guide PDF from /private-guides. Free guides need an email signup first;
 // paid guides require a paid Stripe Checkout session for that guide.
@@ -10,7 +11,10 @@ export async function GET(req: Request) {
   const guide = guides.find((g) => g.id === url.searchParams.get("guide"));
   if (!guide || guide.comingSoon) return new Response("Not found", { status: 404 });
 
-  if (guide.priceCents === 0) {
+  const elite = hasEliteCookie(req.headers.get("cookie"));
+  if (elite) {
+    // Elite members get every guide free.
+  } else if (guide.priceCents === 0) {
     // Free guides unlock after an email signup on the Guides page.
     const unlocked = (req.headers.get("cookie") || "").includes("ac_guide_unlocked=1");
     if (!unlocked) return Response.redirect(new URL("/shop#unlock", url), 302);
