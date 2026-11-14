@@ -9,6 +9,7 @@ Next.js 16 + Tailwind + Stripe Checkout. Pages:
 | `/book` | Embedded booking calendar (Cal.com or Calendly link) |
 | `/intake` | Intake questionnaire: stats, goals, training, nutrition, health |
 | `/shop` | Digital guides: free ones download directly, paid ones go through Stripe |
+| `/admin` | Private: revenue, active plans, recent purchases, discount codes (needs `ADMIN_PASSWORD`) |
 | `/success` | After payment: download link for guides, or "start questionnaire" for coaching |
 
 ## Edit content
@@ -25,6 +26,7 @@ npm run dev                  # http://localhost:3000
 Without `STRIPE_SECRET_KEY` the buy buttons show a "demo mode" message.
 
 ## Settings (`.env.local`, or your host's environment variables)
+- `ADMIN_PASSWORD` – password for `/admin` (12+ characters). Without it the admin page stays locked.
 - `STRIPE_SECRET_KEY` – from dashboard.stripe.com (use `sk_test_...` first)
 - `STRIPE_AUTOMATIC_TAX=true` – after turning on Stripe Tax (Settings → Tax) to add sales tax at checkout
 - Invoices: subscriptions invoice automatically; guide purchases get a paid invoice emailed. In Stripe → Settings → Customer emails, turn on "Successful payments" and "Finalized invoices".
