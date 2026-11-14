@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import type Stripe from "stripe";
 import { stripe } from "@/lib";
 import { site } from "@/config/site";
+import { resetData, storeConfigured } from "@/store";
 import { ADMIN_COOKIE, checkPassword, isAdmin, newSessionToken, sessionCookie } from "@/admin/auth";
 
 const back = (msg: string, err = false): never => redirect(`/admin?tab=discounts&${err ? "err" : "msg"}=${encodeURIComponent(msg)}`);
@@ -105,3 +106,17 @@ function isRedirect(e: unknown) {
   return !!e && typeof e === "object" && "digest" in e && String((e as { digest: unknown }).digest).startsWith("NEXT_REDIRECT");
 }
 
+export async function resetTestData(form: FormData) {
+  if (!(await isAdmin())) redirect("/admin/login");
+  const to = (k: "msg" | "err", m: string): never => redirect(`/admin?tab=overview&${k}=${encodeURIComponent(m)}`);
+  if (form.get("confirm") !== "RESET") to("err", "Type RESET to confirm.");
+  if (!storeConfigured()) to("err", "Storage (Upstash Redis) isn't connected, so there's nothing to reset yet.");
+  try {
+    await resetData();
+  } catch (e) {
+    if (isRedirect(e)) throw e;
+    to("err", stripeMsg(e));
+  }
+  (await cookies()).delete("ac_admin_seen");
+  to("msg", "Reset done. Everything now counts from today.");
+}

@@ -2,6 +2,9 @@ import type Stripe from "stripe";
 import { stripe } from "@/lib";
 import { tiers, guides } from "@/config/site";
 
+// Only count Stripe records created at or after `since` (set by "Reset test data" in admin).
+const after = (since: number) => (since > 0 ? { created: { gte: since } } : {});
+
 const CAP = 10000; // plenty for a coaching business; keeps the page fast
 
 function monthStart(offset = 0) {
@@ -9,10 +12,10 @@ function monthStart(offset = 0) {
   return Math.floor(Date.UTC(d.getUTCFullYear(), d.getUTCMonth() + offset, 1) / 1000);
 }
 
-export async function getRevenue(s: Stripe) {
+export async function getRevenue(s: Stripe, since = 0) {
   const thisMonth = monthStart(0), lastMonth = monthStart(-1);
   let total = 0, month = 0, prev = 0, refunds = 0, count = 0;
-  for await (const c of s.charges.list({ limit: 100 })) {
+  for await (const c of s.charges.list({ limit: 100, ...after(since) })) {
     if (++count > CAP) break;
     if (c.status !== "succeeded" || !c.paid) continue;
     const net = c.amount - c.amount_refunded;
@@ -24,10 +27,10 @@ export async function getRevenue(s: Stripe) {
   return { total, month, prev, refunds };
 }
 
-export async function getSubscriptions(s: Stripe) {
+export async function getSubscriptions(s: Stripe, since = 0) {
   const byPlan = new Map<string, { name: string; monthly: number; threeMonth: number; mrr: number }>();
   let mrr = 0, n = 0;
-  for await (const sub of s.subscriptions.list({ status: "active", limit: 100 })) {
+  for await (const sub of s.subscriptions.list({ status: "active", limit: 100, ...after(since) })) {
     if (++n > CAP) break;
     const tierId = sub.metadata?.tier ?? "other";
     const name = tiers.find((t) => t.id === tierId)?.name ?? "Other";
@@ -47,8 +50,8 @@ export async function getSubscriptions(s: Stripe) {
   return { plans, mrr: Math.round(mrr), active: Math.min(n, CAP) };
 }
 
-export async function getRecentPurchases(s: Stripe) {
-  const res = await s.checkout.sessions.list({ status: "complete", limit: 15 });
+export async function getRecentPurchases(s: Stripe, since = 0) {
+  const res = await s.checkout.sessions.list({ status: "complete", limit: 15, ...after(since) });
   return res.data.map((cs) => {
     const m = cs.metadata ?? {};
     const item =
@@ -99,9 +102,9 @@ const renewalOf = (sub: Stripe.Subscription) =>
   sub.items.data.reduce((min, it) => Math.min(min, it.current_period_end), Infinity);
 
 // Everyone on a plan right now (active, trial, or behind on payment).
-export async function getClients(s: Stripe) {
+export async function getClients(s: Stripe, since = 0) {
   const out = [];
-  for await (const sub of s.subscriptions.list({ limit: 100, expand: ["data.customer"] })) {
+  for await (const sub of s.subscriptions.list({ limit: 100, expand: ["data.customer"], ...after(since) })) {
     if (out.length >= 2000) break;
     if (!["active", "trialing", "past_due", "unpaid"].includes(sub.status)) continue;
     const c = custOf(sub.customer);
@@ -123,11 +126,11 @@ export async function getClients(s: Stripe) {
 }
 
 // Cancellations, plans ending soon, and payment problems.
-export async function getChurn(s: Stripe) {
+export async function getChurn(s: Stripe, since = 0) {
   const [canceled, open, charges] = await Promise.all([
-    s.subscriptions.list({ status: "canceled", limit: 50, expand: ["data.customer"] }),
-    s.subscriptions.list({ limit: 100, expand: ["data.customer"] }),
-    s.charges.list({ limit: 100, created: { gte: Math.floor(Date.now() / 1000) - 60 * 60 * 24 * 60 } }),
+    s.subscriptions.list({ status: "canceled", limit: 50, expand: ["data.customer"], ...after(since) }),
+    s.subscriptions.list({ limit: 100, expand: ["data.customer"], ...after(since) }),
+    s.charges.list({ limit: 100, created: { gte: Math.max(since, Math.floor(Date.now() / 1000) - 60 * 60 * 24 * 60) } }),
   ]);
   const who = (sub: Stripe.Subscription) => {
     const c = custOf(sub.customer);
@@ -153,10 +156,10 @@ export async function getChurn(s: Stripe) {
 }
 
 // Paid guide sales from Stripe, plus free downloads from stored signups.
-export async function getGuideSales(s: Stripe, leads: Record<string, unknown>[]) {
+export async function getGuideSales(s: Stripe, leads: Record<string, unknown>[], since = 0) {
   const sales = new Map<string, { count: number; revenue: number }>();
   let n = 0;
-  for await (const cs of s.checkout.sessions.list({ status: "complete", limit: 100 })) {
+  for await (const cs of s.checkout.sessions.list({ status: "complete", limit: 100, ...after(since) })) {
     if (++n > CAP) break;
     if (cs.metadata?.kind !== "guide" || !cs.metadata.id) continue;
     const row = sales.get(cs.metadata.id) ?? { count: 0, revenue: 0 };

@@ -54,3 +54,21 @@ export async function firstTime(key: string) {
     return true;
   }
 }
+
+// "Reset test data": wipes saved forms, leads and activity, and remembers the time so the
+// dashboard only counts Stripe purchases made after it. Nothing in Stripe is changed.
+export async function resetData() {
+  const now = Math.floor(Date.now() / 1000);
+  await redis([["DEL", "ac:forms", "ac:leads", "ac:activity"], ["SET", "ac:reset_at", String(now)]]);
+  return now;
+}
+
+export async function getResetAt() {
+  if (!storeConfigured()) return 0;
+  try {
+    const [res] = await redis([["GET", "ac:reset_at"]]);
+    return Number(res?.result) || 0;
+  } catch {
+    return 0;
+  }
+}
