@@ -39,15 +39,18 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
         <>
           <div className="mx-auto mt-6 flex max-w-lg items-start gap-3 rounded-2xl border border-brand/30 bg-mist p-5 text-left">
             <span aria-hidden className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-white">✓</span>
-            <p className="text-black/80"><strong className="text-ink">I&apos;ll personally reach out within 24 hours</strong> on Trainerize or WhatsApp to review everything with you: your goals, your plan and how we&apos;ll work together.</p>
+            <div>
+              <p className="text-black/80"><strong className="text-ink">Download WhatsApp, I&apos;ll message you there within 24 hours.</strong> That&apos;s where I&apos;ll reach out personally to review everything with you: your goals, your plan and how we&apos;ll work together.</p>
+              <a href="https://www.whatsapp.com/download" target="_blank" rel="noopener" className="mt-3 inline-block rounded-full bg-[#25D366] px-5 py-2 text-sm font-bold text-white hover:opacity-90">Download WhatsApp</a>
+            </div>
           </div>
           {tier.id === "elite" && paid && session_id && <EliteAutoUnlock sessionId={session_id} />}
           <p className="mt-6 text-black/70">Welcome to <strong>{tier.name}</strong> coaching. Next step: book a quick call or fill in the questionnaire, whichever you prefer, so I can build your plan.</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3"><Link href="/intake" className="btn-primary">Fill Out Questionnaire</Link><Link href="/book" className="btn-outline">Book a Call</Link></div>
           <ol className="mx-auto mt-12 max-w-md space-y-4 text-left">
             {[
-              ["Today", "Book a call or fill in the questionnaire (about 5 minutes)."],
-              ["Within 24 hours", "I reach out to you personally to review everything: your goals, your plan and next steps."],
+              ["Today", "Download WhatsApp, then book a call or fill in the questionnaire (about 5 minutes)."],
+              ["Within 24 hours", "I message you on WhatsApp to review everything: your goals, your plan and next steps."],
               ...(tier.messagingOnly
                 ? [["Ongoing", "Message me anytime on Trainerize or WhatsApp and I reply within 24 hours, with advice on training, nutrition, supplements, form or mindset."]]
                 : [

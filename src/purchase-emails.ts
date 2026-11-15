@@ -49,7 +49,11 @@ export async function handleCompletedCheckout(sessionOrId: string | Stripe.Check
         to,
         `Welcome to ${tier?.name ?? "Ascend"} coaching${term} (receipt inside)`,
         emailLayout(`Welcome to ${tier?.name ?? ""} Coaching${term} 🎉`, `${hi}
-<p style="margin:0 0 14px">Your payment went through and you're officially in. <strong>I'll personally reach out within 24 hours</strong> on Trainerize or WhatsApp to review everything with you.</p>
+<p style="margin:0 0 14px">Your payment went through and you're officially in.</p>
+<div style="margin:0 0 16px;padding:16px 18px;border-radius:12px;background:#e9fbef;border:1px solid #b7ebc6">
+<p style="margin:0 0 6px;font-weight:700;color:#0a0a0a">📲 Download WhatsApp, I'll message you there within 24 hours.</p>
+<p style="margin:0 0 12px;font-size:14px;color:#374151">That's where I'll reach out personally to review everything with you: your goals, your plan and how we'll work together. Use the phone number you gave at checkout.</p>
+<a href="https://www.whatsapp.com/download" style="display:inline-block;background:#25D366;color:#fff;text-decoration:none;font-weight:700;padding:10px 20px;border-radius:999px">Download WhatsApp</a></div>
 <p style="margin:0 0 8px"><strong>Your next step:</strong> book a quick call or fill out the questionnaire, whichever you prefer, so I can build your plan.</p>
 <p style="margin:0 0 6px">${btn(`${site.url}/intake`, "Fill Out Questionnaire")}${btn(`${site.url}/book`, "Book a Call")}</p>
 ${eliteBlock}
