@@ -52,7 +52,7 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
               ["Today", "Download WhatsApp, then book a call or fill in the questionnaire (about 5 minutes)."],
               ["Within 24 hours", "I message you on WhatsApp to review everything: your goals, your plan and next steps."],
               ...(tier.messagingOnly
-                ? [["Ongoing", "Message me anytime on Trainerize or WhatsApp and I reply within 24 hours, with advice on training, nutrition, supplements, form or mindset."]]
+                ? [["Ongoing", "Message me anytime on WhatsApp and I reply within 24 hours, with advice on training, nutrition, supplements, form or mindset."]]
                 : [
                     ["Within 3 days", "You get an invite to the ABC Trainerize app with your training plan and nutrition targets."],
                     ["Ongoing", "We work 1:1 on Trainerize or WhatsApp, and I adjust your plan at every check-in."],
