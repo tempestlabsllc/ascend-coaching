@@ -52,7 +52,7 @@ export async function handleCompletedCheckout(sessionOrId: string | Stripe.Check
 <p style="margin:0 0 8px"><strong>Your next step:</strong> book a quick call or fill out the questionnaire, whichever you prefer, so I can build your plan.</p>
 <p style="margin:0 0 6px">${btn(`${site.url}/intake`, "Fill Out Questionnaire")}${btn(`${site.url}/book`, "Book a Call")}</p>
 ${eliteBlock}
-<p style="margin:14px 0 0">${tier?.messagingOnly ? "Once we've spoken, message me any time on Trainerize or WhatsApp. Ask me anything." : "Within 3 days you'll get an invite to the ABC Trainerize app with your plan."}</p>
+<p style="margin:14px 0 0">${tier?.messagingOnly ? "Once we've spoken, message me anytime on Trainerize or WhatsApp and I'll reply within 24 hours. Ask me anything." : "Within 3 days you'll get an invite to the ABC Trainerize app with your plan."}</p>
 ${receipt}`),
       );
     } else if (s.metadata?.kind === "guide") {

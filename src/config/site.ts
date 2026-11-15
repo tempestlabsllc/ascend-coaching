@@ -55,11 +55,11 @@ export const tiers: Tier[] = [
     bestFor: "People who follow their own plan but want a coach to ask anything, anytime.",
     messagingOnly: true,
     details: [
-      { label: "Support", value: "24/7 1:1 messaging on Trainerize or WhatsApp" },
+      { label: "Support", value: "Message anytime on Trainerize or WhatsApp, replies within 24 hours" },
       { label: "Your plan", value: "No custom program or meal plan; you keep your own and get advice on it" },
     ],
     features: [
-      "24/7 1:1 messaging on Trainerize or WhatsApp",
+      "Message anytime on Trainerize or WhatsApp, replies within 24 hours",
       "Ask anything: training, nutrition, form or mindset",
       "Honest advice and answers from a real coach",
     ],
