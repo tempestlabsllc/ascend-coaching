@@ -5,7 +5,7 @@ import EliteUnlock from "@/components/EliteUnlock";
 import { cookies } from "next/headers";
 import { ELITE_COOKIE, hasElite } from "@/elite";
 
-export const metadata = { title: "Digital Guides" };
+export const metadata = { title: "Digital Guides", alternates: { canonical: "/shop" } };
 
 export const dynamic = "force-dynamic";
 

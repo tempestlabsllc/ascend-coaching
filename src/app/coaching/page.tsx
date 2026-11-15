@@ -2,7 +2,7 @@ import Link from "next/link";
 import TierCards from "@/components/TierCards";
 import { faqs } from "@/config/site";
 
-export const metadata = { title: "Coaching Plans" };
+export const metadata = { title: "Coaching Plans", alternates: { canonical: "/coaching" } };
 
 export default function CoachingPage() {
   return (

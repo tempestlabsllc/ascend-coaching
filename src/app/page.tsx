@@ -6,6 +6,8 @@ import FeatureGrid from "@/components/FeatureGrid";
 import Results from "@/components/Results";
 import CountUp from "@/components/CountUp";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 const steps = [
   { n: "01", t: "Pick Your Offer", d: "Choose the coaching plan that fits you and check out in a minute. I'll reach out within 24 hours to review everything." },
   { n: "02", t: "Book a Call or Fill Out the Questionnaire", d: "Hop on a quick call, or share your goals, stats and schedule in the questionnaire. Your choice." },

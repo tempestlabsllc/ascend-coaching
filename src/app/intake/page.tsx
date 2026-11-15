@@ -1,6 +1,6 @@
 import IntakeForm from "./IntakeForm";
 
-export const metadata = { title: "Intake Questionnaire" };
+export const metadata = { title: "Intake Questionnaire", alternates: { canonical: "/intake" } };
 
 export default function IntakePage() {
   return (
