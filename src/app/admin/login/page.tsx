@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { adminConfigured, isAdmin } from "@/admin/auth";
-import { login } from "../actions";
+import LoginForm from "./LoginForm";
 
 export const metadata = { title: "Admin login", robots: { index: false, follow: false } };
 
@@ -15,14 +15,7 @@ export default async function AdminLogin({ searchParams }: { searchParams: Promi
           Admin is locked. Add an <strong>ADMIN_PASSWORD</strong> (at least 12 characters) in Vercel, then redeploy.
         </p>
       ) : (
-        <form action={login} className="mt-6 space-y-4">
-          <label className="block">
-            <span className="label">Password</span>
-            <input className="field" type="password" name="password" autoComplete="current-password" required autoFocus />
-          </label>
-          {err && <p className="text-sm text-red-600">Wrong password.</p>}
-          <button className="btn-primary w-full">Log In</button>
-        </form>
+        <LoginForm wrong={!!err} />
       )}
     </div>
   );
