@@ -11,6 +11,7 @@ import { readRecords, storeConfigured, getResetAt, type Stored } from "@/store";
 import { cookies } from "next/headers";
 import { logout, saveDiscount, setDiscountActive, resetTestData } from "./actions";
 import MarkSeen from "./MarkSeen";
+import CopyForReview from "./CopyForReview";
 
 export const metadata = { title: "Admin", robots: { index: false, follow: false } };
 export const dynamic = "force-dynamic";
@@ -222,14 +223,31 @@ async function Clients(s: Stripe, since: number) {
 const HIDE = new Set(["form", "savedAt", "submittedAt"]);
 
 // Each answer under the exact question the client saw, grouped like the form.
-function Answers({ f }: { f: Stored }) {
+const show = (v: unknown) => (Array.isArray(v) ? v.join(", ") : v === "" || v == null ? "" : String(v));
+function answerSections(f: Stored) {
   const sections = f.form === "check-in" ? checkInQuestions : intakeQuestions;
   const known = new Set(sections.flatMap((sec) => sec.questions.map(([k]) => k)));
   const extra = Object.keys(f).filter((k) => !known.has(k) && !HIDE.has(k));
-  const all = extra.length ? [...sections, { title: "Other", questions: extra.map((k) => [k, label(k)] as [string, string]) }] : sections;
-  const show = (v: unknown) => (Array.isArray(v) ? v.join(", ") : v === "" || v == null ? "" : String(v));
+  return extra.length ? [...sections, { title: "Other", questions: extra.map((k) => [k, label(k)] as [string, string]) }] : sections;
+}
+// Plain-text copy for pasting into a chat: contact details and the waiver left out, first name only.
+const PRIVATE = new Set(["email", "phone", "waiver"]);
+function reviewText(f: Stored) {
+  const first = String(f.name ?? "").trim().split(/\s+/)[0] || "Client";
+  const lines = [`${f.form === "check-in" ? "Check-in" : "Intake"}: ${first} (${isoDay(f.savedAt)})`];
+  for (const sec of answerSections(f)) {
+    const qs = sec.questions.filter(([k]) => !PRIVATE.has(k) && k !== "name");
+    if (!qs.length) continue;
+    lines.push("", sec.title.toUpperCase());
+    for (const [k, q] of qs) lines.push(`${q}: ${show(f[k]) || "No answer"}`);
+  }
+  return lines.join("\n");
+}
+function Answers({ f }: { f: Stored }) {
+  const all = answerSections(f);
   return (
     <div className="mt-4 space-y-5">
+      <CopyForReview text={reviewText(f)} />
       {all.map((sec) => (
         <section key={sec.title}>
           <h3 className="text-xs font-bold uppercase tracking-wider text-brand-dark">{sec.title}</h3>
