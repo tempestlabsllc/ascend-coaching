@@ -21,7 +21,10 @@ const sign = (p: string, body: string) => createHmac("sha256", key(p)).update(bo
 export function checkPassword(input: unknown) {
   const p = password();
   if (!p || typeof input !== "string") return false;
-  return timingSafeEqual(sha(input), sha(p));
+  // Phones often add a space after autofill or paste, so also try it trimmed.
+  const exact = timingSafeEqual(sha(input), sha(p));
+  const trimmed = timingSafeEqual(sha(input.trim()), sha(p.trim()));
+  return exact || trimmed;
 }
 
 export function newSessionToken() {
@@ -43,4 +46,4 @@ export async function isAdmin() {
   return validToken((await cookies()).get(ADMIN_COOKIE)?.value);
 }
 
-export const sessionCookie = { httpOnly: true, secure: true, sameSite: "strict" as const, path: "/", maxAge: MAX_AGE };
+export const sessionCookie = { httpOnly: true, secure: true, sameSite: "lax" as const, path: "/", maxAge: MAX_AGE };

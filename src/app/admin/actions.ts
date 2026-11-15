@@ -5,7 +5,7 @@ import type Stripe from "stripe";
 import { stripe } from "@/lib";
 import { site } from "@/config/site";
 import { resetData, storeConfigured } from "@/store";
-import { ADMIN_COOKIE, checkPassword, isAdmin, newSessionToken, sessionCookie } from "@/admin/auth";
+import { ADMIN_COOKIE, isAdmin } from "@/admin/auth";
 
 const back = (msg: string, err = false): never => redirect(`/admin?tab=discounts&${err ? "err" : "msg"}=${encodeURIComponent(msg)}`);
 
@@ -16,15 +16,6 @@ async function guard() {
 }
 
 const stripeMsg = (e: unknown) => (e && typeof e === "object" && "message" in e ? String((e as Error).message) : "Something went wrong.");
-
-export async function login(form: FormData) {
-  if (!checkPassword(form.get("password"))) {
-    await new Promise((r) => setTimeout(r, 1500)); // slows down password guessing
-    redirect("/admin/login?err=1");
-  }
-  (await cookies()).set(ADMIN_COOKIE, newSessionToken(), sessionCookie);
-  redirect("/admin");
-}
 
 export async function logout() {
   (await cookies()).delete(ADMIN_COOKIE);
