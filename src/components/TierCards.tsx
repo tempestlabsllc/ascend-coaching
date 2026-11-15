@@ -6,17 +6,17 @@ import BuyButton from "./BuyButton";
 type Look = { head: string; name: string; sub: string; price: string; muted: string; badge: string; badgeText: string; check: string; button: string; frame: string; glow: string };
 const looks: Record<Tier["color"], Look> = {
   blue: {
-    head: "bg-white border-b border-black/10",
-    name: "text-ink",
-    sub: "text-black/60",
-    price: "text-ink",
-    muted: "text-black/50",
-    badge: "bg-black/5 text-black/60",
+    head: "facet facet-sapphire",
+    name: "text-sapphire-shine",
+    sub: "text-white/85",
+    price: "text-white",
+    muted: "text-white/70",
+    badge: "bg-white/90 text-[#0f4a94]",
     badgeText: "Advice Only",
-    check: "bg-black/60",
-    button: "btn w-full border-2 border-ink bg-white text-ink hover:bg-black/5",
-    frame: "bg-black/10",
-    glow: "",
+    check: "bg-[#2f86d0]",
+    button: "btn w-full tier-sapphire text-white [text-shadow:0_1px_3px_rgba(0,0,0,.45)] hover:opacity-90",
+    frame: "tier-sapphire",
+    glow: "shadow-[0_30px_60px_-25px_rgba(58,154,217,.6)]",
   },
   grey: {
     head: "facet facet-silver",
@@ -71,6 +71,9 @@ function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
     <div className={`lift h-full rounded-[1.4rem] p-[3px] ${s.frame} ${s.glow}`}>
       <div className="flex h-full flex-col overflow-hidden rounded-[1.25rem] bg-card">
         <div className={`relative px-6 pb-6 pt-5 ${s.head}`}>
+          {s.head.includes("facet") && (
+            <span aria-hidden className="facet-glints"><i /><i /><i /><i /></span>
+          )}
           <div className="flex items-center justify-between gap-3">
             <h3 className={`text-3xl font-extrabold tracking-tight ${s.name}`}>{t.name}</h3>
             <span className={`rounded-full px-3 py-1 text-[11px] font-bold uppercase tracking-[0.12em] ${s.badge}`}>
