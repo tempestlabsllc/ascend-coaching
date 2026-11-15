@@ -6,6 +6,7 @@ import { guides, tiers } from "@/config/site";
 import { stripe } from "@/lib";
 import { isPaid } from "@/paid";
 import { EliteAutoUnlock } from "@/components/EliteUnlock";
+import { manageUrl, CANCEL_NOTE } from "@/manage-link";
 
 export const metadata = { title: "Thank you" };
 
@@ -60,6 +61,11 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
               </li>
             ))}
           </ol>
+          {paid && (
+            <p className="mx-auto mt-10 max-w-md text-sm text-black/55">
+              Want to switch or cancel later? Use <a className="font-semibold text-brand-dark underline" href={manageUrl(s?.customer)}>Change or Cancel Plan</a> (the link is in your email too). {CANCEL_NOTE}
+            </p>
+          )}
         </>
       )}
       {!guide && !tier && <p className="mt-4 text-black/70">Your order is confirmed. A receipt is on its way to your inbox.</p>}

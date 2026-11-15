@@ -4,8 +4,8 @@ import { sendEmail, emailLayout, esc } from "@/email";
 
 // Everything that happens on the site lands in the /admin Activity feed. The important
 // ones also email the coach right away (to COACH_EMAIL, or the site email).
-export type ActivityType = "purchase" | "booking" | "intake" | "check-in" | "lead" | "cancel" | "payment-failed";
-const ALERT: ActivityType[] = ["purchase", "booking", "intake", "cancel", "payment-failed"];
+export type ActivityType = "purchase" | "booking" | "intake" | "check-in" | "lead" | "cancel" | "payment-failed" | "plan-change";
+const ALERT: ActivityType[] = ["purchase", "booking", "intake", "cancel", "payment-failed", "plan-change"];
 
 export async function logActivity(type: ActivityType, title: string, detail: string, opts: { alert?: boolean; link?: string; key?: string } = {}) {
   if (opts.key && !(await firstTime(`activity:${opts.key}`))) return; // already logged (e.g. a Stripe retry)

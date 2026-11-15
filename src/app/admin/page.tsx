@@ -95,7 +95,7 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   );
 }
 
-const ICON: Record<string, string> = { purchase: "💰", booking: "📅", intake: "📝", "check-in": "✅", lead: "📩", cancel: "⚠️", "payment-failed": "❌" };
+const ICON: Record<string, string> = { purchase: "💰", booking: "📅", intake: "📝", "check-in": "✅", lead: "📩", cancel: "⚠️", "payment-failed": "❌", "plan-change": "🔄" };
 
 function Activity(items: Stored[], seen: string) {
   if (!storeConfigured()) return <><H2>Activity</H2><NeedsStore /></>;

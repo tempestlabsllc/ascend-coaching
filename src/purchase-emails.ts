@@ -6,6 +6,7 @@ import { isPaid } from "@/paid";
 import { eliteLoginToken } from "@/elite";
 import { logActivity } from "@/activity";
 import { firstTime, storeConfigured } from "@/store";
+import { manageUrl, CANCEL_NOTE } from "@/manage-link";
 
 // Sends the buyer's confirmation email (Elite buyers also get their guide unlock link)
 // and the coach's sale alert for a completed checkout. Called from both the Stripe
@@ -53,6 +54,7 @@ export async function handleCompletedCheckout(sessionOrId: string | Stripe.Check
 <p style="margin:0 0 6px">${btn(`${site.url}/intake`, "Fill Out Questionnaire")}${btn(`${site.url}/book`, "Book a Call")}</p>
 ${eliteBlock}
 <p style="margin:14px 0 0">${tier?.messagingOnly ? "Once we've spoken, message me anytime on Trainerize or WhatsApp and I'll reply within 24 hours. Ask me anything, supplements included." : "Within 3 days you'll get an invite to the ABC Trainerize app with your plan."}</p>
+${manageBlock(s.customer)}
 ${receipt}`),
       );
     } else if (s.metadata?.kind === "guide") {
@@ -166,8 +168,8 @@ export async function handleInvoicePaid(inv: Stripe.Invoice) {
       ["Total paid", money(inv.amount_paid, cur)],
     ];
     await sendEmail(to, `Receipt: your ${plan} renewed`, emailLayout("Thanks, Your Plan Renewed", `<p style="margin:0 0 14px">Your ${esc(plan)} payment went through, so we keep going. Nothing you need to do.</p>
-<p style="margin:0 0 6px;font-size:14px;color:#6b7280">Want to change or cancel your plan? Just message me or reply to this email.</p>
-${receiptTable(rows, inv.hosted_invoice_url)}`));
+${receiptTable(rows, inv.hosted_invoice_url)}
+${manageBlock(inv.customer)}`));
   }
   await sendEmail(
     process.env.COACH_EMAIL || site.email,
@@ -175,4 +177,11 @@ ${receiptTable(rows, inv.hosted_invoice_url)}`));
     emailLayout("Plan Renewed 🔁", `<p style="margin:0 0 10px"><strong>${esc(plan)}</strong> renewed for ${money(inv.amount_paid, cur)}.</p>
 <p style="margin:0 0 6px">Client: ${esc(inv.customer_name ?? "")} ${esc(to ?? "")}</p>`),
   );
+}
+
+/** "Manage or cancel plan" link for plan emails, with the billing-cycle reminder. */
+function manageBlock(customer: Parameters<typeof manageUrl>[0]) {
+  return `<div style="margin:20px 0 0;padding:14px 16px;border-radius:12px;background:#f4f9fc;font-size:14px">
+<p style="margin:0 0 8px"><strong>Want to switch or cancel your plan?</strong> You can do it yourself any time: <a href="${manageUrl(customer)}" style="color:#2378b5;font-weight:700">Change or Cancel Plan</a></p>
+<p style="margin:0;color:#6b7280">${CANCEL_NOTE}</p></div>`;
 }

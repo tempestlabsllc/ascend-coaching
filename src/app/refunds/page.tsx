@@ -8,7 +8,7 @@ export default function Refunds() {
     <LegalPage title="Refunds & Cancellations" updated="November 11, 2026">
       <section>
         <h2>Cancelling Your Plan</h2>
-        <p>You can cancel your coaching subscription at any time{site.manageSubscriptionUrl ? <> from the <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a> page</> : null}, or by emailing <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>. Cancellation stops future payments. Your coaching continues until the end of the period you have already paid for (one month, or three months on a 3-month plan).</p>
+        <p>You can cancel your coaching subscription yourself at any time, or switch to a different plan, from the <a className="underline" href="/manage">Change or Cancel Plan</a> page (the link is also in your welcome and renewal emails), or by emailing <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>. Plan changes and cancellations must be made before your next billing date to take effect for the next billing period. A plan switch starts on your next billing date. Cancellation stops future payments. Your coaching continues until the end of the period you have already paid for (one month, or three months on a 3-month plan).</p>
       </section>
       <section>
         <h2>Refunds on Coaching</h2>

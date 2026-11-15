@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="mb-4 flex justify-center"><Logo /></div>
           <p>© {new Date().getFullYear()} {site.name} · <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>
              · <a className="underline" href="/check-in">Client Check-In</a>
-            {site.manageSubscriptionUrl && <> · <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a></>}</p>
+             · <a className="underline" href="/manage">Change or Cancel Plan</a></p>
           <p className="mt-3">
             <a className="underline" href={site.instagram} target="_blank" rel="noopener">Instagram</a>
             {" · "}<a className="underline" href={site.tiktok} target="_blank" rel="noopener">TikTok</a>
