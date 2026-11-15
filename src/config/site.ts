@@ -61,6 +61,7 @@ export const tiers: Tier[] = [
     features: [
       "Message anytime on Trainerize or WhatsApp, replies within 24 hours",
       "Ask anything: training, nutrition, form or mindset",
+      "Supplement questions and help: what to take, what to skip",
       "Honest advice and answers from a real coach",
     ],
     excludes: ["Custom workout plan", "Custom meal plan", "Calls or check-ins"],
