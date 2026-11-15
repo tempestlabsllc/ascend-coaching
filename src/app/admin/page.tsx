@@ -6,6 +6,7 @@ import {
   getClients, getChurn, getGuideSales,
 } from "@/admin/data";
 import { formatPrice, threeMonth, guides } from "@/config/site";
+import { intakeQuestions, checkInQuestions } from "@/admin/questions";
 import { readRecords, storeConfigured, getResetAt, type Stored } from "@/store";
 import { cookies } from "next/headers";
 import { logout, saveDiscount, setDiscountActive, resetTestData } from "./actions";
@@ -218,7 +219,36 @@ async function Clients(s: Stripe, since: number) {
   );
 }
 
-const HIDE = new Set(["form", "savedAt", "submittedAt", "waiver"]);
+const HIDE = new Set(["form", "savedAt", "submittedAt"]);
+
+// Each answer under the exact question the client saw, grouped like the form.
+function Answers({ f }: { f: Stored }) {
+  const sections = f.form === "check-in" ? checkInQuestions : intakeQuestions;
+  const known = new Set(sections.flatMap((sec) => sec.questions.map(([k]) => k)));
+  const extra = Object.keys(f).filter((k) => !known.has(k) && !HIDE.has(k));
+  const all = extra.length ? [...sections, { title: "Other", questions: extra.map((k) => [k, label(k)] as [string, string]) }] : sections;
+  const show = (v: unknown) => (Array.isArray(v) ? v.join(", ") : v === "" || v == null ? "" : String(v));
+  return (
+    <div className="mt-4 space-y-5">
+      {all.map((sec) => (
+        <section key={sec.title}>
+          <h3 className="text-xs font-bold uppercase tracking-wider text-brand-dark">{sec.title}</h3>
+          <dl className="mt-2 divide-y divide-black/5 rounded-xl bg-card">
+            {sec.questions.map(([k, q]) => {
+              const a = show(f[k]);
+              return (
+                <div key={k} className="px-4 py-2.5">
+                  <dt className="text-sm font-semibold">{q}</dt>
+                  <dd className={`mt-0.5 whitespace-pre-wrap break-words text-sm ${a ? "" : "italic text-black/40"}`}>{a || "No answer"}</dd>
+                </div>
+              );
+            })}
+          </dl>
+        </section>
+      ))}
+    </div>
+  );
+}
 const label = (k: string) => k.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase());
 
 async function Forms(sp: Params) {
@@ -248,14 +278,7 @@ async function Forms(sp: Params) {
                 <span className="font-semibold">{String(f.name ?? f.email ?? "Unknown")}</span>
                 <span className="text-sm text-black/60"> · {f.form === "check-in" ? "Check-in" : "Intake"} · {isoDay(f.savedAt)}</span>
               </summary>
-              <dl className="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
-                {Object.entries(f).filter(([k, v]) => !HIDE.has(k) && v !== "" && v != null).map(([k, v]) => (
-                  <div key={k} className={String(v).length > 60 ? "sm:col-span-2" : ""}>
-                    <dt className="text-xs font-medium text-black/50">{label(k)}</dt>
-                    <dd className="whitespace-pre-wrap break-words">{Array.isArray(v) ? v.join(", ") : String(v)}</dd>
-                  </div>
-                ))}
-              </dl>
+              <Answers f={f} />
             </details>
           ))}
         </div>
