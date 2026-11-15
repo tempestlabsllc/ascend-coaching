@@ -47,8 +47,12 @@ export default async function SuccessPage({ searchParams }: { searchParams: Prom
             {[
               ["Today", "Book a call or fill in the questionnaire (about 5 minutes)."],
               ["Within 24 hours", "I reach out to you personally to review everything: your goals, your plan and next steps."],
-              ["Within 3 days", "You get an invite to the ABC Trainerize app with your training plan and nutrition targets."],
-              ["Ongoing", "We work 1:1 on Trainerize or WhatsApp, and I adjust your plan at every check-in."],
+              ...(tier.messagingOnly
+                ? [["Ongoing", "Message me any time on Trainerize or WhatsApp for advice on training, nutrition, form or mindset."]]
+                : [
+                    ["Within 3 days", "You get an invite to the ABC Trainerize app with your training plan and nutrition targets."],
+                    ["Ongoing", "We work 1:1 on Trainerize or WhatsApp, and I adjust your plan at every check-in."],
+                  ]),
             ].map(([when, what], i) => (
               <li key={when} className="flex gap-4">
                 <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>

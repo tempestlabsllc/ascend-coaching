@@ -5,6 +5,19 @@ import BuyButton from "./BuyButton";
 
 type Look = { head: string; name: string; sub: string; price: string; muted: string; badge: string; badgeText: string; check: string; button: string; frame: string; glow: string };
 const looks: Record<Tier["color"], Look> = {
+  blue: {
+    head: "bg-white border-b border-black/10",
+    name: "text-ink",
+    sub: "text-black/60",
+    price: "text-ink",
+    muted: "text-black/50",
+    badge: "bg-black/5 text-black/60",
+    badgeText: "Advice Only",
+    check: "bg-black/60",
+    button: "btn w-full border-2 border-ink bg-white text-ink hover:bg-black/5",
+    frame: "bg-black/10",
+    glow: "",
+  },
   grey: {
     head: "facet facet-silver",
     name: "text-ink",
@@ -15,8 +28,8 @@ const looks: Record<Tier["color"], Look> = {
     badgeText: "Essentials",
     check: "bg-gray-500",
     button: "btn w-full bg-ink text-white hover:bg-black",
-    frame: "bg-gradient-to-b from-gray-300 to-gray-200",
-    glow: "",
+    frame: "tier-silver",
+    glow: "shadow-[0_30px_60px_-25px_rgba(90,100,115,.55)]",
   },
   gold: {
     head: "facet facet-gold",
@@ -93,6 +106,18 @@ function TierCard({ t, term }: { t: Tier; term: "monthly" | "3month" }) {
               </li>
             ))}
           </ul>
+          {t.excludes && t.excludes.length > 0 && (
+            <ul className="mt-3 space-y-2 text-sm leading-5 text-black/45">
+              {t.excludes.map((f) => (
+                <li key={f} className="flex gap-3">
+                  <span aria-hidden className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-black/10 text-black/50">
+                    <svg viewBox="0 0 24 24" className="h-3 w-3" fill="none" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round"><path d="M7 7l10 10M17 7L7 17" /></svg>
+                  </span>
+                  <span className="line-through decoration-black/20">{f}</span>
+                </li>
+              ))}
+            </ul>
+          )}
           <div className="flex-1" />
           <div className="mt-7"><BuyButton kind="tier" id={t.id} term={term} label={`Choose ${t.name}`} className={s.button} /></div>
         </div>
@@ -121,7 +146,7 @@ export default function TierCards() {
           {opt("3month", <>3 Months <span className={`ml-1 rounded-full px-2 py-0.5 text-xs ${term === "3month" ? "bg-white/25" : "bg-brand/15 text-brand-dark"}`}>Save {threeMonth.discountPercent}%</span></>)}
         </div>
       </div>
-      <div className="grid items-stretch gap-6 md:grid-cols-3">
+      <div className="grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-4">
         {tiers.map((t) => <TierCard key={t.id} t={t} term={term} />)}
       </div>
       <div className="mt-8 flex flex-col items-center gap-4 rounded-2xl border border-brand/20 bg-mist px-6 py-5 text-center sm:flex-row sm:text-left">

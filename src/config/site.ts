@@ -31,16 +31,40 @@ export type Tier = {
   interval: "month" | "one_time";
   blurb: string;
   features: string[];
+  /** Shown with a cross, to make clear what a plan does NOT include. */
+  excludes?: string[];
+  /** Advice-only plan: no custom program or meal plan is built. */
+  messagingOnly?: boolean;
   highlighted?: boolean;
   /** Optional scarcity label, e.g. 20 → "Only 20 spots remaining". Update by hand. */
   spotsRemaining?: number;
-  color: "grey" | "gold" | "rainbow";
+  color: "blue" | "grey" | "gold" | "rainbow";
   // Extra plan info (not currently shown on the cards).
   bestFor: string;
   details: { label: string; value: string }[];
 };
 
 export const tiers: Tier[] = [
+  {
+    id: "guidance",
+    color: "blue",
+    name: "Guidance",
+    priceCents: 7500,
+    interval: "month",
+    blurb: "A real coach in your pocket, for advice whenever you need it.",
+    bestFor: "People who follow their own plan but want a coach to ask anything, anytime.",
+    messagingOnly: true,
+    details: [
+      { label: "Support", value: "24/7 1:1 messaging on Trainerize or WhatsApp" },
+      { label: "Your plan", value: "No custom program or meal plan; you keep your own and get advice on it" },
+    ],
+    features: [
+      "24/7 1:1 messaging on Trainerize or WhatsApp",
+      "Ask anything: training, nutrition, form or mindset",
+      "Honest advice and answers from a real coach",
+    ],
+    excludes: ["Custom workout plan", "Custom meal plan", "Calls or check-ins"],
+  },
   {
     id: "starter",
     color: "grey",

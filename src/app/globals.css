@@ -201,3 +201,10 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
 .page-particle.deep { background: radial-gradient(circle, #d4f1ff 0%, rgba(58,154,217,.95) 45%, rgba(35,120,181,0) 100%); box-shadow: 0 0 12px 3px rgba(58,154,217,.5); }
 @keyframes particleRise { 0% { transform: translate(0, 0); opacity: 0; } 8% { opacity: .95; } 50% { transform: translate(var(--dx, 0px), -55vh); opacity: .85; } 88% { opacity: .6; } 100% { transform: translate(0, -115vh); opacity: 0; } }
 @media (max-width: 640px) { .page-chev-wrap:nth-child(3n) { display: none; } }
+
+.facet-blue { background: linear-gradient(135deg, #e6f4fc 0%, #b9e1f7 40%, #f2faff 60%, #a8d8f3 100%); }
+
+/* Starter: brighter silver diamond finish */
+.facet-silver { background: linear-gradient(135deg, #8e979f 0%, #d8dde2 22%, #ffffff 42%, #b9c1c8 58%, #eef1f4 76%, #8f98a1 100%); background-size: 200% 200%; animation: flow 9s ease-in-out infinite alternate; }
+.tier-silver { background-image: linear-gradient(90deg, #8e979f, #e9edf0, #ffffff, #aeb6bd, #f4f6f8, #8e979f); background-size: 200% 100%; animation: flow 5s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .facet-silver, .tier-silver { animation: none; } }
