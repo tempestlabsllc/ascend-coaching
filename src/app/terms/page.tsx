@@ -1,7 +1,7 @@
 import { site } from "@/config/site";
 import { LegalPage } from "@/components/Legal";
 
-export const metadata = { title: "Terms of Service & Health Waiver" };
+export const metadata = { title: "Terms of Service & Health Waiver", alternates: { canonical: "/terms" } };
 
 export default function Terms() {
   return (

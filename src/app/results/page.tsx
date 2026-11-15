@@ -2,7 +2,7 @@ import Link from "next/link";
 import Results from "@/components/Results";
 import { testimonials } from "@/config/site";
 
-export const metadata = { title: "Client Results" };
+export const metadata = { title: "Client Results", alternates: { canonical: "/results" } };
 
 // To add a new client: put their photos in /public/results and add an entry to
 // `results` (and optionally `testimonials`) in src/config/site.ts.

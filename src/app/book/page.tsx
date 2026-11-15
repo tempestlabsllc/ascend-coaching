@@ -2,7 +2,7 @@ import Link from "next/link";
 import { site } from "@/config/site";
 import BookingEmbed from "@/components/BookingEmbed";
 
-export const metadata = { title: "Book a Call" };
+export const metadata = { title: "Book a Call", alternates: { canonical: "/book" } };
 
 export default function BookPage() {
   return (

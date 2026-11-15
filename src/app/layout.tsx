@@ -8,7 +8,6 @@ import Logo from "@/components/Logo";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  alternates: { canonical: "/" },
   title: { default: site.name, template: `%s · ${site.name}` },
   description: site.tagline,
   openGraph: {
@@ -16,7 +15,6 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: site.name,
     description: site.tagline,
-    url: site.url,
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Ascend Coaching" }],
   },
   twitter: { card: "summary_large_image", title: site.name, description: site.tagline, images: ["/og.png"] },
@@ -33,7 +31,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <footer className="mt-24 border-t border-black/10 py-10 text-center text-sm text-black/60">
           <div className="mb-4 flex justify-center"><Logo /></div>
           <p>© {new Date().getFullYear()} {site.name} · <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>
-             · <a className="underline" href="/check-in">Client Check-In</a>
+            {" · "}<a className="underline" href="/check-in">Client Check-In</a>
             {site.manageSubscriptionUrl && <> · <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a></>}</p>
           <p className="mt-3">
             <a className="underline" href={site.instagram} target="_blank" rel="noopener">Instagram</a>

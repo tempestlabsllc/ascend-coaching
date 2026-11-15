@@ -1,14 +1,14 @@
 import { site } from "@/config/site";
 import { LegalPage } from "@/components/Legal";
 
-export const metadata = { title: "Refunds & Cancellations" };
+export const metadata = { title: "Refunds & Cancellations", alternates: { canonical: "/refunds" } };
 
 export default function Refunds() {
   return (
     <LegalPage title="Refunds & Cancellations" updated="November 11, 2026">
       <section>
         <h2>Cancelling Your Plan</h2>
-        <p>You can cancel your coaching subscription at any time{site.manageSubscriptionUrl ? <> from the <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a> page</> : null}, or by emailing <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>. Cancellation stops future payments. Your coaching continues until the end of the period you have already paid for (one month, or three months on a 3-month plan).</p>
+        <p>You can cancel your coaching subscription at any time{site.manageSubscriptionUrl ? <> from the <a className="underline" href={site.manageSubscriptionUrl}>Manage subscription</a> page, or</> : null} by emailing <a className="underline" href={`mailto:${site.email}`}>{site.email}</a>. Cancellation stops future payments. Your coaching continues until the end of the period you have already paid for (one month, or three months on a 3-month plan).</p>
       </section>
       <section>
         <h2>Refunds on Coaching</h2>

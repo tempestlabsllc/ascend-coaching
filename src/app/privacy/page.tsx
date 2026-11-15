@@ -1,7 +1,7 @@
 import { site } from "@/config/site";
 import { LegalPage } from "@/components/Legal";
 
-export const metadata = { title: "Privacy Policy" };
+export const metadata = { title: "Privacy Policy", alternates: { canonical: "/privacy" } };
 
 export default function Privacy() {
   return (
