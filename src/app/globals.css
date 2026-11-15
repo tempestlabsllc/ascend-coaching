@@ -194,3 +194,10 @@ body { background: var(--color-paper); color: #16181d; color-scheme: light; }
   box-shadow: 0 0 10px 2px rgba(137,207,240,.45); animation: particleRise 30s linear infinite; }
 @keyframes particleRise { 0% { transform: translate(0, 0); opacity: 0; } 10% { opacity: .75; } 50% { transform: translate(var(--dx, 0px), -55vh); } 85% { opacity: .45; } 100% { transform: translate(0, -115vh); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .page-particle { animation: none; opacity: 0; } }
+
+/* More visible particles (v2) */
+.page-particle { background: radial-gradient(circle, #ffffff 0%, rgba(137,207,240,.95) 40%, rgba(58,154,217,0) 100%);
+  box-shadow: 0 0 14px 3px rgba(110,190,240,.55); }
+.page-particle.deep { background: radial-gradient(circle, #d4f1ff 0%, rgba(58,154,217,.95) 45%, rgba(35,120,181,0) 100%); box-shadow: 0 0 12px 3px rgba(58,154,217,.5); }
+@keyframes particleRise { 0% { transform: translate(0, 0); opacity: 0; } 8% { opacity: .95; } 50% { transform: translate(var(--dx, 0px), -55vh); opacity: .85; } 88% { opacity: .6; } 100% { transform: translate(0, -115vh); opacity: 0; } }
+@media (max-width: 640px) { .page-chev-wrap:nth-child(3n) { display: none; } }
