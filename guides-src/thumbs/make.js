@@ -25,7 +25,6 @@ const abs = `<div class="art dark"><div class="pack">${Array.from({length:6}).ma
 const thumbs = [
   { id: "starting-peps", tag: "Free guide", title: "Starting <span>Peptides</span>", sub: "What they are, what they do & what the science says", art: `<div class="art">${vial}${chain}</div>` },
   { id: "personal-split", tag: "My exact program", title: "My Training <span>Split</span>", sub: "Every day, exercise, set & rep I train with", art: split, bg: "b" },
-  { id: "personal-protocol", tag: "My system", title: "My Personal <span>Protocol</span>", sub: "The day-to-day system behind my physique", art: protocol, bg: "c" },
   { id: "skinny-fat-fix", tag: "Lose the gut · build muscle", title: "The Skinny <span>Fat Fix</span>", sub: "The roadmap I used to fill out my frame", bg: "c", art: `<div class="art"><div class="groups"><div>${bars([["Before",80,"#c8d3da"],["After",38,"#c8d3da"]])}<h5>Fat ↓</h5></div><div>${bars([["Before",42,"#89cff0"],["After",88,"#3a9ad9"]])}<h5>Muscle ↑</h5></div></div><p class="arrow">Soft → Strong</p></div>` },
   { id: "recomp-blueprint", tag: "Build muscle · burn fat", title: "The Recomp <span>Blueprint</span>", sub: "Get leaner and stronger at the same time", art: recomp, bg: "b" },
   { id: "abs-blueprint", tag: "Visible six-pack", title: "Abs <span>Unlocked</span>", sub: "The body fat, training & diet that reveal your abs", art: abs, bg: "d" },

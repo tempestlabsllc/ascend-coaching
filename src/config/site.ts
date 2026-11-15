@@ -141,16 +141,6 @@ export const guides: Guide[] = [
     file: "personal-split.pdf",
   },
   {
-    // PLACEHOLDER: set the price and description, drop the PDF in /private-guides, then remove comingSoon.
-    id: "personal-protocol",
-    title: "My Personal Protocol",
-    priceCents: 0,
-    description: "The full protocol I follow day to day, laid out step by step so you can run it yourself.",
-    pages: 0,
-    file: "personal-protocol.pdf",
-    comingSoon: true,
-  },
-  {
     // Source: guides-src/skinny-fat-fix.html (re-render to PDF after edits).
     id: "skinny-fat-fix",
     title: "The Skinny Fat Fix: Lose the Gut, Build the Muscle",
