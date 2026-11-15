@@ -1,6 +1,7 @@
 import type Stripe from "stripe";
 import { stripe } from "@/lib";
 import { tiers, guides } from "@/config/site";
+import { pendingOf } from "@/plan-change";
 
 // Only count Stripe records created at or after `since` (set by "Reset test data" in admin).
 const after = (since: number) => (since > 0 ? { created: { gte: since } } : {});
@@ -120,6 +121,7 @@ export async function getClients(s: Stripe, since = 0) {
       renews: Number.isFinite(renewalOf(sub)) ? renewalOf(sub) : null,
       status: sub.status,
       cancelling: sub.cancel_at_period_end || !!sub.cancel_at,
+      pending: pendingOf(sub),
     });
   }
   return out.sort((a, b) => b.start - a.start);

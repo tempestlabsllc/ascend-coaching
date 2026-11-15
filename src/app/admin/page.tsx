@@ -185,7 +185,7 @@ async function Clients(s: Stripe, since: number) {
   return (
     <>
       <H2>Clients ({clients.length})</H2>
-      <p className="mt-1 text-sm text-black/60">Everyone on a coaching plan, newest first.</p>
+      <p className="mt-1 text-sm text-black/60">Everyone on a coaching plan, newest first, with their current plan. Switches and cancellations clients make themselves show up here and in Activity.</p>
       {clients.length === 0 ? <Empty>No clients yet.</Empty> : (
         <div className="mt-4 grid gap-3 sm:grid-cols-2">
           {clients.map((c) => {
@@ -201,6 +201,7 @@ async function Clients(s: Stripe, since: number) {
                   </span>
                 </div>
                 <p className="mt-2 text-xs text-black/60">Started {day(c.start)}{c.renews ? ` · ${c.cancelling ? "ends" : "renews"} ${day(c.renews)}` : ""}</p>
+                {c.pending && <p className="mt-1 text-xs font-semibold text-brand-dark">Switching to {c.pending.label} on {day(c.pending.at)}</p>}
                 <div className="mt-3 flex flex-wrap gap-2 text-sm">
                   {c.email && <a className="rounded-full border border-black/20 px-3 py-1" href={`mailto:${c.email}`}>Email</a>}
                   {phone && <a className="rounded-full border border-black/20 px-3 py-1" href={`tel:${phone}`}>Call</a>}
