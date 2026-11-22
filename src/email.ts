@@ -4,7 +4,7 @@ import { site } from "@/config/site";
 // in Vercel (EMAIL_FROM is optional). sendEmailDetailed also returns Resend's error.
 export async function sendEmailDetailed(to: string | string[], subject: string, html: string): Promise<{ ok: boolean; error?: string }> {
   const key = process.env.RESEND_API_KEY;
-  const from = process.env.EMAIL_FROM || `Ascend Coaching <hello@${new URL(site.url).hostname}>`;
+  const from = process.env.EMAIL_FROM || `Ascend Coaching <hello@${new URL(site.url).hostname.replace(/^www\./, "")}>`;
   if (!key) {
     console.warn("Email not sent: RESEND_API_KEY not set");
     return { ok: false, error: "RESEND_API_KEY is not set in Vercel (or the site wasn't redeployed after adding it)." };
