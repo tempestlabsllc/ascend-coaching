@@ -15,7 +15,12 @@ export function ensureWebhook() {
   if (!stripe || process.env.STRIPE_AUTO_WEBHOOK === "false") return Promise.resolve();
   done ??= (async () => {
     const list = await stripe!.webhookEndpoints.list({ limit: 100 });
-    const hit = list.data.find((w) => w.url === WEBHOOK_URL);
+    // Same endpoint on the other host spelling (with or without www) redirects, which Stripe
+    // treats as a failed delivery: move it to the live address instead of adding a second one.
+    const bare = (u: string) => u.replace("://www.", "://");
+    let hit = list.data.find((w) => w.url === WEBHOOK_URL);
+    const stale = hit ? undefined : list.data.find((w) => bare(w.url) === bare(WEBHOOK_URL));
+    if (stale) hit = await stripe!.webhookEndpoints.update(stale.id, { url: WEBHOOK_URL });
     if (!hit) {
       await stripe!.webhookEndpoints.create({
         url: WEBHOOK_URL,

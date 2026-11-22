@@ -6,7 +6,8 @@
 
 export const site = {
   name: "Ascend Coaching",
-  url: "https://ascendcoaching.pro",
+  // The live address. ascendcoaching.pro redirects here, and Stripe webhooks don't follow redirects.
+  url: "https://www.ascendcoaching.pro",
   tagline: "Online fitness coaching built around your life.",
   heroTitle: "Start your ascension today",
   coachName: "your coach",
