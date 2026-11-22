@@ -2,7 +2,7 @@ import { site } from "@/config/site";
 
 // Sends an email through Resend's HTTP API. Does nothing until RESEND_API_KEY is set
 // in Vercel (EMAIL_FROM is optional). sendEmailDetailed also returns Resend's error.
-export async function sendEmailDetailed(to: string, subject: string, html: string): Promise<{ ok: boolean; error?: string }> {
+export async function sendEmailDetailed(to: string | string[], subject: string, html: string): Promise<{ ok: boolean; error?: string }> {
   const key = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM || `Ascend Coaching <hello@${new URL(site.url).hostname}>`;
   if (!key) {
@@ -22,8 +22,17 @@ export async function sendEmailDetailed(to: string, subject: string, html: strin
   return { ok: false, error: `Resend said (${r.status}): ${msg}` };
 }
 
-export async function sendEmail(to: string, subject: string, html: string) {
+export async function sendEmail(to: string | string[], subject: string, html: string) {
   return (await sendEmailDetailed(to, subject, html)).ok;
+}
+
+// Who gets the coach alerts (sales, renewals, intakes, check-ins, bookings, cancellations,
+// failed payments): the support inbox (COACH_EMAIL, or the site email) plus anyone listed
+// in ALERT_EMAILS (comma separated), e.g. the site owner's personal inbox.
+export function alertRecipients(): string[] {
+  const main = process.env.COACH_EMAIL || process.env.ADMIN_ALERT_EMAIL || site.email;
+  const extra = (process.env.ALERT_EMAILS || "").split(",").map((e) => e.trim()).filter((e) => e.includes("@"));
+  return [...new Set([main, ...extra].map((e) => e.toLowerCase()))];
 }
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);

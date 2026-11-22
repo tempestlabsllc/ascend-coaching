@@ -1,7 +1,7 @@
 import type Stripe from "stripe";
 import { stripe } from "@/lib";
 import { site, tiers, guides, formatPrice } from "@/config/site";
-import { sendEmail, emailLayout, esc } from "@/email";
+import { sendEmail, emailLayout, esc, alertRecipients } from "@/email";
 import { isPaid } from "@/paid";
 import { eliteLoginToken } from "@/elite";
 import { logActivity } from "@/activity";
@@ -81,7 +81,7 @@ ${receipt}`),
         : guides.find((x) => x.id === s.metadata?.id)?.title ?? "Guide";
     const paid = s.amount_total != null ? `$${(s.amount_total / 100).toFixed(2)}` : "";
     await sendEmail(
-      process.env.COACH_EMAIL || site.email,
+      alertRecipients(),
       `New sale: ${item}${paid ? ` (${paid})` : ""}`,
       emailLayout("New Sale 🎉", `<p style="margin:0 0 10px"><strong>${esc(item)}</strong>${paid ? ` for ${paid}` : ""}</p>
 <p style="margin:0 0 6px">Name: ${esc(s.customer_details?.name ?? "not given")}</p>
@@ -176,7 +176,7 @@ ${receiptTable(rows, inv.hosted_invoice_url)}
 ${manageBlock(inv.customer)}`));
   }
   await sendEmail(
-    process.env.COACH_EMAIL || site.email,
+    alertRecipients(),
     `Renewal: ${plan} (${money(inv.amount_paid, cur)})`,
     emailLayout("Plan Renewed 🔁", `<p style="margin:0 0 10px"><strong>${esc(plan)}</strong> renewed for ${money(inv.amount_paid, cur)}.</p>
 <p style="margin:0 0 6px">Client: ${esc(inv.customer_name ?? "")} ${esc(to ?? "")}</p>`),
